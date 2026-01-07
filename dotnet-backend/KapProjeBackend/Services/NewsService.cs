@@ -7,12 +7,14 @@ namespace KapProjeBackend.Services;
 public class NewsService
 {
     private readonly IMongoCollection<NewsItem> _newsCollection;
+    private readonly IWebHostEnvironment _env;
 
-    public NewsService(IOptions<MongoDbSettings> mongoSettings)
+    public NewsService(IOptions<MongoDbSettings> mongoSettings, IWebHostEnvironment env)
     {
         var client = new MongoClient(mongoSettings.Value.ConnectionString);
         var database = client.GetDatabase(mongoSettings.Value.DatabaseName);
         _newsCollection = database.GetCollection<NewsItem>(mongoSettings.Value.NewsCollectionName);
+        _env = env;
     }
 
     /// <summary>
@@ -21,23 +23,64 @@ public class NewsService
     private string MapCategoryToImageUrl(string? category)
     {
         const string baseUrl = "http://localhost:5296/banners";
+        const string defaultImage = "diğer.jpg"; // Fallback image in banners root or Diğer folder
+
+        // 1. Kategori temizliği
+        var catName = (category ?? "Diğer").Trim();
         
-        if (string.IsNullOrWhiteSpace(category))
-            return $"{baseUrl}/diğer.jpg";
-
-        var normalized = category.Trim().ToLowerInvariant();
-
-        var filename = normalized switch
+        // 2. Kategori -> Klasör eşleşmesi (Küçük harf -> Gerçek Klasör Adı)
+        // wwwroot/banners altında bu klasörlerin tam olarak bu isimle yaratılmış olması gerekir.
+        var folderMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
-            "halka arz" => "halka arz.jpg",
-            "sermaye" => "sermaye.jpg",
-            "sözleşme" => "sozlesme.png",
-            "spk" => "spk.jpg",
-            "yatırım" => "yatırım.jpg",
-            _ => "diğer.jpg"
+            { "halka arz", "Halka Arz" },
+            { "sermaye", "Sermaye" },
+            { "sözleşme", "Sözleşme" },
+            { "spk", "SPK" },
+            { "yatırım", "Yatırım" },
+            { "diğer", "Diğer" }
         };
 
-        return $"{baseUrl}/{filename}";
+        // Gelen kategori haritada yoksa "Diğer" kullan
+        if (!folderMap.TryGetValue(catName, out var targetFolder))
+        {
+            targetFolder = "Diğer";
+        }
+
+        try 
+        {
+            // 3. Fiziksel yol kontrolü
+            var bannersPath = Path.Combine(_env.WebRootPath, "banners");
+            var targetPath = Path.Combine(bannersPath, targetFolder);
+
+            if (Directory.Exists(targetPath))
+            {
+                // Klasördeki resimleri bul (.jpg, .png, .jpeg)
+                var files = Directory.GetFiles(targetPath, "*.*")
+                                     .Where(f => f.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) || 
+                                                 f.EndsWith(".png", StringComparison.OrdinalIgnoreCase) || 
+                                                 f.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase))
+                                     .ToArray();
+
+                if (files.Length > 0)
+                {
+                    // Random seçim
+                    var randomFile = files[new Random().Next(files.Length)];
+                    var fileName = Path.GetFileName(randomFile);
+                    
+                    // URL oluştur: encoding gerekebilir (boşluklar vs için)
+                    // Uri.EscapeDataString kullanımı dosya adındaki boşlukları %20 yapar
+                    return $"{baseUrl}/{Uri.EscapeDataString(targetFolder)}/{Uri.EscapeDataString(fileName)}";
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[NewsService] Banner selection error: {ex.Message}");
+        }
+
+        // Fallback: Eskisi gibi root'ta bir dosya veya Diğer klasöründen bir dosya dönebiliriz.
+        // Hata durumunda veya dosya yoksa güvenli liman:
+        return $"{baseUrl}/{defaultImage}";
     }
 
     /// <summary>
