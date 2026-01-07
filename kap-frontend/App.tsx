@@ -7,6 +7,8 @@ import CompaniesView from './components/CompaniesView';
 import AboutView from './components/AboutView';
 import NotificationDetail from './components/NotificationDetail';
 import CompanyDetailView from './components/CompanyDetailView';
+import AdminLogin from './components/AdminLogin';
+import AdminPanel from './components/AdminPanel';
 
 const LOGO_COLORS = [
   'bg-red-600', 'bg-blue-600', 'bg-green-600', 'bg-slate-500',
@@ -20,6 +22,7 @@ const App: React.FC = () => {
   const [filter, setFilter] = useState<FilterState>({ date: null, companyCode: null });
   const [selectedNotificationId, setSelectedNotificationId] = useState<string | null>(null);
   const [selectedCompanyCode, setSelectedCompanyCode] = useState<string | null>(null);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
 
   // Theme management
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -184,6 +187,11 @@ const App: React.FC = () => {
             onSelectRelated={handleNotificationClick}
           />
         );
+      case 'admin':
+        if (!isAdminAuthenticated) {
+          return <AdminLogin onLogin={(success) => setIsAdminAuthenticated(success)} />;
+        }
+        return <AdminPanel />;
       default:
         return null;
     }

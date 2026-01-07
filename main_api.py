@@ -9,21 +9,50 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from pydantic import BaseModel
 
 import midas  # Import the new module
+import json
+from pymongo import MongoClient
+
+# MongoDB Setup
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
+MONGO_DB = os.environ.get("MONGO_DB", "kap_news")
+TICKERS_COLLECTION = os.environ.get("TICKERS_COLLECTION", "tickers")
+FINANCIALS_DIR = os.environ.get("FINANCIALS_DIR", "./daily_data_kap/financials")
+
+def get_mongo_db():
+    client = MongoClient(MONGO_URI)
+    return client[MONGO_DB]
 
 app = FastAPI(title="KAP Bot Manager API")
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins for development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.on_event("startup")
 async def startup_event():
     # Start the Midas background task
     asyncio.create_task(midas.fetch_loop())
 
+import sys
+
 # --- Configuration ---
 # Scripts and their default arguments
+# Use sys.executable to ensure we use the same python interpreter (venv) as the main process
+PYTHON_EXEC = sys.executable
+
 SCRIPTS = {
-    "pipeline": {"cmd": ["python3", "daily_kap_pipeline.py"], "log_file": "pipeline.log"},
-    "analyzer": {"cmd": ["python3", "news_analyze.py"], "log_file": "analyzer.log"},
-    "twitterbot": {"cmd": ["python3", "twitterbot.py"], "log_file": "twitterbot.log"},
-    "financials": {"cmd": ["python3", "fetch_financials.py"], "log_file": "financials.log"},
+    "pipeline": {"cmd": [PYTHON_EXEC, "daily_kap_pipeline.py"], "log_file": "pipeline.log"},
+    "analyzer": {"cmd": [PYTHON_EXEC, "news_analyze.py"], "log_file": "analyzer.log"},
+    "twitterbot": {"cmd": [PYTHON_EXEC, "twitterbot.py"], "log_file": "twitterbot.log"},
+    "financials": {"cmd": [PYTHON_EXEC, "fetch_financials.py"], "log_file": "financials.log"},
+    "fetch_symbols": {"cmd": [PYTHON_EXEC, "fetch_symbols.py"], "log_file": "fetch_symbols.log"},
+    "extract_logos": {"cmd": [PYTHON_EXEC, "extract_logos.py"], "log_file": "extract_logos.log"},
 }
 
 # Store process objects: name -> subprocess.Popen
@@ -102,6 +131,43 @@ def tail_file(filepath: str, n: int = 100) -> str:
         return f"Error reading log: {e}"
 
 # --- Endpoints ---
+
+@app.get("/company/{symbol}")
+def get_company_details(symbol: str):
+    """
+    Get detailed info for a company:
+    - Name (from MongoDB tickers)
+    - Financials (from local JSON)
+    """
+    symbol = symbol.upper().strip()
+    
+    # 1. Get name from MongoDB
+    db = get_mongo_db()
+    ticker_doc = db[TICKERS_COLLECTION].find_one({"_id": symbol})
+    
+    company_name = symbol # Default
+    if ticker_doc and "original_text" in ticker_doc:
+        company_name = ticker_doc["original_text"]
+
+    # 2. Get financials from JSON file
+    financials_path = os.path.join(FINANCIALS_DIR, f"{symbol}, {company_name}_financials.json")
+    # Also try simple symbol format in case naming varies
+    if not os.path.exists(financials_path):
+         financials_path = os.path.join(FINANCIALS_DIR, f"{symbol}_financials.json")
+         
+    financials_data = {}
+    if os.path.exists(financials_path):
+        try:
+            with open(financials_path, "r", encoding="utf-8") as f:
+                financials_data = json.load(f)
+        except Exception as e:
+            print(f"Error reading financials for {symbol}: {e}")
+            
+    return {
+        "symbol": symbol,
+        "name": company_name,
+        "financials": financials_data
+    }
 
 @app.get("/")
 def root():

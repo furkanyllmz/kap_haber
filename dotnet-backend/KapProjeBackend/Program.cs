@@ -27,7 +27,9 @@ builder.Services.Configure<MongoDbSettings>(
 builder.Services.AddSingleton<NewsService>();
 builder.Services.AddSingleton<PriceService>();
 builder.Services.AddHttpClient<ChartService>();
+builder.Services.AddHttpClient<ChartService>();
 builder.Services.AddSingleton<ChartService>();
+builder.Services.AddSingleton<FinancialsService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();

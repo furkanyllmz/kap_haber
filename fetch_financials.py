@@ -5,31 +5,38 @@ import argparse
 from bs4 import BeautifulSoup
 import time
 import re
+from pymongo import MongoClient
+from dotenv import load_dotenv
 
-def parse_symbols(html_path):
-    """Parses stock symbols from the provided HTML file."""
-    if not os.path.exists(html_path):
-        print(f"Error: {html_path} does not exist.")
+# Load environment variables
+load_dotenv()
+
+# MongoDB Configuration
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
+MONGO_DB = "kap_news"
+TICKERS_COLLECTION = "tickers"
+
+def get_mongo_db():
+    try:
+        client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+        return client[MONGO_DB]
+    except Exception as e:
+        print(f"❌ MongoDB Bağlantı Hatası: {e}")
+        return None
+
+def get_symbols_from_mongo():
+    """Fetches stock symbols from MongoDB."""
+    db = get_mongo_db()
+    if db is None:
         return []
-        
-    with open(html_path, 'r', encoding='utf-8') as f:
-        html_content = f.read()
-        
-    soup = BeautifulSoup(html_content, 'html.parser')
-    select_element = soup.find('select', {'id': 'ddlMenuShareSearch'})
     
-    if not select_element:
-        print("Error: Could not find select element with id 'ddlMenuShareSearch'")
+    try:
+        cursor = db[TICKERS_COLLECTION].find({}, {"symbol": 1})
+        symbols = [doc["symbol"] for doc in cursor]
+        return symbols
+    except Exception as e:
+        print(f"❌ Error fetching symbols from MongoDB: {e}")
         return []
-        
-    symbols = []
-    options = select_element.find_all('option')
-    for option in options:
-        value = option.get('value')
-        if value and value != "Hisse Seçiniz...":
-            symbols.append(value)
-            
-    return symbols
 
 def fetch_financial_data(symbol):
     """
@@ -54,20 +61,15 @@ def fetch_financial_data(symbol):
             'fetched_at': time.time()
         }
         
-        # Example of data extraction - needs to be refined based on actual page structure
-        # User asked for "company size, profit, revenue"
-        # These are usually in summary tables. 
-        # Since I can't browse the page right now, I'll dump some common selectors or just text that looks like financials.
-        # But to start, I'll just check if I can get the page title or something unique.
-        
-        page_title = soup.title.text.strip() if soup.title else "No Title"
-        data['page_title'] = page_title
-        
+        market_cap_found = False
+
         # Parse Market Cap (Piyasa Değeri)
         # Structure: <th>Piyasa Değeri</th><td>7.674,8 mnTL</td>
         market_cap_th = soup.find('th', string=re.compile(r"Piyasa Değeri"))
         if market_cap_th:
-            data['market_cap'] = market_cap_th.find_next_sibling('td').text.strip()
+            val = market_cap_th.find_next_sibling('td').text.strip()
+            data['market_cap'] = val
+            if val: market_cap_found = True
             
         # Parse Net Profit (Dönem Net Kar/Zararı)
         # Structure: <td>Dönem Net Kar/Zararı</td><td>Value</td> ...
@@ -86,15 +88,18 @@ def fetch_financial_data(symbol):
         if free_float_th:
             data['free_float_rate'] = free_float_th.find_next_sibling('td').text.strip()
 
+        # VALIDATION: If we didn't find basic info like Market Cap, assume bad fetch
+        if not market_cap_found:
+            return None
+
         return data
 
     except Exception as e:
-        print(f"Error fetching data for {symbol}: {e}")
+        # print(f"Error fetching data for {symbol}: {e}")
         return None
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch financial data for BIST stocks.")
-    parser.add_argument("--html", default="symbols.html", help="Path to HTML file with symbols")
     parser.add_argument("--output_dir", default="daily_data_kap/financials", help="Directory to save JSON files")
     parser.add_argument("--test_one", help="Test fetching for a single symbol", type=str)
 
@@ -104,8 +109,14 @@ def main():
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
         
-    symbols = parse_symbols(args.html)
-    print(f"Found {len(symbols)} symbols.")
+    print("🚀 Fetching symbols from MongoDB...")
+    symbols = get_symbols_from_mongo()
+    
+    if not symbols:
+        print("❌ No symbols found in MongoDB. Please run fetch_symbols.py first.")
+        return
+
+    print(f"Found {len(symbols)} symbols in MongoDB.")
     
     if args.test_one:
         print(f"Testing fetch for {args.test_one}...")
@@ -114,20 +125,36 @@ def main():
         return
 
     print("Starting batch fetch...")
-    for i, symbol in enumerate(symbols):
-        print(f"[{i+1}/{len(symbols)}] Fetching {symbol}...")
+    for i, symbol_key in enumerate(symbols):
+        print(f"[{i+1}/{len(symbols)}] Fetching {symbol_key}...")
         
-        # Check if already exists to allow resuming
-        output_file = os.path.join(args.output_dir, f"{symbol}_financials.json")
+        output_file = os.path.join(args.output_dir, f"{symbol_key}_financials.json")
         if os.path.exists(output_file):
-            print(f"  Skipping {symbol}, already exists.")
+            print(f"  Skipping {symbol_key}, already exists.")
             continue
             
-        data = fetch_financial_data(symbol)
+        # Handle composite symbols (e.g. "ALBRK, ALK")
+        candidates = [s.strip() for s in symbol_key.split(",")] if "," in symbol_key else [symbol_key]
         
-        if data:
+        success_data = None
+        for cand in candidates:
+             # Clean candidate
+             cand = re.sub(r'[\x00-\x1f\x7f-\x9f\s]', '', cand)
+             if not cand: continue
+             
+             data = fetch_financial_data(cand)
+             if data:
+                 success_data = data
+                 # Key point: Ensure the saved symbol matches the DB key for consistency
+                 success_data['symbol'] = symbol_key 
+                 success_data['fetched_using'] = cand
+                 break
+        
+        if success_data:
             with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(data, f, indent=2, ensure_ascii=False)
+                json.dump(success_data, f, indent=2, ensure_ascii=False)
+        else:
+            print(f"  ❌ No valid data found for {symbol_key}")
         
         # Respectful delay
         time.sleep(0.5)

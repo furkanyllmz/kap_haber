@@ -26,6 +26,30 @@ interface StockDataPoint {
     price: number;
 }
 
+const STAT_LABELS: Record<string, string> = {
+    market_cap: 'Piyasa Değeri',
+    net_profit: 'Net Kâr',
+    revenue: 'Satış Gelirleri',
+    free_float_rate: 'Halka Açıklık Oranı',
+    symbol: 'Hisse Kodu',
+    fetched_at: 'Veri Tarihi',
+    fetched_using: 'Veri Kaynağı' // Usually hidden
+};
+
+const IGNORED_KEYS = ['fetched_at', 'fetched_using', 'symbol'];
+
+const formatValue = (key: string, value: any) => {
+    if (key === 'market_cap' || key === 'net_profit' || key === 'revenue') {
+        const str = String(value);
+        return str.includes('mnTL') ? str : `${str} TL`; // Simple heuristic
+    }
+    if (key === 'free_float_rate') {
+        const str = String(value);
+        return str.includes('%') ? str : `%${str}`;
+    }
+    return value;
+};
+
 const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, onNotificationClick }) => {
     const company = companies.find(c => c.code === companyCode) || {
         code: companyCode,
@@ -40,6 +64,24 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
     const [loadingNews, setLoadingNews] = useState(false);
     const [currentPrice, setCurrentPrice] = useState<number | null>(null);
     const [percentChange, setPercentChange] = useState<number | null>(null);
+    const [companyDetails, setCompanyDetails] = useState<{ name: string, financials: any } | null>(null);
+
+    // Fetch Company Details (Name + Financials)
+    useEffect(() => {
+        const fetchDetails = async () => {
+            try {
+                // Now using .NET Backend via API_BASE_URL
+                const res = await fetch(`${API_BASE_URL}/company/${companyCode}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    setCompanyDetails(data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch company details:", err);
+            }
+        };
+        fetchDetails();
+    }, [companyCode]);
 
     // Fetch Stock Data
     useEffect(() => {
@@ -140,7 +182,9 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
 
                     <div>
                         <h1 className="text-xl font-bold text-market-text leading-none">{company.code}</h1>
-                        <p className="text-xs text-market-muted truncate max-w-[200px]">{company.name}</p>
+                        <p className="text-xs text-market-muted truncate max-w-[200px]">
+                            {companyDetails?.name || company.name}
+                        </p>
                     </div>
 
                     <div className="flex-1" />
@@ -161,7 +205,32 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
                 </div>
             </div>
 
+
             <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+                {/* Financials Section */}
+                {companyDetails?.financials && Object.keys(companyDetails.financials).length > 0 && (
+                    <div className="bg-market-card rounded-2xl p-5 border border-market-border shadow-sm mb-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {Object.entries(companyDetails.financials).map(([key, value]) => {
+                                if (!value || IGNORED_KEYS.includes(key)) return null;
+                                const label = STAT_LABELS[key] || key;
+                                const displayValue = formatValue(key, value);
+
+                                return (
+                                    <div key={key} className="flex flex-col">
+                                        <span className="text-xs text-market-muted uppercase tracking-wider font-semibold mb-1 opacity-70">
+                                            {label}
+                                        </span>
+                                        <span className="text-lg md:text-xl font-bold text-market-text tracking-tight">
+                                            {String(displayValue)}
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
 
                 {/* Chart Section */}
                 <div className="bg-market-card rounded-2xl p-4 border border-market-border shadow-sm">
@@ -289,7 +358,7 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 

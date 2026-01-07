@@ -136,12 +136,42 @@ def generate_gemini_image(client, prompt, ana_mesaj, ana_rakam, unique_id):
 
 from pymongo import MongoClient, DESCENDING
 import os
+import requests
+from requests_oauthlib import OAuth1
 
 # MongoDB Ayarları
 MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
 MONGO_DB = "kap_news"
 NEWS_COLLECTION = "news_items"      # Haberlerin okunduğu yer
 POSTED_COLLECTION = "posted_tweets" # Atılan tweetlerin loglandığı yer
+
+def check_twitter_rate_limits():
+    """Twitter API rate limitlerini kontrol eder ve reset zamanını döndürür."""
+    try:
+        auth = OAuth1(
+            CONSUMER_KEY,
+            CONSUMER_SECRET,
+            ACCESS_TOKEN,
+            ACCESS_TOKEN_SECRET
+        )
+        
+        # Basit bir test request at (sadece header'ları almak için)
+        url = "https://api.twitter.com/2/tweets"
+        test_payload = {"text": "test"}
+        response = requests.post(url, auth=auth, json=test_payload, headers={"Content-Type": "application/json"})
+        
+        # Header'lardan limit bilgilerini al
+        remaining = int(response.headers.get('x-app-limit-24hour-remaining', -1))
+        reset_timestamp = int(response.headers.get('x-app-limit-24hour-reset', 0))
+        
+        return {
+            'remaining': remaining,
+            'reset_timestamp': reset_timestamp,
+            'is_limited': remaining == 0
+        }
+    except Exception as e:
+        print(f"⚠️ Rate limit kontrolü yapılamadı: {e}")
+        return {'remaining': -1, 'reset_timestamp': 0, 'is_limited': False}
 
 def get_mongo_db():
     try:
@@ -178,7 +208,7 @@ def load_news_mongo():
     if db is None: return []
 
     # Son eklenenleri önce getir
-    cursor = db[NEWS_COLLECTION].find().sort("_inserted_at", DESCENDING).limit(100)
+    cursor = db[NEWS_COLLECTION].find().sort("_inserted_at", DESCENDING)
     return list(cursor)
 
 # Eski dosya tabanlı fonksiyonları (load_posted_ids, save_posted_ids, load_news) siliyoruz 
@@ -291,25 +321,48 @@ def main():
         print("API Bağlantı Hatası. Çıkılıyor.")
         return
 
-    print(f"[INFO] MongoDB ({MONGO_DB}) izleniyor... Günlük Limit: {DAILY_TWEET_LIMIT}")
+    print(f"[INFO] MongoDB ({MONGO_DB}) izleniyor... Günlük Limit: KAPALI (Sınırsız)")
     posted_ids = load_posted_ids_mongo()
 
     while True:
         try:
+            # İLK OLARAK: Twitter API limitini kontrol et
+            rate_status = check_twitter_rate_limits()
+            if rate_status['is_limited'] and rate_status['reset_timestamp'] > 0:
+                reset_time = datetime.fromtimestamp(rate_status['reset_timestamp'])
+                now = datetime.now()
+                wait_seconds = (reset_time - now).total_seconds()
+                
+                if wait_seconds > 0:
+                    print(f"⏰ Twitter API limiti dolmuş!")
+                    print(f"   Reset zamanı: {reset_time.strftime('%H:%M:%S')}")
+                    print(f"   Bekleme süresi: {int(wait_seconds/60)} dakika {int(wait_seconds%60)} saniye")
+                    print(f"💤 Reset zamanına kadar bekleniyor...")
+                    time.sleep(wait_seconds + 10)  # +10 saniye güvenlik payı
+                    print(f"✅ Reset zamanı geldi! Tweet atmaya devam ediliyor...")
+            
             news_items = load_news_mongo()
-            daily_state = load_daily_state()
+            print(f"🔍 MongoDB'den {len(news_items)} haber çekildi")
+            # daily_state = load_daily_state()  # DEVRE DIŞI
             today_str = get_today_str()
+            print(f"📅 Bugünün tarihi: {today_str}")
             
             queue = []
+            skipped_already_posted = 0
+            skipped_web_only = 0
+            skipped_old = 0
+            
             for item in news_items:
                 unique_id = f"{item.get('primary_ticker')}_{item.get('published_at')}_{item.get('headline')}"
                 
                 if unique_id in posted_ids:
+                    skipped_already_posted += 1
                     continue
                 
                 if item.get("publish_target") != "ALL_CHANNELS":
                     # DB'ye "SKIPPED" olarak da kaydedebiliriz ama şimdilik sadece sete ekleyip geçiyoruz
-                    posted_ids.add(unique_id) 
+                    posted_ids.add(unique_id)
+                    skipped_web_only += 1
                     continue
 
                 # --- 1. KURAL: ESKİ TARİHLİ HABERLERİ ELE ---
@@ -329,30 +382,23 @@ def main():
                         "reason": f"News date {item_date} is older than {today_str}",
                         "headline": item.get('headline')
                     })
+                    skipped_old += 1
                     continue
                 
-                # --- 2. KURAL: GÜNLÜK LİMİT KONTROLÜ ---
-                if daily_state["count"] >= DAILY_TWEET_LIMIT:
-                    print(f"🛑 Günlük Limit Doldu ({daily_state['count']}/{DAILY_TWEET_LIMIT}). Haber atlanıyor: {item.get('primary_ticker')}")
-                    posted_ids.add(unique_id)
-                    save_posted_tweet_mongo({
-                        "unique_id": unique_id,
-                        "status": "SKIPPED_LIMIT",
-                        "reason": "Daily limit reached",
-                        "headline": item.get('headline')
-                    })
-                    continue
+                # --- 2. KURAL: GÜNLÜK LİMİT KONTROLÜ --- (DEVRE DIŞI)
+                # Günlük limit kontrolü kaldırıldı, sınırsız tweet atılacak
                 
+                print(f"✅ Queue'ya ekleniyor: {item.get('primary_ticker')} - {item.get('headline')[:50]}")
                 queue.append((unique_id, item))
+            
+            print(f"📊 Filtreleme Özeti: Zaten atılmış={skipped_already_posted}, WEB_ONLY={skipped_web_only}, Eski={skipped_old}, Queue={len(queue)}")
 
             if queue:
                 print(f"[INFO] {len(queue)} adet yeni flaş haber var.")
 
             for unique_id, item in queue:
-                if daily_state["count"] >= DAILY_TWEET_LIMIT:
-                     print(f"🛑 Döngü içinde Günlük Limit Doldu. Kalanlar atlanıyor.")
-                     posted_ids.add(unique_id)
-                     continue
+                # Limit kontrolü kaldırıldı
+                pass
 
                 text = format_tweet(item)
                 visual_prompt = item.get("visual_prompt")
@@ -386,10 +432,7 @@ def main():
                     tweet_id = tweet_response.data['id']
                     print(f"🚀 GÖNDERİLDİ! Tweet ID: {tweet_id}")
                     
-                    # Başarılı gönderim sonrası sayacı artır
-                    daily_state["count"] += 1
-                    save_daily_state(daily_state)
-                    print(f"📊 Günlük Sayaç: {daily_state['count']}/{DAILY_TWEET_LIMIT}")
+                    # Limit devre dışı - sayaç yok
 
                     posted_ids.add(unique_id)
                     
@@ -405,15 +448,44 @@ def main():
                     
                 except Exception as e:
                     print(f"❌ Tweet Hatası: {e}")
-                    # Hız sınırı kontrolü
+                    print(f"🔍 Hata Tipi: {type(e).__name__}")
+                    print(f"🔍 Hata Detayı: {str(e)}")
+                    
+                    # Eğer tweepy exception ise daha fazla bilgi al
+                    if hasattr(e, 'response'):
+                        print(f"🔍 API Response Status: {e.response.status_code if hasattr(e.response, 'status_code') else 'N/A'}")
+                        print(f"🔍 API Response Text: {e.response.text if hasattr(e.response, 'text') else 'N/A'}")
+                    
+                    # ÖNEMLİ: 429 hatası alındığında akıllıca bekle
                     if "429" in str(e) or "Too Many Requests" in str(e):
-                        print("⏳ Hız sınırına takıldık (429). 15 dakika bekleniyor...")
-                        time.sleep(900)
+                        print("⚠️ RATE LIMIT! Tweet atılamadı.")
+                        
+                        # API'den reset zamanını al ve ona göre bekle
+                        if hasattr(e, 'response') and hasattr(e.response, 'headers'):
+                            reset_timestamp = int(e.response.headers.get('x-app-limit-24hour-reset', 0))
+                            if reset_timestamp > 0:
+                                reset_time = datetime.fromtimestamp(reset_timestamp)
+                                now = datetime.now()
+                                wait_seconds = (reset_time - now).total_seconds()
+                                
+                                if wait_seconds > 0:
+                                    print(f"⏰ Reset zamanı: {reset_time.strftime('%Y-%m-%d %H:%M:%S')}")
+                                    print(f"⏳ {int(wait_seconds/3600)}sa {int((wait_seconds%3600)/60)}dk sonra tekrar denenecek")
+                                    print(f"💤 Beklemeye geçiliyor...")
+                                    time.sleep(wait_seconds + 10)  # +10 saniye güvenlik
+                                    print(f"✅ Reset zamanı geldi! Devam ediliyor...")
+                                    # Döngüyü kır, yeni cycle'da bu haber tekrar denenecek
+                                    break
+                        
+                        # Eğer reset zamanı bulunamazsa, queue'yu temizle ve bekle
+                        print("📋 Queue temizleniyor, sonraki cycle bekleniyor...")
+                        break
             
             # MongoDB kullandığımız için toplu save_posted_ids yapmaya gerek yok, 
             # save_posted_tweet_mongo ile her işlem anlık loglanıyor.
             
             bekleme_suresi = random.randint(60, 90)
+            print(f"⏸️ {bekleme_suresi} saniye sonra tekrar kontrol edilecek...")
             time.sleep(bekleme_suresi)
 
         except KeyboardInterrupt:

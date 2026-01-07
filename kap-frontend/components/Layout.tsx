@@ -16,6 +16,7 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
     { id: 'feed', icon: Home, label: 'Haberler' },
     { id: 'companies', icon: Building2, label: 'Şirketler' },
     { id: 'about', icon: Info, label: 'Hakkında' },
+    { id: 'admin', icon: TrendingUp, label: 'Admin' },
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);

@@ -285,7 +285,8 @@ def setup_gemini():
     if not API_KEY:
         print("[ERROR] GEMINI_API_KEY env yok.")
         return None
-    return genai.Client(api_key=API_KEY)
+    genai.configure(api_key=API_KEY)
+    return True
 
 def safe_read_json(path: str):
     try:
@@ -528,11 +529,13 @@ def process_one_file(client, file_path: str, embedder=None, memory=None):
         return None
 
     try:
-        resp = client.models.generate_content(
-            model=MODEL_NAME,
+        model = genai.GenerativeModel(
+            model_name=MODEL_NAME,
+            system_instruction=NEWS_SYSTEM_PROMPT
+        )
+        resp = model.generate_content(
             contents=full_content,
-            config=types.GenerateContentConfig(
-                system_instruction=NEWS_SYSTEM_PROMPT,
+            generation_config=types.GenerationConfig(
                 temperature=0.3,
                 top_p=0.9,
                 max_output_tokens=8192,

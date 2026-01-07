@@ -19,7 +19,7 @@ export interface Notification {
   isImportant: boolean;
 }
 
-export type ViewState = 'feed' | 'companies' | 'about' | 'detail' | 'companyDetail';
+export type ViewState = 'feed' | 'companies' | 'about' | 'detail' | 'companyDetail' | 'admin';
 
 export interface FilterState {
   date: string | null;
