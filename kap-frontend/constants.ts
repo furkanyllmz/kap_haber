@@ -1,6 +1,6 @@
 import { Company, Notification } from './types';
 
-export const API_BASE_URL = "http://localhost:5296/api";
+export const API_BASE_URL = "/api";
 export const LOGO_BASE_URL = "http://localhost:5296/logos";
 
 export const MOCK_COMPANIES: Company[] = [

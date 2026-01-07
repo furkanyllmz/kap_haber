@@ -6,6 +6,7 @@ import FeedView from './components/FeedView';
 import CompaniesView from './components/CompaniesView';
 import AboutView from './components/AboutView';
 import NotificationDetail from './components/NotificationDetail';
+import CompanyDetailView from './components/CompanyDetailView';
 
 const LOGO_COLORS = [
   'bg-red-600', 'bg-blue-600', 'bg-green-600', 'bg-slate-500',
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filter, setFilter] = useState<FilterState>({ date: null, companyCode: null });
   const [selectedNotificationId, setSelectedNotificationId] = useState<string | null>(null);
+  const [selectedCompanyCode, setSelectedCompanyCode] = useState<string | null>(null);
 
   // Theme management
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -113,9 +115,15 @@ const App: React.FC = () => {
     fetchNews();
   }, [filter.companyCode]);
 
+  // Handlers
   const handleCompanySelect = (code: string) => {
-    setFilter(prev => ({ ...prev, companyCode: code }));
-    setCurrentView('feed');
+    setSelectedCompanyCode(code);
+    setCurrentView('companyDetail');
+  };
+
+  const handleBackToCompanies = () => {
+    setSelectedCompanyCode(null);
+    setCurrentView('companies');
   };
 
   const handleNotificationClick = (id: string) => {
@@ -146,6 +154,16 @@ const App: React.FC = () => {
           <CompaniesView
             companies={companies}
             onSelectCompany={handleCompanySelect}
+          />
+        );
+      case 'companyDetail':
+        if (!selectedCompanyCode) return <CompaniesView companies={companies} onSelectCompany={handleCompanySelect} />;
+        return (
+          <CompanyDetailView
+            companyCode={selectedCompanyCode}
+            companies={companies}
+            onBack={handleBackToCompanies}
+            onNotificationClick={handleNotificationClick}
           />
         );
       case 'about':

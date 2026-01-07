@@ -1,12 +1,12 @@
 import React from 'react';
-import { 
-  Home, 
-  Building2, 
-  Info, 
-  Filter, 
-  Calendar, 
-  X, 
-  ExternalLink, 
+import {
+  Home,
+  Building2,
+  Info,
+  Filter,
+  Calendar,
+  X,
+  ExternalLink,
   BellRing,
   TrendingUp,
   Search,
@@ -21,16 +21,18 @@ import {
   Clock,
   Tag,
   ArrowUp,
-  Smartphone
+  Smartphone,
+  ArrowUpRight,
+  ArrowDownRight
 } from 'lucide-react';
 
 // Custom X (formerly Twitter) Logo Component
 export const TwitterX = ({ size = 24, className = "" }: { size?: number | string, className?: string }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
     fill="currentColor"
     className={className}
   >
@@ -39,14 +41,14 @@ export const TwitterX = ({ size = 24, className = "" }: { size?: number | string
 );
 
 // Exporting icons individually for ease of use
-export { 
-  Home, 
-  Building2, 
-  Info, 
-  Filter, 
-  Calendar, 
-  X, 
-  ExternalLink, 
+export {
+  Home,
+  Building2,
+  Info,
+  Filter,
+  Calendar,
+  X,
+  ExternalLink,
   BellRing,
   TrendingUp,
   Search,
@@ -61,5 +63,7 @@ export {
   Clock,
   Tag,
   ArrowUp,
-  Smartphone
+  Smartphone,
+  ArrowUpRight,
+  ArrowDownRight
 };
