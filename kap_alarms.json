@@ -1,0 +1,856 @@
+[
+  {
+    "ticker": "BAHKM",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:09",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "67.58 Milyon TL",
+      "ratio": "%10.62",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Yangın sonrası üretim devamlılığı için kritik fabrika ve arsa alımı gerçekleştirildi.",
+      "İşlem bedelinin son yıllık hasılata oranı %10.62 ile anlamlı düzeydedir.",
+      "115.4 Milyon TL ekspertiz değerli varlık, 67.6 Milyon TL bedelle (yüksek iskonto ile) devralındı.",
+      "İşlem kesinleşmiş ve ödemesi peşin olarak tamamlanmıştır."
+    ],
+    "notification_text": "BAHKM, fabrikasında çıkan yangın sonrası üretimi sürdürmek amacıyla 67.6 Milyon TL bedelle yeni bir fabrika ve arsa satın aldı. Alım bedeli cironun %10.6'sına denk gelmekte olup, ekspertiz değerinin oldukça altındadır.",
+    "_source_file": "./daily_data_kap/gemini/BAHKM_1531227_gemini.json"
+  },
+  {
+    "ticker": "TRALT",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:27",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "8.100.000 Ton Cevher",
+      "ratio": null,
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "8.100.000 tonluk Altın ve Gümüş cevheri işleme protokolü imzalandı.",
+      "Şirketin mevcut operasyonel ölçeğine göre oldukça yüksek hacimli bir iş birliği.",
+      "Protokol imzalanmış ve bağlayıcı aşamaya geçilmiştir."
+    ],
+    "notification_text": "TRALT, 8.1 milyon ton altın ve gümüş cevherinin kendi tesislerinde işlenmesi için Taşzemin Madencilik ile kesin protokol imzaladı. Yüksek hacimli iş birliğinin nakit akışına olumlu katkısı beklenmektedir.",
+    "_source_file": "./daily_data_kap/gemini/TRALT_1531280_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "15:27",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "298.800.000 TL",
+      "ratio": "%13.75",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Sözleşme tutarının yıllık ciroya oranı %13.75 ile eşik değerin üzerindedir.",
+      "Savunma sanayi ve kamu kurumu iştiraki ile stratejik iş birliği.",
+      "Sipariş kesinleşmiş ve bağlayıcı niteliktedir."
+    ],
+    "notification_text": "ARDYZ, bir kamu kurumu iştirakinden savunma sektörüne yönelik 298.8 Milyon TL tutarında (ciroya oranı %13.75) yazılım ve lisans siparişi aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ARDYZ_1531037_gemini.json"
+  },
+  {
+    "ticker": "SMRVA",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:15",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "482.000.000 TL",
+      "ratio": "%408,47",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırım oranı %408,47 ile oldukça yüksektir",
+      "Yönetim Kurulu kararı alınmış ve süreç resmileşmiştir",
+      "Artışın tamamı iç kaynaklardan (geçmiş yıl karları) karşılanmaktadır"
+    ],
+    "notification_text": "Sümer Varlık (SMRVA), %408,47 oranında bedelsiz sermaye artırımı kararı aldığını, sermayesini 118 milyon TL'den 600 milyon TL'ye çıkaracağını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/SMRVA_1531255_gemini.json"
+  },
+  {
+    "ticker": "MAGEN",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "12:22",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "462.850.000 USD (Yıllık Beklenen Ciro)",
+      "ratio": "~%1500 (Mevcut Ciroya Oran)",
+      "dates": [
+        "30.12.2025",
+        "27.10.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "505 MWm kapasiteli 9 jeotermal ruhsatından 8'inin devri tamamlanarak süreç kesinleşmiştir.",
+      "Yıllık beklenen 462.8M USD ciro, şirketin mevcut yıllık cirosunun (1.08B TL) yaklaşık 15 katıdır.",
+      "15 yıl süreli devlet alım garantisi (YEKDEM) kapsamında döviz bazlı ve stratejik gelir potansiyeli.",
+      "Yatırımın toplam YEKDEM geliri 6.36 Milyar USD olarak öngörülmektedir."
+    ],
+    "notification_text": "MAGEN, 505 MWm kapasiteli jeotermal yatırımı kapsamında 8 ruhsatın devrini tamamladı. Yıllık 462.8 Milyon USD beklenen ciro ile mevcut ölçeğine göre devasa büyüklükte ve döviz bazlı bir gelir kalemi kesinleşmiş oldu.",
+    "_source_file": "./daily_data_kap/gemini/MAGEN_1530978_gemini.json"
+  },
+  {
+    "ticker": "SMRTG",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:16",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "122.000.000 EUR",
+      "ratio": "60.8%",
+      "dates": [
+        "2026-2029",
+        "2026-01-01"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "122 Milyon Euro tutarındaki dev yatırım projesinde arazi tapusu resmen devralındı.",
+      "34 Milyon Euro tutarındaki nakit hibe desteği kesinleşmiş durumda.",
+      "Yatırım tutarı şirketin yıllık cirosuna (7.4 Milyar TL) oranla yaklaşık %60 gibi çok yüksek bir ölçektedir.",
+      "Proje AB stratejik teşvikleri ve Clean Industrial Deal kapsamına girerek yüksek katma değer potansiyeli taşımaktadır."
+    ],
+    "notification_text": "SMRTG, Bulgaristan'daki 122M Euro'luk stratejik yatırımında arazi tapusunu aldı. 34M Euro hibe içeren ve cironun %60'ına karşılık gelen proje finansman aşamasına geçti.",
+    "_source_file": "./daily_data_kap/gemini/SMRTG_1531260_gemini.json"
+  },
+  {
+    "ticker": "ARASE",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "16:52",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1.246.860.513 TL",
+      "ratio": "%5.6",
+      "dates": [
+        "Ocak 2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Tutar: 1.24 Milyar TL (KDV Hariç)",
+      "Ciroya oran: %5.6 (Sadece 1 aylık dönem için yüksek ölçek)",
+      "Piyasa değerine oran: %7.0",
+      "Bağlayıcılık: Kesin enerji satış anlaşması"
+    ],
+    "notification_text": "Şirket bağlı ortaklığı, Ocak 2026 dönemi için yıllık cirosunun %5.6'sına tekabül eden 1.24 milyar TL tutarında kesin enerji satış anlaşması imzalamıştır.",
+    "_source_file": "./daily_data_kap/gemini/ARASE_1531160_gemini.json"
+  },
+  {
+    "ticker": "KZBGY",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "10:28",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.677.149.516 TL",
+      "ratio": "%20.58",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "2.67 Milyar TL tutarındaki devasa idari para cezasının yürütmesinin durdurulması kararı üst mahkemece onanmıştır.",
+      "Söz konusu ceza tutarı, şirketin piyasa değerinin yaklaşık %20.6'sına, yıllık cirosunun ise %230'una denk gelmektedir.",
+      "Şirketin finansal sürdürülebilirliğini doğrudan etkileyebilecek çok büyük bir riskin hukuki olarak engellenmesi söz konusudur."
+    ],
+    "notification_text": "KZBGY, piyasa değerinin %20'sine ve yıllık cirosunun 2 katından fazlasına denk gelen 2.67 milyar TL'lik idari para cezasının yürütmesinin durdurulması kararının kesinleştiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KZBGY_1530903_gemini.json"
+  },
+  {
+    "ticker": "BAYRK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "08:57",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "%342.75",
+      "ratio": "3.4275",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı oranı %100 eşiğinin çok üzerinde (%342.75)",
+      "BISTECH tarafından teorik fiyat belirlenmiş olup hak kullanımı süreci kesinleşmiştir",
+      "Yüksek oranlı bölünme piyasa likiditesini ve fiyat algısını etkileyebilir"
+    ],
+    "notification_text": "BAYRK paylarında %342,75 oranında iç kaynaklardan bedelsiz sermaye artırımı hak kullanımı gerçekleşmektedir; bölünme sonrası teorik fiyat 5,407 TL olarak belirlenmiştir.",
+    "_source_file": "./daily_data_kap/gemini/BAYRK, OZGYO_1530853_gemini.json"
+  },
+  {
+    "ticker": "YEOTK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "57.000.000 USD",
+      "ratio": "%18.8",
+      "dates": [
+        "29.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "57 Milyon USD tutarında proje finansmanı kesinleşti",
+      "Tutarın yıllık ciroya oranı yaklaşık %18.8 (Ölçek çok büyük)",
+      "Vodafone ile yapılan stratejik GES projesinin finansman ve uygulama aşamasına geçildi"
+    ],
+    "notification_text": "YEOTK, Vodafone ile yürütülen GES projesi kapsamında 57 milyon USD tutarında finansman sağlandığını ve ilk dilimin hesaplara geçtiğini duyurdu. Tutar şirket cirosuna oranla oldukça büyüktür.",
+    "_source_file": "./daily_data_kap/gemini/YEOTK_1530860_gemini.json"
+  },
+  {
+    "ticker": "EKGYO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "17:03",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "3,704,400,000 TL",
+      "ratio": "40%",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "İstanbul Ataşehir Kayışdağı projesi ihalesinde 9.26 milyar TL'lik toplam gelir teklifi ile 2. oturum tamamlanmıştır.",
+      "Şirket payı toplam geliri 3.7 milyar TL olarak belirlenmiş olup, bu tutarın %20'si doğrudan EKGYO payıdır.",
+      "TOPK bağlamındaki önceki süreçlerin aksine, bu bildirim somut rakamların ve en yüksek teklifin netleştiği ana katalizördür."
+    ],
+    "notification_text": "İstanbul Ataşehir Kayışdağı ihalesinde 9.26 milyar TL'lik en yüksek teklif alınmış olup, şirketin toplam payı 3.7 milyar TL olarak kesinleşme aşamasına gelmiştir.",
+    "_source_file": "./daily_data_kap/gemini/EKGYO_1531167_gemini.json"
+  },
+  {
+    "ticker": "TRYKI",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "11:11",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "4000000000 TL",
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "4 Milyar TL'ye kadar borçlanma aracı ihracı kararı alındı.",
+      "Ziraat Yatırım ile aracılık sözleşmesi imzalanacak.",
+      "TOPK'deki benzer bildirimler sadece genel kurul duyurusu iken, bu bildirimde borçlanma aracı ihracına ilişkin kesin karar alınmıştır."
+    ],
+    "notification_text": "TRYKI, 4 Milyar TL'ye kadar borçlanma aracı ihracına karar verdi ve Ziraat Yatırım ile aracılık sözleşmesi imzalayacak; ihraç detayları ve piyasa etkileri izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/TRYKI_1530931_gemini.json"
+  },
+  {
+    "ticker": "KTSVK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:09",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "150000000",
+      "ratio": null,
+      "dates": [
+        "2025-12-29",
+        "2026-05-28"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "150 milyon TL'lik kira sertifikası ihracı tamamlandı.",
+      "Nitelikli yatırımcıya satış yapıldı.",
+      "TOPK'deki benzer bildirimler sadece 'işlem' duyurusu iken bu 'tamamlanma' bildirimi, bu nedenle yeni katalizör."
+    ],
+    "notification_text": "KTSVK: 150 milyon TL kira sertifikası ihracı tamamlandı; nitelikli yatırımcıya satış yapılması ve tamamlanma bilgisinin yeni olması sebebiyle izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/KTSVK_1530864_gemini.json"
+  },
+  {
+    "ticker": "ZKBVR",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "11:34",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Kira sertifikasının itfa ve getiri ödeme işlemlerinin tamamlanması.",
+      "TOPK'deki benzer bildirimler sadece genel bilgilendirme iken, bu bildirim itfa işleminin tamamlandığını belirtiyor."
+    ],
+    "notification_text": "ZKBVR: Kira sertifikasının itfa ve getiri ödeme işlemleri tamamlandı; itfa süreci sonuçlandı.",
+    "_source_file": "./daily_data_kap/gemini/ZKBVR_1530945_gemini.json"
+  },
+  {
+    "ticker": "EKTVK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:32",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "500000000",
+      "ratio": null,
+      "dates": [
+        "30.03.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "500 milyon TL'lik kira sertifikası ihracının tamamlanması.",
+      "Yıllık basit getiri %36,85, bileşik getiri %42,29.",
+      "TOPK'deki benzer bildirimler sadece genel bilgilendirme olup, bu bildirim satışın tamamlandığını belirtiyor."
+    ],
+    "notification_text": "EKTVK: 500 milyon TL'lik kira sertifikası ihracı tamamlandı, yıllık getirisi %36,85. Yüksek getiri oranı ve tamamlanma haberi nedeniyle izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/EKTVK_1530879_gemini.json"
+  },
+  {
+    "ticker": "BARMA",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "11:21",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Konya Ereğli Kağıt Fabrikası'nda müşterilere satış faaliyetleri başladı.",
+      "Üretim sürecinin başlaması ve satışların başlaması yeni bir aşama.",
+      "TOPK'deki benzer duyurular fabrikanın durumu hakkındaydı, bu duyuru ise satışların başladığını belirtiyor."
+    ],
+    "notification_text": "Konya Ereğli Kağıt Fabrikası'nda satışlar başladı; üretim sürecinin ardından satışların başlaması yeni bir katalizör, satış rakamları ve pazar tepkisi izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/BARMA_1530939_gemini.json"
+  },
+  {
+    "ticker": "QUFIN",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "10:45",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "300000000",
+      "ratio": null,
+      "dates": [
+        "2025-12-30",
+        "2027-02-03"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Nitelikli yatırımcılara 300 milyon TL tahvil satışı tamamlandı.",
+      "Satışın tamamlanması bağlayıcı bir olaydır.",
+      "TOPK'deki benzer bildirimler ihraç tavanı veya genel duyurulardı, bu ise satışın tamamlanması ve yeni bir durum."
+    ],
+    "notification_text": "QUFIN: Nitelikli yatırımcılara 300 milyon TL tahvil satışı tamamlandı, bu bağlayıcı bir olaydır ve izlenmelidir.",
+    "_source_file": "./daily_data_kap/gemini/QUFIN_1530913_gemini.json"
+  },
+  {
+    "ticker": "LOGO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:39",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2200000 EUR",
+      "ratio": null,
+      "dates": [
+        "2025-12-29"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Total Soft'taki pay devri tamamlandı.",
+      "2.200.000 EUR bedel ödendi.",
+      "TOPK'deki benzer duyurular niyet/görüşme aşamasını içerirken, bu duyuru tamamlanma aşamasını bildiriyor."
+    ],
+    "notification_text": "LOGO: Total Soft'taki %10 pay devri 2.2 milyon EUR karşılığında tamamlandı; devir bedelinin büyüklüğü ve döviz bazlı olması sebebiyle izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/LOGO_1530881_gemini.json"
+  },
+  {
+    "ticker": "GRNYO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "10:04",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Pay fiyatının net aktif değerinin 2 katını aşması",
+      "Yasal zorunluluk nedeniyle açıklama yapılması",
+      "TOPK'deki benzer bildirimler de aynı durumu gösteriyor, ancak bu durumun devamlılığı piyasa tarafından izlenmeli."
+    ],
+    "notification_text": "GRNYO pay fiyatı net aktif değerinin 2 katını aştı. Yasal düzenleme gereği yapılan bu açıklama, hissenin değerlemesi açısından önemli bir gösterge olabilir.",
+    "_source_file": "./daily_data_kap/gemini/GRNYO_1530890_gemini.json"
+  },
+  {
+    "ticker": "HUNER",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Kayıtlı sermaye tavanı artırımı SPK tarafından onaylandı.",
+      "Yeni kayıtlı sermaye tavanı 2 milyardan 10 milyar TL'ye çıkarıldı.",
+      "TOPK'deki benzer bildirimler de kayıtlı sermaye tavanı işlemleriyle ilgili olsa da, bu bildirim SPK onayını içermesi sebebiyle yeni bir aşamayı temsil ediyor."
+    ],
+    "notification_text": "HUNER: Kayıtlı sermaye tavanı 2 milyardan 10 milyar TL'ye çıkarılması SPK tarafından onaylandı, genel kurul onayı bekleniyor. Şirketin büyüme potansiyeli için izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/HUNER_1530882_gemini.json"
+  },
+  {
+    "ticker": "ENJSA",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "10:40",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Yönetim kurulu başkan değişikliği",
+      "Yeni başkan atanması",
+      "TOPK'deki benzer bildirimler sadece genel bilgi içeriyor, bu bildirim ise somut atama kararını içeriyor."
+    ],
+    "notification_text": "ENJSA: Yönetim kurulu başkanı değişti; İhsan Erbil Bayçöl yeni başkan olarak atandı. Bu değişiklik şirketin stratejik yönünü etkileyebilir, bu yüzden izlenmeli.",
+    "_source_file": "./daily_data_kap/gemini/ENJSA_1530908_gemini.json"
+  },
+  {
+    "ticker": "ISFIN",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "10:51",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Şirketin Kurumsal Yönetim Derecelendirme notu Saha Kurumsal Yönetim tarafından 10 üzerinden 9,30 olarak teyit edildi.",
+      "Önceki benzer bildirimler sadece derecelendirme sözleşmesi detaylarını içerirken, bu bildirim notun kendisini açıklıyor.",
+      "Yüksek not, şirketin yatırımcılar nezdindeki itibarını olumlu etkileyebilir."
+    ],
+    "notification_text": "ISFIN'in Kurumsal Yönetim Derecelendirme notu 9,30 olarak teyit edildi; bu durum şirketin şeffaflık ve yönetişim kalitesini gösteriyor, notun detayları takip edilecek.",
+    "_source_file": "./daily_data_kap/gemini/ISFIN_1530915_gemini.json"
+  },
+  {
+    "ticker": "ACSEL",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:06",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Bağımsız denetim kuruluşu seçimi tescil edildi.",
+      "Önceki benzer KAP'larda sadece 'belirlenmesi' vardı, şimdi 'tescil' aşamasına geçildi.",
+      "Sürecin tamamlanması"
+    ],
+    "notification_text": "ACSEL: Bağımsız denetim kuruluşu PwC'nin seçimi tescil edildi. Süreç tamamlandı, bu nedenle izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/ACSEL_1530861_gemini.json"
+  },
+  {
+    "ticker": "SEGYO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "BUYBACK",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Halka arz fiyat istikrarı kapsamında geri alınan payların elden çıkarılması.",
+      "1.000.000 adet payın satışı yapıldı.",
+      "TOPK'de benzer haberler olsa da, bu satışın gerçekleştiği ve miktarın belirtildiği ilk haber."
+    ],
+    "notification_text": "Şeker GYO, halka arz fiyat istikrarı için geri aldığı paylardan 1 milyon adedini sattı, bu durum hisse üzerindeki baskıyı azaltabilir ve yeni bir alım fırsatı yaratabilir, satış detayları izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/SEGYO_1530867_gemini.json"
+  },
+  {
+    "ticker": "KTSVK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:09",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "50000000",
+      "ratio": null,
+      "dates": [
+        "28.05.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "50 milyon TL'lik kira sertifikası ihracı tamamlandı.",
+      "Nitelikli yatırımcıya satış yapıldı.",
+      "TOPK'deki benzer bildirimler sadece 'işlem' duyurusu iken bu 'tamamlanma' bildirimi, bu nedenle yeni katalizör."
+    ],
+    "notification_text": "KTSVK: 50 milyon TL kira sertifikası ihracı tamamlandı. Nitelikli yatırımcıya satış yapılması ve tamamlanma bilgisinin yeni olması sebebiyle izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/KTSVK_1530865_gemini.json"
+  },
+  {
+    "ticker": "ATEKS",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "17:40",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Bağımsız denetim şirketinin tescili yapıldı.",
+      "Önceki 'belirlenmesi' bildirimlerinden sonra sürecin tamamlanması.",
+      "Tescil tarihi ve ticaret sicil gazetesi bilgisi net."
+    ],
+    "notification_text": "ATEKS: Bağımsız denetim şirketi KARAR BAĞIMSIZ DENETİM VE DANIŞMANLIK A.Ş. tescil edildi. Süreç tamamlandı, tescil bilgileri takip edilecek.",
+    "_source_file": "./daily_data_kap/gemini/ATEKS_1531201_gemini.json"
+  },
+  {
+    "ticker": "ALNUS",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "22:13",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "SPK tarafından onaylanan izahname yayınlandı, halka arz sürecinde önemli bir adım.",
+      "TOPK'deki benzer izahname bildirimleri, bu onayın yeni ve önemli bir aşama olduğunu gösteriyor."
+    ],
+    "notification_text": "Meysu Gıda halka arz izahnamesi SPK tarafından onaylandı. Halka arz sürecinin ilerlemesi nedeniyle izlenmeli.",
+    "_source_file": "./daily_data_kap/gemini/ALNUS, ANC_1531406_gemini.json"
+  },
+  {
+    "ticker": "ETYAT",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "16:32",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Pay başına net aktif değerin 2 katını aşması durumu.",
+      "SPK tebliği gereği günlük portföy tablosu yayınlanacak olması.",
+      "TOPK'deki benzer bildirimler rutin olsa da, bu durumun tespiti ve kamuya açıklanması önemli."
+    ],
+    "notification_text": "ETYAT'ın pay başına net aktif değeri, BİAŞ'ta oluşan ağırlıklı ortalama fiyatının 2 katını aştı; bu durumun devam etmesi halinde günlük portföy tabloları yayınlanacak.",
+    "_source_file": "./daily_data_kap/gemini/ETYAT_1531121_gemini.json"
+  },
+  {
+    "ticker": "BRKT",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:21",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1000000000",
+      "ratio": null,
+      "dates": [
+        "2025-12-29",
+        "2026-03-04"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "1 milyar TL'lik kira sertifikası satışı tamamlandı.",
+      "Satış tamamlanmış, bağlayıcı bir işlem.",
+      "TOPK benzer olsa da satışın tamamlandığı bilgisi yeni."
+    ],
+    "notification_text": "BRKT: 1 milyar TL'lik kira sertifikası satışı tamamlandı; satışın tamamlanması ve büyüklüğü nedeniyle izlenecek.",
+    "_source_file": "./daily_data_kap/gemini/BRKT_1530869_gemini.json"
+  },
+  {
+    "ticker": "IDGYO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "16:39",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "309888 TL",
+      "ratio": null,
+      "dates": []
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "İdealist Cadde Projesinde yer alan A-23 nolu bağımsız bölümün EBEBEK MAĞAZACILIK A.Ş.'ye 5 yıllığına kiraya verilmesi",
+      "Yıllık 309.888 TL + KDV gelir elde edilecek olması",
+      "TOPK'deki benzer kiraya verme haberine göre bu yeni bir sözleşme ve bağlayıcı."
+    ],
+    "notification_text": "IDGYO, İdealist Cadde projesindeki A-23 nolu bölümü EBEBEK'e 5 yıllığına kiraladı ve yıllık 309.888 TL gelir bekliyor; bu yeni bir sözleşme olduğu için takip edilecek.",
+    "_source_file": "./daily_data_kap/gemini/IDGYO_1531149_gemini.json"
+  },
+  {
+    "ticker": "DITAS",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:20",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "2026-01-02",
+        "2026-01-16"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "SPK onaylı izahname ile bedelli sermaye artırımı kesinleşti.",
+      "Rüçhan hakkı kullanım tarihleri belli oldu.",
+      "TOPK'deki benzer duyurular sadece 'başvuru' aşamasını içeriyordu, bu duyuru ise SPK onayını ve kullanım tarihlerini netleştiriyor, bu nedenle yeni bir katalizör."
+    ],
+    "notification_text": "DITAS: SPK, bedelli sermaye artırımı izahnamesini onayladı. Rüçhan hakkı kullanım tarihleri 2 Ocak - 16 Ocak 2026 olarak belirlendi. Rüçhan hakkı kullanımını ve olası etkilerini izleyeceğiz.",
+    "_source_file": "./daily_data_kap/gemini/DITAS_1531264_gemini.json"
+  },
+  {
+    "ticker": "ODINE",
+    "published_at": {
+      "date": "02.01.2026",
+      "time": "09:02:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "276.682.618 TRY",
+      "ratio": null
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 276.7 Milyon TL (6.45 Milyon USD)",
+      "Stratejik İş Birliği: Turkcell Grup ile 5G ve Bulut Dönüşümü projeleri",
+      "Maddi Büyüklük: 30M TL eşiğinin çok üzerinde"
+    ],
+    "notification_text": "Odine, Turkcell Grup şirketlerinden 5G çekirdek şebeke ve bulut platform dönüşümü kapsamında yaklaşık 276.7 milyon TL (6.45 milyon USD) tutarında sipariş aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ODINE_1532018_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "published_at": {
+      "date": "02.01.2026",
+      "time": "09:06:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "504.000.000 TL",
+      "ratio": null
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 504 Milyon TL (KDV Dahil)",
+      "Konu: Yapay zeka tabanlı IMS ve ERP projesi",
+      "Sözleşme imzalandı (Kesinleşmiş iş)"
+    ],
+    "notification_text": "ARDYZ, bir kamu iştiraki ile 504 Milyon TL bedelli yapay zeka tabanlı ERP ve IMS geliştirme projesi için sözleşme imzaladı. Tutar, şirketin geçmiş haber akışına göre oldukça yüksektir.",
+    "_source_file": "./daily_data_kap/gemini/ARDYZ_1532021_gemini.json"
+  },
+  {
+    "ticker": "PATEK",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "09:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "478.500.000 TL",
+      "ratio": "%24.2",
+      "dates": [
+        "01.01.2026",
+        "31.12.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 478.5 Milyon TL",
+      "Ciroya oran: %24.2 (Yıllık cironun yaklaşık dörtte biri)",
+      "Stratejik Önem: Şirketin alt yüklenicilikten ana yükleniciliğe geçiş yapması",
+      "Müşteri: İçişleri Bakanlığı (NVİGM) - Kamu sözleşmesi"
+    ],
+    "notification_text": "PATEK, yıllık cirosunun %24'üne denk gelen 478.5 milyon TL tutarında, İçişleri Bakanlığı ile yeni bir ana yüklenicilik sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/PATEK_1532026_gemini.json"
+  },
+  {
+    "ticker": "ZERGY",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "16:44",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "215.133.043 TL",
+      "ratio": "%84.06",
+      "dates": [
+        "01.12.2025",
+        "31.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Aralık ayı satış tutarı (215.1M TL), yıllık cironun (255.9M TL) %84'üne tekabül etmektedir.",
+      "Tek bir ayda yıllık ciroya yakın satış hacmi yakalanması operasyonel ivme açısından çok güçlüdür.",
+      "Şirketin son 7 gündeki ilk haberi olması nedeniyle sürpriz etkisi yüksektir."
+    ],
+    "notification_text": "Zeray GYO, Aralık ayında yıllık cirosunun %84'üne denk gelen 215,1 milyon TL tutarında konut satışı gerçekleştirdiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ZERGY_1532343_gemini.json"
+  }
+]

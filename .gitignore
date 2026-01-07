@@ -1,0 +1,36 @@
+# General
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment Variables
+.env
+.env.local
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+.next/
+*.local
+
+# .NET / Backend
+bin/
+obj/
+*.pdb
+*.user
+*.suo
+.vs/
+
+# Data & Database (Local)
+chroma_kap_memory/
+daily_data_kap/
+embedding/
+kaphaber_logo.jpg

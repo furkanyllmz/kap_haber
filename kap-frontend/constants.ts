@@ -1,0 +1,103 @@
+import { Company, Notification } from './types';
+
+export const API_BASE_URL = "http://localhost:5296/api";
+export const LOGO_BASE_URL = "http://localhost:5296/logos";
+
+export const MOCK_COMPANIES: Company[] = [
+  { code: 'THYAO', name: 'Türk Hava Yolları', logoColor: 'bg-red-600' },
+  { code: 'ASELS', name: 'Aselsan', logoColor: 'bg-blue-600' },
+  { code: 'AGROT', name: 'Agrotech', logoColor: 'bg-green-600' },
+  { code: 'EREGL', name: 'Ereğli Demir Çelik', logoColor: 'bg-slate-500' },
+  { code: 'SASA', name: 'Sasa Polyester', logoColor: 'bg-purple-600' },
+  { code: 'KCHOL', name: 'Koç Holding', logoColor: 'bg-red-700' },
+  { code: 'GARAN', name: 'Garanti BBVA', logoColor: 'bg-green-500' },
+  { code: 'AKBNK', name: 'Akbank', logoColor: 'bg-red-500' },
+  { code: 'TUPRS', name: 'Tüpraş', logoColor: 'bg-yellow-600' },
+  { code: 'BIMAS', name: 'BİM Mağazalar', logoColor: 'bg-blue-500' },
+  { code: 'ASTOR', name: 'Astor Enerji', logoColor: 'bg-indigo-600' },
+  { code: 'HEKTS', name: 'Hektaş', logoColor: 'bg-green-400' },
+];
+
+const today = new Date().toISOString().split('T')[0];
+const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+
+export const MOCK_NOTIFICATIONS: Notification[] = [
+  {
+    id: '1',
+    companyCode: 'AGROT',
+    companyName: 'Agrotech Yüksek Teknoloji',
+    title: '%100 BEDELSİZ SERMAYE ARTIRIMI YARIN BAŞLIYOR',
+    summary: 'Agrotech (#AGROT) %100 bedelsiz sermaye artırımı hak kullanımı yarın başlıyor. Paylar bu tarihten itibaren hakları kullanılmış olarak işlem görecektir.',
+    imageUrl: 'https://picsum.photos/seed/agrot/600/340',
+    date: today,
+    timestamp: '10:45',
+    kapUrl: '#',
+    tags: ['#BIST', '#KAP', '#AGROT', '#Borsa'],
+    isImportant: true,
+  },
+  {
+    id: '2',
+    companyCode: 'THYAO',
+    companyName: 'Türk Hava Yolları',
+    title: 'OCAK 2025 TRAFİK SONUÇLARI AÇIKLANDI',
+    summary: 'Ortaklığımızın Ocak 2025 dönemine ilişkin trafik sonuçları aşağıdaki gibidir: Toplam yolcu sayısı 6.8 milyon olarak gerçekleşmiştir.',
+    imageUrl: 'https://picsum.photos/seed/thyao/600/340',
+    date: today,
+    timestamp: '09:15',
+    kapUrl: '#',
+    tags: ['#THYAO', '#Havacılık', '#Trafik'],
+    isImportant: false,
+  },
+  {
+    id: '3',
+    companyCode: 'ASELS',
+    companyName: 'Aselsan',
+    title: 'YENİ İŞ SÖZLEŞMESİ İMZALANMASI',
+    summary: 'ASELSAN ile T.C. Cumhurbaşkanlığı Savunma Sanayii Başkanlığı arasında toplam bedeli 45.000.000 ABD Doları tutarında bir sözleşme imzalanmıştır.',
+    imageUrl: 'https://picsum.photos/seed/asels/600/340',
+    date: today,
+    timestamp: '14:30',
+    kapUrl: '#',
+    tags: ['#ASELS', '#Savunma', '#İhracat'],
+    isImportant: true,
+  },
+  {
+    id: '4',
+    companyCode: 'SASA',
+    companyName: 'Sasa Polyester',
+    title: 'PTA ÜRETİM TESİSİ DEVREYE ALINMASI',
+    summary: 'Yıllık 1.5 milyon ton kapasiteli PTA üretim tesisimiz test üretimlerini başarıyla tamamlamış olup, ticari üretime başlanmıştır.',
+    imageUrl: 'https://picsum.photos/seed/sasa/600/340',
+    date: yesterday,
+    timestamp: '17:55',
+    kapUrl: '#',
+    tags: ['#SASA', '#Yatırım', '#Sanayi'],
+    isImportant: true,
+  },
+  {
+    id: '5',
+    companyCode: 'EREGL',
+    companyName: 'Ereğli Demir Çelik',
+    title: 'KAR PAYI DAĞITIM İŞLEMLERİNE İLİŞKİN BİLDİRİM',
+    summary: 'Yönetim Kurulumuz, 2024 yılı karından pay başına net 3.50 TL nakit temettü dağıtılmasını Genel Kurul onayına sunmaya karar vermiştir.',
+    imageUrl: 'https://picsum.photos/seed/eregl/600/340',
+    date: yesterday,
+    timestamp: '18:10',
+    kapUrl: '#',
+    tags: ['#EREGL', '#Temettü', '#Bist30'],
+    isImportant: false,
+  },
+  {
+    id: '6',
+    companyCode: 'ASTOR',
+    companyName: 'Astor Enerji',
+    title: 'YENİ İHALE KAZANIMI HAKKINDA',
+    summary: 'Şirketimiz TEİAŞ tarafından düzenlenen ihaleye en iyi teklifi vererek 120 Milyon TL bedel ile kazanmıştır.',
+    imageUrl: 'https://picsum.photos/seed/astor/600/340',
+    date: yesterday,
+    timestamp: '11:20',
+    kapUrl: '#',
+    tags: ['#ASTOR', '#Enerji', '#İhale'],
+    isImportant: true,
+  },
+];

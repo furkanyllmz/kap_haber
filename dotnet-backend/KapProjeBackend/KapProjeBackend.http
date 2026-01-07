@@ -1,0 +1,6 @@
+@KapProjeBackend_HostAddress = http://localhost:5296
+
+GET {{KapProjeBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
