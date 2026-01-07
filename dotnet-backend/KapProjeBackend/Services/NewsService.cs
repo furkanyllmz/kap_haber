@@ -16,16 +16,52 @@ public class NewsService
     }
 
     /// <summary>
+    /// Maps category name to banner image URL
+    /// </summary>
+    private string MapCategoryToImageUrl(string? category)
+    {
+        const string baseUrl = "http://localhost:5296/banners";
+        
+        if (string.IsNullOrWhiteSpace(category))
+            return $"{baseUrl}/diğer.jpg";
+
+        var normalized = category.Trim().ToLowerInvariant();
+
+        var filename = normalized switch
+        {
+            "halka arz" => "halka arz.jpg",
+            "sermaye" => "sermaye.jpg",
+            "sözleşme" => "sozlesme.png",
+            "spk" => "spk.jpg",
+            "yatırım" => "yatırım.jpg",
+            _ => "diğer.jpg"
+        };
+
+        return $"{baseUrl}/{filename}";
+    }
+
+    /// <summary>
+    /// Applies ImageUrl to a news item based on its category
+    /// </summary>
+    private NewsItem ApplyImageUrl(NewsItem item)
+    {
+        item.ImageUrl = MapCategoryToImageUrl(item.Category);
+        return item;
+    }
+
+    /// <summary>
     /// Tüm haberleri getir (sayfalı)
     /// </summary>
     public async Task<List<NewsItem>> GetAllAsync(int page = 1, int pageSize = 20)
     {
-        return await _newsCollection
+        var items = await _newsCollection
             .Find(_ => true)
             .SortByDescending(n => n.PublishedAt!.Date)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
+        
+        return items.Select(ApplyImageUrl).ToList();
     }
 
     /// <summary>
@@ -35,12 +71,14 @@ public class NewsService
     {
         var filter = Builders<NewsItem>.Filter.AnyEq(n => n.RelatedTickers, ticker.ToUpper());
         
-        return await _newsCollection
+        var items = await _newsCollection
             .Find(filter)
             .SortByDescending(n => n.PublishedAt!.Date)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
+        
+        return items.Select(ApplyImageUrl).ToList();
     }
 
     /// <summary>
@@ -51,10 +89,12 @@ public class NewsService
         var today = DateTime.Now.ToString("yyyy-MM-dd");
         var filter = Builders<NewsItem>.Filter.Eq("published_at.date", today);
         
-        return await _newsCollection
+        var items = await _newsCollection
             .Find(filter)
             .SortByDescending(n => n.PublishedAt!.Time)
             .ToListAsync();
+        
+        return items.Select(ApplyImageUrl).ToList();
     }
 
     /// <summary>
@@ -64,10 +104,12 @@ public class NewsService
     {
         var filter = Builders<NewsItem>.Filter.Eq("published_at.date", date);
         
-        return await _newsCollection
+        var items = await _newsCollection
             .Find(filter)
             .SortByDescending(n => n.PublishedAt!.Time)
             .ToListAsync();
+        
+        return items.Select(ApplyImageUrl).ToList();
     }
 
     /// <summary>
@@ -80,10 +122,12 @@ public class NewsService
             Builders<NewsItem>.Filter.Lte("published_at.date", toDate)
         );
         
-        return await _newsCollection
+        var items = await _newsCollection
             .Find(filter)
             .SortByDescending(n => n.PublishedAt!.Date)
             .ToListAsync();
+        
+        return items.Select(ApplyImageUrl).ToList();
     }
 
     /// <summary>
@@ -91,12 +135,14 @@ public class NewsService
     /// </summary>
     public async Task<List<NewsItem>> GetLatestAsync(int count = 10)
     {
-        return await _newsCollection
+        var items = await _newsCollection
             .Find(_ => true)
             .SortByDescending(n => n.PublishedAt!.Date)
             .ThenByDescending(n => n.PublishedAt!.Time)
             .Limit(count)
             .ToListAsync();
+        
+        return items.Select(ApplyImageUrl).ToList();
     }
 
     /// <summary>

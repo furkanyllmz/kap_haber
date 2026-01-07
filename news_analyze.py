@@ -12,8 +12,8 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from google.generativeai import types
 
 # Hafıza modülleri
 from chroma_kap_memory import load_embedder, KapMemory, handle_new_kap, store_kap

@@ -156,6 +156,22 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+
+              {/* Company Logo Overlay */}
+              <div className="absolute top-6 left-6 w-24 h-24 flex items-center justify-center">
+                <img
+                  src={`http://localhost:5296/logos/${featuredNotification.companyCode}.svg`}
+                  alt={featuredNotification.companyCode}
+                  className="w-full h-full object-contain drop-shadow-lg"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `<div class="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-lg"><span class="text-sm font-bold text-gray-700">${featuredNotification.companyCode}</span></div>`;
+                    }
+                  }}
+                />
+              </div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">

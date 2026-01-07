@@ -92,7 +92,7 @@ const App: React.FC = () => {
           companyName: item.primaryTicker || 'Unknown Company',
           title: item.headline || 'Başlıksız Bildirim',
           summary: item.seo?.metaDescription || item.summary || item.tweet?.text || '',
-          imageUrl: `${LOGO_BASE_URL}/${item.primaryTicker}.svg`,
+          imageUrl: item.imageUrl || '/banners/diğer.jpg',
           date: item.publishedAt?.date || new Date().toISOString().split('T')[0],
           timestamp: item.publishedAt?.time || '',
           kapUrl: item.url || '#',

@@ -60,6 +60,12 @@ public class NewsItem
 
     [BsonElement("_inserted_at")]
     public string? InsertedAt { get; set; }
+
+    /// <summary>
+    /// Banner image URL based on category (computed, not stored in DB)
+    /// </summary>
+    [BsonIgnore]
+    public string? ImageUrl { get; set; }
 }
 
 [BsonIgnoreExtraElements]
