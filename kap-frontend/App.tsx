@@ -76,7 +76,12 @@ const App: React.FC = () => {
     const fetchNews = async () => {
       try {
         let url = `${API_BASE_URL}/news/latest?count=50`;
-        if (filter.companyCode) {
+
+        if (filter.date) {
+          // Fetch news by specific date
+          url = `${API_BASE_URL}/news/date/${filter.date}`;
+        } else if (filter.companyCode) {
+          // Fetch news by ticker
           url = `${API_BASE_URL}/news/ticker/${filter.companyCode}`;
         }
 
@@ -104,16 +109,16 @@ const App: React.FC = () => {
       } catch (error) {
         console.error("Failed to fetch news:", error);
         // Only use mock if no data at all and not filtering (to avoid confusing empty filter results with broken api)
-        if (!filter.companyCode && notifications.length === 0) {
+        if (!filter.companyCode && !filter.date && notifications.length === 0) {
           setNotifications(MOCK_NOTIFICATIONS);
-        } else if (filter.companyCode) {
-          setNotifications([]); // Clear list if specific ticker fails (likely no news)
+        } else if (filter.companyCode || filter.date) {
+          setNotifications([]); // Clear list if specific filter fails (likely no news)
         }
       }
     };
 
     fetchNews();
-  }, [filter.companyCode]);
+  }, [filter.companyCode, filter.date]);
 
   // Handlers
   const handleCompanySelect = (code: string) => {

@@ -1,22 +1,22 @@
 import React from 'react';
-import { TrendingUp, TwitterX, Smartphone } from './Icons';
+import { TwitterX, Smartphone } from './Icons';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  theme: 'dark' | 'light';
+}
+
+const Footer: React.FC<FooterProps> = ({ theme }) => {
   return (
     <footer className="bg-market-card border-t border-market-border mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-center items-start gap-12 md:gap-16 text-center md:text-left">
           {/* Brand */}
-          <div className="flex flex-col items-center md:items-start">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-market-text text-market-bg p-1.5 rounded-lg">
-                <TrendingUp size={20} />
-              </div>
-              <span className="text-xl font-serif font-bold tracking-tight text-market-text">KAP Haber</span>
-            </div>
-            <p className="text-sm text-market-muted leading-relaxed max-w-[200px]">
-              Borsa İstanbul şirketlerinin KAP bildirimlerini anlık takip edin, finans dünyasından kopmayın.
-            </p>
+          <div className="flex flex-col md:items-start items-center justify-center">
+            <img
+              src={theme === 'dark' ? '/headerlogo_beyaz.png' : '/headerlogo.png'}
+              alt="KAP Haber"
+              className="h-32 w-auto object-contain object-left mt-6"
+            />
           </div>
 
           {/* Quick Links */}

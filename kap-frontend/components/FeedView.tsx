@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { Notification, FilterState, Company, PriceItem } from '../types';
 import NotificationCard from './NotificationCard';
 import { Calendar, X, Filter, Clock, ChevronRight, BellRing, TrendingUp, ArrowUp } from './Icons';
@@ -22,6 +22,7 @@ interface TickerItem {
 const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies, onNotificationClick }) => {
 
   const [risingStocks, setRisingStocks] = useState<TickerItem[]>([]);
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchPrices = async () => {
@@ -69,8 +70,8 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
   const activeCompanyName = companies.find(c => c.code === filter.companyCode)?.name;
   const isCompanyView = !!filter.companyCode;
 
-  // Hero logic: Only show hero on main feed (no filter or just date filter, but not company filter)
-  const showHero = !isCompanyView && filteredNotifications.length > 0;
+  // Hero logic: Only show hero on main feed (no filters at all)
+  const showHero = !filter.date && !isCompanyView && filteredNotifications.length > 0;
   const featuredNotification = showHero ? filteredNotifications[0] : null;
   const listNotifications = showHero ? filteredNotifications.slice(1) : filteredNotifications;
 
@@ -96,14 +97,15 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
 
           <div className="flex flex-wrap items-center gap-2">
             {/* Date Filter */}
-            <div className="relative group">
+            <div className="relative group" onClick={() => dateInputRef.current?.showPicker()}>
               <input
+                ref={dateInputRef}
                 type="date"
                 className="absolute inset-0 opacity-0 w-full h-full cursor-pointer z-10"
                 onChange={(e) => setFilter(prev => ({ ...prev, date: e.target.value || null }))}
               />
               <button
-                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium border transition-colors ${filter.date ? 'bg-market-accent text-white border-market-accent' : 'bg-market-card border-market-border text-market-text hover:bg-market-hover'}`}
+                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium border transition-colors ${filter.date ? 'bg-market-accent text-white border-market-accent' : 'bg-market-card border-market-border text-market-text group-hover:bg-market-hover'}`}
               >
                 <Calendar size={16} className="mr-2" />
                 {filter.date ? filter.date : 'Tarih'}
@@ -141,6 +143,19 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
           </div>
         )}
       </div>
+
+      {/* Date Filter Heading */}
+      {filter.date && !filter.companyCode && (
+        <div className="px-4 max-w-7xl mx-auto mb-6">
+          <h2 className="text-2xl font-bold text-market-text">
+            {new Date(filter.date + 'T00:00:00').toLocaleDateString('tr-TR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })} Tarihindeki Haberler:
+          </h2>
+        </div>
+      )}
 
       {/* Hero Section (Only on main feed) */}
       {featuredNotification && (
