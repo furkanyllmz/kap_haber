@@ -14,7 +14,7 @@ const LOGO_COLORS = [
 ];
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewState>('about');
+  const [currentView, setCurrentView] = useState<ViewState>('feed');
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filter, setFilter] = useState<FilterState>({ date: null, companyCode: null });
