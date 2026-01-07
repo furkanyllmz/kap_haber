@@ -22,21 +22,22 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
 
   return (
     <div className="bg-market-bg min-h-screen text-market-text font-sans transition-colors duration-200 flex flex-col">
-      
+
       {/* Top Navigation Bar */}
       <header className="sticky top-0 z-50 bg-market-card/95 backdrop-blur-md border-b border-market-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            
+
             {/* Logo Area */}
-            <div 
-              className="flex items-center space-x-3 cursor-pointer group" 
+            <div
+              className="flex items-center cursor-pointer group"
               onClick={() => setView('feed')}
             >
-              <div className="bg-market-text text-market-bg p-1.5 rounded-lg group-hover:scale-105 transition-transform">
-                <TrendingUp size={22} />
-              </div>
-              <span className="text-xl font-serif font-bold tracking-tight">KAP Haber</span>
+              <img
+                src={theme === 'dark' ? '/headerlogo_beyaz.png' : '/headerlogo.png'}
+                alt="KAP Haber"
+                className="h-40 object-contain"
+              />
             </div>
 
             {/* Desktop Navigation */}
@@ -47,15 +48,14 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
                   <button
                     key={item.id}
                     onClick={() => setView(item.id as ViewState)}
-                    className={`text-sm font-medium transition-colors hover:text-market-accent ${
-                      isActive ? 'text-market-accent font-bold' : 'text-market-muted'
-                    }`}
+                    className={`text-sm font-medium transition-colors hover:text-market-accent ${isActive ? 'text-market-accent font-bold' : 'text-market-muted'
+                      }`}
                   >
                     {item.label}
                   </button>
                 );
               })}
-              
+
               <div className="h-6 w-px bg-market-border mx-4"></div>
 
               <button
@@ -75,7 +75,7 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              <button 
+              <button
                 className="p-2 text-market-text"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
@@ -90,24 +90,23 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
           <div className="md:hidden border-t border-market-border bg-market-card">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => {
-                 const isActive = currentView === item.id || (currentView === 'detail' && item.id === 'feed');
-                 return (
+                const isActive = currentView === item.id || (currentView === 'detail' && item.id === 'feed');
+                return (
                   <button
                     key={item.id}
                     onClick={() => {
                       setView(item.id as ViewState);
                       setMobileMenuOpen(false);
                     }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
-                      isActive ? 'bg-market-accent/10 text-market-accent' : 'text-market-text hover:bg-market-hover'
-                    }`}
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActive ? 'bg-market-accent/10 text-market-accent' : 'text-market-text hover:bg-market-hover'
+                      }`}
                   >
                     <div className="flex items-center">
                       <item.icon size={18} className="mr-3" />
                       {item.label}
                     </div>
                   </button>
-                 );
+                );
               })}
             </div>
           </div>
@@ -120,7 +119,7 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer theme={theme} />
 
     </div>
   );
