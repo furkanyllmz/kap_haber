@@ -1,97 +1,105 @@
 <!DOCTYPE html>
 <html lang="tr" class="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>KAP Haber Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Merriweather', 'serif'],
-            },
-            colors: {
-              market: {
-                bg: 'var(--bg-primary)',
-                card: 'var(--bg-card)',
-                text: 'var(--text-primary)',
-                muted: 'var(--text-secondary)',
-                border: 'var(--border-color)',
-                hover: 'var(--bg-hover)',
-                green: '#10B981', // More professional green
-                red: '#EF4444',   // More professional red
-                accent: '#0284C7', // Sky blue instead of neon
-              }
-            },
-            boxShadow: {
-              'news': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-            },
-            animation: {
-              'marquee': 'marquee 40s linear infinite',
-              'fade-in': 'fadeIn 0.5s ease-out forwards',
-            },
-            keyframes: {
-              marquee: {
-                '0%': { transform: 'translateX(0%)' },
-                '100%': { transform: 'translateX(-50%)' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>KAP Haber Pro</title>
+  <link rel="icon" type="image/jpeg" href="/kaphaber_logo.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          },
+          colors: {
+            market: {
+              bg: 'var(--bg-primary)',
+              card: 'var(--bg-card)',
+              text: 'var(--text-primary)',
+              muted: 'var(--text-secondary)',
+              border: 'var(--border-color)',
+              hover: 'var(--bg-hover)',
+              green: '#10B981', // More professional green
+              red: '#EF4444',   // More professional red
+              accent: '#0284C7', // Sky blue instead of neon
             }
           },
+          boxShadow: {
+            'news': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+          },
+          animation: {
+            'marquee': 'marquee 40s linear infinite',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
         },
-      }
-    </script>
-    <style>
-      :root {
-        --bg-primary: #F9FAFB;
-        --bg-card: #FFFFFF;
-        --bg-hover: #F3F4F6;
-        --text-primary: #111827;
-        --text-secondary: #6B7280;
-        --border-color: #E5E7EB;
-      }
-      
-      .dark {
-        --bg-primary: #0F1115; /* Darker, less blue background */
-        --bg-card: #181B21;
-        --bg-hover: #1F242C;
-        --text-primary: #F3F4F6;
-        --text-secondary: #9CA3AF;
-        --border-color: #2D313A;
-      }
+      },
+    }
+  </script>
+  <style>
+    :root {
+      --bg-primary: #F9FAFB;
+      --bg-card: #FFFFFF;
+      --bg-hover: #F3F4F6;
+      --text-primary: #111827;
+      --text-secondary: #6B7280;
+      --border-color: #E5E7EB;
+    }
 
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--border-color);
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--text-secondary);
-      }
-      
-      body {
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-        transition: background-color 0.2s ease, color 0.2s ease;
-        -webkit-tap-highlight-color: transparent;
-        font-feature-settings: "ss01", "cv01";
-      }
-    </style>
+    .dark {
+      --bg-primary: #0F1115;
+      /* Darker, less blue background */
+      --bg-card: #181B21;
+      --bg-hover: #1F242C;
+      --text-primary: #F3F4F6;
+      --text-secondary: #9CA3AF;
+      --border-color: #2D313A;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-secondary);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.2s ease, color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      font-feature-settings: "ss01", "cv01";
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -102,10 +110,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>
