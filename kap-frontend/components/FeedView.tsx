@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Notification, FilterState, Company, PriceItem } from '../types';
 import NotificationCard from './NotificationCard';
 import { Calendar, X, Filter, Clock, ChevronRight, BellRing, TrendingUp, ArrowUp } from './Icons';
@@ -9,7 +10,6 @@ interface Props {
   filter: FilterState;
   setFilter: React.Dispatch<React.SetStateAction<FilterState>>;
   companies: Company[];
-  onNotificationClick: (id: string) => void;
 }
 
 interface TickerItem {
@@ -19,7 +19,8 @@ interface TickerItem {
   change: string;
 }
 
-const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies, onNotificationClick }) => {
+const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies }) => {
+  const navigate = useNavigate();
 
   const [risingStocks, setRisingStocks] = useState<TickerItem[]>([]);
   const dateInputRef = useRef<HTMLInputElement>(null);
@@ -162,7 +163,7 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
         <section className="mb-8 animate-fade-in px-4 max-w-7xl mx-auto">
           <div
             className="group relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-lg border border-market-border"
-            onClick={() => onNotificationClick(featuredNotification.id)}
+            onClick={() => navigate(`/news/${featuredNotification.id}`)}
           >
             <div className="absolute inset-0">
               <img
@@ -254,7 +255,7 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
               <NotificationCard
                 key={notification.id}
                 notification={notification}
-                onClick={() => onNotificationClick(notification.id)}
+                onClick={() => navigate(`/news/${notification.id}`)}
                 variant={isCompanyView ? 'list' : 'grid'}
               />
             ))}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, RefreshCw, Server, ShieldCheck } from './Icons';
-import { ServiceInfo, PYTHON_API_URL } from '../types';
-import ServiceCard from './ServiceCard';
-import LogTerminal from './LogTerminal';
+import { Activity, RefreshCw, Server, ShieldCheck } from 'lucide-react';
+import { ServiceInfo, PYTHON_API_URL } from './types';
+import ServiceCard from './components/ServiceCard';
+import LogTerminal from './components/LogTerminal';
 
 const MOCK_SERVICES: ServiceInfo[] = [
     { name: 'pipeline', status: 'running', pid: 14023 },
@@ -13,7 +13,7 @@ const MOCK_SERVICES: ServiceInfo[] = [
     { name: 'extract_logos', status: 'unknown', pid: null },
 ];
 
-const AdminPanel: React.FC = () => {
+const App: React.FC = () => {
     const [services, setServices] = useState<ServiceInfo[]>([]);
     const [loading, setLoading] = useState(false);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
@@ -52,7 +52,7 @@ const AdminPanel: React.FC = () => {
                 method: 'POST'
             });
             if (!res.ok) throw new Error(`Failed to ${action} service`);
-
+            
             setTimeout(fetchServices, 500);
         } catch (err) {
             console.log(`Mock action: ${action} ${name}`);
@@ -76,41 +76,41 @@ const AdminPanel: React.FC = () => {
     const activeServicesCount = services.filter(s => s.status === 'running').length;
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-market-bg text-slate-900 pb-20">
+        <div className="min-h-screen bg-slate-50 text-slate-900 pb-20">
             {/* Header / Navbar */}
-            <header className="bg-white dark:bg-market-card border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 transition-colors">
+            <header className="bg-white border-b border-slate-200 sticky top-0 z-10">
                 <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="bg-indigo-600 p-2 rounded-lg text-white">
                             <ShieldCheck className="w-6 h-6" />
                         </div>
                         <div>
-                            <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Service Commander</h1>
-                            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                                <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-                                Sistem Çevrimiçi
+                            <h1 className="text-xl font-bold tracking-tight text-slate-900">Service Commander</h1>
+                            <div className="flex items-center gap-2 text-xs text-slate-500">
+                                <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                                System Online
                             </div>
                         </div>
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <div className="hidden sm:flex items-center gap-4 px-4 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300">
+                        <div className="hidden sm:flex items-center gap-4 px-4 py-1.5 bg-slate-100 rounded-full border border-slate-200 text-sm font-medium text-slate-600">
                             <div className="flex items-center gap-2">
                                 <Server className="w-4 h-4 text-slate-400" />
-                                <span>Toplam: <span className="text-slate-900 dark:text-white">{services.length}</span></span>
+                                <span>Total: <span className="text-slate-900">{services.length}</span></span>
                             </div>
-                            <div className="w-[1px] h-4 bg-slate-300 dark:bg-slate-600"></div>
+                            <div className="w-[1px] h-4 bg-slate-300"></div>
                             <div className="flex items-center gap-2">
                                 <Activity className="w-4 h-4 text-green-500" />
-                                <span>Çalışan: <span className="text-slate-900 dark:text-white">{activeServicesCount}</span></span>
+                                <span>Running: <span className="text-slate-900">{activeServicesCount}</span></span>
                             </div>
                         </div>
 
                         <button
-                            onClick={() => fetchServices()}
+                            onClick={fetchServices}
                             disabled={loading}
-                            className={`p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all ${loading ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400'}`}
-                            title="Verileri Yenile"
+                            className={`p-2 rounded-full hover:bg-slate-100 border border-transparent hover:border-slate-200 transition-all ${loading ? 'text-indigo-600' : 'text-slate-500'}`}
+                            title="Refresh Data"
                         >
                             <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
                         </button>
@@ -121,10 +121,10 @@ const AdminPanel: React.FC = () => {
             {/* Main Content */}
             <main className="max-w-6xl mx-auto px-4 py-8">
                 {/* Stats or Banner area could go here */}
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {services.map((svc) => (
-                        <ServiceCard
+                        <ServiceCard 
                             key={svc.name}
                             service={svc}
                             onAction={handleAction}
@@ -132,12 +132,12 @@ const AdminPanel: React.FC = () => {
                             isProcessing={actionLoading === svc.name}
                         />
                     ))}
-
+                    
                     {services.length === 0 && !loading && (
-                        <div className="col-span-full py-12 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50/50 dark:bg-slate-900/20">
+                        <div className="col-span-full py-12 flex flex-col items-center justify-center text-slate-400 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/50">
                             <Server className="w-12 h-12 mb-4 opacity-50" />
-                            <p className="text-lg font-medium text-slate-500 dark:text-slate-400">Servis Bulunamadı</p>
-                            <p className="text-sm">Arka uç servisi {PYTHON_API_URL} adresinde çalışıyor mu?</p>
+                            <p className="text-lg font-medium text-slate-500">No Services Found</p>
+                            <p className="text-sm">Is the backend running at {PYTHON_API_URL}?</p>
                         </div>
                     )}
                 </div>
@@ -145,7 +145,7 @@ const AdminPanel: React.FC = () => {
 
             {/* Modal Logic */}
             {selectedServiceLogs && (
-                <LogTerminal
+                <LogTerminal 
                     serviceName={selectedServiceLogs}
                     onClose={() => setSelectedServiceLogs(null)}
                 />
@@ -154,4 +154,4 @@ const AdminPanel: React.FC = () => {
     );
 };
 
-export default AdminPanel;
+export default App;

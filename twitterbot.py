@@ -103,7 +103,7 @@ def generate_gemini_image(client, prompt, ana_mesaj, ana_rakam, unique_id):
         - Asla başka bir rakam, döviz kuru, hisse fiyatı, tarih veya büyüme oranı gibi veri EKLEME. Sadece yukarıda belirtilen başlık ve rakamı kullan.
         - Yüksek kontrastlı, mavi ve beyaz tonlarda, profesyonel bir kurumsal görsel olsun.
         - Asla meme, stok foto veya kalabalık metin kullanma. Yazılan her şey Türkçe olsun.
-        - Büyük rakam "none" ise büyük rakam yazma.
+        - Büyük rakam "none" ise fotoğrafa "none" yazma.
         """
         # --- DÜZELTİLEN KISIM BURASI ---
         # Config parametresini sildik. Sadece model ve prompt yeterli.

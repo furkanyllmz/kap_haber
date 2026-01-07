@@ -32,4 +32,11 @@ public class PricesController : ControllerBase
         var prices = await _priceService.GetAllAsync();
         return Ok(prices);
     }
+
+    [HttpGet("summary")]
+    public async Task<ActionResult<object>> GetSummary()
+    {
+        var summary = await _priceService.GetMarketSummaryAsync();
+        return Ok(summary);
+    }
 }

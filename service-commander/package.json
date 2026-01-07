@@ -1,5 +1,5 @@
 {
-  "name": "kap-haber-pro",
+  "name": "service-commander",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,12 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/react-router-dom": "^5.3.3",
-    "lucide-react": "^0.562.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-router-dom": "^6.30.2",
-    "recharts": "^3.6.0"
+    "lucide-react": "^0.562.0",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

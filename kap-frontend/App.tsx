@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ViewState, FilterState, Notification, Company, PriceItem } from './types';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Notification, Company, PriceItem, FilterState } from './types';
 import { API_BASE_URL, LOGO_BASE_URL, MOCK_NOTIFICATIONS } from './constants';
 import Layout from './components/Layout';
 import FeedView from './components/FeedView';
@@ -15,20 +16,61 @@ const LOGO_COLORS = [
   'bg-purple-600', 'bg-yellow-600', 'bg-indigo-600', 'bg-pink-600'
 ];
 
+const AppContent: React.FC<{
+  theme: 'dark' | 'light';
+  toggleTheme: () => void;
+  companies: Company[];
+  notifications: Notification[];
+  setNotifications: React.Dispatch<React.SetStateAction<Notification[]>>;
+  filter: FilterState;
+  setFilter: React.Dispatch<React.SetStateAction<FilterState>>;
+  isAdminAuthenticated: boolean;
+  setIsAdminAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ theme, toggleTheme, companies, notifications, setNotifications, filter, setFilter, isAdminAuthenticated, setIsAdminAuthenticated }) => {
+
+  // We can use useLocation here if needed for Layout props, 
+  // but Layout can also use useLocation internally.
+
+  return (
+    <Layout theme={theme} toggleTheme={toggleTheme}>
+      <Routes>
+        <Route path="/" element={
+          <FeedView
+            notifications={notifications}
+            filter={filter}
+            setFilter={setFilter}
+            companies={companies}
+          />
+        } />
+        <Route path="/news/:id" element={
+          <NotificationDetail recentNotifications={notifications} />
+        } />
+        <Route path="/companies" element={
+          <CompaniesView companies={companies} />
+        } />
+        <Route path="/companies/:symbol" element={
+          <CompanyDetailView companies={companies} />
+        } />
+        <Route path="/about" element={<AboutView />} />
+        <Route path="/admin" element={
+          isAdminAuthenticated ? <AdminPanel /> : <AdminLogin onLogin={(success) => setIsAdminAuthenticated(success)} />
+        } />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Layout>
+  );
+};
+
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewState>('feed');
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filter, setFilter] = useState<FilterState>({ date: null, companyCode: null });
-  const [selectedNotificationId, setSelectedNotificationId] = useState<string | null>(null);
-  const [selectedCompanyCode, setSelectedCompanyCode] = useState<string | null>(null);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
 
   // Theme management
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   useEffect(() => {
-    // Check local storage or system preference
     const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
     if (savedTheme) {
       setTheme(savedTheme);
@@ -61,7 +103,7 @@ const App: React.FC = () => {
         const data: PriceItem[] = await response.json();
         const mappedCompanies: Company[] = data.map((item, index) => ({
           code: item.ticker,
-          name: item.ticker, // API doesn't allow full name yet, using ticker
+          name: item.ticker,
           logoColor: LOGO_COLORS[index % LOGO_COLORS.length],
           logoUrl: `${LOGO_BASE_URL}/${item.ticker}.svg`
         })).sort((a, b) => a.code.localeCompare(b.code));
@@ -74,24 +116,21 @@ const App: React.FC = () => {
     fetchCompanies();
   }, []);
 
-  // Fetch News (Filtered or Latest)
+  // Fetch News (Global fetch for Feed)
+  // Note: Optimally FeedView should fetch its own news or we keep it here to share state with Detail view if finding from list.
   useEffect(() => {
     const fetchNews = async () => {
       try {
         let url = `${API_BASE_URL}/news/latest?count=50`;
 
         if (filter.date) {
-          // Fetch news by specific date
           url = `${API_BASE_URL}/news/date/${filter.date}`;
         } else if (filter.companyCode) {
-          // Fetch news by ticker
           url = `${API_BASE_URL}/news/ticker/${filter.companyCode}`;
         }
 
         const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
 
         const mappedNotifications: Notification[] = data.map((item: any) => ({
@@ -111,11 +150,10 @@ const App: React.FC = () => {
         setNotifications(mappedNotifications);
       } catch (error) {
         console.error("Failed to fetch news:", error);
-        // Only use mock if no data at all and not filtering (to avoid confusing empty filter results with broken api)
         if (!filter.companyCode && !filter.date && notifications.length === 0) {
-          setNotifications(MOCK_NOTIFICATIONS);
+          // setNotifications(MOCK_NOTIFICATIONS); // Optional mock
         } else if (filter.companyCode || filter.date) {
-          setNotifications([]); // Clear list if specific filter fails (likely no news)
+          setNotifications([]);
         }
       }
     };
@@ -123,89 +161,20 @@ const App: React.FC = () => {
     fetchNews();
   }, [filter.companyCode, filter.date]);
 
-  // Handlers
-  const handleCompanySelect = (code: string) => {
-    setSelectedCompanyCode(code);
-    setCurrentView('companyDetail');
-  };
-
-  const handleBackToCompanies = () => {
-    setSelectedCompanyCode(null);
-    setCurrentView('companies');
-  };
-
-  const handleNotificationClick = (id: string) => {
-    setSelectedNotificationId(id);
-    setCurrentView('detail');
-    window.scrollTo(0, 0);
-  };
-
-  const handleBackToFeed = () => {
-    setSelectedNotificationId(null);
-    setCurrentView('feed');
-  };
-
-  const renderContent = () => {
-    switch (currentView) {
-      case 'feed':
-        return (
-          <FeedView
-            notifications={notifications}
-            filter={filter}
-            setFilter={setFilter}
-            companies={companies}
-            onNotificationClick={handleNotificationClick}
-          />
-        );
-      case 'companies':
-        return (
-          <CompaniesView
-            companies={companies}
-            onSelectCompany={handleCompanySelect}
-          />
-        );
-      case 'companyDetail':
-        if (!selectedCompanyCode) return <CompaniesView companies={companies} onSelectCompany={handleCompanySelect} />;
-        return (
-          <CompanyDetailView
-            companyCode={selectedCompanyCode}
-            companies={companies}
-            onBack={handleBackToCompanies}
-            onNotificationClick={handleNotificationClick}
-          />
-        );
-      case 'about':
-        return <AboutView onStart={() => setCurrentView('feed')} />;
-      case 'detail':
-        const selectedNotif = notifications.find(n => n.id === selectedNotificationId);
-        if (!selectedNotif) return <FeedView notifications={notifications} filter={filter} setFilter={setFilter} companies={companies} onNotificationClick={handleNotificationClick} />;
-        return (
-          <NotificationDetail
-            notification={selectedNotif}
-            onBack={handleBackToFeed}
-            recentNotifications={notifications}
-            onSelectRelated={handleNotificationClick}
-          />
-        );
-      case 'admin':
-        if (!isAdminAuthenticated) {
-          return <AdminLogin onLogin={(success) => setIsAdminAuthenticated(success)} />;
-        }
-        return <AdminPanel />;
-      default:
-        return null;
-    }
-  };
-
   return (
-    <Layout
-      currentView={currentView}
-      setView={setCurrentView}
-      theme={theme}
-      toggleTheme={toggleTheme}
-    >
-      {renderContent()}
-    </Layout>
+    <BrowserRouter>
+      <AppContent
+        theme={theme}
+        toggleTheme={toggleTheme}
+        companies={companies}
+        notifications={notifications}
+        setNotifications={setNotifications}
+        filter={filter}
+        setFilter={setFilter}
+        isAdminAuthenticated={isAdminAuthenticated}
+        setIsAdminAuthenticated={setIsAdminAuthenticated}
+      />
+    </BrowserRouter>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Company, Notification } from '../types';
 import { ChevronLeft, ArrowUpRight, ArrowDownRight, Clock, Calendar } from './Icons';
 import { API_BASE_URL, LOGO_BASE_URL } from '../constants';
@@ -13,10 +14,7 @@ import {
 } from 'recharts';
 
 interface Props {
-    companyCode: string; // The selected ticker
     companies: Company[];
-    onBack: () => void;
-    onNotificationClick: (id: string) => void;
 }
 
 type TimeFrame = '1G' | '1H' | '1A' | '3A' | '1Y' | '5Y';
@@ -50,7 +48,11 @@ const formatValue = (key: string, value: any) => {
     return value;
 };
 
-const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, onNotificationClick }) => {
+const CompanyDetailView: React.FC<Props> = ({ companies }) => {
+    const { symbol } = useParams<{ symbol: string }>();
+    const navigate = useNavigate();
+    const companyCode = symbol || '';
+
     const company = companies.find(c => c.code === companyCode) || {
         code: companyCode,
         name: companyCode,
@@ -68,6 +70,7 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
 
     // Fetch Company Details (Name + Financials)
     useEffect(() => {
+        if (!companyCode) return;
         const fetchDetails = async () => {
             try {
                 // Now using .NET Backend via API_BASE_URL
@@ -85,6 +88,7 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
 
     // Fetch Stock Data
     useEffect(() => {
+        if (!companyCode) return;
         const fetchStockData = async () => {
             setLoadingChart(true);
             try {
@@ -121,6 +125,7 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
 
     // Fetch News for Company
     useEffect(() => {
+        if (!companyCode) return;
         const fetchNews = async () => {
             setLoadingNews(true);
             try {
@@ -156,13 +161,15 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
 
     const isPositive = (percentChange || 0) >= 0;
 
+    if (!symbol) return null;
+
     return (
         <div className="pb-24 lg:pb-8 bg-market-bg min-h-screen">
             {/* Header */}
             <div className="sticky top-14 lg:top-0 z-30 px-4 py-3 bg-market-bg/95 backdrop-blur-md border-b border-market-border">
                 <div className="max-w-4xl mx-auto flex items-center space-x-4">
                     <button
-                        onClick={onBack}
+                        onClick={() => navigate('/companies')}
                         className="p-2 -ml-2 text-market-muted hover:text-market-text hover:bg-market-card rounded-full transition-colors"
                     >
                         <ChevronLeft size={24} />
@@ -315,7 +322,7 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
                             news.map((item) => (
                                 <div
                                     key={item.id}
-                                    onClick={() => onNotificationClick(item.id)}
+                                    onClick={() => navigate(`/news/${item.id}`)}
                                     className="group bg-market-card border border-market-border p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-market-accent/50 transition-all cursor-pointer active:scale-[0.99]"
                                 >
                                     <div className="flex justify-between items-start mb-2">
@@ -363,3 +370,4 @@ const CompanyDetailView: React.FC<Props> = ({ companyCode, companies, onBack, on
 };
 
 export default CompanyDetailView;
+

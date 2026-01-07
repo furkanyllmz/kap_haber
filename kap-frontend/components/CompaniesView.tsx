@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Company } from '../types';
 import { Search, ChevronRight } from './Icons';
 
 interface Props {
   companies: Company[];
-  onSelectCompany: (code: string) => void;
 }
 
-const CompaniesView: React.FC<Props> = ({ companies, onSelectCompany }) => {
+const CompaniesView: React.FC<Props> = ({ companies }) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
 
   const filteredCompanies = companies.filter(c =>
@@ -42,7 +43,7 @@ const CompaniesView: React.FC<Props> = ({ companies, onSelectCompany }) => {
         {filteredCompanies.map((company) => (
           <div
             key={company.code}
-            onClick={() => onSelectCompany(company.code)}
+            onClick={() => navigate(`/companies/${company.code}`)}
             className="flex items-center justify-between p-4 bg-market-card border border-market-border rounded-xl hover:border-market-accent/50 hover:shadow-md active:scale-[0.99] transition-all cursor-pointer group"
           >
             <div className="flex items-center space-x-4">

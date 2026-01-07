@@ -1,25 +1,31 @@
 import React from 'react';
-import { ViewState } from '../types';
-import { Home, Building2, Info, Sun, Moon, TrendingUp, Menu } from './Icons';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Home, Building2, Info, TrendingUp, Sun, Moon, Menu } from './Icons';
 import Footer from './Footer';
 
 interface Props {
-  currentView: ViewState;
-  setView: (view: ViewState) => void;
   children: React.ReactNode;
   theme: 'dark' | 'light';
   toggleTheme: () => void;
 }
 
-const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggleTheme }) => {
+const Layout: React.FC<Props> = ({ children, theme, toggleTheme }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const navItems = [
-    { id: 'feed', icon: Home, label: 'Haberler' },
-    { id: 'companies', icon: Building2, label: 'Şirketler' },
-    { id: 'about', icon: Info, label: 'Hakkında' },
-    { id: 'admin', icon: TrendingUp, label: 'Admin' },
+    { id: '/', icon: Home, label: 'Haberler' },
+    { id: '/companies', icon: Building2, label: 'Şirketler' },
+    { id: '/about', icon: Info, label: 'Hakkında' },
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  const isActive = (path: string) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
+  };
 
   return (
     <div className="bg-market-bg min-h-screen text-market-text font-sans transition-colors duration-200 flex flex-col">
@@ -32,7 +38,7 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
             {/* Logo Area */}
             <div
               className="flex items-center cursor-pointer group"
-              onClick={() => setView('feed')}
+              onClick={() => navigate('/')}
             >
               <img
                 src={theme === 'dark' ? '/headerlogo_beyaz.png' : '/headerlogo.png'}
@@ -44,12 +50,12 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => {
-                const isActive = currentView === item.id || (currentView === 'detail' && item.id === 'feed');
+                const active = isActive(item.id);
                 return (
                   <button
                     key={item.id}
-                    onClick={() => setView(item.id as ViewState)}
-                    className={`text-sm font-medium transition-colors hover:text-market-accent ${isActive ? 'text-market-accent font-bold' : 'text-market-muted'
+                    onClick={() => navigate(item.id)}
+                    className={`text-sm font-medium transition-colors hover:text-market-accent ${active ? 'text-market-accent font-bold' : 'text-market-muted'
                       }`}
                   >
                     {item.label}
@@ -91,15 +97,15 @@ const Layout: React.FC<Props> = ({ currentView, setView, children, theme, toggle
           <div className="md:hidden border-t border-market-border bg-market-card">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => {
-                const isActive = currentView === item.id || (currentView === 'detail' && item.id === 'feed');
+                const active = isActive(item.id);
                 return (
                   <button
                     key={item.id}
                     onClick={() => {
-                      setView(item.id as ViewState);
+                      navigate(item.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${isActive ? 'bg-market-accent/10 text-market-accent' : 'text-market-text hover:bg-market-hover'
+                    className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${active ? 'bg-market-accent/10 text-market-accent' : 'text-market-text hover:bg-market-hover'
                       }`}
                   >
                     <div className="flex items-center">

@@ -23,7 +23,19 @@ import {
   ArrowUp,
   Smartphone,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  // Service Commander Icons
+  Activity,
+  RefreshCw,
+  Server,
+  ShieldCheck,
+  Play,
+  Square,
+  FileText,
+  Cpu,
+  Pause,
+  Terminal,
+  Download
 } from 'lucide-react';
 
 // Custom X (formerly Twitter) Logo Component
@@ -65,5 +77,17 @@ export {
   ArrowUp,
   Smartphone,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  // Service Commander Icons
+  Activity,
+  RefreshCw,
+  Server,
+  ShieldCheck,
+  Play,
+  Square,
+  FileText,
+  Cpu,
+  Pause,
+  Terminal,
+  Download
 };

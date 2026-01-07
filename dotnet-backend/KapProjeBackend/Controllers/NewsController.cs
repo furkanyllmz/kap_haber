@@ -126,4 +126,19 @@ public class NewsController : ControllerBase
         var totalCount = await _newsService.GetCountAsync();
         return Ok(new { count = totalCount });
     }
+
+    /// <summary>
+    /// ID'ye göre haber getir
+    /// GET /api/news/{id}
+    /// </summary>
+    [HttpGet("{id}")]
+    public async Task<ActionResult<NewsItem>> GetById(string id)
+    {
+        var news = await _newsService.GetByIdAsync(id);
+        if (news == null)
+        {
+            return NotFound(new { message = "Haber bulunamadı" });
+        }
+        return Ok(news);
+    }
 }

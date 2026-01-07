@@ -1,11 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BellRing, TrendingUp, Filter, Info, LayoutDashboard } from './Icons';
 
-interface Props {
-  onStart: () => void;
-}
+const AboutView: React.FC = () => {
+  const navigate = useNavigate();
 
-const AboutView: React.FC<Props> = ({ onStart }) => {
   return (
     <div className="min-h-screen bg-market-bg flex flex-col relative overflow-hidden pb-24 lg:pb-0">
       {/* Background Decorative Elements */}
@@ -32,7 +31,7 @@ const AboutView: React.FC<Props> = ({ onStart }) => {
           </p>
 
           <button
-            onClick={onStart}
+            onClick={() => navigate('/')}
             className="w-full lg:w-auto px-8 bg-gradient-to-r from-market-accent to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/30 transform transition-all active:scale-95 flex items-center justify-center hover:-translate-y-1"
           >
             Uygulamaya Başla

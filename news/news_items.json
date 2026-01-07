@@ -22943,5 +22943,136 @@
     "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
     "url": "https://www.kap.org.tr/tr/Bildirim/1534276",
     "ticker": "ERCB"
+  },
+  {
+    "primary_ticker": "EKGYO",
+    "publisher_ticker": "EKGYO",
+    "related_tickers": [
+      "EKGYO",
+      "FENER"
+    ],
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "21:02",
+      "timezone": "Europe/Istanbul"
+    },
+    "topic": "EKGYO_KUCUKBAKKALKOY_IHALE_YENILENMESI",
+    "subtype": "GENEL",
+    "category": "Yatırım",
+    "newsworthiness": 0.75,
+    "key_numbers": {
+      "amount_raw": null,
+      "ratio_to_market_cap": null,
+      "ratio_to_revenue": null
+    },
+    "headline": "Emlak Konut ve Fenerbahçe'nin Küçükbakkalköy Projesi İhalesi İptal Edildi: Yeniden İhale Yapılacak",
+    "facts": [
+      {
+        "k": "Proje Konumu",
+        "v": "İstanbul, Ataşehir, Küçükbakkalköy"
+      },
+      {
+        "k": "Paydaşlar",
+        "v": "Fenerbahçe Spor Kulübü, Akfin Gayrimenkul Değerlendirme A.Ş."
+      },
+      {
+        "k": "İptal Nedeni",
+        "v": "Tekliflerin piyasa gerçekleriyle örtüşmemesi ve tahsilat kabiliyeti riski"
+      },
+      {
+        "k": "Yeni İhale Tarihi",
+        "v": "19 Ocak 2026 (1. Oturum)"
+      }
+    ],
+    "tweet": {
+      "text": "Emlak Konut (#EKGYO), Fenerbahçe (#FENER) ile yürütülen Küçükbakkalköy projesi ihalesini, tekliflerin piyasa koşullarına uygun olmaması nedeniyle iptal etti. Yeni ihale 19 Ocak 2026'da yapılacak.",
+      "hashtags": [
+        "#BIST",
+        "#KAP",
+        "#EKGYO",
+        "#FENER"
+      ],
+      "disclaimer": "YTD"
+    },
+    "seo": {
+      "title": "Emlak Konut Küçükbakkalköy Projesi İhalesi İptal Edildi - EKGYO",
+      "meta_description": "Emlak Konut, Fenerbahçe ile ortak yürütülen Küçükbakkalköy projesi ihalesini iptal ederek 19 Ocak 2026'da yeniden ihaleye çıkma kararı aldı.",
+      "article_md": "### Emlak Konut'tan İhale İptali ve Yeni Takvim Açıklaması\n\n**Emlak Konut Gayrimenkul Yatırım Ortaklığı A.Ş. (EKGYO)**, İstanbul Ataşehir'deki Küçükbakkalköy projesi için düzenlenen ihale sürecine ilişkin önemli bir karar aldığını duyurdu.\n\n#### İhale Neden İptal Edildi?\nŞirket tarafından yapılan açıklamada, **Fenerbahçe Spor Kulübü** ve **Akfin Gayrimenkul** ile imzalanan protokol kapsamında gerçekleştirilen ihaleye sunulan tekliflerin; \n- Güncel piyasa koşullarıyla örtüşmediği,\n- Teknik ve finansal veriler ışığında tahsilat kabiliyetinin riskli görüldüğü belirtildi.\n\nKamu yararı ve kaynakların etkin kullanımı ilkeleri doğrultusunda, mevcut ihalenin iptal edilmesine karar verildi.\n\n#### Yeni İhale Tarihi\nRisk yönetimi politikaları çerçevesinde projenin tamamlanma güvenliğini esas alan Emlak Konut, 'Arsa Satışı Karşılığı Gelir Paylaşımı' modeliyle **19 Ocak 2026** tarihinde yeniden ihaleye çıkılacağını bildirdi."
+    },
+    "visual_prompt": "A modern construction site blueprint with Emlak Konut and Fenerbahçe logos, professional real estate development theme, 4k, cinematic lighting.",
+    "publish_target": "WEB_ONLY",
+    "notes": {
+      "is_routine_spam": false,
+      "editor_comment": "Fenerbahçe ile yapılan ortak proje olması nedeniyle haber değeri yüksektir. İhale iptali piyasa beklentilerini etkileyebilir."
+    },
+    "_source_file": "./daily_data_kap/gemini/EKGYO_1535329_gemini.json",
+    "_generated_at": "2026-01-07T22:52:50+03:00",
+    "_cwd": "/Users/furkanyilmaz/Desktop/kap_haber",
+    "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1535329",
+    "ticker": "EKGYO"
+  },
+  {
+    "primary_ticker": "EKGYO",
+    "publisher_ticker": "EKGYO",
+    "related_tickers": [
+      "EKGYO"
+    ],
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "21:01",
+      "timezone": "Europe/Istanbul"
+    },
+    "topic": "IHALE_ESENLER_ATISALANI_1_ETAP",
+    "subtype": "GENEL",
+    "category": "Sözleşme",
+    "newsworthiness": 0.65,
+    "key_numbers": {
+      "amount_raw": null,
+      "ratio_to_market_cap": null,
+      "ratio_to_revenue": null
+    },
+    "headline": "Emlak Konut'tan İstanbul Esenler'de Yeni Dev İhale: 1. Etap İçin Tarih Belli Oldu",
+    "facts": [
+      {
+        "k": "Proje Adı",
+        "v": "İstanbul Esenler Atışalanı Kuzey Bölgesi 1. Etap"
+      },
+      {
+        "k": "İhale Modeli",
+        "v": "Arsa Satışı Karşılığı Gelir Paylaşımı"
+      },
+      {
+        "k": "İhale Tarihi",
+        "v": "15.01.2026, Saat 11:00"
+      }
+    ],
+    "tweet": {
+      "text": "Emlak Konut (#EKGYO), İstanbul Esenler Atışalanı Kuzey Bölgesi 1. Etap Arsa Satışı Karşılığı Gelir Paylaşımı işi için ihale sürecini başlattı. 🏗️\n\n📅 İlk oturum: 15 Ocak 2026, 11:00",
+      "hashtags": [
+        "#BIST",
+        "#KAP",
+        "#EKGYO",
+        "#EmlakKonut"
+      ],
+      "disclaimer": "YTD"
+    },
+    "seo": {
+      "title": "Emlak Konut İstanbul Esenler İhalesi Ne Zaman? EKGYO KAP Haberi",
+      "meta_description": "Emlak Konut (EKGYO), İstanbul Esenler Atışalanı Kuzey Bölgesi 1. Etap projesi için ihale tarihini açıkladı. Gelir paylaşımı modeliyle yapılacak ihalenin detayları...",
+      "article_md": "Emlak Konut Gayrimenkul Yatırım Ortaklığı A.Ş. (EKGYO), portföyünde yer alan önemli projelerden biri olan **İstanbul Esenler Atışalanı Kuzey Bölgesi 1. Etap** için ihale sürecini resmen başlattı.\n\nŞirket tarafından Kamuyu Aydınlatma Platformu'na (KAP) yapılan açıklamaya göre, **Arsa Satışı Karşılığı Gelir Paylaşımı** modeliyle gerçekleştirilecek olan ihalenin ilk oturumu **15 Ocak 2026** tarihinde saat 11:00'de yapılacak.\n\nBu ihale, Emlak Konut'un bölgedeki gelişim stratejisinin bir parçası olarak görülüyor ve şirketin gelecekteki gelir kalemleri açısından önem taşıyor."
+    },
+    "visual_prompt": "A professional architectural visualization of a modern residential development in Istanbul, with a semi-transparent overlay showing the EKGYO logo and text 'Esenler Atışalanı 1. Etap İhalesi - 15 Ocak 2026'.",
+    "publish_target": "WEB_ONLY",
+    "notes": {
+      "is_routine_spam": false,
+      "editor_comment": "Emlak Konut'un rutin ancak önemli ihale duyurularından biri. Gelir paylaşımı modeli şirketin ana işleyiş biçimidir. İhale sonuçlandığında haber değeri artacaktır."
+    },
+    "_source_file": "./daily_data_kap/gemini/EKGYO_1535326_gemini.json",
+    "_generated_at": "2026-01-07T22:53:13+03:00",
+    "_cwd": "/Users/furkanyilmaz/Desktop/kap_haber",
+    "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
+    "url": "https://www.kap.org.tr/tr/Bildirim/1535326",
+    "ticker": "EKGYO"
   }
 ]

@@ -204,4 +204,17 @@ public class NewsService
         var filter = Builders<NewsItem>.Filter.AnyEq(n => n.RelatedTickers, ticker.ToUpper());
         return await _newsCollection.CountDocumentsAsync(filter);
     }
+
+    /// <summary>
+    /// ID'ye göre haber getir
+    /// </summary>
+    public async Task<NewsItem?> GetByIdAsync(string id)
+    {
+        var item = await _newsCollection.Find(n => n.Id == id).FirstOrDefaultAsync();
+        if (item != null)
+        {
+            return ApplyImageUrl(item);
+        }
+        return null;
+    }
 }

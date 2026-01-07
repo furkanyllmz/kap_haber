@@ -25,4 +25,30 @@ public class PriceService
     {
         return await _pricesCollection.Find(_ => true).ToListAsync();
     }
+
+    public async Task<object> GetMarketSummaryAsync()
+    {
+        var allPrices = await _pricesCollection.Find(_ => true).ToListAsync();
+        
+        int rising = 0;
+        int falling = 0;
+        int neutral = 0;
+
+        foreach (var item in allPrices)
+        {
+            if (item.ExtraElements != null && item.ExtraElements.TryGetValue("DailyChange", out var changeVal)) 
+            {
+               double change = Convert.ToDouble(changeVal);
+               if (change > 0) rising++;
+               else if (change < 0) falling++;
+               else neutral++;
+            }
+            else 
+            {
+                neutral++;
+            }
+        }
+
+        return new { rising, falling, neutral, total = allPrices.Count };
+    }
 }

@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = ({ theme }) => {
             </a>
 
             {/* Twitter/X */}
-            <a href="#" className="inline-flex items-center text-market-muted hover:text-market-text transition-colors group">
+            <a href="https://x.com/kap_haberlerii" className="inline-flex items-center text-market-muted hover:text-market-text transition-colors group">
               <TwitterX size={18} className="mr-2 group-hover:scale-110 transition-transform" />
               <span className="text-sm font-medium">@kap_haberlerii</span>
             </a>
