@@ -260,32 +260,89 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
                     </div>
 
                     {/* Chart Area */}
-                    <div className="h-[300px] w-full">
+                    <div className="h-[350px] w-full">
                         {loadingChart ? (
                             <div className="h-full flex items-center justify-center text-market-muted animate-pulse">
                                 Grafik Yükleniyor...
                             </div>
                         ) : chartData.length > 0 ? (
                             <ResponsiveContainer width="100%" height="100%">
-                                <AreaChart data={chartData}>
+                                <AreaChart
+                                    data={chartData}
+                                    margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+                                >
                                     <defs>
                                         <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
                                             <stop offset="5%" stopColor={isPositive ? "#10b981" : "#ef4444"} stopOpacity={0.3} />
                                             <stop offset="95%" stopColor={isPositive ? "#10b981" : "#ef4444"} stopOpacity={0} />
                                         </linearGradient>
                                     </defs>
-                                    <Tooltip
-                                        contentStyle={{
-                                            backgroundColor: 'rgba(30, 41, 59, 0.9)',
-                                            borderColor: '#334155',
-                                            color: '#f1f5f9',
-                                            borderRadius: '8px',
-                                            fontSize: '12px'
+                                    <CartesianGrid
+                                        strokeDasharray="3 3"
+                                        stroke="#334155"
+                                        strokeOpacity={0.3}
+                                        vertical={false}
+                                    />
+                                    <XAxis
+                                        dataKey="date"
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: '#64748b', fontSize: 10 }}
+                                        tickFormatter={(value) => {
+                                            // Format based on timeframe
+                                            if (timeframe === '1G') {
+                                                // Günlük: saat:dakika göster
+                                                const parts = value.split(' ');
+                                                return parts.length > 1 ? parts[1]?.substring(0, 5) || value : value;
+                                            } else if (timeframe === '1H' || timeframe === '1A') {
+                                                // Haftalık/Aylık: gün göster
+                                                const parts = value.split('-');
+                                                return parts.length >= 3 ? `${parts[2]}/${parts[1]}` : value;
+                                            } else {
+                                                // Yıllık: ay/yıl göster
+                                                const parts = value.split('-');
+                                                return parts.length >= 2 ? `${parts[1]}/${parts[0]?.substring(2)}` : value;
+                                            }
                                         }}
-                                        itemStyle={{ color: '#fff' }}
-                                        labelStyle={{ color: '#94a3b8', marginBottom: '4px' }}
+                                        interval="preserveStartEnd"
+                                        minTickGap={40}
+                                    />
+                                    <YAxis
+                                        domain={['auto', 'auto']}
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: '#64748b', fontSize: 10 }}
+                                        tickFormatter={(value) => `₺${value.toFixed(0)}`}
+                                        width={55}
+                                        orientation="right"
+                                    />
+                                    <Tooltip
+                                        cursor={{
+                                            stroke: '#94a3b8',
+                                            strokeWidth: 1,
+                                            strokeDasharray: '4 4'
+                                        }}
+                                        contentStyle={{
+                                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                            borderColor: '#334155',
+                                            borderRadius: '12px',
+                                            padding: '12px 16px',
+                                            boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
+                                        }}
+                                        itemStyle={{ color: '#fff', fontSize: '14px', fontWeight: 'bold' }}
+                                        labelStyle={{ color: '#94a3b8', marginBottom: '8px', fontSize: '12px' }}
                                         formatter={(value: any) => [`₺${Number(value).toFixed(2)}`, 'Fiyat']}
-                                        labelFormatter={(label) => label} // You might want to format date here
+                                        labelFormatter={(label) => {
+                                            // Tarihi daha okunabilir göster
+                                            if (timeframe === '1G') {
+                                                return `${label}`;
+                                            }
+                                            const parts = String(label).split('-');
+                                            if (parts.length >= 3) {
+                                                return `${parts[2]}/${parts[1]}/${parts[0]}`;
+                                            }
+                                            return `${label}`;
+                                        }}
                                     />
                                     <Area
                                         type="monotone"
@@ -294,10 +351,14 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
                                         strokeWidth={2}
                                         fillOpacity={1}
                                         fill="url(#colorPrice)"
+                                        dot={false}
+                                        activeDot={{
+                                            r: 6,
+                                            fill: isPositive ? "#10b981" : "#ef4444",
+                                            stroke: '#fff',
+                                            strokeWidth: 2
+                                        }}
                                     />
-                                    {/* Hidden Axes for cleaner look, or minimal axes */}
-                                    <YAxis domain={['auto', 'auto']} hide={true} />
-                                    <XAxis dataKey="date" hide={true} />
                                 </AreaChart>
                             </ResponsiveContainer>
                         ) : (

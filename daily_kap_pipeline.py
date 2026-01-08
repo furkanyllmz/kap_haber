@@ -627,7 +627,7 @@ def main():
 
     while True:
         try:
-            target_date = datetime.now().strftime("%Y-%m-%d")
+            target_date = datetime(2026,1,3).strftime("%Y-%m-%d")
             print(f"\n[{datetime.now().strftime('%H:%M:%S')}] Döngü başlıyor. Hedef tarih: {target_date}")
             
             # Run the daily fetch logic

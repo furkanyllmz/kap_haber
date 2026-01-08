@@ -54,7 +54,7 @@ def get_symbols_from_json(obj):
     return list(set(parts)) # unique
 
 def main():
-    embedder = load_embedder("BAAI/bge-m3")
+    embedder = load_embedder("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
     memory = KapMemory(persist_dir=PERSIST_DIR, collection_name=COLLECTION)
 
     # --- CHECKPOINT LOGIC ---

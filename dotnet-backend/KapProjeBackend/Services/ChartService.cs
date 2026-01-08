@@ -61,10 +61,30 @@ public class ChartService
                 {
                     for (int i = 0; i < dates.Count; i++)
                     {
-                        // Convert timestamp to string if needed or keep as is. Frontend expects string usually.
-                        // Assuming Midas sends milliseconds timestamp
+                        // Convert timestamp to Turkey timezone (UTC+3)
+                        // Assuming Midas sends milliseconds timestamp in UTC
                         long timestamp = dates[i].GetInt64();
-                        var dateStr = DateTimeOffset.FromUnixTimeMilliseconds(timestamp).ToString("yyyy-MM-dd");
+                        var utcDateTime = DateTimeOffset.FromUnixTimeMilliseconds(timestamp);
+                        var turkeyTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Istanbul");
+                        var turkeyDateTime = TimeZoneInfo.ConvertTime(utcDateTime, turkeyTimeZone);
+                        
+                        // Günlük (1G) için saat:dakika dahil, diğerleri için sadece tarih
+                        string dateStr;
+                        if (time == "1G")
+                        {
+                            // Günlük: tam tarih ve saat göster
+                            dateStr = turkeyDateTime.ToString("yyyy-MM-dd HH:mm");
+                        }
+                        else if (time == "1H" || time == "1A")
+                        {
+                            // Haftalık/Aylık: sadece tarih
+                            dateStr = turkeyDateTime.ToString("yyyy-MM-dd");
+                        }
+                        else
+                        {
+                            // Yıllık: sadece tarih
+                            dateStr = turkeyDateTime.ToString("yyyy-MM-dd");
+                        }
                         
                         double price = 0;
                         if (prices[i].ValueKind == JsonValueKind.Number)

@@ -15,7 +15,7 @@ from chromadb.config import Settings
 # -----------------------------
 # 1) Model (BGE-M3) + normalize
 # -----------------------------
-def load_embedder(model_name: str = "BAAI/bge-m3") -> SentenceTransformer:    # BGE-M3 multilingual, retrieval için güçlü.
+def load_embedder(model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2") -> SentenceTransformer:
     # sentence-transformers otomatik indirir.
     return SentenceTransformer(model_name)
 

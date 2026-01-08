@@ -5,7 +5,7 @@ echo ">>> Server Setup Başlıyor..."
 
 # 1. Update and Install Dependencies
 apt-get update -y
-apt-get install -y python3-pip python3-venv mongodb curl wget
+apt-get install -y python3-pip python3-venv mongodb curl wget nginx certbot python3-certbot-nginx
 
 # Start MongoDB Service
 systemctl enable mongodb
@@ -33,60 +33,21 @@ npm install -g serve
 
 # 2. Create Virtual Environment
 echo ">>> Virtual Environment oluşturuluyor..."
-python3 -m venv /root/daily_data_kap_2/venv
-
+python3 -m venv /root/kap_haber/venv
 
 # 3. Install Dependencies
 echo ">>> Kütüphaneler kuruluyor..."
-/root/daily_data_kap_2/venv/bin/pip install -r /root/daily_data_kap_2/requirements.txt
+/root/kap_haber/venv/bin/pip install -r /root/kap_haber/requirements.txt
 
 # 4. Build Frontend
 echo ">>> Frontend build ediliyor..."
-cd /root/daily_data_kap_2/kap-frontend
+cd /root/kap_haber/kap-frontend
 npm install
 npm run build
-cd /root/daily_data_kap_2
+cd /root/kap_haber
 
 # 5. Create Service Files
 echo ">>> Servis dosyaları oluşturuluyor..."
-
-# Pipeline Service
-cat > /etc/systemd/system/kap-pipeline.service <<EOF
-[Unit]
-Description=KAP Daily Data Pipeline
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/root/daily_data_kap_2
-ExecStart=/root/daily_data_kap_2/venv/bin/python3 /root/daily_data_kap_2/daily_kap_pipeline.py
-Environment="PYTHONUNBUFFERED=1"
-Restart=always
-RestartSec=60
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# News Analyze Service
-cat > /etc/systemd/system/kap-news-analyze.service <<EOF
-[Unit]
-Description=KAP News Analyzer (Web & Twitter)
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/root/daily_data_kap_2
-ExecStart=/root/daily_data_kap_2/venv/bin/python3 /root/daily_data_kap_2/news_analyze.py
-Environment="PYTHONUNBUFFERED=1"
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-EOF
 
 # Twitter Bot Service (Twikit version)
 cat > /etc/systemd/system/kap-twitterbot.service <<EOF
@@ -97,8 +58,46 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root/daily_data_kap_2
-ExecStart=/root/daily_data_kap_2/venv/bin/python3 /root/daily_data_kap_2/twitterbot_twikit.py
+WorkingDirectory=/root/kap_haber
+ExecStart=/root/kap_haber/venv/bin/python3 /root/kap_haber/twitterbot_twikit.py
+Environment="PYTHONUNBUFFERED=1"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# KAP Analyzer Service
+cat > /etc/systemd/system/kap-analyzer.service <<EOF
+[Unit]
+Description=KAP Gemini Analyzer
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/kap_haber
+ExecStart=/root/kap_haber/venv/bin/python3 /root/kap_haber/analyze_kap.py
+Environment="PYTHONUNBUFFERED=1"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Telegram Bot Service
+cat > /etc/systemd/system/kap-telegram.service <<EOF
+[Unit]
+Description=KAP Telegram Subscription Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/kap_haber
+ExecStart=/root/kap_haber/venv/bin/python3 /root/kap_haber/telegram_bot.py
 Environment="PYTHONUNBUFFERED=1"
 Restart=always
 RestartSec=10
@@ -116,8 +115,8 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root/daily_data_kap_2
-ExecStart=/root/daily_data_kap_2/venv/bin/uvicorn main_api:app --host 0.0.0.0 --port 8000
+WorkingDirectory=/root/kap_haber
+ExecStart=/root/kap_haber/venv/bin/uvicorn main_api:app --host 0.0.0.0 --port 8000
 Environment="PYTHONUNBUFFERED=1"
 Restart=always
 RestartSec=10
@@ -135,7 +134,7 @@ After=network.target mongodb.service
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root/daily_data_kap_2/dotnet-backend/KapProjeBackend
+WorkingDirectory=/root/kap_haber/dotnet-backend/KapProjeBackend
 ExecStart=/usr/bin/dotnet run --urls "http://0.0.0.0:5296"
 Environment="ASPNETCORE_ENVIRONMENT=Production"
 Environment="DOTNET_CLI_TELEMETRY_OPTOUT=1"
@@ -155,7 +154,7 @@ After=network.target kap-backend.service
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/root/daily_data_kap_2/kap-frontend
+WorkingDirectory=/root/kap_haber/kap-frontend
 ExecStart=/usr/bin/serve -s dist -l 3000
 Restart=always
 RestartSec=10
@@ -172,16 +171,88 @@ systemctl daemon-reload
 systemctl enable kap-api
 systemctl enable kap-backend
 systemctl enable kap-frontend
-systemctl enable kap-news-analyze
+systemctl enable kap-analyzer
+systemctl enable kap-telegram
 
 systemctl restart kap-api
 systemctl restart kap-backend
 systemctl restart kap-frontend
-systemctl restart kap-news-analyze
+systemctl restart kap-analyzer
+systemctl restart kap-telegram
 
 # Opsiyonel servisler - Manuel başlatılır
-# systemctl restart kap-pipeline
 # systemctl restart kap-twitterbot
+
+# 7. Nginx Configuration for kaphaber.com
+echo ">>> Nginx konfigürasyonu yapılıyor..."
+
+# Nginx site config oluştur
+cat > /etc/nginx/sites-available/kaphaber <<EOF
+server {
+    listen 80;
+    server_name kaphaber.com www.kaphaber.com;
+
+    # Logging
+    access_log /var/log/nginx/kaphaber.access.log;
+    error_log /var/log/nginx/kaphaber.error.log;
+
+    # Frontend - Ana site
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_cache_bypass \$http_upgrade;
+    }
+
+    # .NET Backend API
+    location /api {
+        proxy_pass http://localhost:5296/api;
+        proxy_http_version 1.1;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+
+    # Static files (banners, logos, news-images)
+    location /banners {
+        proxy_pass http://localhost:5296/banners;
+    }
+    location /logos {
+        proxy_pass http://localhost:5296/logos;
+    }
+    location /news-images {
+        proxy_pass http://localhost:5296/news-images;
+    }
+
+    # Python API (Admin Panel için)
+    location /python-api/ {
+        proxy_pass http://localhost:8000/;
+        proxy_http_version 1.1;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+}
+EOF
+
+# Symlink oluştur (varsa sil)
+rm -f /etc/nginx/sites-enabled/kaphaber
+ln -s /etc/nginx/sites-available/kaphaber /etc/nginx/sites-enabled/
+
+# Default site'ı kaldır
+rm -f /etc/nginx/sites-enabled/default
+
+# Nginx test ve restart
+nginx -t
+systemctl restart nginx
+systemctl enable nginx
 
 echo ""
 echo "╔══════════════════════════════════════════════╗"
@@ -192,13 +263,16 @@ echo "📌 Çalışan Servisler:"
 echo "   • Python API:   http://localhost:8000"
 echo "   • .NET Backend: http://localhost:5296"
 echo "   • Frontend:     http://localhost:3000"
-echo "   • News Analyze: Arka planda çalışıyor"
+echo "   • KAP Analyzer: Arka planda çalışıyor"
+echo "   • Telegram Bot: Arka planda çalışıyor"
+echo "   • Nginx:        http://kaphaber.com"
 echo ""
 echo "📋 Servis Durumlarını Kontrol Et:"
-echo "   systemctl status kap-api kap-backend kap-frontend"
+echo "   systemctl status kap-api kap-backend kap-frontend kap-analyzer kap-telegram nginx"
 echo ""
-echo "🔄 Diğer Servisleri Başlatmak İçin:"
+echo "🔒 SSL Sertifikası Almak İçin (ÖNEMLI!):"
+echo "   certbot --nginx -d kaphaber.com -d www.kaphaber.com"
+echo ""
+echo "🔄 Twitter Bot'u Başlatmak İçin:"
 echo "   systemctl start kap-twitterbot"
-echo "   systemctl start kap-pipeline"
 echo ""
-
