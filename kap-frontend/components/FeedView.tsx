@@ -227,7 +227,7 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
 
       {/* Continuous Ticker (Marquee) */}
       {showHero && (
-        <section className="mb-10 w-full bg-market-card border-y border-market-border overflow-hidden relative shadow-sm">
+        <section className="mb-10 w-full bg-market-card border border-market-border overflow-hidden relative shadow-sm rounded-lg">
           {/* Label Overlay - optional for context, but classic tickers usually just flow */}
           <div className="absolute left-0 top-0 bottom-0 z-10 bg-market-accent text-white px-3 flex items-center font-bold text-xs uppercase tracking-wider shadow-md">
             <TrendingUp size={16} className="mr-2" />

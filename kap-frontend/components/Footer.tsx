@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TwitterX, Smartphone } from './Icons';
 
 interface FooterProps {
@@ -6,6 +7,8 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ theme }) => {
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-market-card border-t border-market-border mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -13,13 +16,22 @@ const Footer: React.FC<FooterProps> = ({ theme }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Left Column - Navigation Menu */}
           <div className="flex flex-col gap-3">
-            <button className="text-sm text-market-muted hover:text-market-accent transition-colors text-left">
+            <button
+              onClick={() => navigate('/')}
+              className="text-sm text-market-muted hover:text-market-accent transition-colors text-left"
+            >
               Haberler
             </button>
-            <button className="text-sm text-market-muted hover:text-market-accent transition-colors text-left">
+            <button
+              onClick={() => navigate('/companies')}
+              className="text-sm text-market-muted hover:text-market-accent transition-colors text-left"
+            >
               Şirketler
             </button>
-            <button className="text-sm text-market-muted hover:text-market-accent transition-colors text-left">
+            <button
+              onClick={() => navigate('/about')}
+              className="text-sm text-market-muted hover:text-market-accent transition-colors text-left"
+            >
               Hakkında
             </button>
           </div>
