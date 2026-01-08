@@ -84,10 +84,70 @@ public class NewsService
     }
 
     /// <summary>
-    /// Applies ImageUrl to a news item based on its category
+    /// Tries to find a custom-generated image for this news item in news/images folder
+    /// Pattern: TICKER___date__ _YYYY-MM-DD__...
+    /// </summary>
+    private string? TryGetCustomImageUrl(NewsItem item)
+    {
+        try
+        {
+            // news/images klasörünün yolu (Program.cs'de ayarladığımız gibi)
+            var newsImagesPath = Path.Combine(_env.ContentRootPath, "..", "..", "news", "images");
+            newsImagesPath = Path.GetFullPath(newsImagesPath);
+
+            if (!Directory.Exists(newsImagesPath))
+            {
+                return null;
+            }
+
+            var ticker = item.PrimaryTicker?.ToUpper() ?? "";
+            var date = item.PublishedAt?.Date ?? "";
+
+            if (string.IsNullOrEmpty(ticker) || string.IsNullOrEmpty(date))
+            {
+                return null;
+            }
+
+            // Dosya adı prefix'i: "TICKER___date__ _YYYY-MM-DD__"
+            // Örnek: AGROT___date__ _2026-01-07__...
+            var prefix = $"{ticker}___date__ _{date}__";
+
+            // Klasördeki dosyaları tara ve prefix ile başlayanı bul
+            var files = Directory.GetFiles(newsImagesPath, "*.png")
+                                 .Select(Path.GetFileName)
+                                 .Where(f => f != null && f.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                                 .ToList();
+
+            if (files.Count > 0)
+            {
+                // İlk eşleşeni döndür (aynı ticker+tarih için birden fazla olabilir)
+                var fileName = files.First()!;
+                // URL encode yap (dosya adında özel karakterler var)
+                return $"http://localhost:5296/news-images/{Uri.EscapeDataString(fileName)}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[NewsService] Custom image lookup error: {ex.Message}");
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Applies ImageUrl to a news item - prefers custom image, falls back to category banner
     /// </summary>
     private NewsItem ApplyImageUrl(NewsItem item)
     {
+        // 1. Önce custom haber görselini dene
+        var customImage = TryGetCustomImageUrl(item);
+        if (customImage != null)
+        {
+            item.ImageUrl = customImage;
+            return item;
+        }
+
+        // 2. Custom yoksa kategori banner'ına fallback
         item.ImageUrl = MapCategoryToImageUrl(item.Category);
         return item;
     }

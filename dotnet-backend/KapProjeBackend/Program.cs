@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using KapProjeBackend.Data;
 using KapProjeBackend.Models;
 using KapProjeBackend.Services;
@@ -48,9 +49,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // Enable static files (logos)
+app.UseStaticFiles(); // Enable static files (logos from wwwroot)
+
+// Serve news/images folder as /news-images
+var newsImagesPath = Path.Combine(builder.Environment.ContentRootPath, "..", "..", "news", "images");
+if (Directory.Exists(newsImagesPath))
+{
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(Path.GetFullPath(newsImagesPath)),
+        RequestPath = "/news-images"
+    });
+}
+
 app.UseCors("AllowAll"); // Enable CORS
 
 app.MapControllers();
 
 app.Run();
+

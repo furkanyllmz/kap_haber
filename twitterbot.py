@@ -155,10 +155,7 @@ def check_twitter_rate_limits():
             ACCESS_TOKEN_SECRET
         )
         
-        # Basit bir test request at (sadece header'ları almak için)
-        url = "https://api.twitter.com/2/tweets"
-        test_payload = {"text": "test"}
-        response = requests.post(url, auth=auth, json=test_payload, headers={"Content-Type": "application/json"})
+        
         
         # Header'lardan limit bilgilerini al
         remaining = int(response.headers.get('x-app-limit-24hour-remaining', -1))
@@ -445,6 +442,9 @@ def main():
                         "ticker": item.get("primary_ticker"),
                         "text": text
                     })
+
+                    print(f"⏳ Tweet aralığı: 2 dakika bekleniyor...")
+                    time.sleep(120) # Her başarılı tweet sonrası 2dk bekle
                     
                 except Exception as e:
                     print(f"❌ Tweet Hatası: {e}")
@@ -455,7 +455,17 @@ def main():
                     if hasattr(e, 'response'):
                         print(f"🔍 API Response Status: {e.response.status_code if hasattr(e.response, 'status_code') else 'N/A'}")
                         print(f"🔍 API Response Text: {e.response.text if hasattr(e.response, 'text') else 'N/A'}")
-                    
+                        
+                        status_code = getattr(e.response, 'status_code', 0)
+                        
+                        # 403/400/409 Hatalarında "Kalıcı Hata" işaretlemesi İPTAL EDİLDİ.
+                        # Kullanıcının isteği üzerine: "tekrar denensin ama cooldown ekle"
+                        if status_code in [400, 403, 409]:
+                            print(f"⚠️ Hata ({status_code}) alındı ama tekrar denenecek.")
+                            print("💤 Hata Cooldown: 10 dakika bekleniyor...")
+                            time.sleep(600) # 10 dakika bekle
+                            continue # Loop başına dön (bu haber tekrar denenecek)
+
                     # ÖNEMLİ: 429 hatası alındığında akıllıca bekle
                     if "429" in str(e) or "Too Many Requests" in str(e):
                         print("⚠️ RATE LIMIT! Tweet atılamadı.")
@@ -474,16 +484,19 @@ def main():
                                     print(f"💤 Beklemeye geçiliyor...")
                                     time.sleep(wait_seconds + 10)  # +10 saniye güvenlik
                                     print(f"✅ Reset zamanı geldi! Devam ediliyor...")
-                                    # Döngüyü kır, yeni cycle'da bu haber tekrar denenecek
                                     break
                         
-                        # Eğer reset zamanı bulunamazsa, queue'yu temizle ve bekle
                         print("📋 Queue temizleniyor, sonraki cycle bekleniyor...")
                         break
+
+            # Her başarılı döngü (veya tweet atımı) sonrası Genel Cooldown
+            if queue:
+                # Eğer tweet atıldıysa, diğer tweetler arasına mesafe koymak için
+                # Döngü içinde sleep koymak daha mantıklı olurdu ama şu an queue'daki her elemanı
+                # for döngüsü içinde işliyoruz. Oraya da ekleyelim.
+                pass
             
-            # MongoDB kullandığımız için toplu save_posted_ids yapmaya gerek yok, 
-            # save_posted_tweet_mongo ile her işlem anlık loglanıyor.
-            
+            # Ana döngü beklemesi
             bekleme_suresi = random.randint(60, 90)
             print(f"⏸️ {bekleme_suresi} saniye sonra tekrar kontrol edilecek...")
             time.sleep(bekleme_suresi)

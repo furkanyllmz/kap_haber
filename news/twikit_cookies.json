@@ -1,0 +1,74 @@
+[
+    {
+        "name": "auth_token",
+        "value": "29eba4ea487789f75c52a6ea2a41c25f91502094",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "ct0",
+        "value": "a99c51fe150dd8372bb51b739c0f9c5ca58dc908871f04b428eea4c615cf7aa07be5effe754e1b2707eeef517e62d33f70ade106abdc81d1cc906c8cd6e06bb185657d6036ed07338013374cd17155f4",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "twid",
+        "value": "u%3D2007449291472982016",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "guest_id",
+        "value": "v1%3A176744797592858956",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "guest_id_marketing",
+        "value": "v1%3A176744797592858956",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "guest_id_ads",
+        "value": "v1%3A176744797592858956",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "personalization_id",
+        "value": "v1_dFuD8filuFNIUop4IKgIEw==",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "kdt",
+        "value": "iDib1XjBOU2ImYRvwF31aOoHzbjDucqWHGGQ7REj",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "dnt",
+        "value": "1",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "lang",
+        "value": "en",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "_twitter_sess",
+        "value": "BAh7CCIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7ADofbGFzdF9wYXNzd29yZF9jb25maXJtYXRpb24iETE3Njc0NDgzNjgxMTkwMDA6HnBhc3N3b3JkX2NvbmZpcm1hdGlvbl91aWQiGDIwMDc0NDkyOTE0NzI5ODIwMTY=--724f6b391efd5d1f4bf298b13a607ea65acca3bd",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "des_opt_in",
+        "value": "Y",
+        "domain": ".x.com",
+        "path": "/"
+    }
+]
