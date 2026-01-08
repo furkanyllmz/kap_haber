@@ -26,7 +26,10 @@ const AppContent: React.FC<{
   setFilter: React.Dispatch<React.SetStateAction<FilterState>>;
   isAdminAuthenticated: boolean;
   setIsAdminAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ theme, toggleTheme, companies, notifications, setNotifications, filter, setFilter, isAdminAuthenticated, setIsAdminAuthenticated }) => {
+  onLoadMore: () => void;
+  hasMoreNews: boolean;
+  isLoadingMore: boolean;
+}> = ({ theme, toggleTheme, companies, notifications, setNotifications, filter, setFilter, isAdminAuthenticated, setIsAdminAuthenticated, onLoadMore, hasMoreNews, isLoadingMore }) => {
 
   // We can use useLocation here if needed for Layout props, 
   // but Layout can also use useLocation internally.
@@ -40,6 +43,9 @@ const AppContent: React.FC<{
             filter={filter}
             setFilter={setFilter}
             companies={companies}
+            onLoadMore={onLoadMore}
+            hasMoreNews={hasMoreNews}
+            isLoadingMore={isLoadingMore}
           />
         } />
         <Route path="/news/:id" element={
@@ -66,6 +72,9 @@ const App: React.FC = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filter, setFilter] = useState<FilterState>({ date: null, companyCode: null });
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMoreNews, setHasMoreNews] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Theme management
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -119,14 +128,18 @@ const App: React.FC = () => {
   // Fetch News (Global fetch for Feed)
   // Note: Optimally FeedView should fetch its own news or we keep it here to share state with Detail view if finding from list.
   useEffect(() => {
-    const fetchNews = async () => {
+    const fetchNews = async (page: number = 1, append: boolean = false) => {
       try {
-        let url = `${API_BASE_URL}/news/latest?count=50`;
+        if (!append) {
+          setIsLoadingMore(false);
+        }
+
+        let url = `${API_BASE_URL}/news?page=${page}&pageSize=50`;
 
         if (filter.date) {
           url = `${API_BASE_URL}/news/date/${filter.date}`;
         } else if (filter.companyCode) {
-          url = `${API_BASE_URL}/news/ticker/${filter.companyCode}`;
+          url = `${API_BASE_URL}/news/ticker/${filter.companyCode}?page=${page}&pageSize=50`;
         }
 
         const response = await fetch(url);
@@ -147,9 +160,18 @@ const App: React.FC = () => {
           isImportant: (item.newsworthiness || 0) > 0.6
         }));
 
-        setNotifications(mappedNotifications);
+        // Check if there are more news to load
+        setHasMoreNews(mappedNotifications.length === 50);
+
+        if (append) {
+          setNotifications(prev => [...prev, ...mappedNotifications]);
+          setIsLoadingMore(false);
+        } else {
+          setNotifications(mappedNotifications);
+        }
       } catch (error) {
         console.error("Failed to fetch news:", error);
+        setIsLoadingMore(false);
         if (!filter.companyCode && !filter.date && notifications.length === 0) {
           // setNotifications(MOCK_NOTIFICATIONS); // Optional mock
         } else if (filter.companyCode || filter.date) {
@@ -158,8 +180,62 @@ const App: React.FC = () => {
       }
     };
 
-    fetchNews();
+    // Reset pagination when filters change
+    setCurrentPage(1);
+    setHasMoreNews(true);
+    fetchNews(1, false);
   }, [filter.companyCode, filter.date]);
+
+  // Load more news function
+  const loadMoreNews = () => {
+    if (isLoadingMore || !hasMoreNews) return;
+
+    setIsLoadingMore(true);
+    const nextPage = currentPage + 1;
+    setCurrentPage(nextPage);
+
+    const fetchMoreNews = async () => {
+      try {
+        let url = `${API_BASE_URL}/news?page=${nextPage}&pageSize=50`;
+
+        if (filter.date) {
+          // Date endpoint doesn't support pagination, so we can't load more
+          setHasMoreNews(false);
+          setIsLoadingMore(false);
+          return;
+        } else if (filter.companyCode) {
+          url = `${API_BASE_URL}/news/ticker/${filter.companyCode}?page=${nextPage}&pageSize=50`;
+        }
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+
+        const mappedNotifications: Notification[] = data.map((item: any) => ({
+          id: item.id || Math.random().toString(),
+          companyCode: item.primaryTicker || 'UNKNOWN',
+          companyName: item.primaryTicker || 'Unknown Company',
+          title: item.headline || 'Başlıksız Bildirim',
+          summary: item.seo?.metaDescription || item.summary || item.tweet?.text || '',
+          imageUrl: item.imageUrl || '/banners/diğer.jpg',
+          date: item.publishedAt?.date || new Date().toISOString().split('T')[0],
+          timestamp: item.publishedAt?.time || '',
+          kapUrl: item.url || '#',
+          tags: item.tweet?.hashtags || [],
+          isImportant: (item.newsworthiness || 0) > 0.6
+        }));
+
+        setHasMoreNews(mappedNotifications.length === 50);
+        setNotifications(prev => [...prev, ...mappedNotifications]);
+        setIsLoadingMore(false);
+      } catch (error) {
+        console.error("Failed to fetch more news:", error);
+        setIsLoadingMore(false);
+      }
+    };
+
+    fetchMoreNews();
+  };
 
   return (
     <BrowserRouter>
@@ -173,6 +249,9 @@ const App: React.FC = () => {
         setFilter={setFilter}
         isAdminAuthenticated={isAdminAuthenticated}
         setIsAdminAuthenticated={setIsAdminAuthenticated}
+        onLoadMore={loadMoreNews}
+        hasMoreNews={hasMoreNews}
+        isLoadingMore={isLoadingMore}
       />
     </BrowserRouter>
   );

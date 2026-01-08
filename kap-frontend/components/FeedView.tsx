@@ -10,6 +10,9 @@ interface Props {
   filter: FilterState;
   setFilter: React.Dispatch<React.SetStateAction<FilterState>>;
   companies: Company[];
+  onLoadMore: () => void;
+  hasMoreNews: boolean;
+  isLoadingMore: boolean;
 }
 
 interface TickerItem {
@@ -19,7 +22,7 @@ interface TickerItem {
   change: string;
 }
 
-const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies }) => {
+const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies, onLoadMore, hasMoreNews, isLoadingMore }) => {
   const navigate = useNavigate();
 
   const [risingStocks, setRisingStocks] = useState<TickerItem[]>([]);
@@ -279,10 +282,14 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
         )}
 
         {/* Loader */}
-        {listNotifications.length > 0 && (
+        {listNotifications.length > 0 && hasMoreNews && (
           <div className="py-12 flex justify-center">
-            <button className="text-sm font-medium text-market-muted hover:text-market-text border border-market-border px-6 py-2 rounded-full hover:bg-market-card transition-colors">
-              Daha Fazla Göster
+            <button
+              onClick={onLoadMore}
+              disabled={isLoadingMore}
+              className="text-sm font-medium text-market-muted hover:text-market-text border border-market-border px-6 py-2 rounded-full hover:bg-market-card transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoadingMore ? 'Yükleniyor...' : 'Daha Fazla Göster'}
             </button>
           </div>
         )}
