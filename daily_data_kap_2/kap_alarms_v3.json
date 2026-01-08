@@ -1,0 +1,327 @@
+[
+  {
+    "ticker": "KLSYN",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 353.9 Milyon TL (Şirket ölçeğine göre yüksek iş hacmi)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil, kesinleşmiş iş)",
+      "Nitelik: Proje bazlı üretim ve montaj işi, hasılatı doğrudan etkileyecek"
+    ],
+    "notification_text": "Koleksiyon Mobilya (KLSYN), yurt içi kurumsal bir müşteri ile 353.999.999 TL bedelli üretim ve montaj sözleşmesi imzaladığını duyurdu. İşin Nisan 2026'ya kadar tamamlanması öngörülüyor.",
+    "_source_file": "./gemini/1529942/1529942_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 3.05 Milyon USD + 92.6 Milyon TL (Döviz bazlı ve yüksek hacimli gelir)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Savunma sanayi ve yüksek teknoloji (İHA) odaklı stratejik iş"
+    ],
+    "notification_text": "Altınay Savunma'nın %100 bağlı ortaklığı Dasal, sürü yetenekli İHA teknolojileri geliştirilmesi kapsamında toplamda yaklaşık 3.05M USD ve 92.6M TL tutarında kesin sözleşme imzaladı.",
+    "_source_file": "./gemini/1529945/1529945_gemini.json"
+  },
+  {
+    "ticker": "FORTE",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 1.53 Milyar TL (Şirket ölçeğine göre oldukça yüksek hacimli iş)",
+      "Bağlayıcılık: İhale kazanıldı ve komisyon tarafından resmi bildirim yapıldı (Kesinleşmiş)",
+      "Nitelik: Türksat ve T.C. Hazine ve Maliye Bakanlığı projeleri (Stratejik kamu iş birliği)"
+    ],
+    "notification_text": "Forte, Türksat tarafından açılan 1.531.027.364 TL bedelli e-devlet hizmetleri kapsamındaki bilişim ihalesini kazandığını ve ihalenin şirket uhdesinde kaldığını duyurdu.",
+    "_source_file": "./gemini/1529742/1529742_gemini.json"
+  },
+  {
+    "ticker": "BVSAN",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 2.725.000 EUR (Döviz bazlı güçlü ihracat geliri)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Avrupa pazarı için 36 adet vinç üretimi ve teslimi"
+    ],
+    "notification_text": "BVSAN, Avrupa'da faaliyet gösteren bir firma ile 2.725.000 EUR tutarında 36 adet vinç üretimi ve teslimi için kesin sözleşme imzaladı.",
+    "_source_file": "./gemini/1529663/1529663_gemini.json"
+  },
+  {
+    "ticker": "KONTR",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 60 Milyon USD (Döviz bazlı çok güçlü gelir)",
+      "Bağlayıcılık: 3 yıl süreli kesin sözleşme imzalandı",
+      "Nitelik: Uydu ve IoT teknolojileri gibi yüksek katma değerli ve teknolojik iş"
+    ],
+    "notification_text": "İştirak Plan S, yurt içi bir müşteriyle 60 milyon USD değerinde, 3 yıl süreli uydu tabanlı IoT hizmeti ve cihaz tedariki sözleşmesi imzaladı.",
+    "_source_file": "./gemini/1529808/1529808_gemini.json"
+  },
+  {
+    "ticker": "DCTTR",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Oran: %200 Bedelsiz sermaye artırımı (Eşik değer olan %100'ün üzerinde)",
+      "Bağlayıcılık: Hak kullanım süreci tamamlandı ve paylar hesaplara alacak kaydedildi",
+      "Nitelik: Şirket sermayesinin iç kaynaklardan bedelsiz olarak artırılması işlemi kesinleşti"
+    ],
+    "notification_text": "DCTTR paylarında %200 oranındaki bedelsiz sermaye artırımı süreci tamamlanarak yeni paylar yatırımcı hesaplarına aktarıldı.",
+    "_source_file": "./gemini/1529537/1529537_gemini.json"
+  },
+  {
+    "ticker": "HEDEF",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: Pay devir ve kapanış işlemleri bugün itibarıyla resmen tamamlanmıştır.",
+      "Nitelik: Colendi Menkul Değerler'de %51 pay oranı ile çoğunluk ve kontrol gücü elde edilmiştir.",
+      "Onay Durumu: Rekabet Kurulu ve SPK onayları alınarak hukuki süreçler kesinleşmiştir."
+    ],
+    "notification_text": "Hedef Holding, Colendi Menkul Değerler A.Ş. paylarının devir işlemlerini tamamlayarak şirketteki payını %51'e çıkarmış ve kontrolü devralmıştır.",
+    "_source_file": "./gemini/1529903/1529903_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı oranı %324,99 (Eşik değer %100'ün çok üzerinde)",
+      "Bağlayıcılık: Hak kullanım tarihi 26.12.2025 olarak kesinleşti",
+      "Nitelik: Sermaye yapısını güçlendiren yüksek oranlı bedelsiz bölünme"
+    ],
+    "notification_text": "ALTNY paylarında %324,99 oranında bedelsiz sermaye artırımı hak kullanımı 26.12.2025 tarihinde başlayacaktır.",
+    "_source_file": "./gemini/1529769/1529769_gemini.json"
+  },
+  {
+    "ticker": "EKOS",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı oranı %300,00 (Eşik değer %100'ün çok üzerinde)",
+      "Bağlayıcılık: Hak kullanım tarihi 26.12.2025 olarak kesinleşti",
+      "Nitelik: Sermaye yapısını güçlendiren yüksek oranlı bedelsiz bölünme"
+    ],
+    "notification_text": "EKOS paylarında %300,00 oranında bedelsiz sermaye artırımı hak kullanımı 26.12.2025 tarihinde başlayacaktır.",
+    "_source_file": "./gemini/1529769/1529769_gemini.json"
+  },
+  {
+    "ticker": "TCELL",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Nakit temettü ödemesi kesinleşti",
+      "Tutar: Hisse başına 1,5454 TL net nakit temettü",
+      "Bağlayıcılık: Hak kullanım tarihi 26.12.2025 olarak belirlendi"
+    ],
+    "notification_text": "TCELL paylarında hisse başına net 1,5454 TL nakit temettü ödemesi 26.12.2025 tarihinde gerçekleşecektir.",
+    "_source_file": "./gemini/1529769/1529769_gemini.json"
+  },
+  {
+    "ticker": "BULGS",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 500.000 USD (Döviz bazlı yatırım)",
+      "Bağlayıcılık: Yatırım süreci ve ödeme bugün itibarıyla tamamlandı (Kesinleşmiş işlem)",
+      "Nitelik: ODTÜ 70. Yıl Girişim Sermayesi Yatırım Fonu'na stratejik katılım"
+    ],
+    "notification_text": "Bulls GSYO, Maxis ODTÜ 70. Yıl GSYF'ye 500.000 USD tutarındaki yatırım sürecini ve katılma payı alımını tamamladığını bildirdi.",
+    "_source_file": "./gemini/1529794/1529794_gemini.json"
+  },
+  {
+    "ticker": "YATAS",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 32.5 Milyon EUR (Döviz bazlı devasa nakit girişi)",
+      "Oran: İşlem bedeli şirket değerinin %47'sine, ödenmiş sermayenin %1490'ına tekabül ediyor",
+      "Bağlayıcılık: Sözleşme imzalanmış ve işlem 25.12.2025 itibarıyla tamamlanmıştır"
+    ],
+    "notification_text": "Yataş, 32.5 Milyon EUR (yaklaşık 2.23 Milyar TL) bedelle fabrika ve arsasını sat-geri kirala yöntemiyle devrederek, şirket değerinin %47'sine ulaşan çok büyük bir finansal kaynak sağladı.",
+    "_source_file": "./gemini/1529923/1529923_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Oran: %325 Bedelsiz (Eşik değer olan %100'ün çok üzerinde)",
+      "Bağlayıcılık: SPK tarafından onaylanmış ihraç belgesi (Kesinleşmiş süreç)",
+      "Nitelik: İç kaynaklardan (Sermaye düzeltme farkları ve emisyon primi) karşılanan yüksek oranlı artış"
+    ],
+    "notification_text": "Altınay Savunma (ALTNY), SPK'dan %325 oranında bedelsiz sermaye artırımı onayı aldı. Şirket sermayesi 235,3 milyon TL'den 1 milyar TL'ye yükseltilecek.",
+    "_source_file": "./gemini/1529740/1529740_gemini.json"
+  },
+  {
+    "ticker": "HOROZ",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 5 yıl için yaklaşık 3,5 Milyar TL (Yüksek hacimli iş hacmi)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (3+2 yıllık uzun vadeli)",
+      "Nitelik: E-ticaret depolama ve lojistik operasyonlarını kapsayan kapsamlı hizmet"
+    ],
+    "notification_text": "Horoz Lojistik, sektöründe öncü bir müşteri ile 5 yılda yaklaşık 3,5 milyar TL ciro beklentisi olan 3+2 yıllık kesin sözleşme imzaladı.",
+    "_source_file": "./gemini/1529913/1529913_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Oran: %325 (Yüksek bedelsiz oranı, %100 eşiğinin çok üzerinde)",
+      "Bağlayıcılık: SPK onayı alındı ve hak kullanım tarihi (26.12.2025) kesinleşti",
+      "Nitelik: İç kaynaklardan karşılanan güçlü sermaye artırımı"
+    ],
+    "notification_text": "ALTNY, %325 oranında bedelsiz sermaye artırımı için SPK onayını aldı; hak kullanım süreci 26 Aralık 2025 tarihinde başlayacaktır.",
+    "_source_file": "./gemini/1529741/1529741_gemini.json"
+  },
+  {
+    "ticker": "FONET",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 77.9 Milyon TL (Net ve belirli nakit akışı)",
+      "Bağlayıcılık: Sözleşme imzalandı (Kesinleşmiş iş ilişkisi)",
+      "Nitelik: Kamu kurumu ile 36 aylık uzun vadeli ve sürdürülebilir gelir modeli"
+    ],
+    "notification_text": "FONET, Ankara Gülhane Eğitim ve Araştırma Hastanesi ile 77.970.708 TL tutarında, 36 ay süreli Sağlık Bilgi Yönetim Sistemi (SBYS) hizmet sözleşmesi imzaladığını duyurdu.",
+    "_source_file": "./gemini/1529693/1529693_gemini.json"
+  },
+  {
+    "ticker": "EKOS",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Oran: %300 Bedelsiz sermaye artırımı (Eşik değer olan %100'ün çok üzerinde)",
+      "Bağlayıcılık: SPK onayı alındı ve hak kullanım başlangıç tarihi (26.12.2025) kesinleşti",
+      "Aşama: Ticaret sicil tescili tamamlanmış ve süreç nihai aşamaya gelmiştir"
+    ],
+    "notification_text": "EKOS, %300 oranındaki bedelsiz sermaye artırımı sürecini tamamladı; hak kullanım başlangıç tarihi 26.12.2025 olarak açıklandı.",
+    "_source_file": "./gemini/1529651/1529651_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: İntron Bilişim'in devralınması yoluyla birleşme işlemi Genel Kurul tarafından onaylanarak kesinleşti.",
+      "Sermaye Artırımı: Birleşme kapsamında sermaye 170.000.000 TL'den 322.274.085,57 TL'ye (%89,5 artış) çıkarıldı.",
+      "Nitelik: Şirket inorganik büyüme stratejisi kapsamında birleşme ve tahsisli sermaye artırımı sürecini tamamladı."
+    ],
+    "notification_text": "ARDYZ, İntron Bilişim'i devralma yoluyla birleşme işlemini ve bu kapsamda yapılacak olan %89,5 oranındaki sermaye artırımını Olağanüstü Genel Kurul'da onayladı.",
+    "_source_file": "./gemini/1530443/1530443_gemini.json"
+  },
+  {
+    "ticker": "GIPTA",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Tutar: 400.000 EUR (Döviz bazlı yatırım)",
+      "Nitelik: Yunanistan merkezli yeni şirket kuruluşu ile Avrupa pazarına açılım stratejisi",
+      "Bağlayıcılık: Yönetim kurulu kararı ile kesinleşmiş %50 ortaklık"
+    ],
+    "notification_text": "GIPTA, Yunanistan'ın Selanik şehrinde Avrupa pazarına yayılma hedefiyle kurulan 800.000 EUR sermayeli Mosaik I.K.E. şirketine %50 oranında ortak olduğunu duyurdu.",
+    "_source_file": "./gemini/1529931/1529931_gemini.json"
+  },
+  {
+    "ticker": "ONRYT",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 7.35 Milyon USD + 1.1 Milyon USD Opsiyon (Döviz bazlı güçlü gelir)",
+      "Bağlayıcılık: Savunma Sanayii Başkanlığı ile kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Savunma sanayii ve teknoloji odaklı, yüksek katma değerli stratejik iş"
+    ],
+    "notification_text": "ONRYT, Savunma Sanayii Başkanlığı ile TSK muhabere altyapısı projesi kapsamında 7.356.500 USD tutarında kesin sözleşme imzaladı.",
+    "_source_file": "./gemini/1529737/1529737_gemini.json"
+  },
+  {
+    "ticker": "AKSEN",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar/Kapasite: 350 MW toplam kapasite, 20 yıl süreli USD bazlı garanti satış sözleşmesi.",
+      "Bağlayıcılık: Santralin ilk fazı (179 MW) resmen ticari üretime başladı (Gelir akışı aktifleşti).",
+      "Nitelik: Yurt dışı (Gana) ve döviz bazlı uzun vadeli nakit akışı sağlayan stratejik yatırım."
+    ],
+    "notification_text": "Aksa Enerji'nin Gana'daki 350 MW kapasiteli santralinin ilk fazı ticari üretime başladı. 20 yıllık USD bazlı alım garantisi içeren proje resmen gelir üretmeye başlamıştır.",
+    "_source_file": "./gemini/1529533/1529533_gemini.json"
+  },
+  {
+    "ticker": "BIGTK",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Birleşme işlemi Olağanüstü Genel Kurul tarafından resmen onaylandı.",
+      "Bağlayıcılık: Karar kesinleşti ve birleşme sözleşmesi kabul edildi.",
+      "Nitelik: Şirketin pazar konumunu ve sermaye yapısını değiştirecek stratejik birleşme."
+    ],
+    "notification_text": "BİG MEDYA (BIGTK), Wisest ile birleşme işleminin Olağanüstü Genel Kurul toplantısında kabul edildiğini ve sürecin resmiyet kazandığını bildirdi.",
+    "_source_file": "./gemini/1530445/1530445_gemini.json"
+  },
+  {
+    "ticker": "AKSUE",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 1.091.316.622 TL nakit girişi (Şirket ölçeğine göre çok yüksek nakit enjeksiyonu)",
+      "Bağlayıcılık: SPK'ya resmi başvuru süreci başlatıldı",
+      "Oran: Mevcut sermayenin yaklaşık %94'ü oranında bedelli (tahsisli) artırım"
+    ],
+    "notification_text": "Aksu Enerji (AKSUE), 1.09 milyar TL satış hasılatı hedefleyen %93,9 oranındaki tahsisli sermaye artırımı için SPK'ya resmi başvuruda bulundu.",
+    "_source_file": "./gemini/1529796/1529796_gemini.json"
+  },
+  {
+    "ticker": "ADGYO",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: Olağanüstü Genel Kurul tarafından birleşme ve sermaye artırımı resmen onaylandı.",
+      "Nitelik: Anadolu Gayrimenkul Yatırım A.Ş.'nin tüm aktif ve pasifiyle devralınması suretiyle birleşme işlemi kesinleşti.",
+      "Sermaye Artışı: Birleşme nedeniyle şirket sermayesinin yaklaşık %85 oranında (252.1 Milyon TL) artırılması karara bağlandı."
+    ],
+    "notification_text": "ADGYO, Anadolu Gayrimenkul Yatırım A.Ş. ile birleşme işlemini ve buna bağlı sermaye artırımını Olağanüstü Genel Kurul'da onaylayarak kesinleştirdi.",
+    "_source_file": "./gemini/1530442/1530442_gemini.json"
+  },
+  {
+    "ticker": "EFOR",
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: Birleşme sözleşmesi imzalandı ve SPK'ya resmi onay başvurusu yapıldı.",
+      "Nitelik: Of Çaysan (Ofçay) şirketinin tüm aktif ve pasifleriyle devralınması suretiyle büyüme stratejisi.",
+      "Finansal Etki: Birleşme nedeniyle 493.111.555 TL tutarında sermaye artırımı gerçekleştirilecek."
+    ],
+    "notification_text": "Efor Yatırım (EFOR), Of Çaysan (Ofçay) ile devralma yoluyla birleşme kararı alarak SPK'ya resmi başvuruda bulundu. İşlem sonucunda şirket sermayesi 2,67 milyar TL'ye yükselecek.",
+    "_source_file": "./gemini/1529952/1529952_gemini.json"
+  }
+]

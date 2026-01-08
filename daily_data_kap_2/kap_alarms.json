@@ -1,0 +1,2226 @@
+[
+  {
+    "ticker": "YEOTK",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "09:11",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "28.000.000 USD",
+      "ratio": null,
+      "dates": [
+        "29.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: Yaklaşık 28 Milyon USD (Döviz bazlı ve yüksek hacimli yeni iş)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Yap-İşlet-Devret modeli)",
+      "Nitelik: 10 yıllık işletme ve bakım süresi ile uzun vadeli sürdürülebilir gelir"
+    ],
+    "notification_text": "YEO Teknoloji, Ekinciler Demir Çelik ile 28 milyon USD bütçeli, 35,2 MWp kapasiteli GES kurulumu ve 10 yıllık işletme sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/1530463/1530463_gemini.json"
+  },
+  {
+    "ticker": "CWENE",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "13:06",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "13,766,860.80 USD",
+      "ratio": "%6",
+      "dates": [
+        "2026-Q2"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 13.7 Milyon USD (Döviz bazlı güçlü gelir)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Yerli üretim güneş paneli hücresi satışı"
+    ],
+    "notification_text": "CW Enerji bağlı ortaklığı, yurt içi bir müşteriyle 13.7 milyon USD (yaklaşık 591 milyon TL) tutarında kesinleşmiş güneş paneli hücresi satış sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/1530572/1530572_gemini.json"
+  },
+  {
+    "ticker": "BAYRK",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "11:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "193.534.804 TL",
+      "ratio": "%342.75",
+      "dates": [
+        "2025-12-30 (Hak Kullanım Başlangıç)",
+        "2025-12-31 (Kayıt Tarihi)",
+        "2026-01-02 (Ödeme Tarihi)"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Oran: %342.75 (Eşik değer olan %100'ün çok üzerinde yüksek bedelsiz oranı)",
+      "Bağlayıcılık: SPK onayı alındı ve hak kullanım tarihleri kesinleşti",
+      "Sermaye Artışı: Şirket sermayesi 56.4 milyon TL'den 249.9 milyon TL'ye yükseliyor"
+    ],
+    "notification_text": "BAYRK, %342.75 oranındaki bedelsiz sermaye artırımı için SPK onayını aldı; bedelsiz pay alma hakkı kullanımı 30 Aralık 2025 tarihinde başlıyor.",
+    "_source_file": "./daily_data_kap/gemini/1530519/1530519_gemini.json"
+  },
+  {
+    "ticker": "GESAN",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "14:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "227,500,000 TL",
+      "ratio": null,
+      "dates": [
+        "2025-12-29",
+        "2026-01-05"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 227.5 Milyon TL (Belirgin iş hacmi)",
+      "Bağlayıcılık: İhale kesinleşti ve sözleşme daveti alındı (Niyet değil, kesin sonuç)",
+      "Nitelik: Organize Sanayi Bölgesi altyapı ve trafo merkezi yapım işi"
+    ],
+    "notification_text": "Girişim Elektrik (GESAN), ASO 2. ve 3. OSB tarafından düzenlenen 227.5 milyon TL bedelli trafo merkezi yapım ihalesini kazandığını ve sözleşme daveti aldığını bildirdi.",
+    "_source_file": "./daily_data_kap/gemini/1530594/1530594_gemini.json"
+  },
+  {
+    "ticker": "ONCSM",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "10:54",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "115.000.000 GBP",
+      "ratio": null,
+      "dates": [
+        "27/12/2025",
+        "2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 115 Milyon GBP (Yaklaşık 6.4 Milyar TL - Şirket ölçeğine göre devasa döviz girdisi)",
+      "Karşı Taraf: İngiltere Sağlık Bakanlığı (NHS) - Global ve yüksek prestijli kamu kurumu",
+      "Bağlayıcılık: Kesinleşmiş ihale ve imzalı sözleşme kapsamında sevkiyatların başlamış olması"
+    ],
+    "notification_text": "Oncosem, İngiltere Sağlık Bakanlığı (NHS) ile imzalanan 115 milyon GBP tutarındaki dev sözleşme kapsamında ikinci sevkiyatın başarıyla gerçekleştiğini ve finansallara güçlü katkı beklendiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530512/1530512_gemini.json"
+  },
+  {
+    "ticker": "SMRTG",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "15:23",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "5,553,000 USD",
+      "ratio": null,
+      "dates": [
+        "2025-12-29"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 5.55 Milyon USD (Döviz bazlı güçlü gelir)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Anahtar teslim GES kurulumu ve yerli üretim panel kullanımı"
+    ],
+    "notification_text": "Smart Güneş Enerjisi, yurt içinde yerleşik bir kurumsal yatırımcı ile 5.55 milyon USD tutarında anahtar teslim GES kurulum sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/1530620/1530620_gemini.json"
+  },
+  {
+    "ticker": "ALCTL",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "16:02",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "6.582.755 USD",
+      "ratio": null,
+      "dates": [
+        "29.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 6.58 Milyon USD (Döviz bazlı güçlü gelir)",
+      "Bağlayıcılık: İş emri imzalandı (Kesinleşmiş satış)",
+      "Nitelik: Süregelen iş ilişkisi kapsamında yüksek tutarlı yeni sipariş"
+    ],
+    "notification_text": "Alcatel Lucent (ALCTL), Türkiye'de yerleşik bir müşterisinden 6.582.755 USD tutarında kesinleşmiş yeni bir iş emri aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530650/1530650_gemini.json"
+  },
+  {
+    "ticker": "LYDHO",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "16:03",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "143,991,313.99 TL",
+      "ratio": null,
+      "dates": [
+        "2025-12-29"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Birleşme: Lydia Yatırım Holding A.Ş.'nin devralınması işlemi Genel Kurul tarafından onaylanarak kesinleşti.",
+      "Sermaye Artırımı: Birleşme kapsamında şirket sermayesi 208.000.000 TL'den 351.991.313,99 TL'ye yükseltildi.",
+      "Bağlayıcılık: Olağanüstü Genel Kurul kararı ile işlem resmiyet kazandı."
+    ],
+    "notification_text": "Lydia Holding, Lydia Yatırım Holding'i devralma yoluyla birleşme işlemini ve bu birleşmeye bağlı olarak gerçekleştirilen sermaye artırımını Genel Kurul onayıyla kesinleştirdi.",
+    "_source_file": "./daily_data_kap/gemini/1530653/1530653_gemini.json"
+  },
+  {
+    "ticker": "BAYRK",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "16:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%342.75",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırım oranı %100 eşiğinin çok üzerinde (%342.75)",
+      "Hak kullanım tarihi 30.12.2025 olarak kesinleşti",
+      "Sermaye yapısında ciddi genişleme ve likidite artışı beklentisi"
+    ],
+    "notification_text": "BAYRK paylarında %342,75 oranında bedelsiz sermaye artırımı hak kullanımı 30.12.2025 tarihinde başlayacaktır.",
+    "_source_file": "./daily_data_kap/gemini/1530694/1530694_gemini.json"
+  },
+  {
+    "ticker": "ZOREN",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "17:44",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "117,018,024 USD",
+      "ratio": "%100",
+      "dates": [
+        "2025-12-29"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 117 Milyon USD net nakit girişi (Döviz bazlı çok güçlü likidite)",
+      "Bağlayıcılık: Satış ve pay devri işlemleri kesin olarak tamamlandı",
+      "Stratejik: Gelirin borç ödeme ve yeni yatırımlarda kullanılacak olması pozitif"
+    ],
+    "notification_text": "Zorlu Enerji, %100 bağlı ortaklığı Gökçedağ Rüzgar Enerji'nin satışını 117 milyon USD net bedelle tamamladığını ve ödemenin peşin olarak tahsil edildiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530742/1530742_gemini.json"
+  },
+  {
+    "ticker": "SMRVA",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "484,361,825 TL",
+      "ratio": null,
+      "dates": [
+        "2025-12-17",
+        "2025-12-29"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 484.3 Milyon TL anapara büyüklüğünde portföy alımı",
+      "Bağlayıcılık: Devir ve temlik işlemleri kesin olarak tamamlandı",
+      "Nitelik: Şirketin ana faaliyet konusu kapsamında yüksek hacimli alacak devri"
+    ],
+    "notification_text": "Sümer Varlık, Akbank'tan 484.3 milyon TL anapara büyüklüğündeki NPL portföyünün devir ve temlik işlemlerini tamamlayarak tahsilat sürecine dahil etti.",
+    "_source_file": "./daily_data_kap/gemini/1530762/1530762_gemini.json"
+  },
+  {
+    "ticker": "BVSAN",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:04",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1.875.000 EUR",
+      "ratio": null,
+      "dates": [
+        "2026-H2"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 1.875.000 EUR (Döviz bazlı güçlü ihracat geliri)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Yurt dışı müşteri ve tesisler için üretim"
+    ],
+    "notification_text": "Bülbüloğlu Vinç (BVSAN), yurt dışı yerleşik bir firma ile 1.875.000 EUR tutarında vinç üretimi ve teslimi için kesin sözleşme imzaladı. Teslimatın 2026 ikinci yarısında tamamlanması planlanıyor.",
+    "_source_file": "./daily_data_kap/gemini/1530760/1530760_gemini.json"
+  },
+  {
+    "ticker": "ADGYO",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:19",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "252,154,434.99 TL",
+      "ratio": "%85.85",
+      "dates": [
+        "2025-12-29"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Bağlayıcılık: Birleşme işlemi tescil edilerek hukuken kesinleşmiş ve tamamlanmıştır.",
+      "Nitelik: Anadolu Gayrimenkul Yatırım A.Ş. tüm aktif ve pasifleri ile devralınmıştır.",
+      "Sermaye Etkisi: Birleşme nedeniyle şirket sermayesi 293.7 Milyon TL'den 545.8 Milyon TL'ye yükselmiştir."
+    ],
+    "notification_text": "ADGYO, Anadolu Gayrimenkul Yatırım A.Ş.'yi devralma yoluyla birleşme işleminin tescil edildiğini ve sürecin hukuken tamamlandığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530784/1530784_gemini.json"
+  },
+  {
+    "ticker": "GARAN",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:14",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "145,000,000 USD",
+      "ratio": null,
+      "dates": [
+        "2025-12-29",
+        "2027-03-29"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 145 Milyon USD (Döviz bazlı yüksek hacimli kaynak girişi)",
+      "Bağlayıcılık: Satışın tamamlandığı ve ihraç belgesinin düzenlendiği kesinleşti",
+      "Nitelik: Yurt dışı piyasalara yönelik tahvil ihracı (İngiltere/Euroclear)"
+    ],
+    "notification_text": "Garanti Bankası, yurt dışı piyasalarda 145 milyon USD tutarındaki tahvil ihraç sürecini tamamladığını ve satışın gerçekleştiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530775/1530775_gemini.json"
+  },
+  {
+    "ticker": "ADGYO",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:13",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "252154434.99 TL",
+      "ratio": "%85.85",
+      "dates": [
+        "2025-12-28",
+        "2025-12-29"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: Anadolu Gayrimenkul Yatırım A.Ş. ile birleşme işlemi genel kurulda onaylanmış ve ticaret siciline tescil edilerek kesinleşmiştir.",
+      "Sermaye Artırımı: Birleşme sonucunda şirket sermayesi 293.7 Milyon TL'den 545.8 Milyon TL'ye yükseltilmiştir.",
+      "Nitelik: Tasfiyesiz sona erme (infisah) yoluyla devralma işlemi tamamlanmış, tüm aktif ve pasifler şirkete geçmiştir."
+    ],
+    "notification_text": "ADGYO, Anadolu Gayrimenkul Yatırım A.Ş.'yi devralarak birleşme işlemini tamamladığını ve bu kapsamda sermayesini 252.1 Milyon TL artırarak tescil ettirdiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530773/1530773_gemini.json"
+  },
+  {
+    "ticker": "ASTOR",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:31",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "7,233,869.35 USD",
+      "ratio": null,
+      "dates": [
+        "2025-12-29",
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 7.23 Milyon USD (Döviz bazlı nakit girişi)",
+      "Bağlayıcılık: Yönetim Kurulu kararı ile kesinleşmiş pay devri",
+      "Stratejik Karar: Ana faaliyet konusuna odaklanma amacıyla bağlı ortaklık satışı"
+    ],
+    "notification_text": "Astor Enerji, bağlı ortaklığı Asener Enerji'nin paylarının tamamını 7.233.869,35 USD bedel karşılığında devretme kararı almıştır.",
+    "_source_file": "./daily_data_kap/gemini/1530797/1530797_gemini.json"
+  },
+  {
+    "ticker": "HOROZ",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:30",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "300.000.000 TL",
+      "ratio": null,
+      "dates": [
+        "2026-01-01",
+        "3 yıl"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: Yaklaşık 300 Milyon TL (3 yıllık toplam ciro beklentisi)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil)",
+      "Nitelik: Sektöründe önde gelen bir firma ile uzun vadeli lojistik ve depolama iş birliği"
+    ],
+    "notification_text": "Horoz Lojistik, küçük ev aletleri sektöründe lider bir firma ile 3 yıl süreli, toplamda yaklaşık 300 milyon TL ciro üretmesi beklenen kesin bir hizmet sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/1530795/1530795_gemini.json"
+  },
+  {
+    "ticker": "PLTUR",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "18:48",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "3.375.868.924,80 TL",
+      "ratio": null,
+      "dates": [
+        "01.01.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 3.37 Milyar TL (Şirket ölçeğine göre oldukça yüksek hacimli iş)",
+      "Bağlayıcılık: İhale kazanıldı ve sözleşme imzalandı (Kesinleşmiş işlem)",
+      "Karşı Taraf: İstanbul Büyükşehir Belediyesi (Güçlü kamu kurumu referansı)"
+    ],
+    "notification_text": "PLTUR, İstanbul Büyükşehir Belediyesi ile 3.375.868.924,80 TL + KDV tutarında araç kiralama hizmet sözleşmesi imzaladığını duyurdu. İşin başlangıç tarihi 01.01.2026 olarak belirlendi.",
+    "_source_file": "./daily_data_kap/gemini/1530809/1530809_gemini.json"
+  },
+  {
+    "ticker": "KFEIN",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "19:10",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "5,600,000 USD",
+      "ratio": null,
+      "dates": [
+        "2025-12",
+        "2026-02"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 5.6 Milyon USD (Döviz bazlı güçlü gelir akışı)",
+      "Bağlayıcılık: Sipariş formu alındı (Kesinleşmiş iş ilişkisi)",
+      "Nitelik: Telekomünikasyon sektörü için 5 yıllık uzun vadeli lisans yenileme"
+    ],
+    "notification_text": "Kafein Yazılım, bir telekomünikasyon şirketi için 5.600.000 USD + KDV tutarında kesinleşmiş yazılım lisans yenileme siparişi aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530823/1530823_gemini.json"
+  },
+  {
+    "ticker": "ANELE",
+    "published_at": {
+      "date": "2025-12-29",
+      "time": "20:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "519,168.65 USD",
+      "ratio": null,
+      "dates": [
+        "2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 519.168 USD (Döviz bazlı gelir)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı",
+      "Nitelik: Yüksek segment turizm projesi (Maça Kızı Oteli) renovasyon işi"
+    ],
+    "notification_text": "Anel Elektrik, BMK Turizm (Maça Kızı Oteli) ile 519.168 USD tutarında mekanik ve elektrik işleri için kesin sözleşme imzaladı. İşin 2026'da tamamlanması planlanıyor.",
+    "_source_file": "./daily_data_kap/gemini/1530831/1530831_gemini.json"
+  },
+  {
+    "ticker": "BAYRK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "08:57",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%342,75",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Oran: %342,75 (Kriter olan %100 eşiğinin çok üzerinde bedelsiz sermaye artırımı)",
+      "Bağlayıcılık: Borsa İstanbul (BISTECH) tarafından yayınlanan kesinleşmiş hak kullanımı duyurusu",
+      "Nitelik: İç kaynaklardan karşılanan yüksek oranlı bedelsiz bölünme"
+    ],
+    "notification_text": "BAYRK paylarında %342,75 oranında bedelsiz sermaye artırımı kesinleşmiş olup, bölünme sonrası teorik fiyat 5,407 TL olarak belirlenmiştir.",
+    "_source_file": "./daily_data_kap/gemini/1530853/1530853_gemini.json"
+  },
+  {
+    "ticker": "YEOTK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "57.000.000 USD",
+      "ratio": null,
+      "dates": [
+        "2025-12-29",
+        "2024-10-31"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 57 Milyon USD (Döviz bazlı çok güçlü finansman girişi)",
+      "Bağlayıcılık: Kredi anlaşması kesinleşti ve ilk dilim nakit olarak şirket hesaplarına geçti",
+      "Nitelik: Vodafone ile yapılan büyük ölçekli projenin finansman ve uygulama aşamasına geçildiğini teyit ediyor"
+    ],
+    "notification_text": "YEO Teknoloji, Vodafone ile yapılan GES projesinin finansmanı için Ak Finansal Kiralama ile 57 milyon USD tutarında kredi anlaşması sağladı; ilk dilim hesaplara geçti.",
+    "_source_file": "./daily_data_kap/gemini/1530860/1530860_gemini.json"
+  },
+  {
+    "ticker": "LOGO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:39",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.200.000 EUR",
+      "ratio": "%10",
+      "dates": [
+        "2025-12-29"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 2.2 Milyon EUR (Döviz bazlı nakit girişi)",
+      "Bağlayıcılık: Pay devri işlemleri kesinleşti ve tamamlandı",
+      "Nitelik: İştirak hisse satışı yoluyla sermaye girişi"
+    ],
+    "notification_text": "Logo Yazılım, iştiraki Total Soft'un %10 payının 2.2 milyon EUR bedel karşılığında Avramos Holding'e devir işlemlerinin tamamlandığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1530881/1530881_gemini.json"
+  },
+  {
+    "ticker": "TRALT",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:27",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "8.100.000 Ton Cevher",
+      "ratio": null,
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Hacim: 8.1 milyon ton altın ve gümüş cevheri işleme kapasitesi (Çok yüksek operasyonel ölçek)",
+      "Bağlayıcılık: Protokol kesin olarak imzalandı (Niyet aşaması geçildi)",
+      "Stratejik Etki: Şirketin mevcut tesislerinin (Kaymaz Altın İşletmesi) verimliliğini ve nakit akışını doğrudan artıracak büyük ölçekli iş birliği"
+    ],
+    "notification_text": "Türk Altın İşletmeleri (TRALT), Taşzemin Madencilik ile 8.100.000 ton altın ve gümüş cevherinin işlenmesine yönelik kesin protokol imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/1531280/1531280_gemini.json"
+  },
+  {
+    "ticker": "TCELL",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "17:11",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%181.81 (Brüt)",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Nakit Temettü: %181.81 brüt oranında nakit temettü ödemesi kesinleşti.",
+      "Bağlayıcılık: Merkezi Kayıt Kuruluşu tarafından ödeme işleminin gerçekleştirildiği teyit edildi.",
+      "Nitelik: Yatırımcılar için doğrudan nakit girişi sağlayan kesinleşmiş sermaye hareketi."
+    ],
+    "notification_text": "Turkcell (TCELL), pay başına brüt %181.81, net %154.54 oranında nakit temettü ödemesini 30.12.2025 tarihinde gerçekleştirdi.",
+    "_source_file": "./daily_data_kap/gemini/1531174/1531174_gemini.json"
+  },
+  {
+    "ticker": "OZATD",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "17:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2,000,000 USD",
+      "ratio": null,
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 2.000.000 USD (Döviz bazlı doğrudan gelir)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı (Niyet değil, tamamlanmış işlem)",
+      "Nitelik: Yurt dışı mukim üç farklı firma ile ihracat odaklı iş ilişkisi"
+    ],
+    "notification_text": "Özata Denizcilik, yurt dışında mukim üç firma ile toplam 2 milyon USD tutarında üç adet gemi tamir, bakım ve onarım sözleşmesi imzaladığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1531206/1531206_gemini.json"
+  },
+  {
+    "ticker": "ARASE",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "16:52",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1.246.860.513,48 TL",
+      "ratio": null,
+      "dates": [
+        "Ocak 2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 1.24 Milyar TL (Aylık bazda oldukça yüksek hacimli enerji satışı)",
+      "Bağlayıcılık: Enerji satış anlaşması kesin olarak yapıldı",
+      "Etki: Şirket cirosu ve karlılığı üzerinde doğrudan pozitif etki beklentisi"
+    ],
+    "notification_text": "Şirketin bağlı ortaklığı Aras Elektrik, Ocak 2026 dönemi için KDV hariç 1.246.860.513,48 TL tutarında enerji satış anlaşması imzalamıştır.",
+    "_source_file": "./daily_data_kap/gemini/1531160/1531160_gemini.json"
+  },
+  {
+    "ticker": "SMRTG",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:16",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "122.000.000 EUR",
+      "ratio": null,
+      "dates": [
+        "2026-2029",
+        "2026-01-01"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 122 Milyon Euro toplam yatırım ve 34 Milyon Euro tutarında kesinleşmiş nakit hibe desteği.",
+      "Bağlayıcılık: 123.270 m2 büyüklüğündeki arazi tapusu resmen iştirak üzerine tescil edildi.",
+      "Nitelik: AB sınırları içerisinde 'Öncelikli Yatırımcı' statüsü ile stratejik güneş hücresi üretim tesisi yatırımı."
+    ],
+    "notification_text": "Smart Güneş Enerjisi, Bulgaristan'daki 122 milyon Euro'luk dev yatırım projesi için 123 bin m2'lik arazi tapusunu devraldı. Proje kapsamında 34 milyon Euro nakit hibe desteği kesinleşmiş olup, finansman aşamasına geçilmiştir.",
+    "_source_file": "./daily_data_kap/gemini/1531260/1531260_gemini.json"
+  },
+  {
+    "ticker": "BAHKM",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:09",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "67.577.000 TL",
+      "ratio": "%100",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Stratejik Edinim: Yangın sonrası üretimin aksamaması için fabrika ve arsa içeren şirket %100 oranında devralındı.",
+      "Değerleme Avantajı: 115.4 Milyon TL ekspertiz değerli varlık, 67.5 Milyon TL bedelle (iskontolu) satın alındı.",
+      "Bağlayıcılık: İşlem kesinleşmiş ve pay devri tamamlanmıştır."
+    ],
+    "notification_text": "Bahadır Kimya, yangın sonrası üretim sürekliliğini sağlamak amacıyla Kırıkkale OSB'de fabrika ve arsası bulunan bir şirketi 67.5 Milyon TL bedelle %100 oranında devraldı.",
+    "_source_file": "./daily_data_kap/gemini/1531227/1531227_gemini.json"
+  },
+  {
+    "ticker": "SMRVA",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:15",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "482.000.000 TL",
+      "ratio": "%408,47",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırım oranı %100 eşiğinin çok üzerinde (%408,47)",
+      "Yönetim Kurulu kararı kesinleşti ve SPK başvuru süreci devam ediyor",
+      "Artışın tamamı iç kaynaklardan (geçmiş yıl karları) karşılanıyor"
+    ],
+    "notification_text": "SMRVA, mevcut sermayesini %408,47 oranında bedelsiz artırarak 118 milyon TL'den 600 milyon TL'ye çıkarma kararı aldı. Artışın tamamı geçmiş yıl karlarından karşılanacak.",
+    "_source_file": "./daily_data_kap/gemini/1531255/1531255_gemini.json"
+  },
+  {
+    "ticker": "MAGEN",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "12:22",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "6,364,250,000 USD",
+      "ratio": "505 MWm",
+      "dates": [
+        "2025-12-30",
+        "27.10.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 15 yıllık YEKDEM süresince toplam 6.36 Milyar USD satış geliri ve 5.09 Milyar USD FAVÖK öngörüsü.",
+      "Bağlayıcılık: 9 adet jeotermal ruhsatından 8'inin devri resmen tamamlandı.",
+      "Nitelik: Devlet alım garantisi (YEKDEM) altında 15 yıl boyunca USD bazlı yüksek nakit akışı."
+    ],
+    "notification_text": "MAGEN, 505 MWm kapasiteli 9 jeotermal ruhsatından 8'inin devrini tamamladı. Yatırımın 15 yılda toplam 6.36 milyar USD gelir üretmesi bekleniyor.",
+    "_source_file": "./daily_data_kap/gemini/1530978/1530978_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "15:27",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "298.800.000 TL",
+      "ratio": null,
+      "dates": [
+        "30/12/2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 298.8 Milyon TL (Şirket ölçeğine göre yüksek hacimli sipariş)",
+      "Bağlayıcılık: Sipariş kesinleşti ve alındı (Niyet değil, kesin iş)",
+      "Nitelik: Savunma sanayi ve kamu iştiraki odaklı stratejik iş ilişkisi"
+    ],
+    "notification_text": "ARDYZ, bir kamu kurumu iştirakinden savunma sektöründe kullanılmak üzere 298.800.000 TL tutarında bilişim altyapısı ve yazılım siparişi almıştır.",
+    "_source_file": "./daily_data_kap/gemini/1531037/1531037_gemini.json"
+  },
+  {
+    "ticker": "LYDHO",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "15:00",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "143,991,313.99 TL",
+      "ratio": null,
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: Birleşme işlemi ve sermaye artırımı ticaret sicili tarafından tescil edilerek kesinleşti.",
+      "Nitelik: Lydia Yatırım Holding A.Ş.'nin tüm aktif ve pasifiyle devralınması suretiyle birleşme tamamlandı.",
+      "Sermaye Yapısı: Şirket sermayesi birleşme nedeniyle 208.000.000 TL'den 351.991.313,99 TL'ye yükseltildi."
+    ],
+    "notification_text": "LYDHO, Lydia Yatırım Holding A.Ş. ile devralma yoluyla birleşme işleminin tescil edildiğini ve sermayesinin 351.9 milyon TL'ye çıkarıldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1531017/1531017_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "22:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "322274085.57 TL",
+      "ratio": "%89.57",
+      "dates": [
+        "2025-12-28",
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlayıcılık: İntron Bilişim'in devralınması yoluyla birleşme işlemi resmen tescil edildi.",
+      "Sermaye Artırımı: Birleşme nedeniyle sermaye 170 Milyon TL'den 322.2 Milyon TL'ye yükseltildi.",
+      "Kesinleşme: Genel kurul kararları ticaret sicili tarafından onaylanarak süreç tamamlandı."
+    ],
+    "notification_text": "ARDYZ, İntron Bilişim'i devralma yoluyla birleşme işleminin ve buna bağlı sermaye artırımının tescil edildiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/1531437/1531437_gemini.json"
+  },
+  {
+    "ticker": "BAHKM",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:09",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "67.58 Milyon TL",
+      "ratio": "%10.62",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Yangın sonrası üretim devamlılığı için kritik fabrika ve arsa alımı gerçekleştirildi.",
+      "İşlem bedelinin son yıllık hasılata oranı %10.62 ile anlamlı düzeydedir.",
+      "115.4 Milyon TL ekspertiz değerli varlık, 67.6 Milyon TL bedelle (yüksek iskonto ile) devralındı.",
+      "İşlem kesinleşmiş ve ödemesi peşin olarak tamamlanmıştır."
+    ],
+    "notification_text": "BAHKM, fabrikasında çıkan yangın sonrası üretimi sürdürmek amacıyla 67.6 Milyon TL bedelle yeni bir fabrika ve arsa satın aldı. Alım bedeli cironun %10.6'sına denk gelmekte olup, ekspertiz değerinin oldukça altındadır.",
+    "_source_file": "./daily_data_kap/gemini/BAHKM_1531227_gemini.json"
+  },
+  {
+    "ticker": "SMRVA",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:15",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "482.000.000 TL",
+      "ratio": "%408,47",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırım oranı %408,47 ile oldukça yüksektir",
+      "Yönetim Kurulu kararı alınmış ve süreç resmileşmiştir",
+      "Artışın tamamı iç kaynaklardan (geçmiş yıl karları) karşılanmaktadır"
+    ],
+    "notification_text": "Sümer Varlık (SMRVA), %408,47 oranında bedelsiz sermaye artırımı kararı aldığını, sermayesini 118 milyon TL'den 600 milyon TL'ye çıkaracağını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/SMRVA_1531255_gemini.json"
+  },
+  {
+    "ticker": "ARASE",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "16:52",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1.246.860.513 TL",
+      "ratio": "%5.6",
+      "dates": [
+        "Ocak 2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Tutar: 1.24 Milyar TL (KDV Hariç)",
+      "Ciroya oran: %5.6 (Sadece 1 aylık dönem için yüksek ölçek)",
+      "Piyasa değerine oran: %7.0",
+      "Bağlayıcılık: Kesin enerji satış anlaşması"
+    ],
+    "notification_text": "Şirket bağlı ortaklığı, Ocak 2026 dönemi için yıllık cirosunun %5.6'sına tekabül eden 1.24 milyar TL tutarında kesin enerji satış anlaşması imzalamıştır.",
+    "_source_file": "./daily_data_kap/gemini/ARASE_1531160_gemini.json"
+  },
+  {
+    "ticker": "MAGEN",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "12:22",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "462.850.000 USD (Yıllık Beklenen Ciro)",
+      "ratio": "~%1500 (Mevcut Ciroya Oran)",
+      "dates": [
+        "30.12.2025",
+        "27.10.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "505 MWm kapasiteli 9 jeotermal ruhsatından 8'inin devri tamamlanarak süreç kesinleşmiştir.",
+      "Yıllık beklenen 462.8M USD ciro, şirketin mevcut yıllık cirosunun (1.08B TL) yaklaşık 15 katıdır.",
+      "15 yıl süreli devlet alım garantisi (YEKDEM) kapsamında döviz bazlı ve stratejik gelir potansiyeli.",
+      "Yatırımın toplam YEKDEM geliri 6.36 Milyar USD olarak öngörülmektedir."
+    ],
+    "notification_text": "MAGEN, 505 MWm kapasiteli jeotermal yatırımı kapsamında 8 ruhsatın devrini tamamladı. Yıllık 462.8 Milyon USD beklenen ciro ile mevcut ölçeğine göre devasa büyüklükte ve döviz bazlı bir gelir kalemi kesinleşmiş oldu.",
+    "_source_file": "./daily_data_kap/gemini/MAGEN_1530978_gemini.json"
+  },
+  {
+    "ticker": "BAYRK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "08:57",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "%342.75",
+      "ratio": "3.4275",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı oranı %100 eşiğinin çok üzerinde (%342.75)",
+      "BISTECH tarafından teorik fiyat belirlenmiş olup hak kullanımı süreci kesinleşmiştir",
+      "Yüksek oranlı bölünme piyasa likiditesini ve fiyat algısını etkileyebilir"
+    ],
+    "notification_text": "BAYRK paylarında %342,75 oranında iç kaynaklardan bedelsiz sermaye artırımı hak kullanımı gerçekleşmektedir; bölünme sonrası teorik fiyat 5,407 TL olarak belirlenmiştir.",
+    "_source_file": "./daily_data_kap/gemini/BAYRK, OZGYO_1530853_gemini.json"
+  },
+  {
+    "ticker": "KZBGY",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "10:28",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.677.149.516 TL",
+      "ratio": "%20.58",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "2.67 Milyar TL tutarındaki devasa idari para cezasının yürütmesinin durdurulması kararı üst mahkemece onanmıştır.",
+      "Söz konusu ceza tutarı, şirketin piyasa değerinin yaklaşık %20.6'sına, yıllık cirosunun ise %230'una denk gelmektedir.",
+      "Şirketin finansal sürdürülebilirliğini doğrudan etkileyebilecek çok büyük bir riskin hukuki olarak engellenmesi söz konusudur."
+    ],
+    "notification_text": "KZBGY, piyasa değerinin %20'sine ve yıllık cirosunun 2 katından fazlasına denk gelen 2.67 milyar TL'lik idari para cezasının yürütmesinin durdurulması kararının kesinleştiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KZBGY_1530903_gemini.json"
+  },
+  {
+    "ticker": "TRALT",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:27",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "8.100.000 Ton Cevher",
+      "ratio": null,
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "8.100.000 tonluk Altın ve Gümüş cevheri işleme protokolü imzalandı.",
+      "Şirketin mevcut operasyonel ölçeğine göre oldukça yüksek hacimli bir iş birliği.",
+      "Protokol imzalanmış ve bağlayıcı aşamaya geçilmiştir."
+    ],
+    "notification_text": "TRALT, 8.1 milyon ton altın ve gümüş cevherinin kendi tesislerinde işlenmesi için Taşzemin Madencilik ile kesin protokol imzaladı. Yüksek hacimli iş birliğinin nakit akışına olumlu katkısı beklenmektedir.",
+    "_source_file": "./daily_data_kap/gemini/TRALT_1531280_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "15:27",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "298.800.000 TL",
+      "ratio": "%13.75",
+      "dates": [
+        "30.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Sözleşme tutarının yıllık ciroya oranı %13.75 ile eşik değerin üzerindedir.",
+      "Savunma sanayi ve kamu kurumu iştiraki ile stratejik iş birliği.",
+      "Sipariş kesinleşmiş ve bağlayıcı niteliktedir."
+    ],
+    "notification_text": "ARDYZ, bir kamu kurumu iştirakinden savunma sektörüne yönelik 298.8 Milyon TL tutarında (ciroya oranı %13.75) yazılım ve lisans siparişi aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ARDYZ_1531037_gemini.json"
+  },
+  {
+    "ticker": "SMRTG",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "18:16",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "122.000.000 EUR",
+      "ratio": "60.8%",
+      "dates": [
+        "2026-2029",
+        "2026-01-01"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "122 Milyon Euro tutarındaki dev yatırım projesinde arazi tapusu resmen devralındı.",
+      "34 Milyon Euro tutarındaki nakit hibe desteği kesinleşmiş durumda.",
+      "Yatırım tutarı şirketin yıllık cirosuna (7.4 Milyar TL) oranla yaklaşık %60 gibi çok yüksek bir ölçektedir.",
+      "Proje AB stratejik teşvikleri ve Clean Industrial Deal kapsamına girerek yüksek katma değer potansiyeli taşımaktadır."
+    ],
+    "notification_text": "SMRTG, Bulgaristan'daki 122M Euro'luk stratejik yatırımında arazi tapusunu aldı. 34M Euro hibe içeren ve cironun %60'ına karşılık gelen proje finansman aşamasına geçti.",
+    "_source_file": "./daily_data_kap/gemini/SMRTG_1531260_gemini.json"
+  },
+  {
+    "ticker": "YEOTK",
+    "published_at": {
+      "date": "2025-12-30",
+      "time": "09:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "57.000.000 USD",
+      "ratio": "%18.8",
+      "dates": [
+        "29.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "57 Milyon USD tutarında proje finansmanı kesinleşti",
+      "Tutarın yıllık ciroya oranı yaklaşık %18.8 (Ölçek çok büyük)",
+      "Vodafone ile yapılan stratejik GES projesinin finansman ve uygulama aşamasına geçildi"
+    ],
+    "notification_text": "YEOTK, Vodafone ile yürütülen GES projesi kapsamında 57 milyon USD tutarında finansman sağlandığını ve ilk dilimin hesaplara geçtiğini duyurdu. Tutar şirket cirosuna oranla oldukça büyüktür.",
+    "_source_file": "./daily_data_kap/gemini/YEOTK_1530860_gemini.json"
+  },
+  {
+    "ticker": "PRKAB",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "00:31",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "934.252.187 TRY",
+      "ratio": "%8.12",
+      "dates": [
+        "30/12/2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 934.25 Milyon TL + KDV",
+      "Ciroya oran: %8.12 (Önemli ölçek)",
+      "Piyasa değerine oran: %14.3 (Yüksek etki potansiyeli)",
+      "Karşı Taraf: TEİAŞ (Stratejik kamu kurumu)",
+      "Bağlayıcılık: İhale kazanıldı ve sözleşme daveti tebliğ edildi"
+    ],
+    "notification_text": "PRKAB, TEİAŞ tarafından açılan yaklaşık 934 milyon TL tutarındaki ihaleyi kazandığını ve sözleşme daveti aldığını duyurdu. Tutar, şirketin yıllık cirosunun %8'ine, piyasa değerinin ise %14'üne tekabül etmektedir.",
+    "_source_file": "./daily_data_kap/gemini/PRKAB_1531442_gemini.json"
+  },
+  {
+    "ticker": "KAYSE",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "09:48",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.294.000.000 TL",
+      "ratio": "%324,93",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı oranı %324,9 (Eşik değer olan %100'ün çok üzerinde)",
+      "SPK onayı alındı (Sürecin kesinleştiği aşama)",
+      "Sermaye 706 milyon TL'den 3 milyar TL'ye yükseltiliyor"
+    ],
+    "notification_text": "KAYSE, %324,9 oranındaki bedelsiz sermaye artırımı için SPK onayını aldığını duyurdu. Sermaye 3 milyar TL'ye ulaşacak.",
+    "_source_file": "./daily_data_kap/gemini/KAYSE_1531471_gemini.json"
+  },
+  {
+    "ticker": "FENER",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "09:44",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "5.000.000.000 TL",
+      "ratio": "%400",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "SPK tarafından %400 oranında bedelli sermaye artırımı onaylandı.",
+      "Artırım tutarı (5 Milyar TL), şirketin piyasa değerinin yaklaşık %42'sine denk gelmektedir.",
+      "Artırım tutarı yıllık cironun (2.59 Milyar TL) yaklaşık 1.9 katıdır (ölçek çok büyük)."
+    ],
+    "notification_text": "Fenerbahçe Futbol A.Ş., 5 milyar TL tutarında (%400 oranında) bedelli sermaye artırımı için SPK onayını almıştır. Rüçhan hakkı kullanım fiyatı 2,00 TL olarak belirlenmiştir.",
+    "_source_file": "./daily_data_kap/gemini/FENER_1531470_gemini.json"
+  },
+  {
+    "ticker": "KLSYN",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "09:53",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "3.600.000 USD",
+      "ratio": "%4.1",
+      "dates": [
+        "8.5 yıl vade",
+        "2 yıl geri ödemesiz"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "Tutar: 3.6 Milyon USD (Şirket ölçeğine göre anlamlı)",
+      "Piyasa değerine oran: ~%4.1 (Eşik değer %3 üzeri)",
+      "Stratejik İş Ortağı: IBRD (Dünya Bankası) kaynaklı prestijli finansman",
+      "Bağlayıcılık: Kredi sözleşmesi imzalanmıştır"
+    ],
+    "notification_text": "Koleksiyon Mobilya, IBRD kaynaklı 3.6 milyon USD tutarında, 8.5 yıl vadeli yeşil ihracat destek kredisi sözleşmesi imzaladığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KLSYN_1531480_gemini.json"
+  },
+  {
+    "ticker": "ARASE",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "13:54",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1,168,728,678.87 TL",
+      "ratio": "%5.25",
+      "dates": [
+        "Aralık 2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.92,
+    "watch_reason": [
+      "1.17 Milyar TL tutarında enerji satışı gerçekleşti.",
+      "Sözleşme tutarının yıllık ciroya oranı %5.25, piyasa değerine oranı %6.59'dur.",
+      "Aralık 2025 dönemi için kesinleşmiş ve tamamlanmış bir satıştır."
+    ],
+    "notification_text": "Şirketin bağlı ortaklığı Aras Elektrik, Aralık ayı için 1.17 Milyar TL tutarında enerji satışı gerçekleştirdiğini ve bu işlemin ciroya olumlu yansıyacağını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ARASE_1531602_gemini.json"
+  },
+  {
+    "ticker": "LYDHO",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "14:17",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "143.991.313 TL",
+      "ratio": "%69.2",
+      "dates": [
+        "2025-12-30"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Lydia Yatırım Holding A.Ş. ile devralma yoluyla birleşme süreci tescil edilerek resmen tamamlanmıştır.",
+      "Birleşme sonucunda şirket sermayesi %69,2 oranında artırılarak 351.991.313 TL'ye ulaşmıştır.",
+      "Sürecin tescil edilmesiyle birlikte birleşme hukuken kesinleşmiştir."
+    ],
+    "notification_text": "LYDHO, Lydia Yatırım Holding A.Ş. ile birleşme işlemlerinin tescil edildiğini ve sürecin tamamlandığını duyurdu. Şirket sermayesi 208 milyon TL'den 351,9 milyon TL'ye yükseldi.",
+    "_source_file": "./daily_data_kap/gemini/LYDHO_1531613_gemini.json"
+  },
+  {
+    "ticker": "ASELS",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "14:35",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "225.000.000 EUR",
+      "ratio": "~%8.66",
+      "dates": [
+        "2026-2030"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 225 Milyon Avro (Döviz bazlı büyük ölçekli iş)",
+      "Ciroya oran: ~%8.66 (Yıllık ciroya göre anlamlı büyüklük)",
+      "Bağlayıcılık: Kesin sözleşme imzalandı",
+      "Stratejik İş Birliği: ASFAT ile savunma sanayii kapsamında yüksek katma değerli proje"
+    ],
+    "notification_text": "ASELSAN, ASFAT ile deniz platformları savaş sistemleri tedariki ve entegrasyonu kapsamında 225 milyon Avro tutarında kesin sözleşme imzaladığını duyurdu. Teslimatların 2026-2030 yılları arasında yapılması planlanmaktadır.",
+    "_source_file": "./daily_data_kap/gemini/ASELS_1531628_gemini.json"
+  },
+  {
+    "ticker": "DMRGD",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "15:32",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1.297.100.000 TL",
+      "ratio": "%700",
+      "dates": [
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "%700 oranında çok yüksek bedelsiz sermaye artırımı",
+      "Sermaye artırım süreci tescil edilerek resmen tamamlanmıştır",
+      "Mevcut sermaye 185.3 Milyon TL'den 1.48 Milyar TL'ye yükseltilmiştir"
+    ],
+    "notification_text": "DMRGD, %700 oranındaki bedelsiz sermaye artırım sürecinin tescil edildiğini ve tamamlandığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/DMRGD_1531703_gemini.json"
+  },
+  {
+    "ticker": "HLGYO",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "15:24",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "654.545.454,55 TL",
+      "ratio": "%37",
+      "dates": [
+        "31.12.2025"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Satış Bedeli: 654,5 Milyon TL + KDV",
+      "Hasılat Oranı: %37 (Yıllık hasılata göre oldukça yüksek bir oran)",
+      "Kesinleşme: Tapu devri ve satış işlemi tamamen sonuçlandırıldı",
+      "Piyasa Değeri Oranı: İşlem bedeli piyasa değerinin yaklaşık %4,5'ine denk gelmektedir"
+    ],
+    "notification_text": "HLGYO, Antalya'daki portföyünde bulunan arsaların 654,5 milyon TL + KDV bedelle satışını tamamladığını ve tapu devrinin gerçekleştiğini bildirdi. Satış bedeli şirketin yıllık hasılatının %37'sine karşılık gelmektedir.",
+    "_source_file": "./daily_data_kap/gemini/HLGYO_1531693_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "15:47",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "764.705.882 TL",
+      "ratio": "%325",
+      "dates": [
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "%325 oranında yüksek bedelsiz sermaye artırımı",
+      "Süreç tamamlandı (Ticaret Sicil tescili gerçekleşti)",
+      "Sermaye 235,3 Milyon TL'den 1 Milyar TL'ye yükseltildi"
+    ],
+    "notification_text": "Altınay Savunma, %325 oranındaki bedelsiz sermaye artırım sürecinin tescil edilerek resmen tamamlandığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ALTNY_1531710_gemini.json"
+  },
+  {
+    "ticker": "AKFGY",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "16:04",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "10.260.000 EUR",
+      "ratio": "%42,56",
+      "dates": [
+        "2025-12-31",
+        "2026-01-23"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İşlem tutarı yıllık hasılatın %42,56'sı gibi çok yüksek bir orana tekabül etmektedir.",
+      "Şirket piyasa değerine oranı %4,81 ile eşik değerin üzerindedir.",
+      "10.26 Milyon Euro tutarındaki işlem kesinleşmiş ve sözleşme imzalanmıştır.",
+      "Gayrimenkul üzerindeki geri alım haklarının sonlandırılması ve mülkiyetin netleşmesi stratejik olumludur."
+    ],
+    "notification_text": "Akfen GYO, yıllık hasılatının %42,56'sına denk gelen 10.26 milyon Euro bedelli bir gayrimenkul alımı ve yükümlülük sonlandırma işlemi gerçekleştirmiştir.",
+    "_source_file": "./daily_data_kap/gemini/AKFGY_1531719_gemini.json"
+  },
+  {
+    "ticker": "KTSKR",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "16:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%554.34",
+      "dates": [
+        "31/12/2025"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Olağanüstü yüksek nakit temettü oranı: Net %554,34",
+      "Merkezi Kayıt Kuruluşu aracılığıyla nakit ödeme sürecinin kesinleşmesi",
+      "Piyasa değeri üzerinde doğrudan ve yüksek etki potansiyeli"
+    ],
+    "notification_text": "Kütahya Şeker (KTSKR), pay başına net %554,34 oranında nakit temettü ödemesi gerçekleştirileceğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KTSKR, PSGYO_1531777_gemini.json"
+  },
+  {
+    "ticker": "DITAS",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "16:50",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%100 Bedelsiz, %100 Bedelli",
+      "dates": [
+        "2026-01-02"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "%100 Bedelsiz ve %100 Bedelli sermaye artırımı hak kullanım süreci başlıyor.",
+      "Hak kullanım (rüçhan) başlangıç tarihi 02.01.2026 olarak kesinleşti.",
+      "Hisse fiyatında teknik düzeltme ve sermaye yapısında önemli değişiklik yaratacak kesinleşmiş adım."
+    ],
+    "notification_text": "DITAS, %100 bedelsiz ve %100 bedelli sermaye artırımı hak kullanım tarihlerini 2 Ocak 2026 olarak duyurdu. Hisse bu tarihte bölünmüş fiyatla işlem görmeye başlayacaktır.",
+    "_source_file": "./daily_data_kap/gemini/DITAS_1531784_gemini.json"
+  },
+  {
+    "ticker": "SEGYO",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "18:11",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.033.888.208 TL",
+      "ratio": "%250",
+      "dates": [
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "%250 oranında bedelli sermaye artırımı kararı alınmıştır.",
+      "Artırım tutarı (2.03 Milyar TL), şirketin piyasa değerinin (~4.16 Milyar TL) yaklaşık %49'una denk gelmektedir.",
+      "Yönetim kurulu kararı ile süreç resmiyet kazanmıştır."
+    ],
+    "notification_text": "SEGYO, %250 oranında (2.03 Milyar TL) bedelli sermaye artırımı kararı aldığını açıkladı. Artırım tutarı şirket piyasa değerine oranla oldukça yüksek bir seviyededir.",
+    "_source_file": "./daily_data_kap/gemini/SEGYO_1531848_gemini.json"
+  },
+  {
+    "ticker": "RUBNS",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "18:18",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "737.550.000 TL",
+      "ratio": "%900",
+      "dates": [
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Bedelsiz sermaye artırım oranı %900 ile çok yüksek seviyededir.",
+      "Yönetim Kurulu kararı alınmış ve süreç resmileşmiştir.",
+      "Artışın büyük kısmı (600 Milyon TL) sermaye düzeltmesi olumlu farklarından karşılanmaktadır."
+    ],
+    "notification_text": "Rubenis Tekstil (RUBNS), mevcut sermayesini %900 oranında bedelsiz artırarak 81.950.000 TL'den 819.500.000 TL'ye çıkarma kararı aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/RUBNS_1531876_gemini.json"
+  },
+  {
+    "ticker": "TEHOL",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "18:16",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "650.000.000 TL",
+      "ratio": "%38.59",
+      "dates": [
+        "2025-12"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 650 Milyon TL",
+      "Ciroya oran: %38.59 (Ölçek çok büyük)",
+      "Sektör: Stratejik siber güvenlik ve kamu/finans odaklı siparişler",
+      "Bağlayıcılık: Kesinleşmiş sipariş toplamı"
+    ],
+    "notification_text": "Şirket iştiraki Barikat İnternet Güvenliği'nin Aralık ayı içerisinde aldığı toplam 650 milyon TL'lik sipariş, şirketin yıllık cirosunun %38.6'sı gibi oldukça yüksek bir orana karşılık gelmektedir.",
+    "_source_file": "./daily_data_kap/gemini/TEHOL_1531867_gemini.json"
+  },
+  {
+    "ticker": "INTEK",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "18:24",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "74,735,040.84 TL + KDV",
+      "ratio": "%38.7",
+      "dates": [
+        "2026-01-01",
+        "2027-12-31"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Toplam sözleşme bedeli (74.7M TL), şirketin yıllık cirosuna (192.8M TL) oranla %38.7 gibi çok yüksek bir ölçektedir.",
+      "Dört farklı kamu ve eğitim kurumu ile eş zamanlı kesinleşmiş ve imzalanmış sözleşmelerdir.",
+      "Sözleşmelerin tamamı bağlayıcıdır ve 2026-2027 dönemini kapsamaktadır."
+    ],
+    "notification_text": "INTEK, %51 bağlı ortaklığı üzerinden toplamda 74.7 Milyon TL + KDV tutarında, yıllık cirosunun %38.7'sine tekabül eden dört yeni hizmet sözleşmesi imzaladığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/INTEK_1531892_gemini.json"
+  },
+  {
+    "ticker": "SNKRN",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "21:47",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "3.471.135 TL",
+      "ratio": "%44.2",
+      "dates": [
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Orgino Medya'nın devralınması yoluyla birleşme işlemi Genel Kurul tarafından onaylandı.",
+      "Şirketin ticari unvanı ve faaliyet konusu tamamen değişiyor.",
+      "Birleşme kaynaklı tahsisli sermaye artırımı ile mevcut sermaye %44 oranında artacak."
+    ],
+    "notification_text": "SNKRN, Orgino Medya ile birleşme işleminin ve buna bağlı unvan/faaliyet konusu değişikliğinin Genel Kurul'da kabul edildiğini açıkladı.",
+    "_source_file": "./daily_data_kap/gemini/SNKRN_1531978_gemini.json"
+  },
+  {
+    "ticker": "PATEK",
+    "published_at": {
+      "date": "2025-12-31",
+      "time": "22:31",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.000.000.000 TL",
+      "ratio": "%101.2",
+      "dates": [
+        "2025-12-30",
+        "2025-12-31"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "2 Milyar TL tutarında devasa nakit girişi (Tahsisli sermaye artırımı)",
+      "Söz konusu tutar şirketin yıllık cirosunun (%101) üzerindedir",
+      "SPK onayı alınmış ve süreç kesinleşmiştir"
+    ],
+    "notification_text": "PATEK, yıllık cirosunun tamamına eşdeğer (2 Milyar TL) nakit girişi sağlayacak tahsisli sermaye artırımı için SPK onayı aldı.",
+    "_source_file": "./daily_data_kap/gemini/PATEK_1531982_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "09:06",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "504.000.000 TL",
+      "ratio": "%23.19",
+      "dates": [
+        "31/12/2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 504 Milyon TL",
+      "Ciroya oran: %23.19 (Ölçek oldukça büyük)",
+      "Bağlayıcılık: Kesinleşmiş sözleşme imzası",
+      "Stratejik Alan: Kamu iştiraki ile yapay zeka tabanlı ERP projesi"
+    ],
+    "notification_text": "ARDYZ, yıllık cirosunun yaklaşık %23'üne denk gelen 504 milyon TL tutarında, kamu iştiraki ile yapay zeka tabanlı yazılım geliştirme ve modernizasyon sözleşmesi imzaladığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ARDYZ_1532021_gemini.json"
+  },
+  {
+    "ticker": "ODINE",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "09:02",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "6.455.151 USD",
+      "ratio": "%31.03",
+      "dates": [
+        "2025-12-31"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 6.45 Milyon USD (Yaklaşık 276.7 Milyon TL)",
+      "Ciroya oran: %31.03 (Ölçek oldukça büyük)",
+      "Müşteri: Turkcell Grup (Stratejik ve yüksek kaliteli karşı taraf)",
+      "Döviz bazlı ve kesinleşmiş sipariş"
+    ],
+    "notification_text": "Odine, Turkcell Grup'tan yıllık cirosunun %31'ine denk gelen, 6.45 milyon USD tutarında 5G ve bulut platform dönüşümü siparişi aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ODINE_1532018_gemini.json"
+  },
+  {
+    "ticker": "PATEK",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "09:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "478.500.000 TL",
+      "ratio": "%24.2",
+      "dates": [
+        "01.01.2026",
+        "31.12.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.98,
+    "watch_reason": [
+      "Tutar: 478.5 Milyon TL",
+      "Ciroya oran: %24.2 (Ölçek çok büyük)",
+      "Karşı Taraf: İçişleri Bakanlığı NVİGM (Stratejik kamu kurumu)",
+      "Bağlayıcılık: Kesinleşmiş ve imzalanmış sözleşme",
+      "Stratejik Not: Şirket alt yüklenicilikten ana yükleniciliğe geçiş yapmıştır"
+    ],
+    "notification_text": "PATEK, İçişleri Bakanlığı ile yıllık cirosunun %24'üne tekabül eden 478.5 milyon TL tutarında stratejik bir bakım ve yazılım sözleşmesi imzaladığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/PATEK_1532026_gemini.json"
+  },
+  {
+    "ticker": "KAYSE",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "09:23",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.294.000.000 TL",
+      "ratio": "%324,93",
+      "dates": [
+        "2025-12-30",
+        "2026-01-02"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "%324,93 oranında yüksek bedelsiz sermaye artırımı",
+      "SPK onayı kesinleşti ve ihraç belgesi alındı",
+      "Sermaye 706 milyon TL'den 3 milyar TL'ye yükseltiliyor"
+    ],
+    "notification_text": "KAYSE, SPK'dan %324,93 oranında bedelsiz sermaye artırımı onayı aldığını ve sürecin kesinleştiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KAYSE_1532029_gemini.json"
+  },
+  {
+    "ticker": "ONCSM",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "09:30",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "115.000.000 GBP",
+      "ratio": "%1222",
+      "dates": [
+        "31/12/2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Toplam sözleşme tutarı (6.4 Milyar TL), şirketin piyasa değerinin (6.2 Milyar TL) üzerindedir.",
+      "Sözleşme büyüklüğü yıllık cironun yaklaşık 12 katıdır (%1222 oranında).",
+      "İngiltere Sağlık Bakanlığı (NHS) ile yapılan stratejik ihracatın sevkiyat aşaması başarıyla devam etmektedir.",
+      "Döviz bazlı (GBP) ve uzun vadeli (2+2 yıl) bir iş modelinin operasyonel onayıdır."
+    ],
+    "notification_text": "Oncosem, İngiltere Sağlık Bakanlığı (NHS) ile imzaladığı, piyasa değerinden büyük olan 115 milyon GBP'lik dev sözleşme kapsamında üçüncü sevkiyatın gerçekleştiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ONCSM_1532035_gemini.json"
+  },
+  {
+    "ticker": "FENER",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "16:47",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%400",
+      "dates": [
+        "2026-01-05"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Yüksek oranlı (%400) bedelli sermaye artırımı süreci",
+      "Hak kullanım (rüçhan) başlangıç tarihinin 05.01.2026 olarak kesinleşmesi",
+      "Fiyat düzeltmesi ve rüçhan hakkı kupon pazarı oluşumu nedeniyle piyasa bozucu etki"
+    ],
+    "notification_text": "FENER %400 oranındaki bedelli sermaye artırımı hak kullanım tarihini 5 Ocak 2026 olarak belirledi. Hisse fiyatı bu tarihte düzeltmeye tabi tutulacaktır.",
+    "_source_file": "./daily_data_kap/gemini/FENER_1532347_gemini.json"
+  },
+  {
+    "ticker": "ZERGY",
+    "published_at": {
+      "date": "2026-01-02",
+      "time": "16:44",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "215.133.043,54 TL",
+      "ratio": "%84.06",
+      "dates": [
+        "01.12.2025-31.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Aralık ayı satış tutarı (215.1M TL), yıllık cironun (255.9M TL) yaklaşık %84'üne tekabül etmektedir.",
+      "Şirket ölçeğine göre oldukça yüksek bir aylık satış performansı.",
+      "Son 7 günde haber akışı düşük olduğu için piyasa üzerinde sürpriz etkisi yaratabilir."
+    ],
+    "notification_text": "ZERGY, Aralık ayında yıllık cirosunun %84'üne denk gelen 215.1 Milyon TL'lik konut satışı gerçekleştirdiğini açıkladı.",
+    "_source_file": "./daily_data_kap/gemini/ZERGY_1532343_gemini.json"
+  },
+  {
+    "ticker": "ONRYT",
+    "published_at": {
+      "date": "2026-01-05",
+      "time": "11:26",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "44,393,385.76 USD",
+      "ratio": "%206",
+      "dates": [
+        "2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "2025 yılı toplam iş hacmi (44.4M USD), şirketin son açıklanan yıllık cirosunun (749.5M TL) yaklaşık 2.06 katıdır.",
+      "Açıklanan 2M USD'lik yeni ek sipariş tutarı tek başına yıllık cironun %9.3'üne tekabül etmektedir.",
+      "Şirketin büyüme ivmesi piyasa beklentisinin üzerinde bir iş hacmine işaret etmektedir."
+    ],
+    "notification_text": "ONRYT, 2025 yılı toplam sözleşme tutarının 44.4 milyon dolara (cirosunun 2 katından fazla) ulaştığını ve 2 milyon dolarlık yeni sipariş aldığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ONRYT_1532646_gemini.json"
+  },
+  {
+    "ticker": "FORTE",
+    "published_at": {
+      "date": "2026-01-05",
+      "time": "13:23",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "56.520.000 TL",
+      "ratio": "%5.08",
+      "dates": [
+        "05.01.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İhale bedeli (56.5M TL) yıllık ciroya oranla %5 eşiğini aşmaktadır (%5.08).",
+      "İhale komisyonu tarafından ihalenin şirket uhdesinde kaldığı kesinleşmiştir.",
+      "Son 7 günde şirketten gelen ilk haber olması nedeniyle piyasa üzerinde sürpriz etkisi yaratabilir."
+    ],
+    "notification_text": "FORTE, Mesleki Yeterlilik Kurumu'nun açtığı 56.5 milyon TL tutarındaki bilişim ihalesini kazandığını duyurdu. Tutar yıllık cironun %5.08'ine tekabül ediyor.",
+    "_source_file": "./daily_data_kap/gemini/FORTE_1532691_gemini.json"
+  },
+  {
+    "ticker": "LIDFA",
+    "published_at": {
+      "date": "2026-01-05",
+      "time": "15:06",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "530.442.000 TL",
+      "ratio": "%95",
+      "dates": [
+        "2025-11-19",
+        "2025-12-30",
+        "2026-01-05"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı süreci için en kritik aşama olan SPK onayı alındı.",
+      "Artış tutarı (530.4M TL), şirketin mevcut sermayesini yaklaşık iki katına çıkarıyor.",
+      "Son 7 gündür şirketten gelen ilk önemli haber (Düşük frekans, yüksek etki potansiyeli)."
+    ],
+    "notification_text": "LIDFA %95 oranındaki bedelsiz sermaye artırımı için SPK onayını aldı; sermaye 1.08 milyar TL'ye çıkıyor.",
+    "_source_file": "./daily_data_kap/gemini/LIDFA_1532774_gemini.json"
+  },
+  {
+    "ticker": "SMRVA",
+    "published_at": {
+      "date": "2026-01-05",
+      "time": "18:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "482.000.000 TL",
+      "ratio": "%408,47",
+      "dates": [
+        "2025-12-30",
+        "2026-01-05"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı oranı %408,47 (Eşik değer olan %100'ün çok üzerinde)",
+      "SPK, BDDK ve Ticaret Bakanlığı başvuru süreçlerinin resmen tamamlandığı bildirildi",
+      "Şirketin mevcut sermayesi 118 mn TL'den 600 mn TL'ye yükselecek"
+    ],
+    "notification_text": "SMRVA, %408,47 oranındaki yüksek bedelsiz sermaye artırımı için SPK ve ilgili kurumlara başvuru işlemlerini tamamladığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/SMRVA_1533021_gemini.json"
+  },
+  {
+    "ticker": "EKOS",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "09:24",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.450.000 USD (102.813.760 TL)",
+      "ratio": "%6,68",
+      "dates": [
+        "2026-01-05"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İhale kazanımı kesinleşmiş (AYEDAŞ)",
+      "Tutarın yıllık ciroya oranı %6,68 ile %5 eşiğinin üzerindedir",
+      "Şirketin son 7 gündür sessiz olması (0 haber) haberin etkisini artırabilir"
+    ],
+    "notification_text": "EKOS, AYEDAŞ tarafından düzenlenen ihaleyi 2,45 milyon USD bedelle kazandığını açıkladı. İş tutarı yıllık cironun %6,68'ine tekabül etmektedir.",
+    "_source_file": "./daily_data_kap/gemini/EKOS_1533243_gemini.json"
+  },
+  {
+    "ticker": "ZERGY",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "09:42",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "1.827.026.545,72 TL",
+      "ratio": "%713,8",
+      "dates": [
+        "01.01.2025",
+        "31.12.2025"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "2025 yılı toplam satış tutarı (1.83 Milyar TL), şirketin mevcut yıllık cirosunun (255.9 Milyon TL) yaklaşık 7 katıdır.",
+      "Satış tutarı piyasa değerinin %29'una tekabül etmektedir.",
+      "Düşük haber frekansı (7 günde 0 haber) nedeniyle piyasa için sürpriz ve pozitif bir veridir."
+    ],
+    "notification_text": "Zeray GYO, 2025 yılı genelinde yıllık cirosunun 7 katından fazla (1.83 Milyar TL) satış gerçekleştirdiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/ZERGY_1533256_gemini.json"
+  },
+  {
+    "ticker": "ALVES",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "09:53",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "689.661.000 TL",
+      "ratio": "%9.68",
+      "dates": [
+        "2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 689.6 Milyon TL (Yaklaşık 16 Milyon USD)",
+      "Ciroya oran: %9.68 (Eşik değer olan %5'in üzerinde)",
+      "Piyasa değerine oran: %16.28 (Oldukça yüksek etki potansiyeli)",
+      "Bağlayıcılık: 2026 yılını kapsayan kesin satış sözleşmesi imzalandı"
+    ],
+    "notification_text": "ALVES, 2026 yılı için yıllık cirosunun %9.68'ine denk gelen 689.6 Milyon TL tutarında yeni bir bakır filmaşin satış sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/ALVES_1533258_gemini.json"
+  },
+  {
+    "ticker": "SONME",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "15:46",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "13.800.000 TL",
+      "ratio": "%34.02",
+      "dates": [
+        "06.01.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İştirakten 13.8 Milyon TL nakit kar payı tahsilatı",
+      "Tutarın yıllık ciroya (40.5M TL) oranı %34 gibi çok yüksek bir seviyede",
+      "Şirketin operasyonel ölçeğine göre oldukça anlamlı bir nakit girişi"
+    ],
+    "notification_text": "SONME, iştiraki Sönmez Çimento'dan yıllık cirosunun %34'üne denk gelen 13.8 Milyon TL tutarında nakit kar payı tahsil ettiğini açıkladı.",
+    "_source_file": "./daily_data_kap/gemini/SONME_1533573_gemini.json"
+  },
+  {
+    "ticker": "ARASE",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "16:51",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "34.199.832.120 TL",
+      "ratio": "%153.5",
+      "dates": [
+        "2026-2030"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bağlı ortaklık üzerinden 5 yıllık devasa yatırım planı (34.2 Milyar TL)",
+      "Toplam yatırım tutarı şirketin yıllık cirosunun %153'üne, piyasa değerinin %191'ine denk geliyor",
+      "Yıllık ortalama yatırım tutarı (6.8 Milyar TL) mevcut cironun %30'undan fazlasına tekabül ediyor",
+      "Son 7 gündür haber akışı olmayan şirkette yüksek sürpriz etkisi"
+    ],
+    "notification_text": "ARASE, bağlı ortaklığı üzerinden 2026-2030 dönemini kapsayan, yıllık cirosunun 1.5 katından fazla (34.2 Milyar TL) devasa bir yatırım planı açıkladı.",
+    "_source_file": "./daily_data_kap/gemini/ARASE_1533663_gemini.json"
+  },
+  {
+    "ticker": "EKGYO",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "18:55",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "2.824.400.000 TL",
+      "ratio": "%4.70",
+      "dates": [
+        "06.01.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Muğla Bodrum Ortakent projesi için 2.82 milyar TL tutarında kesin sözleşme imzalandı.",
+      "Şirket payı toplam geliri, piyasa değerinin %3.50'sine tekabül ederek eşik değeri aşmıştır.",
+      "Son 7 günde şirketten gelen ilk önemli haber olması nedeniyle piyasa duyarlılığı yüksek olabilir."
+    ],
+    "notification_text": "EKGYO, Muğla Bodrum projesi için 2.82 milyar TL şirket payı gelirli arsa satışı karşılığı gelir paylaşımı sözleşmesini imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/EKGYO_1533987_gemini.json"
+  },
+  {
+    "ticker": "KZBGY",
+    "published_at": {
+      "date": "2026-01-06",
+      "time": "20:34",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "292.577.936 TL",
+      "ratio": "%25.1",
+      "dates": [
+        "2025-12-01",
+        "2025-12-31"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Aralık ayı satış tutarı: 292.6 Milyon TL",
+      "Aylık satışın yıllık ciroya oranı: %25.1 (Oldukça yüksek)",
+      "Toplam birikmiş satış bedeli 9.7 Milyar TL'ye ulaştı"
+    ],
+    "notification_text": "Kızılbük GYO, sadece Aralık ayında yıllık cirosunun %25'ine tekabül eden 292.6 milyon TL tutarında devre mülk satışı gerçekleştirdiğini duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KZBGY_1534038_gemini.json"
+  },
+  {
+    "ticker": "SMRVA",
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "12:34",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "2025-12-30",
+        "2026-01-07"
+      ]
+    },
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımı süreci için kritik BDDK onayı alındı.",
+      "Varlık yönetim şirketleri için BDDK onayı, SPK öncesi en önemli yasal eşiktir.",
+      "30 Aralık'taki yönetim kurulu kararından sadece 8 gün sonra onay gelmesi sürecin hızlı ilerlediğini gösterir."
+    ],
+    "notification_text": "SMRVA, bedelsiz sermaye artırımı başvurusu için BDDK'dan resmi onay aldığını duyurdu. Süreç SPK onayı aşamasına geçmiştir.",
+    "_source_file": "./daily_data_kap/gemini/SMRVA_1534338_gemini.json"
+  },
+  {
+    "ticker": "KONTR",
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "16:05",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "35.050.000 EUR",
+      "ratio": "%14.6",
+      "dates": [
+        "07/01/2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 35.05 Milyon EUR (Yaklaşık 1.33 Milyar TL)",
+      "Ciroya oran: %14.6 (Şirket ölçeğine göre oldukça anlamlı)",
+      "Stratejik: Fas Ulusal Elektrik ve İçme Suyu Kurumu (ONEE) ihalesinde 1. sırada yer alınması",
+      "Düşük Haber Frekansı: Son 7 günde benzer bir haber akışı yok, sürpriz etkisi yüksek"
+    ],
+    "notification_text": "KONTR, Fas'ta 35 Milyon EUR tutarında (cirosunun %14.6'sına denk gelen) trafo merkezi ihalesini kazandığını duyurdu.",
+    "_source_file": "./daily_data_kap/gemini/KONTR_1534723_gemini.json"
+  },
+  {
+    "ticker": "TSPOR",
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "17:30",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "5.500.000 EUR",
+      "ratio": "%23.7",
+      "dates": [
+        "07.01.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 5.5 Milyon EUR (Yaklaşık 220 Milyon TL)",
+      "Ciroya oran: %23.7 (Yıllık ciroya göre oldukça yüksek bir yatırım)",
+      "Bağlayıcılık: Kesin transfer ve anlaşma sağlanmıştır"
+    ],
+    "notification_text": "Trabzonspor, Wolfsberger AC'den Chibuike Godfrey Nwaiwu'yu 5.5M EUR bedelle kesin olarak transfer ettiğini açıkladı. Tutar yıllık cironun %23'ünden fazlasına tekabül ediyor.",
+    "_source_file": "./daily_data_kap/gemini/TSPOR_1534906_gemini.json"
+  },
+  {
+    "ticker": "PRKAB",
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "18:33",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "934.252.187 TRY",
+      "ratio": "%8.12",
+      "dates": [
+        "2026-01-07"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 934.25 Milyon TL + KDV",
+      "Ciroya oran: %8.12 (Eşik değer olan %5'in üzerinde)",
+      "Kesinleşme: İhale süreci tamamlanarak sözleşme resmen imzalanmıştır"
+    ],
+    "notification_text": "PRKAB, TEİAŞ ile yıllık cirosunun %8.12'sine tekabül eden 934.2 Milyon TL'lik dev sözleşmeyi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/PRKAB_1535028_gemini.json"
+  },
+  {
+    "ticker": "ALARK",
+    "published_at": {
+      "date": "2026-01-07",
+      "time": "19:02",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "2025-12-19",
+        "2026-01-07"
+      ]
+    },
+    "event_type": "CORPORATE_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Stratejik Varlık Takası: Elektrik dağıtım (MEDAŞ) ve perakende (MEPAŞ) şirketlerinin tam kontrolü Alarko'ya geçiyor.",
+      "Odaklanma Stratejisi: Karbon yoğun termik santral (Cenal) ortaklığından çıkılarak düzenlenmiş nakit akışı sağlayan dağıtım işine yoğunlaşılıyor.",
+      "Bağlayıcılık: Görüşme aşamasından 'Ön Protokol' imza aşamasına geçilerek süreç resmileşti."
+    ],
+    "notification_text": "Alarko Holding, Cengiz Enerji ile varlık takası için ön protokol imzaladı; MEDAŞ ve MEPAŞ'ın tüm paylarını devralırken Cenal Termik Santrali'ndeki paylarını devrediyor.",
+    "_source_file": "./daily_data_kap/gemini/ALARK_1535125_gemini.json"
+  },
+  {
+    "ticker": "GRTHO",
+    "published_at": {
+      "date": "2026-01-08",
+      "time": "14:12",
+      "timezone": "Europe/Istanbul"
+    },
+    "key_numbers": {
+      "amount": "306.000.000 TL",
+      "ratio": "%9",
+      "dates": [
+        "08.01.2026"
+      ]
+    },
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Tutar: 306 Milyon TL",
+      "Ciroya oran: %9 (Şirket beyanı)",
+      "Bağlayıcılık: Kesin mısır satış anlaşması",
+      "Düşük haber frekansı: Şirket son 7 gündür sessizdi."
+    ],
+    "notification_text": "GRTHO bağlı ortaklığı Özova Tarım, 306 Milyon TL tutarında (ciroya oranı %9) mısır satış sözleşmesi imzaladı.",
+    "_source_file": "./daily_data_kap/gemini/GRTHO_1536143_gemini.json"
+  }
+]

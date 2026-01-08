@@ -56,7 +56,7 @@ export interface ServiceMeta {
   desc: string;
 }
 
-export const PYTHON_API_URL = "http://localhost:8000";
+export const PYTHON_API_URL = import.meta.env.VITE_PYTHON_API_URL || "http://localhost:8000";
 
 export const SERVICE_METADATA: Record<string, ServiceMeta> = {
   pipeline: { label: 'Daily Pipeline', desc: 'Main automation orchestration pipeline' },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Notification } from '../types';
 import { Clock, ChevronRight, BellRing } from './Icons';
+import { BACKEND_URL } from '../constants';
 
 interface Props {
   notification: Notification;
@@ -54,7 +55,7 @@ const NotificationCard: React.FC<Props> = ({ notification, onClick, variant = 'g
             {/* Company Logo Overlay */}
             <div className="absolute top-3 left-3 w-16 h-16 flex items-center justify-center">
               <img
-                src={`http://localhost:5296/logos/${notification.companyCode}.svg`}
+                src={`${BACKEND_URL}/logos/${notification.companyCode}.svg`}
                 alt={notification.companyCode}
                 className="w-full h-full object-contain drop-shadow-lg"
                 onError={(e) => {
@@ -96,7 +97,7 @@ const NotificationCard: React.FC<Props> = ({ notification, onClick, variant = 'g
         {/* Company Logo Overlay */}
         <div className="absolute top-3 left-3 w-14 h-14 flex items-center justify-center">
           <img
-            src={`http://localhost:5296/logos/${notification.companyCode}.svg`}
+            src={`${BACKEND_URL}/logos/${notification.companyCode}.svg`}
             alt={notification.companyCode}
             className="w-full h-full object-contain drop-shadow-lg"
             onError={(e) => {

@@ -8,13 +8,16 @@ public class NewsService
 {
     private readonly IMongoCollection<NewsItem> _newsCollection;
     private readonly IWebHostEnvironment _env;
+    private readonly string _baseUrl;
 
-    public NewsService(IOptions<MongoDbSettings> mongoSettings, IWebHostEnvironment env)
+    public NewsService(IOptions<MongoDbSettings> mongoSettings, IWebHostEnvironment env, IConfiguration configuration)
     {
         var client = new MongoClient(mongoSettings.Value.ConnectionString);
         var database = client.GetDatabase(mongoSettings.Value.DatabaseName);
         _newsCollection = database.GetCollection<NewsItem>(mongoSettings.Value.NewsCollectionName);
         _env = env;
+        // Production: use configured BaseUrl, Development: fallback to localhost
+        _baseUrl = configuration["BaseUrl"] ?? "http://localhost:5296";
     }
 
     /// <summary>
@@ -22,7 +25,7 @@ public class NewsService
     /// </summary>
     private string MapCategoryToImageUrl(string? category)
     {
-        const string baseUrl = "http://localhost:5296/banners";
+        var baseUrl = $"{_baseUrl}/banners";
         const string defaultImage = "diğer.jpg"; // Fallback image in banners root or Diğer folder
 
         // 1. Kategori temizliği
@@ -123,7 +126,7 @@ public class NewsService
                 // İlk eşleşeni döndür (aynı ticker+tarih için birden fazla olabilir)
                 var fileName = files.First()!;
                 // URL encode yap (dosya adında özel karakterler var)
-                return $"http://localhost:5296/news-images/{Uri.EscapeDataString(fileName)}";
+                return $"{_baseUrl}/news-images/{Uri.EscapeDataString(fileName)}";
             }
         }
         catch (Exception ex)

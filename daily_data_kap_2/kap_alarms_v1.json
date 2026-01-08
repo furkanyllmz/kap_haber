@@ -1,0 +1,1809 @@
+[
+  {
+    "ticker": "DENIZ",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bankanın toplamda yaklaşık 2.26 milyar TL tutarındaki geniş kapsamlı tahsili gecikmiş alacak (NPL) portföyü satışı tamamlanmıştır.",
+      "Satış 6 farklı varlık yönetim şirketine yapılmış olup devir ve sözleşme süreçleri sonuçlanmıştır."
+    ],
+    "key_numbers": {
+      "amount": "2,262,522,251 TL",
+      "ratio": null,
+      "dates": [
+        "15.12.2025",
+        "24.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "Denizbank, yaklaşık 2.26 milyar TL tutarındaki tahsili gecikmiş alacak portföyünün 6 farklı varlık yönetim şirketine satış ve devir işlemlerini tamamladı. Banka bilançosu ve NPL rasyosu üzerindeki temizlik etkisi kritik; işlem hacmi ve likidite takip edilmelidir.",
+    "_source_file": "./gemini/1529578/1529578_gemini.json"
+  },
+  {
+    "ticker": "TEKTU",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Odeabank'a olan kredi borcunun tasfiyesi amacıyla gayrimenkul devir işlemleri tapu müdürlüğü nezdinde tamamlanmıştır.",
+      "Borç yükümlülüğünün azaltılmasına yönelik sürecin resmi olarak sonuçlanması finansal yapı için kritik bir gelişmedir."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "22.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "TEKTU: Odeabank kredi borcunun tasfiyesi kapsamında gayrimenkul devir işlemleri tapu nezdinde tamamlandı. Borçluluk seviyesindeki düşüş ve finansal rahatlama potansiyeli açısından kritik süreç izlenmelidir.",
+    "_source_file": "./gemini/1529911/1529911_gemini.json"
+  },
+  {
+    "ticker": "KIMMR",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Kayıtlı sermaye tavanı geçerlilik süresinin 2029 yılına kadar uzatılmasına ilişkin Ticaret Bakanlığı onayı alındı.",
+      "Sermaye tavanı süreci SPK onayından sonra Bakanlık aşamasını da tamamlayarak Genel Kurul onayına hazır hale geldi."
+    ],
+    "key_numbers": {
+      "amount": "875.000.000 TL",
+      "ratio": null,
+      "dates": [
+        "25.12.2025",
+        "31.12.2029"
+      ]
+    },
+    "what_to_watch_next": [
+      "Şirketin yapılacak ilk Genel Kurul toplantısında pay sahiplerinin nihai onayı",
+      "Sermaye tavanı süresinin uzatılması sonrası olası bedelsiz veya bedelli sermaye artırımı kararları",
+      "Hisse fiyatının teknik seviyelerde (destek/direnç) onay haberine vereceği hacimli tepki"
+    ],
+    "notification_text": "KIMMR: Kayıtlı sermaye tavanı süresinin 2029'a uzatılmasına Ticaret Bakanlığı'ndan resmi onay geldi. 875 Milyon TL'lik tavanın güncelliği korunurken, süreç Genel Kurul onayına sunulacak aşamaya geldi. Kritik regülatif eşik aşıldı, izlemede kalınmalı.",
+    "_source_file": "./gemini/1529788/1529788_gemini.json"
+  },
+  {
+    "ticker": "LKMNH",
+    "event_type": "BUYBACK",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Şirketin geri alım programı kapsamında sahip olduğu kendi paylarının oranı %5 kritik eşiğini aşarak %5,43 seviyesine ulaşmıştır.",
+      "1.200.000.000 TL tutarındaki büyük ölçekli geri alım fonunun kullanımı devam etmektedir."
+    ],
+    "key_numbers": {
+      "amount": "1.200.000.000 TL",
+      "ratio": "%5,43",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "LKMNH: Geri alım programında %5 kritik eşiği aşıldı. Şirketin sahip olduğu pay oranı %5,43'e ulaştı. 1,2 milyar TL bütçeli programın seyri ve kurumsal sahiplik artışı açısından takip edilmelidir.",
+    "_source_file": "./gemini/1529929/1529929_gemini.json"
+  },
+  {
+    "ticker": "KLSYN",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "353.999.999,616 TL tutarında yüksek bedelli yeni iş sözleşmesi imzalanması",
+      "İşin 30.04.2026 tarihine kadar kısa vadede tamamlanacak olması"
+    ],
+    "key_numbers": {
+      "amount": "353.999.999,616 TL",
+      "ratio": null,
+      "dates": [
+        "25.12.2025",
+        "30.04.2026"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "KLSYN, yurt içi bir müşteri ile 353,9 milyon TL tutarında üretim ve montaj sözleşmesi imzaladı.\nİşin Nisan 2026 sonuna kadar tamamlanması planlanıyor.\nKısa vadeli hasılat ve operasyonel kârlılık üzerindeki etkisi izlenmeli.",
+    "_source_file": "./gemini/1529942/1529942_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "%100 bağlı ortaklık Dasal Havacılık'ın sürü yetenekli İHA teknolojileri geliştirilmesi üzerine yüksek tutarlı sözleşme imzalaması",
+      "Sözleşme bedelinin 92,6 milyon TL ve 3,05 milyon USD olmak üzere iki farklı para biriminde toplamda önemli bir büyüklüğe ulaşması"
+    ],
+    "key_numbers": {
+      "amount": "92.609.723,71 TL + 3.050.399,66 USD",
+      "ratio": null,
+      "dates": [
+        "25/12/2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ALTNY %100 bağlı ortaklığı Dasal Havacılık, sürü İHA teknolojileri geliştirilmesi kapsamında 92,6M TL ve 3,05M USD tutarında yeni sözleşme imzaladı. Şirket cirosuna olumlu etki beklenen bu teknolojik iş hacmi kritik seviyede takip edilmeli.",
+    "_source_file": "./gemini/1529945/1529945_gemini.json"
+  },
+  {
+    "ticker": "EFORC",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "100.000.000 TL tutarındaki kira sertifikası (sukuk) ihracının satışı tamamlanmıştır.",
+      "Yıllık %45,78 bileşik getiri oranı ile kısa vadeli (90 gün) finansman sağlanmıştır."
+    ],
+    "key_numbers": {
+      "amount": "100.000.000 TRY",
+      "ratio": "%45,78",
+      "dates": [
+        "25.12.2025",
+        "25.03.2026"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "EFORC: 100 Milyon TL tutarındaki kira sertifikası satışı tamamlandı. %45,78 bileşik getiri ve 90 gün vade ile sağlanan bu likidite girişi, şirketin borçlanma maliyeti ve kısa vadeli nakit akışı açısından kritik.",
+    "_source_file": "./gemini/1529514/1529514_gemini.json"
+  },
+  {
+    "ticker": "LINK",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Olağanüstü Genel Kurul'da kabul edilen sermaye artırımı ve esas sözleşme tadili kararı resmen tescil edildi.",
+      "25.12.2025 tarihi itibarıyla İstanbul Ticaret Sicil Müdürlüğü onayı ile sermaye yapısındaki değişiklik kesinleşti."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "19.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "LINK - Sermaye artırımı kararı resmen tescil edildi. 19.12.2025 tarihli Olağanüstü Genel Kurul'da kabul edilen sermaye maddesi değişikliği 25.12.2025 itibarıyla tescil edilerek kesinleşmiştir. Sürecin hisse yapısı üzerindeki etkileri izlenmelidir.",
+    "_source_file": "./gemini/1529917/1529917_gemini.json"
+  },
+  {
+    "ticker": "FORTE",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Türksat tarafından açılan 1,53 milyar TL tutarındaki dev ihalenin kazanılması.",
+      "E-Devlet hizmetleri kapsamında 699 bilişim personelinin istihdamını içeren kapsamlı operasyonel süreç."
+    ],
+    "key_numbers": {
+      "amount": "1.531.027.364,89 TL",
+      "ratio": null,
+      "dates": [
+        "25/12/2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "FORTE, Türksat'ın düzenlediği 1,53 Milyar TL tutarındaki E-Devlet bilişim hizmetleri ihalesini kazandığını duyurdu. 699 personelin istihdam edileceği bu dev proje, şirketin cirosu ve operasyonel hacmi açısından kritik önemde. Sözleşme imza süreci ve işin başlangıcı takip edilmeli.",
+    "_source_file": "./gemini/1529742/1529742_gemini.json"
+  },
+  {
+    "ticker": "AEFES",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.88,
+    "watch_reason": [
+      "Şirketin 'Vizyon 2035' hedefleri kapsamında operasyonel modelini kökten değiştirerek Rusya, Türkiye ve Uluslararası Operasyonlar olarak 3 ana iş birimine bölünmesi",
+      "Uluslararası operasyonların merkezinin Kazakistan olarak belirlenmesi ve yeni bir genel müdür atamasıyla yönetim yapısının merkezileştirilmesi"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "01.01.2026"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "AEFES: 1 Ocak 2026 itibarıyla Rusya, Türkiye ve Uluslararası Operasyonlar olarak 3 ayrı iş birimine ayrılıyor. Kazakistan merkezli yeni bir uluslararası yönetim yapısı kurulması ve stratejik organizasyonel dönüşüm kararı kritik; uzun vadeli büyüme hikayesi açısından izlenmeli.",
+    "_source_file": "./gemini/1529926/1529926_gemini.json"
+  },
+  {
+    "ticker": "EKGYO",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İzmir Çeşme Musalla 1. Etap ihalesinde 1.600.000.000 TL tutarında şirket payı geliri teklifi alınması",
+      "Arsa satışı karşılığı gelir paylaşımı oranının %40 gibi yüksek bir seviyede gerçekleşmesi"
+    ],
+    "key_numbers": {
+      "amount": "1.600.000.000 TL",
+      "ratio": "%40",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "İhale değerlendirme sürecinin tamamlanarak resmi sözleşme aşamasına geçilmesi",
+      "Gayrimenkul sektörü genelindeki talep ve benzer projelerin değerlemeleri"
+    ],
+    "notification_text": "EKGYO: İzmir Çeşme Musalla 1. Etap ihalesinde 1.6 Milyar TL şirket payı geliri ile en yüksek teklif alındı (%40 pay). İhale sonuçlarının kesinleşmesi ve sözleşme süreci kritik takip edilmeli.",
+    "_source_file": "./gemini/1529919/1529919_gemini.json"
+  },
+  {
+    "ticker": "ONRYT",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.85,
+    "watch_reason": [
+      "Şirketin kredi derecelendirme süreci tamamlanmış ve resmi not bildirimi yapılmıştır.",
+      "Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. tarafından güncel not atanmıştır."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ONRYT: Saha Kurumsal tarafından kredi derecelendirme notu açıklandı.\n25.12.2025 tarihli bildirimle şirketin kredi risk profili güncellendi.\nFinansal borçlanma maliyetleri ve kurumsal itibar açısından not detaylarını izleyin.",
+    "_source_file": "./gemini/1529579/1529579_gemini.json"
+  },
+  {
+    "ticker": "GZNMI",
+    "event_type": "CONTROL_CHANGE",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Allbatross Portföy Yönetimi'nin 3 gün içinde toplam 1.653.953 nominal tutarlı GZNMI payı satışı gerçekleştirmesi",
+      "Kurumsal yatırımcının oy haklarının %15,13'ten %13,41'e, sermaye payının %22,40'tan %19,85'e gerilemesi"
+    ],
+    "key_numbers": {
+      "amount": "1.653.953 nominal",
+      "ratio": "%19,85",
+      "dates": [
+        "22/12/2025",
+        "23/12/2025",
+        "24/12/2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "GZNMI paylarında Allbatross Portföy tarafından 1.6 milyon adeti aşan satış yapıldı. Fonun sermaye payı %22,40'tan %19,85'e gerilerken, %15 oy hakkı eşiği aşağı yönlü geçildi. Kurumsal satış baskısının fiyat üzerindeki etkisi ve likidite durumu izlenmeli.",
+    "_source_file": "./gemini/1529512/1529512_gemini.json"
+  },
+  {
+    "ticker": "ETYAT",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "BİAŞ ağırlıklı ortalama fiyatının pay başına net aktif değerin (3,349734 TL) 2 katını aşması",
+      "SPK Tebliği (III-48.5) uyarınca her iş günü portföy ve net aktif değer tablosu yayımlama zorunluluğunun tetiklenmesi"
+    ],
+    "key_numbers": {
+      "amount": "3.349734 TL",
+      "ratio": ">200%",
+      "dates": [
+        "24.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ETYAT pay fiyatı, net aktif değerinin (3,349734 TL) 2 katını aşmıştır. \nSPK mevzuatı gereği her iş günü portföy tablosu yayımlanacaktır. \nFiyat/NAD oranındaki aşırı sapma ve günlük raporlama süreci takip edilmelidir.",
+    "_source_file": "./gemini/1529697/1529697_gemini.json"
+  },
+  {
+    "ticker": "BVSAN",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Avrupa merkezli bir firma ile 36 adet vinç üretimi ve teslimi için 2.725.000 EUR tutarında yeni iş sözleşmesi imzalanması",
+      "Yurt dışı çelikhane ve haddehane projelerinde yer alarak ihracat ve döviz bazlı gelir potansiyelinin artması"
+    ],
+    "key_numbers": {
+      "amount": "2.725.000,00 EUR",
+      "ratio": null,
+      "dates": [
+        "25.12.2025",
+        "2026-Q4",
+        "2027-Q2"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "BVSAN, Avrupa merkezli bir firma ile 2.725.000 EUR tutarında 36 adet vinç üretimi için sözleşme imzaladı. Teslimatların 2026 son çeyreği ile 2027 ikinci çeyreği arasında yapılması planlanıyor. Yurt dışı iş hacmi ve döviz bazlı gelir potansiyeli açısından izlenmelidir.",
+    "_source_file": "./gemini/1529663/1529663_gemini.json"
+  },
+  {
+    "ticker": "EUKYO",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Pay başına net aktif değerin (3,695426 TL) 2 katının aşılması nedeniyle SPK mevzuatı uyarınca zorunlu günlük raporlama sürecinin başlaması",
+      "Fiyatın net aktif değere oranla aşırı primli seyretmesi ve bu durumun regülatif takip gerektirmesi"
+    ],
+    "key_numbers": {
+      "amount": "3.695426 TL",
+      "ratio": ">200%",
+      "dates": [
+        "24.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "Her iş günü yayımlanacak olan sektörel bazlı portföy ve net aktif değer tabloları",
+      "Fiyatın net aktif değer (NAV) ile olan makasının daralıp daralmadığı",
+      "Borsa İstanbul tarafından gelebilecek olası volatilite bazlı tedbirler"
+    ],
+    "notification_text": "EUKYO: Pay fiyatı net aktif değerin (3,69 TL) 2 katını aştı. SPK mevzuatı gereği her iş günü portföy tablosu yayımlanacak. Fiyatın NAV değerine göre aşırı primli seyri ve günlük tablolar kritik takip edilmeli.",
+    "_source_file": "./gemini/1529698/1529698_gemini.json"
+  },
+  {
+    "ticker": "BORSK",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Kayıtlı sermaye tavanının 1.000.000.000 TL'den 4.800.000.000 TL'ye (%380 artış) çıkarılması kararı",
+      "Sermaye Piyasası Kurulu'na (SPK) 24.12.2025 tarihinde resmi başvurunun yapılmış olması"
+    ],
+    "key_numbers": {
+      "amount": "4.800.000.000 TL",
+      "ratio": "%380",
+      "dates": [
+        "23.12.2025",
+        "24.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "SPK onayının gelmesi ve ardından gelebilecek olası bedelsiz/bedelli sermaye artırımı kararları",
+      "Şirketin bu yüksek tavan artışını destekleyecek yeni yatırım veya büyüme planı açıklamaları",
+      "Hisse fiyatının tavan artışı sonrası hacimli hareketleri ve teknik seviyelerdeki tutunma"
+    ],
+    "notification_text": "BORSK: Kayıtlı sermaye tavanının %380 artışla 4,8 milyar TL'ye yükseltilmesi için SPK başvurusu yapıldı (24.12.2025). Sermaye yapısındaki bu genişleme potansiyel sermaye artırımlarının öncüsü olabilir; onay sürecini ve hacim artışını izleyin.",
+    "_source_file": "./gemini/1529662/1529662_gemini.json"
+  },
+  {
+    "ticker": "KONTR",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İştirak Plan S'in 60.000.000 USD tutarında 3 yıl süreli büyük ölçekli sözleşme imzalaması",
+      "LEO uydu tabanlı IoT haberleşme hizmeti ve 200.000 terminal cihazı tedariki ile teknolojik iş hacmi artışı"
+    ],
+    "key_numbers": {
+      "amount": "60.000.000 USD",
+      "ratio": null,
+      "dates": [
+        "25/12/2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "KONTR iştiraki Plan S, yurt içi bir müşteriyle 60 milyon USD değerinde, 3 yıl süreli uydu tabanlı IoT hizmet ve cihaz tedarik sözleşmesi imzaladı. Şirketin teknoloji odaklı büyüme stratejisi ve nakit akışı açısından kritik gelişmeyi izle.",
+    "_source_file": "./gemini/1529808/1529808_gemini.json"
+  },
+  {
+    "ticker": "EUYO",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "BİAŞ ağırlıklı ortalama fiyatının pay başına net aktif değerin (3,815249 TL) 2 katını aşması",
+      "SPK Menkul Kıymet Yatırım Ortaklıklarına İlişkin Esaslar Tebliği madde 36/2 uyarınca zorunlu bildirim tetiklenmesi"
+    ],
+    "key_numbers": {
+      "amount": "3.815249 TL",
+      "ratio": ">200%",
+      "dates": [
+        "24.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "EUYO pay fiyatı, net aktif değerinin (3,8152 TL) 2 katını aşmıştır. Mevzuat gereği yapılan bu uyarı, piyasa fiyatı ile içsel değer arasındaki aşırı sapmaya işaret etmektedir. Olağandışı fiyat hareketleri ve volatilite takibi kritiktir.",
+    "_source_file": "./gemini/1529696/1529696_gemini.json"
+  },
+  {
+    "ticker": "BRMEN",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Sermaye artırımı başvurusu kapsamında SPK tarafından onaylanan izahnamenin yayımlanması",
+      "18.12.2025 tarihli ve 65/2313 sayılı SPK kurul kararı ile sürecin resmiyet kazanması"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "18.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "BRMEN: Sermaye artırımı kapsamında SPK tarafından onaylanan izahname yayımlandı. 18.12.2025 tarihli kurul onayı ile süreç kesinleşti. Rüçhan hakkı kullanım tarihleri ve sermaye yapısındaki değişim yakından izlenmeli.",
+    "_source_file": "./gemini/1529665/1529665_gemini.json"
+  },
+  {
+    "ticker": "SELEC",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Sermaye Piyasası Kurulu (SPK) tarafından onaylanan borçlanma aracı ihraç belgesinin kesinleşerek kamuya sunulması",
+      "20.11.2025 tarihli yönetim kurulu kararıyla başlayan borçlanma sürecinin regülatif onay aşamasının tamamlanması"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "20.11.2025",
+        "26.11.2025",
+        "22.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İhraç edilecek borçlanma aracının (tahvil/finansman bonosu) nihai tutarı, faiz oranı ve vadesi",
+      "Borçlanma ile elde edilecek fonun kullanım yeri (işletme sermayesi, borç yapılandırma vb.)",
+      "Şirketin borçluluk rasyoları üzerindeki etkisi ve kredi derecelendirme notu güncellemeleri"
+    ],
+    "notification_text": "SELEC: SPK onaylı borçlanma aracı ihraç belgesi yayınlandı. 20.11.2025'te başlayan süreçte resmi onay aşaması tamamlandı. İhracın nihai şartlarını ve borçluluk etkisini takip ediniz.",
+    "_source_file": "./gemini/1529705/1529705_gemini.json"
+  },
+  {
+    "ticker": "DCTTR",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "DCT TRADİNG DIŞ TİCARET A.Ş.'nin %200 oranındaki bedelsiz sermaye artırım süreci tamamlanmıştır.",
+      "Yeni payların 25.12.2025 tarihinde yatırımcı hesaplarına alacak kaydedildiği bildirilmiştir."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%200",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Dolaşımdaki pay miktarının artmasıyla oluşabilecek likidite ve satış baskısı",
+      "Kademelerdeki derinlik ve spread değişimleri"
+    ],
+    "notification_text": "DCTTR %200 bedelsiz sermaye artırımı tamamlandı. Yeni paylar 25.12.2025 itibarıyla hesaplara geçti. Artan pay miktarı ve likidite nedeniyle tahtadaki fiyat hareketlerini yakından izleyin.",
+    "_source_file": "./gemini/1529537/1529537_gemini.json"
+  },
+  {
+    "ticker": "HEDEF",
+    "event_type": "CONTROL_CHANGE",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Colendi Menkul Değerler A.Ş. pay devir işlemlerinin tamamlanarak şirketteki pay ve oy hakkı oranının %51'e ulaşması",
+      "Rekabet Kurulu ve SPK onaylarının ardından kapanış işlemlerinin 25.12.2025 tarihi itibarıyla sonuçlanması"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": "%51",
+      "dates": [
+        "17.07.2025",
+        "10.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "HEDEF: Colendi Menkul Değerler'in %51 payının devir işlemleri ve kapanış süreci tamamlandı. SPK ve Rekabet Kurulu onayları sonrası kontrolün ele alınmasıyla oluşacak stratejik etki izlenmeli.",
+    "_source_file": "./gemini/1529903/1529903_gemini.json"
+  },
+  {
+    "ticker": "ALTNY, EKOS, TCELL",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "VERY_HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "ALTNY ve EKOS için sırasıyla %325 ve %300 oranında bedelsiz pay dağıtımı süreci başlıyor.",
+      "TCELL için hisse başı 1,5454 TL net nakit temettü hak kullanımı kesinleşti.",
+      "26.12.2025 tarihinden itibaren paylar hakları kullanılmış (fiyatı düzeltilmiş) olarak işlem görecektir."
+    ],
+    "key_numbers": {
+      "amount": "1.5454 TL Net (TCELL)",
+      "ratio": "%325 (ALTNY), %300 (EKOS)",
+      "dates": [
+        "2025-12-26"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "26.12.2025 tarihinde ALTNY (%325) ve EKOS (%300) bedelsiz, TCELL (1.54 TL net) temettü hak kullanımı nedeniyle fiyat düzeltmesi yapılacaktır. Açılış sonrası hacim ve likidite değişimlerini izleyin.",
+    "_source_file": "./gemini/1529769/1529769_gemini.json"
+  },
+  {
+    "ticker": "GRNYO",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Şirket pay fiyatının net aktif değerinin 2 katını aşması nedeniyle yapılan zorunlu regülatif açıklama",
+      "Menkul Kıymet Yatırım Ortaklıklarına İlişkin Esaslar Tebliği (III-48.5) Madde 36/2 uyarınca tetiklenen bildirim"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": "200%",
+      "dates": [
+        "24.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "GRNYO pay fiyatı, net aktif değerinin 2 katını aşmıştır (24.12.2025). Tebliğ gereği yapılan bu zorunlu açıklama, piyasa fiyatı ile defter değeri arasındaki aşırı sapma nedeniyle yakından izlenmelidir.",
+    "_source_file": "./gemini/1529563/1529563_gemini.json"
+  },
+  {
+    "ticker": "HUBVC",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Udentify paylarının satışından doğan 428.600 USD tutarındaki alacağın tahsilat takviminin protokole bağlanarak kesinleşmesi",
+      "Alacağın teminatı olarak Rem Görsel payları üzerine rehin tesis edilerek tahsilat riskinin minimize edilmesi"
+    ],
+    "key_numbers": {
+      "amount": "428.600 USD",
+      "ratio": "%10,715",
+      "dates": [
+        "30.06.2026",
+        "04.08.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "HUBVC, Udentify paylarının satışından doğan 428.600 USD alacağı için ödeme takvimini netleştirdi. 30.06.2026'ya kadar sürecek tahsilat süreci, ilgili paylar üzerine konulan rehinle teminat altına alındı. Yatırım çıkışının nakit akışına etkisi takip edilmeli.",
+    "_source_file": "./gemini/1529793/1529793_gemini.json"
+  },
+  {
+    "ticker": "ATAGY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Kayıtlı sermaye tavanının artırılmasına ilişkin Olağanüstü Genel Kurul kararı tescil edildi.",
+      "Esas sözleşmenin sermaye ve paylara ilişkin 8. maddesinin tadili resmiyet kazandı."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "17.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Sermaye tavanı artırımı sonrası gelebilecek bedelli/bedelsiz sermaye artırımı kararları",
+      "Şirketin yeni sermaye tavanı kapsamında açıklayabileceği yatırım planları"
+    ],
+    "notification_text": "ATAGY: Kayıtlı sermaye tavanı artırımı ve esas sözleşme tadili 25.12.2025 tarihi itibarıyla tescil edilerek kesinleşti. Şirketin sermaye yapısındaki esnekliği artıran bu süreç, gelecekteki olası sermaye hareketleri için kritik bir eşiğin aşılması anlamına geliyor.",
+    "_source_file": "./gemini/1529932/1529932_gemini.json"
+  },
+  {
+    "ticker": "OZGYO",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Bedelsiz sermaye artırımına ilişkin SPK onayının alınmış olması",
+      "Sermayenin %53,846 oranında iç kaynaklardan (enflasyon düzeltme farkları) artırılacak olması"
+    ],
+    "key_numbers": {
+      "amount": "350.000.000 TL",
+      "ratio": "%53,846",
+      "dates": [
+        "23.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "OZGYO bedelsiz sermaye artırımı için SPK onayı aldı. Mevcut sermaye 650 mn TL'den 1 mlr TL'ye (%53,85 artış) yükseltilecek. Hak kullanım tarihi için yapılacak yeni açıklamayı takip edin.",
+    "_source_file": "./gemini/1529553/1529553_gemini.json"
+  },
+  {
+    "ticker": "METRO",
+    "event_type": "CONTROL_CHANGE",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "AVGYO, METRO sermayesindeki paylarını %17,42'den %12,94'e düşürerek 5.000.000 TL nominal tutarlı büyük bir satış gerçekleştirmiştir.",
+      "Tek bir işlem gününde gerçekleşen yaklaşık %4,48'lik pay azalışı, ortaklık yapısında ve hisse arz dengesinde belirgin bir değişim teşkil etmektedir."
+    ],
+    "key_numbers": {
+      "amount": "5.000.000 TL nominal",
+      "ratio": "%17,42'den %12,94'e düşüş",
+      "dates": [
+        "23.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "METRO paylarında AVGYO tarafından 5.000.000 TL nominal tutarlı büyük ölçekli satış yapıldı. Ortaklık payı %17,42'den %12,94'e geriledi. Satış baskısı ve ortaklık yapısındaki bu belirgin değişimi izlemek kritiktir.",
+    "_source_file": "./gemini/1529934/1529934_gemini.json"
+  },
+  {
+    "ticker": "OSTIM",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Şirketin yeni kurulacak olan Ostim GYO'ya %6,99 oranında kurucu ortak olarak katılma kararı alması",
+      "Toplam 335,65 milyon TL tutarında (204,5M TL nakit, 131,1M TL ayni) sermaye taahhüdü"
+    ],
+    "key_numbers": {
+      "amount": "335.650.000 TL",
+      "ratio": "%6,99",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "OSTIM, yeni kurulacak Ostim GYO'ya 335,65 milyon TL sermaye ile %6,99 oranında kurucu ortak olma kararı aldı.\nGayrimenkul odaklı bu stratejik iştirak adımı ve SPK başvuru süreci yakından izlenmelidir.",
+    "_source_file": "./gemini/1529792/1529792_gemini.json"
+  },
+  {
+    "ticker": "CVKMD",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Bağlı ortaklık Orta Truva Madencilik'in TV Tower projesi için Altın, Gümüş ve Bakır üretimi kapsamında ÇED başvurusu yapması",
+      "Projenin sadece maden çıkarımı değil, cevher zenginleştirme tesisini de kapsayan kapsamlı bir üretim aşamasına geçiş sinyali vermesi"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "27.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı'ndan gelecek ÇED süreci onay/inceleme haberleri",
+      "Projenin tahmini yatırım büyüklüğü ve finansmanına dair gelebilecek ek açıklamalar"
+    ],
+    "notification_text": "CVKMD bağlı ortaklığı Orta Truva Madencilik, TV Tower projesinde Altın, Gümüş ve Bakır üretimi için ÇED başvurusunu 27.12.2025'te yaptı. Üretim ve zenginleştirme tesisini kapsayan bu adım, projenin operasyonel aşamaya geçişi için kritik bir eşiktir. Süreç yakından izlenmelidir.",
+    "_source_file": "./gemini/1530446/1530446_gemini.json"
+  },
+  {
+    "ticker": "BRMEN",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "%100 oranında bedelli sermaye artırımı SPK tarafından onaylanmıştır.",
+      "Yeni pay alma hakları (rüçhan) kullanım tarihleri 29.12.2025 - 12.01.2026 olarak kesinleşmiştir."
+    ],
+    "key_numbers": {
+      "amount": "44.627.021,32 TL",
+      "ratio": "%100",
+      "dates": [
+        "29.12.2025",
+        "12.01.2026",
+        "18.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "Rüçhan hakkı kupon pazarı fiyat hareketleri ve likidite durumu",
+      "Sermaye artırımı sonrası hisse fiyatı düzeltmesi ve piyasa tepkisi",
+      "Kullanılmayan payların borsada satış süreci ve talep düzeyi"
+    ],
+    "notification_text": "BRMEN %100 bedelli sermaye artırımı SPK onayı aldı. Rüçhan hakkı kullanım tarihleri 29.12.2025 - 12.01.2026 olarak açıklandı. Sermaye 89.2 milyon TL'ye ulaşacak. Süreci ve rüçhan pazarı hareketlerini takip edin.",
+    "_source_file": "./gemini/1529750/1529750_gemini.json"
+  },
+  {
+    "ticker": "VAKBN",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "SPK tarafından finansman bonosu ve tahvil ihraçlarına ilişkin İhraççı Bilgi Dokümanı onaylanmıştır.",
+      "22.12.2025 tarihinde alınan onay ile borçlanma aracı ihraç süreci için gerekli regülatif aşama tamamlanmıştır."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "22.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "VAKBN: SPK, bankanın finansman bonosu ve tahvil ihraçlarına yönelik İhraççı Bilgi Dokümanı'nı onayladı (22.12.2025). Borçlanma programı kapsamındaki yeni ihraçların detayları ve piyasa faiz oranları takip edilmelidir.",
+    "_source_file": "./gemini/1529565/1529565_gemini.json"
+  },
+  {
+    "ticker": "ALKLC",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "SPK tarafından 300.000.000 TL tutarında borçlanma aracı ihraç tavanı onayı verilmesi",
+      "İhraç belgesinin şirkete ulaşmasıyla finansman sürecinin resmiyet kazanması"
+    ],
+    "key_numbers": {
+      "amount": "300.000.000 TRY",
+      "ratio": null,
+      "dates": [
+        "18.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ALKLC için SPK'dan 300 milyon TL tutarında borçlanma aracı ihraç tavanı onayı geldi. Şirketin borçlanma stratejisi ve likidite yönetimi açısından onaylanan bu limitin kullanımı takip edilmelidir.",
+    "_source_file": "./gemini/1529591/1529591_gemini.json"
+  },
+  {
+    "ticker": "TKFEN",
+    "event_type": "CONTROL_CHANGE",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Yönetim Kurulu Başkanı ve Başkan Vekili dahil olmak üzere yönetimin TMSF kökenli isimlerden oluşması",
+      "18.12.2025 tarihinde gerçekleşen çok sayıda yeni üye ataması ile yönetimde kontrol değişimi"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "18.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Yönetim değişikliği sonrası gelebilecek stratejik iş planı güncellemeleri",
+      "Kurumsal yatırımcıların yeni yönetim yapısına dair raporları ve pozisyon değişimleri"
+    ],
+    "notification_text": "TKFEN: Yönetim kurulunda TMSF kökenli isimlerin göreve gelmesiyle geniş çaplı yönetim değişimi gerçekleşti. 18.12.2025 tarihli atamalar sonrası şirketin kontrol yapısı ve stratejik kararları yakından izlenmeli.",
+    "_source_file": "./gemini/1529946/1529946_gemini.json"
+  },
+  {
+    "ticker": "IZFAS",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Birincil piyasada 2.207.743,759 TL nominal tutarlı pay satışı başlıyor",
+      "Sermaye artırım sürecinin (bedelli/bedelsiz) kalan paylarının piyasada satışa sunulması aşaması",
+      "Satışın 26.12.2025 tarihinde sona erecek olması nedeniyle kısa vadeli arz baskısı veya talep yoğunluğu oluşabilir"
+    ],
+    "key_numbers": {
+      "amount": "2.207.743,759 TL nominal",
+      "ratio": null,
+      "dates": [
+        "26.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "IZFAS paylarında 2.207.743 TL nominal tutarlı birincil piyasa işlemleri başlıyor. Sermaye artırım sürecinin son aşaması olan bu satışın 26.12.2025 tarihine kadar tamamlanması bekleniyor. Pay arzı ve likidite dengesi açısından takip edilmelidir.",
+    "_source_file": "./gemini/1529519/1529519_gemini.json"
+  },
+  {
+    "ticker": "ECILC",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Kartal projesi 1. fazı için 182.368 m2 inşaat alanını kapsayan yapı ruhsatının resmen alınması",
+      "689 bağımsız bölümden oluşan projenin fiili inşaat sürecine geçiş aşamasına gelinmesi"
+    ],
+    "key_numbers": {
+      "amount": "182.368 m2 inşaat alanı",
+      "ratio": "%37.28 (ECILC'nin Holding payı)",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ECILC & ECZYT: Kartal Projesi'nde beklenen 1. faz yapı ruhsatı (182.368 m2, 689 ünite) 25.12.2025 itibarıyla alındı. Projenin fiili inşaat ve satış sürecine yaklaşması nedeniyle grup şirketleri üzerindeki etkisi kritik; yakından izlenmeli.",
+    "_source_file": "./gemini/1529948/1529948_gemini.json"
+  },
+  {
+    "ticker": "YATAS",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "32.500.000 EUR (yaklaşık 2,23 Milyar TL) tutarında sat-geri kirala yöntemiyle önemli bir finansman kaynağı oluşturulması",
+      "İşlem bedelinin şirket değerine oranının %47, ödenmiş sermayeye oranının %1490 gibi oldukça yüksek seviyelerde olması",
+      "Elde edilen kaynağın kısa vadeli borçların finansmanında kullanılacak olması nedeniyle likidite riskinin azalması"
+    ],
+    "key_numbers": {
+      "amount": "32.500.000 EUR",
+      "ratio": "%47",
+      "dates": [
+        "25.12.2025",
+        "24.12.2025",
+        "08.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "YATAŞ, 32.5 Milyon Euro (2.23 Milyar TL) tutarında 'Sat-Geri Kirala' işlemi tamamladı. İşlem bedelinin şirket değerine oranı %47 olup, sağlanan kaynak kısa vadeli borçların finansmanında kullanılacak. 1 yıl ödemesiz, 72 ay vadeli bu likidite adımının piyasa etkisini takip edin.",
+    "_source_file": "./gemini/1529923/1529923_gemini.json"
+  },
+  {
+    "ticker": "HEPFN",
+    "event_type": "CONTROL_CHANGE",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Joint Stock Company Kaspi.kz'nin şirket sermayesinde %71,60 oranında pay ile hakim ortak konumuna gelmesi",
+      "Şirket kontrolünün uluslararası bir stratejik ortağa geçişinin resmiyet kazanması"
+    ],
+    "key_numbers": {
+      "amount": "436760000 TRY",
+      "ratio": "%71,60",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "HEPSİ FİNANSMAN (HEPFN) ortaklık yapısında büyük değişim: Kaspi.kz %71,60 pay ile hakim ortak olarak kaydedildi. Kontrol değişimi sonrası şirketin yeni stratejik yönü ve operasyonel entegrasyon süreci kritik önemde, yakından izlenmeli.",
+    "_source_file": "./gemini/1529776/1529776_gemini.json"
+  },
+  {
+    "ticker": "PGSUS",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "2026 yıl sonuna kadar teslim edilecek 8 adet Airbus A321neo uçağın finansal kiralama yöntemiyle sağlanması için yönetim kurulu kararı alınması",
+      "Şirketin büyüme stratejisi ve filo genişleme planı kapsamında kapasite artışına yönelik somut adım atılması"
+    ],
+    "key_numbers": {
+      "amount": "8 Adet Airbus A321neo",
+      "ratio": null,
+      "dates": [
+        "2025-12-25",
+        "2026-12-31"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "PGSUS: 2026 sonuna kadar teslim edilecek 8 adet Airbus A321neo uçağın finansmanı için karar alındı.\nFilo büyümesi ve kapasite artışı stratejisi kapsamında kritik bir gelişme.\nFinansman koşulları ve teslimat takvimi takip edilmeli.",
+    "_source_file": "./gemini/1529915/1529915_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "SPK tarafından %325 oranında bedelsiz sermaye artırımı onaylanmış ve ihraç belgesi yayımlanmıştır.",
+      "Şirket sermayesinin 235.294.118 TL'den 1.000.000.000 TL'ye yükseltilmesi süreci kesinleşmiştir."
+    ],
+    "key_numbers": {
+      "amount": "764.705.882 TL",
+      "ratio": "%325,0",
+      "dates": [
+        "18.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ALTNY: %325 bedelsiz sermaye artırımı SPK tarafından onaylandı. Sermaye 1 milyar TL'ye yükseliyor. Onaylı ihraç belgesi yayımlandı; bedelsiz pay alma hakkı kullanım tarihi takibi kritik.",
+    "_source_file": "./gemini/1529740/1529740_gemini.json"
+  },
+  {
+    "ticker": "ECILC",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İştirak Vitra Karo'nun sermayesinin 1,65 milyar TL'den 3,65 milyar TL'ye (%121 artış) çıkarılmasının tescil edilmesi",
+      "Şirketin 500 milyon TL tutarındaki sermaye katılım taahhüdü ve ödeme takviminin netleşmesi"
+    ],
+    "key_numbers": {
+      "amount": "2.000.000.000 TL",
+      "ratio": "%121",
+      "dates": [
+        "25.12.2025",
+        "23.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ECILC iştiraki Vitra Karo'nun 2 milyar TL'lik sermaye artırımı tescil edildi. Şirket payına düşen 500 milyon TL'lik yükümlülüğün 125 milyon TL'sini ödedi. İştirak sermaye yapısındaki bu büyük ölçekli güçlenmeyi takip edin.",
+    "_source_file": "./gemini/1529949/1529949_gemini.json"
+  },
+  {
+    "ticker": "KONTR",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "KONTR.BE birincil piyasa sırasının işleme açılması",
+      "2.233.261,11 TL nominal değerli payların birincil piyasada satışı"
+    ],
+    "key_numbers": {
+      "amount": "2.233.261,11 TL nominal",
+      "ratio": null,
+      "dates": [
+        "26.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "Birincil piyasadaki talep yoğunluğu ve satışın tamamlanma hızı",
+      "Ana tahtadaki (KONTR) fiyat baskısı veya destek seviyeleri",
+      "Aracı kurum (BMK) üzerinden gelen emirlerin büyüklüğü"
+    ],
+    "notification_text": "KONTR paylarında 2.233.261 TL nominal değerli birincil piyasa satışı başlıyor. 26.12.2025 kapanış tarihli bu işlem, sermaye artırım sürecinin son aşamasıdır. Tahtadaki likiditeyi ve birincil piyasa talebini takip edin.",
+    "_source_file": "./gemini/1529518/1529518_gemini.json"
+  },
+  {
+    "ticker": "EYGYO",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Şirketin pay başına 0,0285714 TL brüt nakit temettü ödemesi gerçekleşmektedir.",
+      "Borsa İstanbul tarafından hisse için yeni teorik fiyat 3,691 TL olarak belirlenmiştir."
+    ],
+    "key_numbers": {
+      "amount": "0,0285714 TL",
+      "ratio": null,
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "EYGYO nakit temettü hak kullanımı nedeniyle fiyat düzeltmesi gerçekleşti.\nPay başına brüt 0,0285714 TL temettü ödemesi ve 3,691 TL teorik fiyat ile işlem başlangıcı izlenmelidir.",
+    "_source_file": "./gemini/1529520/1529520_gemini.json"
+  },
+  {
+    "ticker": "HOROZ",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Sektöründe öncü bir müşteri ile 3+2 yıllık (toplam 5 yıl) E-Ticaret depolama ve sipariş hazırlama sözleşmesi imzalanması.",
+      "Sözleşme süresince bugünkü değerlerle yaklaşık 3,5 milyar TL tutarında ciro üretilmesinin beklenmesi."
+    ],
+    "key_numbers": {
+      "amount": "3.500.000.000 TL",
+      "ratio": null,
+      "dates": [
+        "25.12.2025",
+        "01.01.2026"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "HOROZ: Sektöründe öncü bir müşteri ile 5 yıllık (3+2) lojistik sözleşmesi imzalandı. 5 yılda yaklaşık 3,5 Milyar TL ciro katkısı öngörülüyor. 01.01.2026'da başlayacak iş ilişkisinin ciro ve karlılık üzerindeki etkisi kritik.",
+    "_source_file": "./gemini/1529913/1529913_gemini.json"
+  },
+  {
+    "ticker": "ALTNY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "%325 oranında bedelsiz sermaye artırımı hak kullanım süreci başlıyor.",
+      "SPK onayı alınmış olup, hak kullanım başlangıç tarihi 26.12.2025 olarak belirlenmiştir."
+    ],
+    "key_numbers": {
+      "amount": "764.705.882 TL",
+      "ratio": "%324,99",
+      "dates": [
+        "26.12.2025",
+        "30.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ALTNY: %325 bedelsiz sermaye artırımı hak kullanım süreci 26.12.2025 tarihinde başlıyor. SPK onayı tamamlanan işlemde yeni payların hesaplara geçiş tarihi 30.12.2025 olarak açıklandı. Sermaye yapısındaki bu büyük değişimi ve fiyat düzeltmesi sonrası likiditeyi izleyin.",
+    "_source_file": "./gemini/1529741/1529741_gemini.json"
+  },
+  {
+    "ticker": "NTHOL",
+    "event_type": "BUYBACK",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Şirketin geri alım programı kapsamında kendi paylarındaki sahiplik oranının %8,51 gibi yüksek bir seviyeye ulaşması",
+      "850.000.000 TL tutarındaki büyük ölçekli geri alım fonunun aktif kullanımı ve 25.12.2025 tarihinde 21,9 milyon TL'lik yeni alım yapılması"
+    ],
+    "key_numbers": {
+      "amount": "850.000.000 TL",
+      "ratio": "%8,51",
+      "dates": [
+        "25.12.2025",
+        "05.11.2024"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "NTHOL geri alım programında kritik eşik: Şirket paylarındaki oran %8,51 seviyesine ulaştı.\n25 Aralık tarihinde 21,9 milyon TL tutarında (450 bin lot) yeni alım gerçekleştirildi.\n850 milyon TL'lik dev fonun kullanım hızı ve hisse fiyatı üzerindeki destekleyici etkisi takip edilmeli.",
+    "_source_file": "./gemini/1529922/1529922_gemini.json"
+  },
+  {
+    "ticker": "BRMEN",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Sermaye artırımı başvurusu kapsamında hazırlanan izahnamenin SPK tarafından onaylanması",
+      "Sürecin onay aşamasına geçerek belirsizliğin ortadan kalkması"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "BRMEN: Sermaye artırımı başvurusu kapsamında hazırlanan izahname SPK tarafından onaylandı. Onay süreci tamamlanan sermaye artırımının takvimi ve hisse fiyatı üzerindeki likidite etkisi yakından izlenmeli.",
+    "_source_file": "./gemini/1529667/1529667_gemini.json"
+  },
+  {
+    "ticker": "FONET",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Ankara Gülhane Eğitim ve Araştırma Hastanesi ile 77.970.708 TL tutarında sözleşme imzalanması",
+      "36 ay süreli Sağlık Bilgi Yönetim Sistemi (SBYS) hizmet alımı işinin resmiyete dökülmesi"
+    ],
+    "key_numbers": {
+      "amount": "77.970.708,00 TL",
+      "ratio": null,
+      "dates": [
+        "25.12.2025",
+        "01.01.2026"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "FONET, Ankara Gülhane Hastanesi ile 77,9 Milyon TL tutarında, 36 ay süreli SBYS sözleşmesini imzaladı. İşin 01.01.2026 itibarıyla başlaması ve ciroya pozitif yansıması bekleniyor. Sözleşme süreci tamamlandığı için kritik takip listesinde.",
+    "_source_file": "./gemini/1529693/1529693_gemini.json"
+  },
+  {
+    "ticker": "EKOS",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "%300 oranında bedelsiz sermaye artırımı süreci tescil edilerek kesinleşmiştir.",
+      "Bedelsiz pay alma hakkı kullanım başlangıç tarihi 26.12.2025 olarak belirlenmiştir."
+    ],
+    "key_numbers": {
+      "amount": "840.000.000 TL",
+      "ratio": "%300",
+      "dates": [
+        "26.12.2025",
+        "29.12.2025",
+        "30.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "EKOS %300 bedelsiz sermaye artırımı hak kullanım süreci 26.12.2025 tarihinde başlıyor. Sermaye 280mn TL'den 1.12bn TL'ye yükseltildi. 29 Aralık kayıt, 30 Aralık payların hesaba geçiş tarihi olarak açıklandı.",
+    "_source_file": "./gemini/1529651/1529651_gemini.json"
+  },
+  {
+    "ticker": "VKFYO",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Pay başına net aktif değerin (1,933145 TL) 2 katını aşan borsa fiyatı oluşumu",
+      "SPK Tebliği (III-48.5) uyarınca her iş günü portföy ve net aktif değer tablosu yayınlama zorunluluğunun başlaması"
+    ],
+    "key_numbers": {
+      "amount": "1.933145 TL",
+      "ratio": ">200%",
+      "dates": [
+        "24.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "VKFYO pay fiyatının net aktif değerinin 2 katını aşması nedeniyle SPK uyarınca günlük raporlama süreci başlamıştır. 24.12.2025 itibarıyla pay başına net aktif değer 1,93 TL'dir. Fiyat-değer makası ve her iş günü gelecek tablolar kritik takip edilmelidir.",
+    "_source_file": "./gemini/1529803/1529803_gemini.json"
+  },
+  {
+    "ticker": "BRMEN",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Sermaye artırımı başvurusu kapsamında hazırlanan izahnamenin SPK tarafından onaylanması",
+      "Resmi onay sürecinin tamamlanarak hak kullanım aşamasına geçilmesi"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "BRMEN: Sermaye artırımı izahnamesi SPK tarafından onaylandı. 25.12.2025 tarihli bildirimle resmi onay süreci tamamlandı. Rüçhan hakkı kullanım tarihleri ve sermaye artırım detayları için gelecek açıklamalar takip edilmeli.",
+    "_source_file": "./gemini/1529668/1529668_gemini.json"
+  },
+  {
+    "ticker": "BRMEN",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Sermaye artırımı başvurusu kapsamında SPK tarafından onaylanan izahnamenin yayımlanması",
+      "Resmi onay sürecinin tamamlanarak sermaye artırım sürecinin kesinleşmesi"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "BRMEN: Sermaye artırımı başvurusu kapsamında SPK onaylı izahname yayımlandı. Sermaye yapısındaki değişim süreci ve rüçhan hakkı kullanım tarihlerine dair takvim yakından izlenmelidir.",
+    "_source_file": "./gemini/1529666/1529666_gemini.json"
+  },
+  {
+    "ticker": "OYAYO",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Pay başına net aktif değerin (7,77 TL) piyasa fiyatı (54,68 TL) tarafından 2 katından fazla aşılması (~7.03 kat)",
+      "SPK (III-48.5) Tebliği uyarınca zorunlu günlük portföy ve NAD tablosu raporlama sürecine girilmesi"
+    ],
+    "key_numbers": {
+      "amount": "7.77 TL (NAD), 54.68 TL (Fiyat)",
+      "ratio": "703%",
+      "dates": [
+        "24.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "OYAYO: Pay fiyatı (54,68 TL), net aktif değerinin (7,77 TL) 2 katı eşiğini aşarak yaklaşık 7 katına ulaştı. SPK uyarınca her iş günü portföy tablosu yayınlanacaktır. Fiyat/NAD makasındaki aşırılığı ve volatiliteyi izleyin.",
+    "_source_file": "./gemini/1529620/1529620_gemini.json"
+  },
+  {
+    "ticker": "AKSA",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "%100 bağlı ortaklık BTB Havacılık Yatırım A.Ş. ile birleşme işleminin ticaret sicili nezdinde tescil edilerek resmen tamamlanması",
+      "Sermaye Piyasası Kurulu onayını takiben yasal sürecin sonuçlanmış olması"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": "100%",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "AKSA: %100 bağlı ortaklığı BTB Havacılık ile birleşme işlemi 25.12.2025 tarihinde tescil edilerek resmen tamamlanmıştır. Sürecin sonuçlanmasının operasyonel yapı üzerindeki sadeleşme etkisi takip edilebilir.",
+    "_source_file": "./gemini/1529797/1529797_gemini.json"
+  },
+  {
+    "ticker": "USAK",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "%100 oranında bedelli sermaye artırımı kararı ve sermayenin 2.450.000.000 TL'ye çıkarılması hedefi",
+      "SPK başvuru süreci ve rüçhan hakkı kullanım şartlarının (1 TL nominal) netleşmesi"
+    ],
+    "key_numbers": {
+      "amount": "1.225.000.000 TL",
+      "ratio": "%100",
+      "dates": [
+        "23.09.2025",
+        "24.09.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "USAK %100 bedelli sermaye artırımı kararı revize edildi. Sermaye 1.225.000.000 TL'den 2.450.000.000 TL'ye çıkarılacak. SPK onay süreci ve rüçhan hakkı kullanım detayları kritik takip edilmeli.",
+    "_source_file": "./gemini/1529909/1529909_gemini.json"
+  },
+  {
+    "ticker": "ARDYZ",
+    "event_type": "STORY_SHIFT",
+    "urgency": "VERY_HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "İntron Bilişim Yazılım'ın devralınması suretiyle birleşme işleminin Genel Kurul tarafından resmen onaylanması",
+      "Şirket sermayesinin 170.000.000 TL'den 322.274.085,57 TL'ye çıkarılmasına ilişkin esas sözleşme tadilinin kabulü"
+    ],
+    "key_numbers": {
+      "amount": "322,274,085.57 TL",
+      "ratio": "%89.57",
+      "dates": [
+        "28.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ARDYZ Olağanüstü Genel Kurulu'nda İntron Bilişim ile birleşme ve sermayenin %89,5 artışla 322,2mn TL'ye çıkarılması onaylandı. Önemli nitelikte işlem kapsamındaki birleşme süreci ve tahsisli pay ihraçlarını takip edin.",
+    "_source_file": "./gemini/1530443/1530443_gemini.json"
+  },
+  {
+    "ticker": "VBTYZ",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Bedelli sermaye artırımı kararının iptali ve durdurulması talebiyle açılan davada ihtiyati tedbir kararının devamına hükmedilmesi",
+      "Sermaye artırım sürecinin mahkeme kararıyla fiilen durdurulmuş olması ve belirsizliğin sürmesi"
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "24.09.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "VBTYZ: Bedelli sermaye artırımına yönelik durdurma (tedbir) kararının mahkemece devamına karar verildi. Sermaye artırım süreci hukuki engel nedeniyle belirsizliğini koruyor. Şirket karara itiraz edeceğini bildirdi; süreci yakından izleyin.",
+    "_source_file": "./gemini/1529936/1529936_gemini.json"
+  },
+  {
+    "ticker": "FENER",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Fenerbahçe Spor Kulübü ile 21 yıl süreli (2025-2046) tesis kiralama sözleşmesi imzalanması",
+      "6.465.673.206 TL tutarındaki toplam bedelin peşin olarak ödenmesine karar verilmesi"
+    ],
+    "key_numbers": {
+      "amount": "6.465.673.206 TL",
+      "ratio": null,
+      "dates": [
+        "30.11.2025",
+        "30.11.2046"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "FENER, hakim ortağı ile 21 yıllık tesis kiralama sözleşmesi imzaladı. 6,46 milyar TL tutarındaki bedelin peşin ödenmesi kararlaştırıldı. Şirketin nakit akışı ve uzun vadeli mali yapısı açısından kritik değişim izlenmeli.",
+    "_source_file": "./gemini/1529790/1529790_gemini.json"
+  },
+  {
+    "ticker": "GIPTA",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "Yunanistan merkezli MOSAIK I.K.E. unvanlı yeni şirketin %50 ortaklıkla kuruluşu",
+      "Avrupa pazarına 'Mega Kırtasiye Zincir Market' konseptiyle giriş stratejisi"
+    ],
+    "key_numbers": {
+      "amount": "400.000 EUR",
+      "ratio": "%50",
+      "dates": [
+        "25/12/2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "GIPTA, Yunanistan'da %50 ortaklıkla MOSAIK I.K.E. şirketini kurarak Avrupa'da 'Mega Kırtasiye Zincir Market' kategorisinde büyümeyi hedefliyor. 400.000 EUR sermaye katılımı ile gerçekleşen bu stratejik hamlenin ihracat ve karlılığa etkisi izlenmeli.",
+    "_source_file": "./gemini/1529931/1529931_gemini.json"
+  },
+  {
+    "ticker": "ONRYT",
+    "event_type": "BIG_CONTRACT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Savunma Sanayii Başkanlığı ile 7.356.500 USD baz ve 1.115.306 USD opsiyonel bedelli sözleşme imzalanması",
+      "Türk Silahlı Kuvvetleri muhabere altyapısının sayısallaştırılması projesinde belirsizliğin sona ererek resmi imzaların atılması"
+    ],
+    "key_numbers": {
+      "amount": "7.356.500 USD + 1.115.306 USD",
+      "ratio": null,
+      "dates": [
+        "25.12.2025",
+        "28.10.2024"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ONRYT, Savunma Sanayii Başkanlığı ile 7,3 Milyon USD (+1,1 Milyon USD opsiyon) tutarında sözleşme imzaladı. TSK muhabere altyapısı projesinde imzaların atılması ve ciroya doğrudan katkı beklentisi nedeniyle takibi kritiktir.",
+    "_source_file": "./gemini/1529737/1529737_gemini.json"
+  },
+  {
+    "ticker": "AKSEN",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Gana Kumasi santralinin ilk fazında (179 MW) kısmi ticari üretimin 25 Aralık 2025 itibarıyla başlaması",
+      "20 yıl süreli ABD Doları bazlı garantili enerji satış anlaşmasının operasyonel aşamaya geçmesi"
+    ],
+    "key_numbers": {
+      "amount": "350 MW",
+      "ratio": null,
+      "dates": [
+        "2025-12-25",
+        "2026-01-01",
+        "2026-03-31"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "AKSEN: Gana Kumasi Doğalgaz Santrali'nde (350 MW) 25 Aralık itibarıyla kısmi ticari üretim başladı. 20 yıllık USD bazlı alım garantili projenin ilk fazının (179 MW) 2026 ilk çeyrekte tam kapasiteye ulaşması bekleniyor. Nakit akışı ve uluslararası büyüme hikayesi açısından kritik eşik.",
+    "_source_file": "./gemini/1529533/1529533_gemini.json"
+  },
+  {
+    "ticker": "PEKGY",
+    "event_type": "CONTROL_CHANGE",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Pardus Portföy Yönetimi A.Ş. tarafından yönetilen fonların toplam payı %5 yasal eşiğini aşmıştır.",
+      "24.12.2025 tarihinde net 44.000.000 nominal tutarlı alım yapılarak ortaklık payı %4,122'den %5,002'ye yükselmiştir."
+    ],
+    "key_numbers": {
+      "amount": "44.000.000 TL (Net Nominal)",
+      "ratio": "%5,002",
+      "dates": [
+        "24/12/2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "PEKGY - Kurumsal Yatırımcı Eşik Aşımı\nPardus Portföy Yönetimi A.Ş. fonları, 24.12.2025 tarihinde yapılan 44 milyon lotluk net alım ile PEKGY sermayesindeki payını %5,002'ye çıkararak kritik eşiği aşmıştır. Kurumsal ilginin fiyat üzerindeki etkisi ve hacim takibi kritiktir.",
+    "_source_file": "./gemini/1529534/1529534_gemini.json"
+  },
+  {
+    "ticker": "TATEN",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "TEİAŞ aleyhine açılan davada ilk derece mahkemesinin şirket lehine 327.346.761,74 TL iade kararı vermesi",
+      "İade edilecek tutara 11.02.2025 ve 25.02.2025 tarihlerinden itibaren avans faizi işletilecek olması"
+    ],
+    "key_numbers": {
+      "amount": "327.346.761,74 TL",
+      "ratio": null,
+      "dates": [
+        "11.02.2025",
+        "25.02.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "TATEN: TEİAŞ aleyhine açılan davada mahkeme, 327,3M TL'nin avans faiziyle şirkete iadesine karar verdi. Karar henüz kesinleşmese de yüksek tutarlı nakit girişi potansiyeli nedeniyle hukuki süreç ve piyasa tepkisi izlenmelidir.",
+    "_source_file": "./gemini/1529791/1529791_gemini.json"
+  },
+  {
+    "ticker": "KLYPV",
+    "event_type": "BUYBACK",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "09.12.2025 tarihinde başlatılan 432 milyon TL bütçeli geri alım programı kapsamında alımların devam etmesi",
+      "25.12.2025 tarihinde 100.000 adet payın daha geri alınarak toplam geri alınan pay miktarının 1.356.745 adede ulaşması"
+    ],
+    "key_numbers": {
+      "amount": "432.000.000 TL",
+      "ratio": "%0,32975",
+      "dates": [
+        "09.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "KLYPV: 432 Milyon TL bütçeli geri alım programı kapsamında alımlar sürüyor. 25 Aralık'ta 58,11 TL ortalamayla 100 bin lot daha alındı. Toplam geri alınan pay oranı %0,33'e ulaştı. Şirketin alım iştahını izle.",
+    "_source_file": "./gemini/1529930/1529930_gemini.json"
+  },
+  {
+    "ticker": "BIGTK",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Olağanüstü Genel Kurul'da başka bir şirketin devir alınması (birleşme) kararı resmen kabul edildi.",
+      "Birleşme nedeniyle esas sözleşmenin sermaye ve amaç-konu maddelerinde tadilata gidilmesi onaylandı."
+    ],
+    "key_numbers": {
+      "amount": null,
+      "ratio": null,
+      "dates": [
+        "28.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "Birleşme sonrası yeni sermaye yapısı ve pay dağılımı detayları",
+      "Ayrılma akçesi kullanım süreci ve hak kullanım tarihleri",
+      "Birleşmenin operasyonel ve finansal konsolidasyon etkileri"
+    ],
+    "notification_text": "BIGTK Olağanüstü Genel Kurulu'nda birleşme işlemi resmen onaylandı. Şirketin devir alma yoluyla birleşmesi ve esas sözleşme tadili kabul edildi. Birleşme sonrası sermaye yapısı ve ayrılma akçesi süreçleri kritik takip edilmeli.",
+    "_source_file": "./gemini/1530445/1530445_gemini.json"
+  },
+  {
+    "ticker": "EDATA",
+    "event_type": "REGULATORY",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Şirket ortağı Tahir Fatih MUTLU'ya ait 10.109.425 TL nominal değerli payların borsada satışı için SPK onayı alındı.",
+      "Satışa konu pay miktarının şirket sermayesine oranla yüksek olması nedeniyle oluşabilecek arz baskısı."
+    ],
+    "key_numbers": {
+      "amount": "10.109.425 TL (Nominal)",
+      "ratio": null,
+      "dates": [
+        "18.12.2025",
+        "22.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "EDATA: Ortak Tahir Fatih MUTLU'ya ait 10.109.425 TL nominal değerli payların borsada satışı için SPK onayı verildi.\nYüksek miktarlı pay satışı nedeniyle tahtadaki arz-talep dengesi ve fiyat hareketleri kritik takip edilmelidir.\nOnay 18.12.2025 tarihli SPK toplantısında alınmıştır.",
+    "_source_file": "./gemini/1529908/1529908_gemini.json"
+  },
+  {
+    "ticker": "AKSUE",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "62.000.000 TL tutarında (%93,94 oranında) tahsisli sermaye artırımı için SPK'ya resmi başvuru yapılması",
+      "Sermaye artırımından beklenen toplam nakit girişinin 1.091.316.622 TL gibi şirket ölçeğine göre çok yüksek bir seviyede olması"
+    ],
+    "key_numbers": {
+      "amount": "1.091.316.622 TL",
+      "ratio": "%93,94",
+      "dates": [
+        "24.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "AKSUE'den dev tahsisli sermaye artırımı başvurusu. Şirket sermayesini %93,94 oranında artırarak 1,09 milyar TL nakit girişi sağlamayı hedefliyor. SPK onay süreci ve yeni ortaklık yapısının etkileri takip edilmeli.",
+    "_source_file": "./gemini/1529796/1529796_gemini.json"
+  },
+  {
+    "ticker": "ADGYO",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 1.0,
+    "watch_reason": [
+      "Anadolu Gayrimenkul Yatırım A.Ş.'nin tüm aktif ve pasifiyle devralınması suretiyle birleşme işleminin Genel Kurul tarafından onaylanması",
+      "Birleşme işlemi kapsamında şirket sermayesinin 293.700.000 TL'den 545.854.434 TL'ye (%85,8 artış) çıkarılması kararı"
+    ],
+    "key_numbers": {
+      "amount": "252,154,434.99 TL",
+      "ratio": "%85.8",
+      "dates": [
+        "28.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ADGYO Olağanüstü Genel Kurulu, Anadolu Gayrimenkul ile birleşmeyi ve sermayenin %85,8 artışla 545.8M TL'ye çıkarılmasını onayladı. Birleşme sonrası yeni kurumsal yapı ve sermaye tescil süreci takip edilmeli.",
+    "_source_file": "./gemini/1530442/1530442_gemini.json"
+  },
+  {
+    "ticker": "ATAGY",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Kayıtlı sermaye tavanının 135.000.000 TL'den 2.500.000.000 TL'ye (~18,5 kat) çıkarılması işleminin tescil edilerek tamamlanması",
+      "Sermaye tavanı artırım sürecinin tüm resmi onaylar (SPK, Bakanlık, Genel Kurul) sonrası kesinleşmesi"
+    ],
+    "key_numbers": {
+      "amount": "2.500.000.000 TL",
+      "ratio": "%1751.85",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "Şirketin bu tavan dahilinde alabileceği bedelli veya bedelsiz sermaye artırımı kararları",
+      "Yeni sermaye kapasitesinin büyük ölçekli gayrimenkul alımları veya projelerde kullanımı",
+      "Tescil sonrası hisse fiyatındaki hacimli hareketler ve likidite durumu"
+    ],
+    "notification_text": "ATAGY: Kayıtlı sermaye tavanının 135 milyon TL'den 2,5 milyar TL'ye çıkarılması işlemi bugün resmen tescil edildi. Yaklaşık 18,5 katlık bu devasa tavan artışı, şirketin önümüzdeki dönemdeki büyüme ve sermaye artırımı potansiyeli açısından kritik bir eşiğin aşılması anlamına geliyor. Süreç tamamlandığı için yakından izlenmeli.",
+    "_source_file": "./gemini/1529937/1529937_gemini.json"
+  },
+  {
+    "ticker": "ALKLC",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "SPK tarafından 300.000.000 TL tutarında borçlanma aracı ihracı onaylanmıştır.",
+      "Nitelikli yatırımcılara yönelik borçlanma süreci resmi onay ile kesinleşmiştir."
+    ],
+    "key_numbers": {
+      "amount": "300.000.000 TL",
+      "ratio": null,
+      "dates": [
+        "18.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "ALKLC için SPK'dan 300 Milyon TL tutarında borçlanma aracı ihraç onayı geldi. Nitelikli yatırımcılara yönelik bu finansman adımı, şirketin kısa vadeli likidite yönetimi açısından kritik. İhraç sürecindeki faiz oranlarını ve talebi takip edin.",
+    "_source_file": "./gemini/1529592/1529592_gemini.json"
+  },
+  {
+    "ticker": "OFSYM",
+    "event_type": "CAPITAL_ACTION",
+    "urgency": "HIGH",
+    "confidence": 0.9,
+    "watch_reason": [
+      "2.000.000.000 TL tutarında borçlanma aracı ihraç tavanı için SPK başvurusu yapıldı.",
+      "Şirketin finansman kapasitesini artırmaya yönelik büyük ölçekli borçlanma planı."
+    ],
+    "key_numbers": {
+      "amount": "2.000.000.000 TRY",
+      "ratio": null,
+      "dates": [
+        "22.12.2025",
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "SPK'dan gelecek onay haberi ve ihraç edilecek borçlanma araçlarının faiz/vade yapısı",
+      "Şirketin borçluluk rasyoları ve fonun kullanım yeri"
+    ],
+    "notification_text": "OFSYM: 2 Milyar TL tutarında borçlanma aracı ihraç tavanı için SPK başvurusu yapıldı (25.12.2025). Nitelikli yatırımcılara yönelik planlanan bu büyük ölçekli kaynak arayışı ve SPK onay süreci kritik takip edilmelidir.",
+    "_source_file": "./gemini/1529906/1529906_gemini.json"
+  },
+  {
+    "ticker": "EFOR",
+    "event_type": "STORY_SHIFT",
+    "urgency": "HIGH",
+    "confidence": 0.95,
+    "watch_reason": [
+      "Of Çaysan (Ofçay) ile devralma yoluyla birleşme için SPK'ya resmi başvuru yapıldı.",
+      "Birleşme sonucunda şirket sermayesinin %22,6 oranında (493,1 milyon TL) artırılarak 2,67 milyar TL'ye çıkarılması planlanıyor."
+    ],
+    "key_numbers": {
+      "amount": "493.111.555,35 TL",
+      "ratio": "0,125472593",
+      "dates": [
+        "25.12.2025"
+      ]
+    },
+    "what_to_watch_next": [
+      "İlk 30 dk hacim artışı ve fiyatın geri çekilmede tutunması",
+      "Endeks/sanayi sektörü yönü ve aynı anda gelen diğer KAP’lar",
+      "Likidite: spread açılması ve kademelerde boşluk"
+    ],
+    "notification_text": "EFOR, Ofçay ile devralma yoluyla birleşme kapsamında SPK'ya resmi başvurusunu yaptı. Birleşme nedeniyle sermaye 493 milyon TL artırılarak 2,67 milyar TL'ye ulaşacak. Stratejik büyüme odaklı bu süreci ve SPK onay takvimini yakından izleyin.",
+    "_source_file": "./gemini/1529952/1529952_gemini.json"
+  }
+]

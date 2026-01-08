@@ -1,7 +1,9 @@
 import { Company, Notification } from './types';
 
 export const API_BASE_URL = "/api";
-export const LOGO_BASE_URL = "http://localhost:5296/logos";
+// Production: VITE_BACKEND_URL env variable, Development: localhost fallback
+export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5296";
+export const LOGO_BASE_URL = `${BACKEND_URL}/logos`;
 
 export const MOCK_COMPANIES: Company[] = [
   { code: 'THYAO', name: 'Türk Hava Yolları', logoColor: 'bg-red-600' },

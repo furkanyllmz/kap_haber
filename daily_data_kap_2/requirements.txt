@@ -1,0 +1,10 @@
+google-genai
+python-dotenv
+requests
+beautifulsoup4
+pandas
+toml
+tweepy
+Pillow
+chromadb
+sentence-transformers
