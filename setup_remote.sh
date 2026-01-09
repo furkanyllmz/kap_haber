@@ -5,20 +5,29 @@ echo ">>> Server Setup Başlıyor..."
 
 # 1. Update and Install Dependencies
 apt-get update -y
-apt-get install -y python3-pip python3-venv mongodb curl wget nginx certbot python3-certbot-nginx
+apt-get install -y python3-pip python3-venv curl wget nginx certbot python3-certbot-nginx gnupg
+
+# Install MongoDB 7.0 from official repo
+echo ">>> MongoDB kuruluyor..."
+if ! command -v mongod &> /dev/null; then
+    curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+    apt-get update
+    apt-get install -y mongodb-org
+fi
 
 # Start MongoDB Service
-systemctl enable mongodb
-systemctl start mongodb
+systemctl enable mongod
+systemctl start mongod
 
-# Install .NET 8 SDK
-echo ">>> .NET 8 SDK kuruluyor..."
+# Install .NET 9 SDK
+echo ">>> .NET 9 SDK kuruluyor..."
 if ! command -v dotnet &> /dev/null; then
     wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
     dpkg -i packages-microsoft-prod.deb
     rm packages-microsoft-prod.deb
     apt-get update
-    apt-get install -y dotnet-sdk-8.0
+    apt-get install -y dotnet-sdk-9.0
 fi
 
 # Install Node.js 20

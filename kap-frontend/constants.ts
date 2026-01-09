@@ -1,9 +1,12 @@
 import { Company, Notification } from './types';
 
 export const API_BASE_URL = "/api";
-// Production: VITE_BACKEND_URL env variable, Development: localhost fallback
-export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5296";
-export const LOGO_BASE_URL = `${BACKEND_URL}/logos`;
+
+// Development: localhost, Production: relative path (empty string)
+const isDev = import.meta.env.MODE === 'development';
+
+export const BACKEND_URL = isDev ? "http://localhost:5296" : "";
+export const LOGO_BASE_URL = isDev ? "http://localhost:5296/logos" : "/logos";
 
 export const MOCK_COMPANIES: Company[] = [
   { code: 'THYAO', name: 'Türk Hava Yolları', logoColor: 'bg-red-600' },

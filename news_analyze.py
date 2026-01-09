@@ -36,7 +36,7 @@ PROCESSED_TRACKER_FILE = os.path.join(OUT_DIR, "processed_news_files.json")
 MODEL_NAME = "gemini-3-flash-preview"
 
 # Memory settings
-USE_MEMORY = True
+USE_MEMORY = False  # Disabled temporarily to prevent SegFault on server
 MEMORY_DIR = "./chroma_kap_memory"
 MEMORY_COLLECTION = "kap_memory"
 MEMORY_TOPK = 4

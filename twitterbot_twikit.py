@@ -27,7 +27,7 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 # Dosyalar
 COOKIES_FILE = "./news/twikit_cookies.json"
-IMAGES_DIR = "./news/images"
+IMAGES_DIR = "./dotnet-backend/KapProjeBackend/wwwroot/news/images"
 
 # Ayarlar
 POLL_INTERVAL = 60
@@ -74,7 +74,7 @@ def save_posted_tweet_mongo(tweet_data):
     if db is None: return
     
     try:
-        tweet_data["created_at"] = datetime(2026, 1, 7)
+        tweet_data["created_at"] = datetime.now()
         tweet_data["source"] = "twikit"  # Kaynak belirt
         db[POSTED_COLLECTION].insert_one(tweet_data)
     except Exception as e:
@@ -143,7 +143,7 @@ def generate_gemini_image(client, prompt, ana_mesaj, ana_rakam, unique_id):
         return None
 
 def format_tweet(item):
-    """Tweet metnini formatlar."""
+    """Tweet metnini formatlar - maksimum 280 karakter."""
     tweet_data = item.get("tweet", {})
     notes = item.get("notes", {})
     
@@ -151,46 +151,69 @@ def format_tweet(item):
     if not base_text: 
         base_text = f"🚨 #{item.get('ticker')}: {item.get('headline')}"
 
-    editor_comment = notes.get("editor_comment")
     kap_url = item.get("url")
     hashtags = tweet_data.get("hashtags", [])
 
-    footer_str = ""
-    footer_twitter_len = 0 
-
+    # Footer oluştur
+    footer_parts = []
     if kap_url:
-        footer_str += f"\n\n🔗 {kap_url}"
-        footer_twitter_len += 2 + 23 
-
+        footer_parts.append(f"🔗 {kap_url}")
     if hashtags:
-        tags_str = " ".join(hashtags)
-        footer_str += f"\n\n{tags_str}"
-        footer_twitter_len += 2 + len(tags_str)
-
+        footer_parts.append(" ".join(hashtags[:3]))  # Max 3 hashtag
+    
+    footer_str = "\n\n" + "\n".join(footer_parts) if footer_parts else ""
+    
     MAX_LEN = 280
-    BUFFER = 3
     
-    available_for_text = MAX_LEN - footer_twitter_len - BUFFER
-    current_body = base_text
+    # 1. Sabit kısımları oluştur: URL + Editör Notu
+    fixed_footer = ""
+    if kap_url:
+        fixed_footer += f"\n\n🔗 {kap_url}"
     
-    if len(current_body) > available_for_text:
-        current_body = current_body[:available_for_text-3] + "..."
-
-    current_total_len = len(current_body) + footer_twitter_len + BUFFER
-    remaining_space = MAX_LEN - current_total_len
-    
+    # Editör yorumu (varsa ve spam değilse)
+    editor_comment = notes.get("editor_comment")
     if editor_comment and not notes.get("is_routine_spam"):
-        formatted_note = f"\n\nℹ️ Not: {editor_comment}"
-        note_len = len(formatted_note)
-        
-        if note_len <= remaining_space:
-            current_body += formatted_note
+        fixed_footer += f"\n\nℹ️ {editor_comment}"
 
-    final_tweet = current_body + footer_str
+    # 2. Metin için kalan alan (Hashtag'siz)
+    # 3 karakter buffer (...) için
+    available_for_text = MAX_LEN - len(fixed_footer) - 3
+    
+    # Metni kes (buffer payı bırakarak)
+    if len(base_text) > available_for_text:
+        base_text = base_text[:available_for_text].rstrip() + "..."
+    
+    current_tweet = base_text + fixed_footer
+    
+    # 3. Hashtag'leri eklemeye çalış (Sığdığı kadar)
+    # Hashtag'ler eklenince sınır aşılıyorsa ekleme
+    added_hashtags = []
+    current_len = len(current_tweet)
+    
+    if hashtags:
+        for tag in hashtags[:3]: # Max 3 hashtag dene
+            tag_str = f" {tag}" 
+            # İlk hashtag ise başına \n ekle (görsel tercih) veya boşluk
+            if not added_hashtags:
+                 tag_str = f"\n\n{tag}"
+            
+            if current_len + len(tag_str) <= MAX_LEN:
+                added_hashtags.append(tag_str)
+                current_len += len(tag_str)
+            else:
+                # Sığmadı, daha fazla hashtag deneme
+                break
+    
+    final_tweet = current_tweet + "".join(added_hashtags)
+    
+    # Son güvenlik kontrolü
+    if len(final_tweet) > MAX_LEN:
+        final_tweet = final_tweet[:MAX_LEN-3] + "..."
+
     return final_tweet
 
 def get_today_str():
-    return datetime(2026, 1, 7).strftime("%Y-%m-%d")
+    return datetime.now().strftime("%Y-%m-%d")
 
 # ======================
 # TWIKIT CLIENT SETUP

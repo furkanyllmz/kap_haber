@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Notification, FilterState, Company, PriceItem } from '../types';
 import NotificationCard from './NotificationCard';
 import { Calendar, X, Filter, Clock, ChevronRight, BellRing, TrendingUp, ArrowUp } from './Icons';
-import { API_BASE_URL } from '../constants';
+import { API_BASE_URL, LOGO_BASE_URL } from '../constants';
 
 interface Props {
   notifications: Notification[];
@@ -179,7 +179,7 @@ const FeedView: React.FC<Props> = ({ notifications, filter, setFilter, companies
               {/* Company Logo Overlay */}
               <div className="absolute top-6 left-6 w-24 h-24 flex items-center justify-center">
                 <img
-                  src={`http://localhost:5296/logos/${featuredNotification.companyCode}.svg`}
+                  src={`${LOGO_BASE_URL}/${featuredNotification.companyCode}.svg`}
                   alt={featuredNotification.companyCode}
                   className="w-full h-full object-contain drop-shadow-lg"
                   onError={(e) => {

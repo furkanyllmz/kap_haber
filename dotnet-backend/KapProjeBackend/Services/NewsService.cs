@@ -16,8 +16,8 @@ public class NewsService
         var database = client.GetDatabase(mongoSettings.Value.DatabaseName);
         _newsCollection = database.GetCollection<NewsItem>(mongoSettings.Value.NewsCollectionName);
         _env = env;
-        // Production: use configured BaseUrl, Development: fallback to localhost
-        _baseUrl = configuration["BaseUrl"] ?? "http://localhost:5296";
+        // FORCE RELATIVE PATH (Fixes production localhost issue)
+        _baseUrl = "";
     }
 
     /// <summary>
@@ -163,6 +163,7 @@ public class NewsService
         var items = await _newsCollection
             .Find(_ => true)
             .SortByDescending(n => n.PublishedAt!.Date)
+            .ThenByDescending(n => n.PublishedAt!.Time)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
@@ -180,6 +181,7 @@ public class NewsService
         var items = await _newsCollection
             .Find(filter)
             .SortByDescending(n => n.PublishedAt!.Date)
+            .ThenByDescending(n => n.PublishedAt!.Time)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
