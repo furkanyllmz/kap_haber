@@ -65,7 +65,7 @@ class StockTile extends StatelessWidget {
                   Text(
                     name,
                     style: TextStyle(
-                      color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.7),
+                      color: theme.textTheme.bodyMedium?.color?.withOpacity(0.7),
                       fontSize: 13,
                     ),
                     maxLines: 1,
@@ -124,7 +124,7 @@ class _ActionButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
+          color: color.withOpacity(0.1),
           shape: BoxShape.circle,
         ),
         child: Icon(

@@ -61,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
           color: Theme.of(context).cardTheme.color,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color: Colors.black.withOpacity(0.05),
               blurRadius: 20,
               offset: const Offset(0, -5),
             ),
@@ -92,7 +92,7 @@ class _MainScreenState extends State<MainScreen> {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: _currentIndex == 0 
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.1) 
+                          ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -106,7 +106,7 @@ class _MainScreenState extends State<MainScreen> {
                      padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: _currentIndex == 1
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.1) 
+                          ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -120,7 +120,7 @@ class _MainScreenState extends State<MainScreen> {
                      padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: _currentIndex == 2
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.1) 
+                          ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(12),
                     ),

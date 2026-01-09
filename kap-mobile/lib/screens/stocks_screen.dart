@@ -54,7 +54,7 @@ class _StocksScreenState extends State<StocksScreen> with SingleTickerProviderSt
                     color: Theme.of(context).appBarTheme.backgroundColor,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.05),
+                        color: Colors.black.withOpacity(0.05),
                         blurRadius: 10,
                         offset: const Offset(0, 2),
                       ),
@@ -93,7 +93,7 @@ class _StocksScreenState extends State<StocksScreen> with SingleTickerProviderSt
                           filled: true,
                           fillColor: Theme.of(context).cardTheme.color == Colors.white
                               ? Colors.grey.shade100
-                              : Colors.white.withValues(alpha: 0.05),
+                              : Colors.white.withOpacity(0.05),
                           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
@@ -191,7 +191,7 @@ class _StocksScreenState extends State<StocksScreen> with SingleTickerProviderSt
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.02),
+                color: Colors.black.withOpacity(0.02),
                 blurRadius: 4,
                 offset: const Offset(0, 2),
               ),

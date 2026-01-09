@@ -64,6 +64,13 @@ class NewsItem {
     }
     return '';
   }
+
+  // Generate a consistent mock image URL based on the news ID
+  String get imageUrl {
+    // Use picsum.photos with a seed based on the ID to get the same image for the same news item
+    final seed = id ?? displayTicker;
+    return 'https://picsum.photos/seed/$seed/800/400';
+  }
   
   String get description {
     // Kullanıcı isteği üzerine öncelikle tweet text'ini gösteriyoruz
