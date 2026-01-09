@@ -75,16 +75,31 @@ class ApiService {
   }
   Future<List<dynamic>> getChartData(String ticker, String timeframe) async {
     try {
-      final response = await http.get(
-        Uri.parse('$baseUrl/Chart/ticker?symbol=$ticker&time=$timeframe'),
-      );
+      final url = '$baseUrl/Chart/ticker?symbol=$ticker&time=$timeframe';
+      print('═══════════════════════════════════════════════════════════');
+      print('📊 API ÇAĞRISI');
+      print('═══════════════════════════════════════════════════════════');
+      print('🔗 URL: $url');
+      
+      final response = await http.get(Uri.parse(url));
+
+      print('📡 HTTP Status: ${response.statusCode}');
+      print('📋 Headers: ${response.headers}');
+      print('───────────────────────────────────────────────────────────');
+      print('📦 HAM VERİ (RAW JSON):');
+      print('───────────────────────────────────────────────────────────');
+      print(response.body);
+      print('═══════════════════════════════════════════════════════════\n');
 
       if (response.statusCode == 200) {
-        return json.decode(response.body);
+        final data = json.decode(response.body);
+        return data;
       } else {
+        print('❌ API Hata: ${response.statusCode} - ${response.body}');
         throw Exception('Grafik verisi yüklenemedi: ${response.statusCode}');
       }
     } catch (e) {
+      print('❌ Exception: $e');
       throw Exception('Bağlantı hatası: $e');
     }
   }

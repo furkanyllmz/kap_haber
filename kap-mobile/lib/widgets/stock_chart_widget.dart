@@ -40,6 +40,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
         _isLoading = false;
       });
     } catch (e) {
+      print('❌ HATA OLUŞTU: $e');
       if (mounted) {
         setState(() {
           _error = e.toString();
@@ -224,20 +225,15 @@ class _StockChartWidgetState extends State<StockChartWidget> {
                 if (index < 0 || index >= _chartData.length) return const SizedBox.shrink();
 
                 final dateStr = _chartData[index]['date'] as String;
-                // Simple parsing logic, adjust if date format differs
-                // Assuming "yyyy-MM-dd" or "yyyy-MM-ddTHH:mm:ss"
                 String label = '';
                 try {
+                  // API'den gelen format: "yyyy-MM-dd" (saat bilgisi yok)
                   final date = DateTime.parse(dateStr);
-                  if (_selectedTimeframe == '1G' || _selectedTimeframe == '1H') {
-                    // Show HH:mm for short term
-                    label = '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
-                  } else {
-                     // Show dd/MM for longer term
-                    label = '${date.day}/${date.month}';
-                  }
+                  // Tüm zaman dilimleri için tarih göster (gün/ay)
+                  label = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}';
                 } catch (e) {
-                  label = '';
+                  // Parse edilemezse ham string'i göster
+                  label = dateStr.length > 5 ? dateStr.substring(5) : dateStr;
                 }
 
                 return Padding(
@@ -284,8 +280,24 @@ class _StockChartWidgetState extends State<StockChartWidget> {
             getTooltipColor: (touchedSpot) => Colors.blueGrey.withValues(alpha: 0.9),
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((LineBarSpot touchedSpot) {
+                final index = touchedSpot.x.toInt();
+                String dateLabel = '';
+                if (index >= 0 && index < _chartData.length) {
+                  final dateStr = _chartData[index]['date'] as String;
+                  try {
+                    final date = DateTime.parse(dateStr);
+                    // Tarih formatı: gün/ay/yıl
+                    dateLabel = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
+                    // Eğer saat bilgisi varsa (00:00:00 değilse) ekle
+                    if (date.hour != 0 || date.minute != 0 || date.second != 0) {
+                      dateLabel += ' ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+                    }
+                  } catch (e) {
+                    dateLabel = dateStr;
+                  }
+                }
                 return LineTooltipItem(
-                  '₺${touchedSpot.y.toStringAsFixed(2)}',
+                  '$dateLabel\n₺${touchedSpot.y.toStringAsFixed(2)}',
                   const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
                 );
               }).toList();
@@ -304,9 +316,31 @@ class _StockChartWidgetState extends State<StockChartWidget> {
     final changePercent = (change / firstPrice) * 100;
     final isPositive = change >= 0;
 
+    // Tarih aralığını hesapla
+    String dateRange = '';
+    try {
+      final firstDateStr = _chartData.first['date'] as String;
+      final lastDateStr = _chartData.last['date'] as String;
+      final firstDate = DateTime.parse(firstDateStr);
+      final lastDate = DateTime.parse(lastDateStr);
+      dateRange = '${firstDate.day.toString().padLeft(2, '0')}/${firstDate.month.toString().padLeft(2, '0')} - ${lastDate.day.toString().padLeft(2, '0')}/${lastDate.month.toString().padLeft(2, '0')}';
+    } catch (e) {
+      dateRange = _selectedTimeframe;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        // Tarih aralığı
+        Text(
+          dateRange,
+          style: TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade500,
+          ),
+        ),
+        const SizedBox(height: 2),
         Text(
           '₺${lastPrice.toStringAsFixed(2)}',
           style: TextStyle(
