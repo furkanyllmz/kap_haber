@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../models/news_item.dart';
 import 'ticker_logo.dart';
 
@@ -13,141 +12,238 @@ class NewsCard extends StatelessWidget {
     this.onTap,
   });
 
-  Widget _buildLogo(String ticker) {
-    return TickerLogo(
-      ticker: ticker,
-      size: 50,
-      borderRadius: 10,
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 24),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardTheme.color,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header: Logo, Ticker, Time
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                TickerLogo(
+                  ticker: news.displayTicker,
+                  size: 40,
+                  borderRadius: 10,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        news.displayTicker,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        news.displayTime,
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.more_horiz,
+                  color: Theme.of(context).disabledColor,
+                ),
+              ],
+            ),
+          ),
+
+          // Main Image
+          GestureDetector(
+            onTap: onTap,
+            child: Stack(
+              children: [
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Image.network(
+                    news.imageUrl,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Container(
+                        color: Theme.of(context).highlightColor.withOpacity(0.1),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                                : null,
+                            strokeWidth: 2,
+                          ),
+                        ),
+                      );
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: Theme.of(context).highlightColor.withOpacity(0.1),
+                        child: const Center(
+                          child: Icon(Icons.image_not_supported_outlined, size: 40, color: Colors.grey),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                if (news.category != null)
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(20),
+                        backdropFilter: const ColorFilter.mode(Colors.black, BlendMode.srcOver),
+                      ),
+                      child: Text(
+                        news.category!.toUpperCase(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+
+          // Content
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(
+                    news.headline ?? 'Haber Başlığı Yok',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                      height: 1.3,
+                      color: Theme.of(context).textTheme.titleLarge?.color,
+                    ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (news.summary.isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    news.summary,
+                    style: TextStyle(
+                      fontSize: 14,
+                      height: 1.5,
+                      color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.8),
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ],
+            ),
+          ),
+
+          // Action Bar
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Theme.of(context).dividerColor.withOpacity(0.1),
+                ),
+              ),
+            ),
+            child: Row(
+              children: [
+                _ActionButton(
+                  icon: Icons.favorite_border_rounded,
+                  label: 'Beğen',
+                  onTap: () {},
+                ),
+                const SizedBox(width: 16),
+                _ActionButton(
+                  icon: Icons.comment_outlined,
+                  label: 'Yorum Yap',
+                  onTap: () {},
+                ),
+                const Spacer(),
+                _ActionButton(
+                  icon: Icons.share_outlined,
+                  onTap: () {},
+                ),
+                const SizedBox(width: 16),
+                _ActionButton(
+                  icon: Icons.bookmark_border_rounded,
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
+}
 
-  Color _getTickerColor(String ticker) {
-    final colors = [
-      const Color(0xFF4CAF50),
-      const Color(0xFF2196F3),
-      const Color(0xFFF44336),
-      const Color(0xFFFF9800),
-      const Color(0xFF9C27B0),
-      const Color(0xFF00BCD4),
-      const Color(0xFF795548),
-      const Color(0xFF607D8B),
-    ];
-    return colors[ticker.hashCode.abs() % colors.length];
-  }
+class _ActionButton extends StatelessWidget {
+  final IconData icon;
+  final String? label;
+  final VoidCallback onTap;
+
+  const _ActionButton({
+    required this.icon,
+    this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final ticker = news.displayTicker;
-    
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide.none,
-      ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Sol taraftaki logo
-              _buildLogo(ticker),
-              const SizedBox(width: 14),
-              // Sağ taraftaki içerik
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Üst satır: Ticker badge + Saat + Kategori
-                    Row(
-                      children: [
-                        // Ticker badge
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                          decoration: BoxDecoration(
-                            color: _getTickerColor(ticker).withValues(alpha: 0.15),
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Text(
-                            ticker,
-                            style: TextStyle(
-                              color: _getTickerColor(ticker),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        // Saat
-                        Icon(Icons.access_time, size: 12, color: Theme.of(context).hintColor),
-                        const SizedBox(width: 3),
-                        Text(
-                          news.displayTime,
-                          style: TextStyle(
-                            color: Theme.of(context).hintColor,
-                            fontSize: 11,
-                          ),
-                        ),
-                        const Spacer(),
-                        // Kategori
-                        if (news.category != null)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Text(
-                              news.category!,
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.onSurfaceVariant,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    // Başlık
-                    Text(
-                      news.headline ?? '',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        height: 1.3,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    // Özet / Facts özeti - Logo hizasında
-                    if (news.facts != null && news.facts!.isNotEmpty) ...[
-                      const SizedBox(height: 6),
-                      Text(
-                        news.facts!
-                            .where((f) => f.key != null && f.value != null)
-                            .take(2)
-                            .map((f) => '${f.key}: ${f.value}')
-                            .join(' • '),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Theme.of(context).textTheme.bodyMedium?.color?.withValues(alpha: 0.7),
-                          height: 1.3,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-            ],
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            size: 22,
+            color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
           ),
-        ),
+          if (label != null) ...[
+            const SizedBox(width: 6),
+            Text(
+              label!,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+              ),
+            ),
+          ],
+        ],
       ),
     );
   }

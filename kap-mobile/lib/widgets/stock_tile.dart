@@ -7,6 +7,10 @@ class StockTile extends StatelessWidget {
   final String name;
   final String? logoPath;
   final VoidCallback? onTap;
+  final bool isFavorite;
+  final bool isNotificationEnabled;
+  final VoidCallback? onFavoriteToggle;
+  final VoidCallback? onNotificationToggle;
 
   const StockTile({
     super.key,
@@ -14,6 +18,10 @@ class StockTile extends StatelessWidget {
     required this.name,
     this.logoPath,
     this.onTap,
+    this.isFavorite = false,
+    this.isNotificationEnabled = false,
+    this.onFavoriteToggle,
+    this.onNotificationToggle,
   });
 
   Color _getTickerColor(String ticker) {
@@ -32,37 +40,99 @@ class StockTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    final theme = Theme.of(context);
+    return InkWell(
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-      leading: _buildLogo(),
-      title: Text(
-        ticker,
-        style: const TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            _buildLogo(),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    ticker,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      color: theme.textTheme.bodyMedium?.color?.withOpacity(0.7),
+                      fontSize: 13,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _ActionButton(
+                  icon: isNotificationEnabled ? Icons.notifications_active_rounded : Icons.notifications_none_rounded,
+                  color: isNotificationEnabled ? theme.colorScheme.primary : theme.disabledColor,
+                  onTap: onNotificationToggle,
+                ),
+                const SizedBox(width: 8),
+                _ActionButton(
+                  icon: isFavorite ? Icons.star_rounded : Icons.star_outline_rounded,
+                  color: isFavorite ? Colors.amber : theme.disabledColor,
+                  onTap: onFavoriteToggle,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
-      subtitle: Text(
-        name,
-        style: TextStyle(
-          color: Theme.of(context).textTheme.bodyMedium?.color?.withValues(alpha: 0.7),
-          fontSize: 13,
-        ),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
-      trailing: Icon(Icons.chevron_right, color: Theme.of(context).dividerColor),
     );
   }
 
   Widget _buildLogo() {
     return TickerLogo(
       ticker: ticker,
-      size: 44,
-      borderRadius: 8,
+      size: 48,
+      borderRadius: 12,
     );
   }
+}
 
+class _ActionButton extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final VoidCallback? onTap;
 
+  const _ActionButton({
+    required this.icon,
+    required this.color,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.1),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          icon,
+          size: 20,
+          color: color,
+        ),
+      ),
+    );
+  }
 }

@@ -91,7 +91,7 @@ class _TickerLogoState extends State<TickerLogo> {
               width: widget.size,
               height: widget.size,
               decoration: BoxDecoration(
-                color: _getTickerColor(widget.ticker).withValues(alpha: 0.15),
+                color: _getTickerColor(widget.ticker).withOpacity(0.15),
               ),
               child: Center(
                 child: Text(

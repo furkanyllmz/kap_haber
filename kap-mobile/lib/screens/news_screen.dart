@@ -69,208 +69,241 @@ class _NewsScreenState extends State<NewsScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
-        child: Column(
-          children: [
-            // Modern Header
-            Container(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
-              decoration: BoxDecoration(
-                color: Theme.of(context).appBarTheme.backgroundColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'KAP Mobil',
-                        style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w800,
-                          color: Theme.of(context).colorScheme.primary,
-                          letterSpacing: -0.5,
-                        ),
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                floating: true,
+                pinned: true,
+                snap: true,
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                surfaceTintColor: Colors.transparent,
+                elevation: 0,
+                title: _isSearching
+                  ? TextField(
+                      controller: _searchController,
+                      autofocus: true,
+                      onChanged: _filterNews,
+                      decoration: const InputDecoration(
+                        hintText: 'Haber ara...',
+                        border: InputBorder.none,
                       ),
-                      const Spacer(),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).cardTheme.color,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Theme.of(context).dividerColor),
-                        ),
-                        child: IconButton(
-                          icon: Icon(Icons.refresh, color: Theme.of(context).colorScheme.primary),
-                          onPressed: _loadNews,
-                          constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
-                          padding: EdgeInsets.zero,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  // Modern Arama Çubuğu
-                  TextField(
-                    controller: _searchController,
-                    onChanged: _filterNews,
-                    style: const TextStyle(fontSize: 15),
-                    decoration: InputDecoration(
-                      hintText: 'Haber veya hisse ara...',
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
-                      prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
-                      filled: true,
-                      fillColor: Theme.of(context).cardTheme.color == Colors.white 
-                          ? Colors.grey.shade100 
-                          : Colors.white.withValues(alpha: 0.05),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: Theme.of(context).dividerColor),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1.5),
+                    )
+                  : Text(
+                      'Akış',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w900,
+                        color: Theme.of(context).colorScheme.primary,
+                        letterSpacing: -0.5,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            
-            // Son Gelişmeler başlığı
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 12),
-              child: Row(
-                children: [
-                  Text(
-                    'SON GELİŞMELER',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.primary,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-                  const Spacer(),
-                  if (!_isLoading)
-                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                centerTitle: false,
+                actions: [
+                  IconButton(
+                    icon: Container(
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(20),
+                        color: Theme.of(context).cardTheme.color,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 10,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
-                      child: Text(
-                        '${_filteredNews.length} haber',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      child: Icon(
+                        _isSearching ? Icons.close : Icons.search,
+                        size: 22,
+                        color: Theme.of(context).colorScheme.primary
                       ),
                     ),
+                    onPressed: () {
+                      setState(() {
+                        _isSearching = !_isSearching;
+                        if (!_isSearching) {
+                          _searchController.clear();
+                          _filterNews('');
+                        }
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                   IconButton(
+                    icon: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardTheme.color,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 10,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Icon(Icons.notifications_outlined, size: 22, color: Theme.of(context).colorScheme.primary),
+                    ),
+                    onPressed: () {},
+                  ),
+                  const SizedBox(width: 16),
                 ],
               ),
+            ];
+          },
+          body: RefreshIndicator(
+            onRefresh: _loadNews,
+            color: Theme.of(context).colorScheme.primary,
+            child: CustomScrollView(
+              slivers: [
+                // Highlight / Stories Section (Optional but requested "modern")
+                SliverToBoxAdapter(
+                  child: Container(
+                    height: 110,
+                    margin: const EdgeInsets.only(bottom: 16),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      itemCount: 6, // Mock stories count
+                      itemBuilder: (context, index) {
+                        return Container(
+                          width: 80,
+                          margin: const EdgeInsets.only(right: 12),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 70,
+                                height: 70,
+                                padding: const EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      Theme.of(context).colorScheme.primary,
+                                      Colors.purpleAccent,
+                                    ],
+                                  ),
+                                ),
+                                child: Container(
+                                  padding: const EdgeInsets.all(2),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).scaffoldBackgroundColor,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(50),
+                                    child: Image.network(
+                                      'https://picsum.photos/seed/story$index/200',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'Öne Çıkan',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  color: Theme.of(context).textTheme.bodyMedium?.color,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+
+                // News Feed
+                _buildContentSliver(),
+              ],
             ),
-            
-            // Haber listesi
-            Expanded(
-              child: _buildContent(),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContentSliver() {
     if (_isLoading) {
-      return Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+      return SliverFillRemaining(
+        child: Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+          ),
         ),
       );
     }
 
     if (_error != null) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.red.shade50,
-                shape: BoxShape.circle,
+      return SliverFillRemaining(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.wifi_off_rounded, size: 64, color: Colors.grey.shade400),
+              const SizedBox(height: 16),
+              Text(
+                'Bağlantı hatası',
+                style: TextStyle(color: Colors.grey.shade600, fontSize: 16, fontWeight: FontWeight.w500),
               ),
-              child: Icon(Icons.error_outline, size: 32, color: Colors.red.shade400),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Haberler yüklenemedi',
-              style: TextStyle(color: Colors.grey.shade700, fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton.icon(
-              onPressed: _loadNews,
-              icon: const Icon(Icons.refresh, size: 18),
-              label: const Text('Tekrar Dene'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1A237E),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _loadNews,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
+                child: const Text('Yenile'),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
 
     if (_filteredNews.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.search_off_rounded, size: 64, color: Colors.grey.shade300),
-            const SizedBox(height: 16),
-            Text(
-              'Haber bulunamadı',
-              style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
-            ),
-          ],
+      return SliverFillRemaining(
+        child: Center(
+          child: Text(
+            'Haber bulunamadı',
+            style: TextStyle(color: Colors.grey.shade500),
+          ),
         ),
       );
     }
 
-    return RefreshIndicator(
-      onRefresh: _loadNews,
-      color: Theme.of(context).colorScheme.primary,
-      backgroundColor: Theme.of(context).cardTheme.color,
-      child: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 20),
-        itemCount: _filteredNews.length,
-        itemBuilder: (context, index) {
-          final newsItem = _filteredNews[index];
-          return NewsCard(
-            news: newsItem,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsDetailScreen(news: newsItem),
-                ),
-              );
-            },
-          );
-        },
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            final newsItem = _filteredNews[index];
+            return NewsCard(
+              news: newsItem,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsDetailScreen(news: newsItem),
+                  ),
+                );
+              },
+            );
+          },
+          childCount: _filteredNews.length,
+        ),
       ),
     );
   }

@@ -68,7 +68,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -99,7 +99,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
                             decoration: BoxDecoration(
                               color: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
-                              border: isSelected ? null : Border.all(color: Colors.grey.withValues(alpha: 0.3)),
+                              border: isSelected ? null : Border.all(color: Colors.grey.withOpacity(0.3)),
                             ),
                             child: Text(
                               tf,
@@ -185,7 +185,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
           horizontalInterval: (maxPrice - minPrice) / 4, // ~5 lines
           getDrawingHorizontalLine: (value) {
             return FlLine(
-              color: Colors.grey.withValues(alpha: 0.1),
+              color: Colors.grey.withOpacity(0.1),
               strokeWidth: 1,
             );
           },
@@ -268,8 +268,8 @@ class _StockChartWidgetState extends State<StockChartWidget> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  lineColor.withValues(alpha: 0.25),
-                  lineColor.withValues(alpha: 0.0),
+                  lineColor.withOpacity(0.25),
+                  lineColor.withOpacity(0.0),
                 ],
               ),
             ),
@@ -277,7 +277,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
         ],
         lineTouchData: LineTouchData(
           touchTooltipData: LineTouchTooltipData(
-            getTooltipColor: (touchedSpot) => Colors.blueGrey.withValues(alpha: 0.9),
+            getTooltipColor: (touchedSpot) => Colors.blueGrey.withOpacity(0.9),
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((LineBarSpot touchedSpot) {
                 final index = touchedSpot.x.toInt();
