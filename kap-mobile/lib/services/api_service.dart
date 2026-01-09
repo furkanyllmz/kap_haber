@@ -14,6 +14,12 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = json.decode(response.body);
+        // DEBUG: İlk haberin raw JSON'unu bastır
+        if (jsonList.isNotEmpty) {
+          print('========== RAW API JSON (İlk Haber) ==========');
+          print(const JsonEncoder.withIndent('  ').convert(jsonList.first));
+          print('===============================================');
+        }
         return jsonList.map((json) => NewsItem.fromJson(json)).toList();
       } else {
         throw Exception('Haberler yüklenemedi: ${response.statusCode}');

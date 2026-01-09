@@ -73,7 +73,7 @@ class _NewsScreenState extends State<NewsScreen> {
           children: [
             // Modern Header
             Container(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
                 color: Theme.of(context).appBarTheme.backgroundColor,
                 boxShadow: [
@@ -84,66 +84,61 @@ class _NewsScreenState extends State<NewsScreen> {
                   ),
                 ],
               ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'KAP Mobil',
-                        style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.w800,
-                          color: Theme.of(context).colorScheme.primary,
-                          letterSpacing: -0.5,
+                child: Row(
+                  children: [
+                    // Logo (Cropped)
+                    SizedBox(
+                      height: 50, // Görünen net yükseklik
+                      width: 140, // Genişlik sınırı
+                      child: ClipRect(
+                        child: OverflowBox(
+                          minHeight: 150, // Render edilen yükseklik (büyük)
+                          maxHeight: 150,
+                          alignment: Alignment.center, // Ortala (üst/alt boşluklar taşsın)
+                          child: Image.asset(
+                            Theme.of(context).brightness == Brightness.dark
+                                ? 'assets/headerlogo_beyaz.png'
+                                : 'assets/headerlogo.png',
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).cardTheme.color,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Theme.of(context).dividerColor),
-                        ),
-                        child: IconButton(
-                          icon: Icon(Icons.refresh, color: Theme.of(context).colorScheme.primary),
-                          onPressed: _loadNews,
-                          constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
-                          padding: EdgeInsets.zero,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  // Modern Arama Çubuğu
-                  TextField(
-                    controller: _searchController,
-                    onChanged: _filterNews,
-                    style: const TextStyle(fontSize: 15),
-                    decoration: InputDecoration(
-                      hintText: 'Haber veya hisse ara...',
-                      hintStyle: TextStyle(color: Theme.of(context).hintColor),
-                      prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
-                      filled: true,
-                      fillColor: Theme.of(context).cardTheme.color == Colors.white 
-                          ? Colors.grey.shade100 
-                          : Colors.white.withValues(alpha: 0.05),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: Theme.of(context).dividerColor),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1.5),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    const SizedBox(width: 16),
+                    // Modern Arama Çubuğu
+                    Expanded(
+                      child: TextField(
+                        controller: _searchController,
+                        onChanged: _filterNews,
+                        style: const TextStyle(fontSize: 14),
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          hintText: 'Ara...',
+                          hintStyle: TextStyle(color: Theme.of(context).hintColor),
+                          prefixIcon: Icon(Icons.search, size: 20, color: Theme.of(context).iconTheme.color),
+                          filled: true,
+                          fillColor: Theme.of(context).cardTheme.color == Colors.white 
+                              ? Colors.grey.shade100 
+                              : Colors.white.withValues(alpha: 0.05),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                          isDense: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Theme.of(context).dividerColor),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 1.5),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
             ),
             
             // Son Gelişmeler başlığı

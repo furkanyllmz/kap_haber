@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'providers/theme_provider.dart';
 import 'screens/news_screen.dart';
 import 'screens/stocks_screen.dart';
@@ -65,67 +66,42 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            child: BottomNavigationBar(
-              currentIndex: _currentIndex,
-              onTap: (index) {
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10), // İnceltilmiş padding
+            child: GNav(
+              rippleColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+              hoverColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+              gap: 8, // Icon ve Text yan yana, arada 8px boşluk
+              activeColor: Theme.of(context).colorScheme.primary,
+              iconSize: 24,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Tab iç padding
+              duration: const Duration(milliseconds: 300),
+              tabBackgroundColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+              color: Theme.of(context).hintColor, // Seçili olmayan icon rengi
+              textStyle: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              tabs: const [
+                GButton(
+                  icon: Icons.article_outlined,
+                  text: 'Haberler',
+                ),
+                GButton(
+                  icon: Icons.show_chart_rounded,
+                  text: 'Hisseler',
+                ),
+                GButton(
+                  icon: Icons.settings_outlined,
+                  text: 'Ayarlar',
+                ),
+              ],
+              selectedIndex: _currentIndex,
+              onTabChange: (index) {
                 setState(() {
                   _currentIndex = index;
                 });
               },
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
-              unselectedItemColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
-              selectedFontSize: 12,
-              unselectedFontSize: 12,
-              selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
-              showUnselectedLabels: true,
-              items: [
-                BottomNavigationBarItem(
-                  icon: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: _currentIndex == 0 
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.1) 
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Icon(Icons.article_outlined, 
-                      color: _currentIndex == 0 ? Theme.of(context).colorScheme.primary : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor),
-                  ),
-                  label: 'Haberler',
-                ),
-                BottomNavigationBarItem(
-                  icon: Container(
-                     padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: _currentIndex == 1
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.1) 
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Icon(Icons.show_chart_rounded, 
-                      color: _currentIndex == 1 ? Theme.of(context).colorScheme.primary : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor),
-                  ),
-                  label: 'Hisseler',
-                ),
-                BottomNavigationBarItem(
-                  icon: Container(
-                     padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: _currentIndex == 2
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.1) 
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Icon(Icons.settings_outlined, 
-                      color: _currentIndex == 2 ? Theme.of(context).colorScheme.primary : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor),
-                  ),
-                  label: 'Ayarlar',
-                ),
-              ],
             ),
           ),
         ),

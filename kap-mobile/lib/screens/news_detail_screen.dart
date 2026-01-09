@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import '../widgets/ticker_logo.dart';
 import '../models/news_item.dart';
 
@@ -45,6 +47,11 @@ class NewsDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ticker = news.displayTicker;
+    
+    // DEBUG: Direk JSON bastır
+    debugPrint('========== HABER JSON ==========');
+    debugPrint(const JsonEncoder.withIndent('  ').convert(news.toJson()));
+    debugPrint('=================================');
     
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -181,9 +188,32 @@ class NewsDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Description / Body Text
-                  if (news.description.isNotEmpty) ...[
+                  // Article Detail (Markdown) - Önemli bilgilerin üstünde
+                  if (news.seo?.articleMd != null && news.seo!.articleMd!.isNotEmpty) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4, bottom: 12),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.article_outlined,
+                            size: 18,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            'HABERİN DETAYI',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              color: Theme.of(context).colorScheme.primary,
+                              letterSpacing: 1.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
+                      width: double.infinity,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         color: Theme.of(context).cardTheme.color,
@@ -196,18 +226,53 @@ class NewsDetailScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: Text(
-                         // Simple cleanup for markdown bold syntax if desired, or display as is.
-                         // For now, displaying as is but handling newlines.
-                        news.description.replaceAll('**', '').replaceAll('- ', '• '), 
-                        style: TextStyle(
-                          fontSize: 16,
-                          height: 1.6,
-                          color: Theme.of(context).textTheme.bodyMedium?.color,
+                      child: MarkdownBody(
+                        data: news.seo!.articleMd!,
+                        selectable: true,
+                        styleSheet: MarkdownStyleSheet(
+                          h2: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).textTheme.titleLarge?.color,
+                            height: 1.4,
+                          ),
+                          h3: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).textTheme.titleLarge?.color,
+                            height: 1.4,
+                          ),
+                          h4: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).textTheme.titleMedium?.color,
+                            height: 1.4,
+                          ),
+                          p: TextStyle(
+                            fontSize: 15,
+                            height: 1.7,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                          ),
+                          listBullet: TextStyle(
+                            fontSize: 15,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                          ),
+                          em: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                          ),
+                          strong: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                          ),
+                          blockSpacing: 16,
                         ),
+                        onTapLink: (text, href, title) {
+                          if (href != null) _openUrl(href);
+                        },
                       ),
                     ),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 32),
                   ],
 
                    // Facts / Important Info

@@ -56,11 +56,6 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
     }
   }
 
-  Color _getTickerColor(String ticker) {
-    // Sabit indigo rengi veya hash bazlı renk kullanılabilir
-    return const Color(0xFF1A237E); 
-  }
-
   Widget _buildLogo() {
     return Container(
       decoration: BoxDecoration(
@@ -102,145 +97,159 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
             fontSize: 18,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh, color: Theme.of(context).colorScheme.primary),
-            onPressed: _loadNews,
-          ),
-        ],
       ),
-      body: Column(
-        children: [
-          // Şirket Kartı
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardTheme.color,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                _buildLogo(),
-                const SizedBox(height: 16),
-                  Text(
-                    widget.companyName,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Theme.of(context).textTheme.titleLarge?.color,
+      body: RefreshIndicator(
+        onRefresh: _loadNews,
+        color: Theme.of(context).colorScheme.primary,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          padding: const EdgeInsets.only(bottom: 24),
+          child: Column(
+            children: [
+              // Şirket Kartı
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardTheme.color,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  if (!_isLoading)
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(20),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    _buildLogo(),
+                    const SizedBox(height: 16),
+                    Text(
+                      widget.companyName,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).textTheme.titleLarge?.color,
                       ),
-                      child: Text(
-                        '${_news.length} Bildirim',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                    ),
+                    const SizedBox(height: 8),
+                    if (!_isLoading)
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          '${_news.length} Bildirim',
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-              ],
-            ),
-          ),
-          
-          // Grafik Alanı
-          const SizedBox(height: 16),
-          StockChartWidget(ticker: widget.ticker),
-          
-          const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+              
+              // Grafik Alanı
+              StockChartWidget(ticker: widget.ticker),
+              
+              const SizedBox(height: 16),
 
-          // Haber listesi başlığı yok, direkt liste
-          Expanded(
-            child: _buildContent(),
+              // Haber listesi
+              _buildContent(),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 
   Widget _buildContent() {
     if (_isLoading) {
-      return Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary)));
+      return Padding(
+        padding: const EdgeInsets.all(32),
+        child: Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+          ),
+        ),
+      );
     }
 
     if (_error != null) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.error_outline, size: 48, color: Colors.red.shade200),
-            const SizedBox(height: 16),
-            Text(
-              'Haberler yüklenemedi',
-              style: TextStyle(color: Colors.grey.shade600),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton(
-              onPressed: _loadNews,
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF1A237E), foregroundColor: Colors.white),
-              child: const Text('Tekrar Dene'),
-            ),
-          ],
+      return Padding(
+        padding: const EdgeInsets.all(32),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error_outline, size: 48, color: Colors.red.shade200),
+              const SizedBox(height: 16),
+              Text(
+                'Haberler yüklenemedi',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: _loadNews,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF1A237E),
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Tekrar Dene'),
+              ),
+            ],
+          ),
         ),
       );
     }
 
     if (_news.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.article_outlined, size: 64, color: Colors.grey.shade300),
-            const SizedBox(height: 16),
-            Text(
-              'Henüz haber yok',
-              style: TextStyle(
-                color: Colors.grey.shade500,
-                fontSize: 16,
+      return Padding(
+        padding: const EdgeInsets.all(32),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.article_outlined, size: 64, color: Colors.grey.shade300),
+              const SizedBox(height: 16),
+              Text(
+                'Henüz haber yok',
+                style: TextStyle(
+                  color: Colors.grey.shade500,
+                  fontSize: 16,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
 
-    return RefreshIndicator(
-      onRefresh: _loadNews,
-      color: Theme.of(context).colorScheme.primary,
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        itemCount: _news.length,
-        itemBuilder: (context, index) {
-          final newsItem = _news[index];
-          return NewsCard(
-            news: newsItem,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewsDetailScreen(news: newsItem),
-                ),
-              );
-            },
-          );
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: 0),
+      itemCount: _news.length,
+      itemBuilder: (context, index) {
+        final newsItem = _news[index];
+        return NewsCard(
+          news: newsItem,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NewsDetailScreen(news: newsItem),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

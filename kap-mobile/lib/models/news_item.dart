@@ -33,14 +33,14 @@ class NewsItem {
 
   factory NewsItem.fromJson(Map<String, dynamic> json) {
     return NewsItem(
-      id: json['id'],
-      primaryTicker: json['primaryTicker'],
-      publisherTicker: json['publisherTicker'],
-      relatedTickers: json['relatedTickers'] != null
-          ? List<String>.from(json['relatedTickers'])
+      id: json['id'] ?? json['_id'],
+      primaryTicker: json['primaryTicker'] ?? json['primary_ticker'],
+      publisherTicker: json['publisherTicker'] ?? json['publisher_ticker'],
+      relatedTickers: (json['relatedTickers'] ?? json['related_tickers']) != null
+          ? List<String>.from(json['relatedTickers'] ?? json['related_tickers'])
           : null,
-      publishedAt: json['publishedAt'] != null
-          ? PublishedAt.fromJson(json['publishedAt'])
+      publishedAt: (json['publishedAt'] ?? json['published_at']) != null
+          ? PublishedAt.fromJson(json['publishedAt'] ?? json['published_at'])
           : null,
       category: json['category'],
       newsworthiness: (json['newsworthiness'] ?? 0).toDouble(),
@@ -48,7 +48,7 @@ class NewsItem {
       facts: json['facts'] != null
           ? (json['facts'] as List).map((f) => Fact.fromJson(f)).toList()
           : null,
-      visualPrompt: json['visualPrompt'],
+      visualPrompt: json['visualPrompt'] ?? json['visual_prompt'],
       url: json['url'],
       ticker: json['ticker'],
       seo: json['seo'] != null ? Seo.fromJson(json['seo']) : null,
@@ -86,6 +86,37 @@ class NewsItem {
       return validFacts.join(' ');
     }
     return '';
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'primaryTicker': primaryTicker,
+      'publisherTicker': publisherTicker,
+      'relatedTickers': relatedTickers,
+      'publishedAt': publishedAt != null ? {
+        'date': publishedAt!.date,
+        'time': publishedAt!.time,
+        'timezone': publishedAt!.timezone,
+      } : null,
+      'category': category,
+      'newsworthiness': newsworthiness,
+      'headline': headline,
+      'facts': facts?.map((f) => {'k': f.key, 'v': f.value}).toList(),
+      'visualPrompt': visualPrompt,
+      'url': url,
+      'ticker': ticker,
+      'seo': seo != null ? {
+        'title': seo!.title,
+        'meta_description': seo!.metaDescription,
+        'article_md': seo!.articleMd,
+      } : null,
+      'tweet': tweet != null ? {
+        'text': tweet!.text,
+        'hashtags': tweet!.hashtags,
+        'disclaimer': tweet!.disclaimer,
+      } : null,
+    };
   }
 }
 
@@ -129,8 +160,8 @@ class Seo {
   factory Seo.fromJson(Map<String, dynamic> json) {
     return Seo(
       title: json['title'],
-      metaDescription: json['meta_description'],
-      articleMd: json['article_md'],
+      metaDescription: json['metaDescription'] ?? json['meta_description'],
+      articleMd: json['articleMd'] ?? json['article_md'],
     );
   }
 }
