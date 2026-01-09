@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'providers/stock_provider.dart';
 import 'providers/theme_provider.dart';
 import 'screens/news_screen.dart';
 import 'screens/stocks_screen.dart';
@@ -7,8 +8,11 @@ import 'screens/settings_screen.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => StockProvider()),
+      ],
       child: const KapMobilApp(),
     ),
   );
