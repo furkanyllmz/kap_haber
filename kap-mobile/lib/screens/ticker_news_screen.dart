@@ -5,6 +5,8 @@ import '../services/api_service.dart';
 import '../widgets/news_card.dart';
 import '../widgets/stock_chart_widget.dart';
 import '../widgets/ticker_logo.dart';
+import 'package:provider/provider.dart';
+import '../services/favorites_service.dart';
 import 'news_detail_screen.dart';
 
 class TickerNewsScreen extends StatefulWidget {
@@ -97,6 +99,34 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
             fontSize: 18,
           ),
         ),
+        actions: [
+          Consumer<FavoritesService>(
+            builder: (context, favoritesService, child) {
+              final isFavorite = favoritesService.isFavorite(widget.ticker);
+              return IconButton(
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: isFavorite ? Colors.red : Theme.of(context).colorScheme.primary,
+                ),
+                onPressed: () {
+                  favoritesService.toggleFavorite(widget.ticker);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        isFavorite 
+                            ? '${widget.ticker} favorilerden çıkarıldı' 
+                            : '${widget.ticker} favorilere eklendi'
+                      ),
+                      duration: const Duration(seconds: 1),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: _loadNews,

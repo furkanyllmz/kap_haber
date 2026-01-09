@@ -7,6 +7,7 @@ class StockTile extends StatelessWidget {
   final String name;
   final String? logoPath;
   final VoidCallback? onTap;
+  final Widget? trailing;
 
   const StockTile({
     super.key,
@@ -14,6 +15,7 @@ class StockTile extends StatelessWidget {
     required this.name,
     this.logoPath,
     this.onTap,
+    this.trailing,
   });
 
   Color _getTickerColor(String ticker) {
@@ -52,7 +54,7 @@ class StockTile extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      trailing: Icon(Icons.chevron_right, color: Theme.of(context).dividerColor),
+      trailing: trailing ?? Icon(Icons.chevron_right, color: Theme.of(context).dividerColor),
     );
   }
 

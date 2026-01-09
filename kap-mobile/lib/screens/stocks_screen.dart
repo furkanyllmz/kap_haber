@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import '../services/favorites_service.dart';
 import '../widgets/stock_tile.dart';
 import 'ticker_news_screen.dart';
 
@@ -15,6 +17,7 @@ class _StocksScreenState extends State<StocksScreen> {
   List<Map<String, dynamic>> _stocks = [];
   List<Map<String, dynamic>> _filteredStocks = [];
   bool _isLoading = true;
+  bool _showFavorites = false; // Favori filtresi
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -53,22 +56,68 @@ class _StocksScreenState extends State<StocksScreen> {
   }
 
   void _filterStocks(String query) {
+    if (!mounted) return;
+    
+    final favoritesService = Provider.of<FavoritesService>(context, listen: false);
+    
     setState(() {
-      if (query.isEmpty) {
-        _filteredStocks = _stocks;
-      } else {
-        _filteredStocks = _stocks.where((stock) {
+      var tempStocks = _stocks;
+
+      // 1. Favori filtresi
+      if (_showFavorites) {
+        tempStocks = tempStocks.where((stock) => favoritesService.isFavorite(stock['ticker'])).toList();
+      }
+
+      // 2. Metin araması
+      if (query.isNotEmpty) {
+        tempStocks = tempStocks.where((stock) {
           final ticker = stock['ticker'].toLowerCase();
           final name = stock['name'].toLowerCase();
           final searchLower = query.toLowerCase();
           return ticker.contains(searchLower) || name.contains(searchLower);
         }).toList();
       }
+      
+      _filteredStocks = tempStocks;
     });
+  }
+  
+  // Favori listesi değiştiğinde listeyi güncellemek için
+  void _refreshList() {
+    _filterStocks(_searchController.text);
   }
 
   @override
   Widget build(BuildContext context) {
+    // Favori değişikliklerini dinle ve listeyi güncelle
+    final favoritesService = Provider.of<FavoritesService>(context);
+    // Bu yöntem build her tetiklendiğinde _refreshList'i dolaylı olarak çağırmamızı sağlar 
+    // ancak sonsuz döngüye girmemek için dikkatli olmalıyız.
+    // En iyisi Consumer kullanmak veya sadece filtreleme mantığında context.watch kullanmak.
+    // Burada basitçe: _showFavorites true ise listeyi tekrar hesaplayalım.
+    if (_showFavorites) {
+        // Bu biraz riskli (setState içinde setState). 
+        // Onun yerine aşağıda ListView.builder içinde where kontrolü yapmak daha safe,
+        // ama arama ile birleştirmek için filtre fonksiyonu daha iyi.
+        // Çözüm: filteredStocks'u build içinde hesaplamak.
+    }
+
+    // Modern yöntem: Listeyi build anında filtrele
+    var displayStocks = _stocks;
+    if (_showFavorites) {
+       displayStocks = displayStocks.where((s) => favoritesService.isFavorite(s['ticker'])).toList();
+    }
+    if (_searchController.text.isNotEmpty) {
+       final query = _searchController.text.toLowerCase();
+       displayStocks = displayStocks.where((s) {
+          return s['ticker'].toLowerCase().contains(query) || s['name'].toLowerCase().contains(query);
+       }).toList();
+    }
+    
+    // Header Stats
+    final totalCount = _stocks.length;
+    final displayCount = displayStocks.length;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -76,7 +125,7 @@ class _StocksScreenState extends State<StocksScreen> {
           children: [
             // Modern Header
             Container(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+              padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
               decoration: BoxDecoration(
                 color: Theme.of(context).appBarTheme.backgroundColor,
                 boxShadow: [
@@ -89,7 +138,7 @@ class _StocksScreenState extends State<StocksScreen> {
               ),
               child: Column(
                 children: [
-                  Row(
+                   Row(
                     children: [
                       Text(
                         'Hisseler',
@@ -101,28 +150,31 @@ class _StocksScreenState extends State<StocksScreen> {
                         ),
                       ),
                       const Spacer(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      // Tümü / Favoriler Toggle
+                       Container(
+                        padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(20),
+                          color: Theme.of(context).cardTheme.color,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Theme.of(context).dividerColor),
                         ),
-                        child: Text(
-                          '${_filteredStocks.length} BIST',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                          ),
+                        child: Row(
+                          children: [
+                            _buildToggleButton('Tümü', !_showFavorites),
+                            _buildToggleButton('Favoriler', _showFavorites),
+                          ],
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 16),
-                  // Modern Arama Çubuğu
+                  
+                  // Arama
                   TextField(
                     controller: _searchController,
-                    onChanged: _filterStocks,
+                    onChanged: (val) {
+                       setState(() {}); // Sadece re-build tetikle, filtreleme build içinde
+                    },
                     style: const TextStyle(fontSize: 15),
                       decoration: InputDecoration(
                         hintText: 'Hisse kodu veya şirket ara...',
@@ -132,7 +184,7 @@ class _StocksScreenState extends State<StocksScreen> {
                         fillColor: Theme.of(context).cardTheme.color == Colors.white 
                             ? Colors.grey.shade100 
                             : Colors.white.withValues(alpha: 0.05),
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
                           borderSide: BorderSide.none,
@@ -147,21 +199,71 @@ class _StocksScreenState extends State<StocksScreen> {
                         ),
                       ),
                   ),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
             
-            const SizedBox(height: 12),
+            // Stats & List Header
+            Padding(
+               padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                   Text(
+                      _showFavorites ? 'FAVORİ HİSSELER' : 'TÜM HİSSELER ($totalCount)',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
+                        letterSpacing: 0.5,
+                      ),
+                   ),
+                   Text(
+                      '$displayCount gösteriliyor',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).hintColor,
+                      ),
+                   ),
+                 ],
+               ),
+            ),
 
             // Hisse listesi
             Expanded(
               child: _isLoading
                   ? Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary)))
-                  : ListView.builder(
+                  : displayStocks.isEmpty 
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                _showFavorites ? Icons.favorite_border : Icons.search_off, 
+                                size: 64, 
+                                color: Colors.grey.shade300
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                _showFavorites 
+                                  ? 'Henüz favori hisseniz yok' 
+                                  : 'Hisse bulunamadı',
+                                style: TextStyle(color: Colors.grey.shade500, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        )
+                      : ListView.builder(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      itemCount: _filteredStocks.length,
+                      // Listeyi her seferinde yeniden oluşturmamak için key
+                      key: ValueKey('$_showFavorites-${_searchController.text}'), 
+                      itemCount: displayStocks.length,
                       itemBuilder: (context, index) {
-                        final stock = _filteredStocks[index];
+                        final stock = displayStocks[index];
+                        final isFavorite = favoritesService.isFavorite(stock['ticker']);
+                        
                         return Container(
                           margin: const EdgeInsets.only(bottom: 8),
                           decoration: BoxDecoration(
@@ -174,6 +276,10 @@ class _StocksScreenState extends State<StocksScreen> {
                                 offset: const Offset(0, 2),
                               ),
                             ],
+                            // Favoriyse hafif renkli border (opsiyonel)
+                            border: isFavorite && !_showFavorites
+                                ? Border.all(color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3), width: 1)
+                                : null,
                           ),
                           child: StockTile(
                             ticker: stock['ticker'],
@@ -190,12 +296,48 @@ class _StocksScreenState extends State<StocksScreen> {
                                 ),
                               );
                             },
+                            trailing: IconButton(
+                              icon: Icon(
+                                isFavorite ? Icons.favorite : Icons.favorite_border,
+                                color: isFavorite ? Colors.red : Theme.of(context).hintColor.withValues(alpha: 0.3),
+                              ),
+                              onPressed: () => favoritesService.toggleFavorite(stock['ticker']),
+                            ),
                           ),
                         );
                       },
                     ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildToggleButton(String text, bool isSelected) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _showFavorites = text == 'Favoriler';
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: isSelected 
+              ? Theme.of(context).colorScheme.primary 
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: isSelected 
+                ? Theme.of(context).colorScheme.onPrimary 
+                : Theme.of(context).textTheme.bodyMedium?.color,
+          ),
         ),
       ),
     );
