@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,28 +14,43 @@ class ThemeProvider with ChangeNotifier {
 
   bool get isDarkMode {
     if (_themeMode == ThemeMode.system) {
-      // Bu kısımda sistem temasını kestirmek zor olduğu için 
-      // varsayılan olarak false veya main.dart'ta kontrol edilebilir.
-      // Ancak basitlik adına sistem ise false varsayıyoruz veya UI'da kontrol ediyoruz.
-      return false; 
+      return ui.PlatformDispatcher.instance.platformBrightness == Brightness.dark;
     }
     return _themeMode == ThemeMode.dark;
   }
 
   Future<void> _loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    final isDark = prefs.getBool(_themeKey);
-    if (isDark != null) {
-      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    final themeStr = prefs.getString(_themeKey);
+    if (themeStr != null) {
+      if (themeStr == 'dark') _themeMode = ThemeMode.dark;
+      else if (themeStr == 'light') _themeMode = ThemeMode.light;
+      else _themeMode = ThemeMode.system;
       notifyListeners();
+    } else {
+      // Compatibility with old boolean format
+      final isDark = prefs.getBool(_themeKey);
+      if (isDark != null) {
+        _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+        notifyListeners();
+      }
     }
   }
 
-  Future<void> toggleTheme(bool isDark) async {
-    _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+  Future<void> setThemeMode(ThemeMode mode) async {
+    _themeMode = mode;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_themeKey, isDark);
+    String themeStr;
+    if (mode == ThemeMode.dark) themeStr = 'dark';
+    else if (mode == ThemeMode.light) themeStr = 'light';
+    else themeStr = 'system';
+    
+    await prefs.setString(_themeKey, themeStr);
     notifyListeners();
+  }
+
+  Future<void> toggleTheme(bool isDark) async {
+    await setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
   }
 
   // Light Theme Definition

@@ -13,6 +13,7 @@ class NewsItem {
   final String? ticker;
   final Seo? seo;
   final Tweet? tweet;
+  final String? imageUrl;
 
   NewsItem({
     this.id,
@@ -29,6 +30,7 @@ class NewsItem {
     this.ticker,
     this.seo,
     this.tweet,
+    this.imageUrl,
   });
 
   factory NewsItem.fromJson(Map<String, dynamic> json) {
@@ -53,6 +55,7 @@ class NewsItem {
       ticker: json['ticker'],
       seo: json['seo'] != null ? Seo.fromJson(json['seo']) : null,
       tweet: json['tweet'] != null ? Tweet.fromJson(json['tweet']) : null,
+      imageUrl: json['imageUrl'] ?? json['image_url'],
     );
   }
 
@@ -116,6 +119,7 @@ class NewsItem {
         'hashtags': tweet!.hashtags,
         'disclaimer': tweet!.disclaimer,
       } : null,
+      'imageUrl': imageUrl,
     };
   }
 }

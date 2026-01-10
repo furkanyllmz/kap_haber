@@ -79,6 +79,23 @@ class ApiService {
       throw Exception('Bağlantı hatası: $e');
     }
   }
+
+  Future<List<NewsItem>> getNewsByDate(String date) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/news/date/$date'),
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = json.decode(response.body);
+        return jsonList.map((json) => NewsItem.fromJson(json)).toList();
+      } else {
+        throw Exception('Haberler yüklenemedi: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Bağlantı hatası: $e');
+    }
+  }
   Future<List<dynamic>> getChartData(String ticker, String timeframe) async {
     try {
       final url = '$baseUrl/Chart/ticker?symbol=$ticker&time=$timeframe';

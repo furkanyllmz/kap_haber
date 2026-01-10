@@ -1,8 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
 import '../models/news_item.dart';
 import '../services/api_service.dart';
-import '../widgets/news_card.dart';
 import '../widgets/stock_chart_widget.dart';
 import '../widgets/ticker_logo.dart';
 import 'package:provider/provider.dart';
@@ -26,14 +26,31 @@ class TickerNewsScreen extends StatefulWidget {
 class _TickerNewsScreenState extends State<TickerNewsScreen> {
   final ApiService _apiService = ApiService();
   
+  // KAP Colors
+  static const Color kapRed = Color(0xFFE30613);
+  static const Color primaryDark = Color(0xFF002B3A);
+  static const Color positiveGreen = Color(0xFF10B981);
+  static const Color negativeRed = Color(0xFFEF4444);
+  
+  static const String baseUrl = 'http://91.132.49.137:5296';
+  
   List<NewsItem> _news = [];
   bool _isLoading = true;
   String? _error;
+  
+  // Price data
+  Map<String, dynamic> _priceData = {};
+  bool _isPriceLoading = true;
+  
+  // Chart period change
+  double _chartChangePercent = 0.0;
+  String _selectedPeriod = '1G';
 
   @override
   void initState() {
     super.initState();
     _loadNews();
+    _loadPriceData();
   }
 
   Future<void> _loadNews() async {
@@ -44,10 +61,12 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
 
     try {
       final news = await _apiService.getNewsByTicker(widget.ticker, pageSize: 100);
-      setState(() {
-        _news = news;
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _news = news;
+          _isLoading = false;
+        });
+      }
     } catch (e) {
       if (mounted) {
         setState(() {
@@ -58,46 +77,84 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
     }
   }
 
-  Widget _buildLogo() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: TickerLogo(
-        ticker: widget.ticker,
-        size: 64,
-        borderRadius: 16,
-      ),
-    );
+  Future<void> _loadPriceData() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/Prices/ticker/${widget.ticker}'),
+      ).timeout(const Duration(seconds: 10));
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (mounted) {
+          setState(() {
+            _priceData = data['extraElements'] ?? {};
+            _isPriceLoading = false;
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isPriceLoading = false);
+      }
+    }
   }
 
+  String _formatNumber(dynamic value) {
+    if (value == null) return '-';
+    final num = (value is int) ? value.toDouble() : value as double;
+    if (num >= 1e12) return '${(num / 1e12).toStringAsFixed(2)} Trilyon ₺';
+    if (num >= 1e9) return '${(num / 1e9).toStringAsFixed(2)} Milyar ₺';
+    if (num >= 1e6) return '${(num / 1e6).toStringAsFixed(2)} Milyon ₺';
+    if (num >= 1e3) return '${(num / 1e3).toStringAsFixed(2)} Bin ₺';
+    return '${num.toStringAsFixed(2)} ₺';
+  }
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final price = _priceData['Last'] ?? 0.0;
+    final change = _priceData['DailyChangePercent'] ?? 0.0;
+    final isPositive = change > 0;
+    final isNegative = change < 0;
+    
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: isDark ? const Color(0xFF121212) : Colors.white,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: isDark ? const Color(0xFF121212) : Colors.white,
         elevation: 0,
-        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Theme.of(context).iconTheme.color, size: 20),
+          icon: Icon(Icons.arrow_back_ios_new, color: isDark ? Colors.white : primaryDark, size: 20),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(
-          widget.ticker,
-          style: TextStyle(
-            color: Theme.of(context).appBarTheme.foregroundColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
+        title: Row(
+          children: [
+            TickerLogo(ticker: widget.ticker, size: 32, borderRadius: 8),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.ticker,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: isDark ? Colors.white : primaryDark,
+                    ),
+                  ),
+                  Text(
+                    widget.companyName,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Colors.grey.shade500,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         actions: [
           Consumer<FavoritesService>(
@@ -105,93 +162,168 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
               final isFavorite = favoritesService.isFavorite(widget.ticker);
               return IconButton(
                 icon: Icon(
-                  isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: isFavorite ? Colors.red : Theme.of(context).colorScheme.primary,
+                  isFavorite ? Icons.star : Icons.star_border,
+                  color: isFavorite ? Colors.amber : (isDark ? Colors.white : primaryDark),
+                  size: 24,
                 ),
                 onPressed: () {
                   favoritesService.toggleFavorite(widget.ticker);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        isFavorite 
-                            ? '${widget.ticker} favorilerden çıkarıldı' 
-                            : '${widget.ticker} favorilere eklendi'
-                      ),
-                      duration: const Duration(seconds: 1),
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
                 },
               );
             },
           ),
-          const SizedBox(width: 8),
+          IconButton(
+            icon: Icon(Icons.share_outlined, color: isDark ? Colors.white : primaryDark, size: 22),
+            onPressed: () {},
+          ),
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: _loadNews,
-        color: Theme.of(context).colorScheme.primary,
+        onRefresh: () async {
+          await Future.wait([_loadNews(), _loadPriceData()]);
+        },
+        color: isDark ? Colors.white : primaryDark,
+        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.only(bottom: 24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Şirket Kartı
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(24),
-                margin: const EdgeInsets.only(bottom: 16),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardTheme.color,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
+              // Price Section
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'CARİ FİYAT',
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey.shade500,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          _selectedPeriod,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          _isPriceLoading ? '...' : '₺${price.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Colors.white : primaryDark,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Builder(
+                          builder: (context) {
+                            final displayChange = _chartChangePercent != 0.0 ? _chartChangePercent : change;
+                            final isPos = displayChange > 0;
+                            final isNeg = displayChange < 0;
+                            return Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: isPos ? positiveGreen.withValues(alpha: 0.1) : (isNeg ? negativeRed.withValues(alpha: 0.1) : Colors.grey.shade100),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                _isPriceLoading ? '-' : '${isPos ? '+' : ''}${displayChange.toStringAsFixed(2)}%',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                  color: isPos ? positiveGreen : (isNeg ? negativeRed : Colors.grey),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                child: Column(
+              ),
+
+              // Chart
+              StockChartWidget(
+                ticker: widget.ticker,
+                defaultPeriod: '1G',
+                currentPrice: (_priceData['Last'] as num?)?.toDouble(),
+                onPeriodChanged: (changePercent, period) {
+                  setState(() {
+                    // 1G için DailyChangePercent kullan (Prices API'den), diğerleri için chart hesaplaması
+                    if (period == '1G') {
+                      _chartChangePercent = (_priceData['DailyChangePercent'] as num?)?.toDouble() ?? 0.0;
+                    } else {
+                      _chartChangePercent = changePercent;
+                    }
+                    _selectedPeriod = period;
+                  });
+                },
+              ),
+
+              // Volume & Market Value
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Row(
                   children: [
-                    _buildLogo(),
-                    const SizedBox(height: 16),
+                    Expanded(
+                      child: _buildInfoBox('HACİM', _formatNumber(_priceData['TotalTurnover']), isDark),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: _buildInfoBox('PİYASA DEĞERİ', _formatNumber(_priceData['MarketValue']), isDark),
+                    ),
+                  ],
+                ),
+              ),
+
+              // KAP Bildirimleri Header
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                     Text(
-                      widget.companyName,
-                      textAlign: TextAlign.center,
+                      'KAP Bildirimleri',
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).textTheme.titleLarge?.color,
+                        fontWeight: FontWeight.w700,
+                        color: isDark ? Colors.white : primaryDark,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    if (!_isLoading)
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          '${_news.length} Bildirim',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    if (_news.length > 5)
+                      Text(
+                        'Tümünü Gör',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                   ],
                 ),
               ),
-              
-              // Grafik Alanı
-              StockChartWidget(ticker: widget.ticker),
-              
-              const SizedBox(height: 16),
 
-              // Haber listesi
-              _buildContent(),
+              // News List
+              _buildNewsList(isDark),
+
+              const SizedBox(height: 24),
             ],
           ),
         ),
@@ -199,43 +331,37 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
     );
   }
 
-  Widget _buildContent() {
-    if (_isLoading) {
-      return Padding(
-        padding: const EdgeInsets.all(32),
-        child: Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+  Widget _buildInfoBox(String label, String value, bool isDark) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey.shade500,
+            letterSpacing: 0.3,
           ),
         ),
-      );
-    }
+        const SizedBox(height: 4),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: isDark ? Colors.white : primaryDark,
+          ),
+        ),
+      ],
+    );
+  }
 
-    if (_error != null) {
-      return Padding(
-        padding: const EdgeInsets.all(32),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.error_outline, size: 48, color: Colors.red.shade200),
-              const SizedBox(height: 16),
-              Text(
-                'Haberler yüklenemedi',
-                style: TextStyle(color: Colors.grey.shade600),
-              ),
-              const SizedBox(height: 12),
-              ElevatedButton(
-                onPressed: _loadNews,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1A237E),
-                  foregroundColor: Colors.white,
-                ),
-                child: const Text('Tekrar Dene'),
-              ),
-            ],
-          ),
-        ),
+  Widget _buildNewsList(bool isDark) {
+    if (_isLoading) {
+      return const Padding(
+        padding: EdgeInsets.all(32),
+        child: Center(child: CircularProgressIndicator()),
       );
     }
 
@@ -243,43 +369,146 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
       return Padding(
         padding: const EdgeInsets.all(32),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.article_outlined, size: 64, color: Colors.grey.shade300),
-              const SizedBox(height: 16),
-              Text(
-                'Henüz haber yok',
-                style: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 16,
-                ),
-              ),
-            ],
+          child: Text(
+            'Henüz bildirim yok',
+            style: TextStyle(color: Colors.grey.shade500),
           ),
         ),
       );
     }
 
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.symmetric(vertical: 0),
-      itemCount: _news.length,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      itemCount: _news.length > 10 ? 10 : _news.length,
+      separatorBuilder: (_, __) => Divider(
+        height: 1,
+        color: isDark ? const Color(0xFF333333) : Colors.grey.shade200,
+      ),
       itemBuilder: (context, index) {
-        final newsItem = _news[index];
-        return NewsCard(
-          news: newsItem,
+        final news = _news[index];
+        return GestureDetector(
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => NewsDetailScreen(news: newsItem),
-              ),
+              MaterialPageRoute(builder: (_) => NewsDetailScreen(news: news)),
             );
           },
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: kapRed.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        news.category ?? 'BİLDİRİM',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: kapRed,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '${news.publishedAt?.date ?? ''}, ${news.displayTime}',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  news.headline ?? '',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: isDark ? Colors.white : primaryDark,
+                    height: 1.3,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
         );
       },
+    );
+  }
+
+  Widget _buildCompanyInfo(bool isDark) {
+    final sector = _priceData['Sector'] ?? 'Borsa İstanbul';
+    
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF1E1E1E) : Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isDark ? const Color(0xFF333333) : Colors.grey.shade200,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.info_outline, size: 18, color: isDark ? Colors.white : primaryDark),
+              const SizedBox(width: 8),
+              Text(
+                'ŞİRKET KÜNYESİ',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: isDark ? Colors.white : primaryDark,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          _buildInfoRow('Sektör', sector.toString(), isDark),
+          const SizedBox(height: 12),
+          _buildInfoRow('Endeks', 'BIST 100, BIST 30', isDark),
+          const SizedBox(height: 12),
+          _buildInfoRow('Halka Açıklık', '%${(_priceData['FreeFloatRate'] ?? 0).toStringAsFixed(2)}', isDark),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value, bool isDark) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            color: Colors.grey.shade500,
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: isDark ? Colors.white : primaryDark,
+          ),
+        ),
+      ],
     );
   }
 }

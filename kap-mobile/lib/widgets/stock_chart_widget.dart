@@ -4,8 +4,17 @@ import '../services/api_service.dart';
 
 class StockChartWidget extends StatefulWidget {
   final String ticker;
+  final Function(double changePercent, String period)? onPeriodChanged;
+  final String defaultPeriod;
+  final double? currentPrice; // Current price from Prices API
 
-  const StockChartWidget({super.key, required this.ticker});
+  const StockChartWidget({
+    super.key, 
+    required this.ticker,
+    this.onPeriodChanged,
+    this.defaultPeriod = '1G',
+    this.currentPrice,
+  });
 
   @override
   State<StockChartWidget> createState() => _StockChartWidgetState();
@@ -13,7 +22,7 @@ class StockChartWidget extends StatefulWidget {
 
 class _StockChartWidgetState extends State<StockChartWidget> {
   final ApiService _apiService = ApiService();
-  String _selectedTimeframe = '3A'; // Varsayılan 3 Aylık
+  late String _selectedTimeframe;
   List<dynamic> _chartData = [];
   bool _isLoading = true;
   String? _error;
@@ -24,6 +33,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
   @override
   void initState() {
     super.initState();
+    _selectedTimeframe = widget.defaultPeriod;
     _loadChartData();
   }
 
@@ -35,10 +45,13 @@ class _StockChartWidgetState extends State<StockChartWidget> {
 
     try {
       final data = await _apiService.getChartData(widget.ticker, _selectedTimeframe);
-      setState(() {
-        _chartData = data;
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _chartData = data;
+          _isLoading = false;
+        });
+        _notifyPeriodChanged();
+      }
     } catch (e) {
       print('❌ HATA OLUŞTU: $e');
       if (mounted) {
@@ -47,6 +60,17 @@ class _StockChartWidgetState extends State<StockChartWidget> {
           _isLoading = false;
         });
       }
+    }
+  }
+
+  void _notifyPeriodChanged() {
+    if (widget.onPeriodChanged != null && _chartData.isNotEmpty) {
+      final firstPrice = (_chartData.first['price'] as num).toDouble();
+      // For non-1G periods, use currentPrice from parent (Prices API) if available
+      // For 1G, parent will use DailyChangePercent from Prices API directly
+      final lastPrice = widget.currentPrice ?? (_chartData.last['price'] as num).toDouble();
+      final changePercent = ((lastPrice - firstPrice) / firstPrice) * 100;
+      widget.onPeriodChanged!(changePercent, _selectedTimeframe);
     }
   }
 
@@ -61,72 +85,60 @@ class _StockChartWidgetState extends State<StockChartWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    
     return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardTheme.color,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header: Timeframes + Price Info
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Timeframe Selector
-              Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: _timeframes.map((tf) {
-                      final isSelected = _selectedTimeframe == tf;
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: InkWell(
-                          onTap: () => _onTimeframeChanged(tf),
-                          borderRadius: BorderRadius.circular(8),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                            decoration: BoxDecoration(
-                              color: isSelected ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                              borderRadius: BorderRadius.circular(8),
-                              border: isSelected ? null : Border.all(color: Colors.grey.withValues(alpha: 0.3)),
-                            ),
-                            child: Text(
-                              tf,
-                              style: TextStyle(
-                                color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
-                                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
+          // Timeframe Selector
+          Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF1E1E1E) : Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: _timeframes.map((tf) {
+                final isSelected = _selectedTimeframe == tf;
+                return GestureDetector(
+                  onTap: () => _onTimeframeChanged(tf),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: isSelected ? (isDark ? Colors.white : Colors.white) : Colors.transparent,
+                      borderRadius: BorderRadius.circular(6),
+                      boxShadow: isSelected ? [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 4,
+                          offset: const Offset(0, 1),
                         ),
-                      );
-                    }).toList(),
+                      ] : null,
+                    ),
+                    child: Text(
+                      tf,
+                      style: TextStyle(
+                        color: isSelected 
+                            ? const Color(0xFF002B3A) 
+                            : (isDark ? Colors.grey.shade400 : Colors.grey.shade600),
+                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                        fontSize: 13,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-
-              // Price Info
-              if (!_isLoading && _chartData.isNotEmpty)
-                _buildPriceInfo(),
-            ],
+                );
+              }).toList(),
+            ),
           ),
-          const SizedBox(height: 24),
+          
+          const SizedBox(height: 16),
 
           // Chart Area
           SizedBox(
-            height: 200,
+            height: 180,
             child: _buildChartContent(),
           ),
         ],
@@ -170,7 +182,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
     if (spots.isEmpty) return const Center(child: Text('Veri yok'));
 
     final isPositive = spots.last.y >= spots.first.y;
-    final lineColor = isPositive ? const Color(0xFF10B981) : const Color(0xFFEF4444); // Emerald-500 or Red-500
+    final lineColor = isPositive ? const Color(0xFF10B981) : const Color(0xFFEF4444);
     
     // Add 2% padding to Y-axis
     final double yPadding = (maxPrice - minPrice) * 0.02;
@@ -182,7 +194,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
         gridData: FlGridData(
           show: true,
           drawVerticalLine: false,
-          horizontalInterval: (maxPrice - minPrice) / 4, // ~5 lines
+          horizontalInterval: (maxPrice - minPrice) / 4,
           getDrawingHorizontalLine: (value) {
             return FlLine(
               color: Colors.grey.withValues(alpha: 0.1),
@@ -192,34 +204,14 @@ class _StockChartWidgetState extends State<StockChartWidget> {
         ),
         titlesData: FlTitlesData(
           show: true,
-          // Hide Top & Left
           topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          
-          // Right Axis: Price
-          rightTitles: AxisTitles(
-            sideTitles: SideTitles(
-              showTitles: true,
-              reservedSize: 40,
-              getTitlesWidget: (value, meta) {
-                if (value == minPrice || value == maxPrice) return const SizedBox.shrink();
-                return Text(
-                  value.toStringAsFixed(2),
-                  style: TextStyle(
-                    color: Colors.grey.shade500,
-                    fontSize: 10,
-                  ),
-                );
-              },
-            ),
-          ),
-          
-          // Bottom Axis: Date
+          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
               reservedSize: 22,
-              interval: (_chartData.length / 4).ceilToDouble(), // Show ~4 labels
+              interval: (_chartData.length / 4).ceilToDouble(),
               getTitlesWidget: (value, meta) {
                 final index = value.toInt();
                 if (index < 0 || index >= _chartData.length) return const SizedBox.shrink();
@@ -227,12 +219,13 @@ class _StockChartWidgetState extends State<StockChartWidget> {
                 final dateStr = _chartData[index]['date'] as String;
                 String label = '';
                 try {
-                  // API'den gelen format: "yyyy-MM-dd" (saat bilgisi yok)
                   final date = DateTime.parse(dateStr);
-                  // Tüm zaman dilimleri için tarih göster (gün/ay)
-                  label = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}';
+                  if (_selectedTimeframe == '1G') {
+                    label = '${date.hour.toString().padLeft(2, '0')}:00';
+                  } else {
+                    label = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}';
+                  }
                 } catch (e) {
-                  // Parse edilemezse ham string'i göster
                   label = dateStr.length > 5 ? dateStr.substring(5) : dateStr;
                 }
 
@@ -257,7 +250,7 @@ class _StockChartWidgetState extends State<StockChartWidget> {
           LineChartBarData(
             spots: spots,
             isCurved: true,
-            curveSmoothness: 0.2, // Smoother curve
+            curveSmoothness: 0.2,
             color: lineColor,
             barWidth: 2,
             isStrokeCapRound: true,
@@ -286,10 +279,8 @@ class _StockChartWidgetState extends State<StockChartWidget> {
                   final dateStr = _chartData[index]['date'] as String;
                   try {
                     final date = DateTime.parse(dateStr);
-                    // Tarih formatı: gün/ay/yıl
                     dateLabel = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
-                    // Eğer saat bilgisi varsa (00:00:00 değilse) ekle
-                    if (date.hour != 0 || date.minute != 0 || date.second != 0) {
+                    if (date.hour != 0 || date.minute != 0) {
                       dateLabel += ' ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
                     }
                   } catch (e) {
@@ -306,69 +297,6 @@ class _StockChartWidgetState extends State<StockChartWidget> {
           handleBuiltInTouches: true,
         ),
       ),
-    );
-  }
-
-  Widget _buildPriceInfo() {
-    final firstPrice = (_chartData.first['price'] as num).toDouble();
-    final lastPrice = (_chartData.last['price'] as num).toDouble();
-    final change = lastPrice - firstPrice;
-    final changePercent = (change / firstPrice) * 100;
-    final isPositive = change >= 0;
-
-    // Tarih aralığını hesapla
-    String dateRange = '';
-    try {
-      final firstDateStr = _chartData.first['date'] as String;
-      final lastDateStr = _chartData.last['date'] as String;
-      final firstDate = DateTime.parse(firstDateStr);
-      final lastDate = DateTime.parse(lastDateStr);
-      dateRange = '${firstDate.day.toString().padLeft(2, '0')}/${firstDate.month.toString().padLeft(2, '0')} - ${lastDate.day.toString().padLeft(2, '0')}/${lastDate.month.toString().padLeft(2, '0')}';
-    } catch (e) {
-      dateRange = _selectedTimeframe;
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        // Tarih aralığı
-        Text(
-          dateRange,
-          style: TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            color: Colors.grey.shade500,
-          ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          '₺${lastPrice.toStringAsFixed(2)}',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).textTheme.bodyLarge?.color,
-          ),
-        ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              isPositive ? Icons.arrow_upward : Icons.arrow_downward,
-              size: 14,
-              color: isPositive ? const Color(0xFF10B981) : const Color(0xFFEF4444),
-            ),
-            const SizedBox(width: 2),
-            Text(
-              '%${changePercent.abs().toStringAsFixed(2)}',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: isPositive ? const Color(0xFF10B981) : const Color(0xFFEF4444),
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }

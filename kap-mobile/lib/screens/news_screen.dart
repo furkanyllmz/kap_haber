@@ -1,7 +1,14 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import '../models/news_item.dart';
-import '../services/api_service.dart';
-import 'news_detail_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:kap_mobil/models/news_item.dart';
+import 'package:kap_mobil/models/notification_item.dart';
+import 'package:kap_mobil/services/api_service.dart';
+import 'package:kap_mobil/services/favorites_service.dart';
+import 'package:kap_mobil/services/notification_service.dart';
+import 'package:kap_mobil/widgets/ticker_logo.dart';
+import 'package:kap_mobil/screens/news_detail_screen.dart';
+import 'package:kap_mobil/screens/notifications_screen.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -14,13 +21,21 @@ class _NewsScreenState extends State<NewsScreen> {
   final ApiService _apiService = ApiService();
   final TextEditingController _searchController = TextEditingController();
   final ScrollController _tickerScrollController = ScrollController();
+  final ScrollController _mainScrollController = ScrollController();
   
   List<NewsItem> _news = [];
   List<NewsItem> _filteredNews = [];
   bool _isLoading = true;
+  bool _isPaginationLoading = false;
   bool _isSearching = false;
   String? _error;
   int _selectedFilter = 0;
+  
+  // Pagination and filtering state
+  int _currentPage = 1;
+  static const int _pageSize = 20;
+  bool _hasMore = true;
+  DateTime? _selectedDate;
 
   // KAP Colors
   static const Color kapRed = Color(0xFFE30613);
@@ -32,8 +47,25 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   void initState() {
     super.initState();
+    _mainScrollController.addListener(_onScroll);
     _loadNews();
-    _startTickerAnimation();
+  }
+
+  @override
+  void dispose() {
+    _mainScrollController.removeListener(_onScroll);
+    _mainScrollController.dispose();
+    _tickerScrollController.dispose();
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_mainScrollController.position.pixels >= _mainScrollController.position.maxScrollExtent - 200) {
+      if (!_isPaginationLoading && _hasMore && !_isSearching && _selectedDate == null) {
+        _loadMoreNews();
+      }
+    }
   }
 
   void _startTickerAnimation() {
@@ -63,15 +95,36 @@ class _NewsScreenState extends State<NewsScreen> {
     setState(() {
       _isLoading = true;
       _error = null;
+      _currentPage = 1;
+      _hasMore = _selectedDate == null;
     });
 
     try {
-      final news = await _apiService.getLatestNews(count: 50);
+      List<NewsItem> news;
+      if (_selectedDate != null) {
+        // Format: YYYY-MM-DD
+        final dateStr = "${_selectedDate!.year}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.day.toString().padLeft(2, '0')}";
+        news = await _apiService.getNewsByDate(dateStr);
+        _hasMore = false; // Date filtering doesn't support pagination on this endpoint
+      } else {
+        news = await _apiService.getAllNews(page: _currentPage, pageSize: _pageSize);
+        if (news.length < _pageSize) {
+          _hasMore = false;
+        }
+      }
+
       setState(() {
         _news = news;
-        _filteredNews = news;
+        _applyFilters();
         _isLoading = false;
       });
+
+      // Check news for favorites to trigger notifications
+      if (mounted) {
+        final favoritesService = Provider.of<FavoritesService>(context, listen: false);
+        final notificationService = Provider.of<NotificationService>(context, listen: false);
+        notificationService.checkNewsForFavorites(news, favoritesService.favorites);
+      }
     } catch (e) {
       if (mounted) {
         setState(() {
@@ -82,22 +135,191 @@ class _NewsScreenState extends State<NewsScreen> {
     }
   }
 
-  void _filterNews(String query) {
+  Future<void> _loadMoreNews() async {
+    if (_isPaginationLoading || !_hasMore) return;
+
     setState(() {
-      if (query.isEmpty) {
-        _filteredNews = _news;
-      } else {
-        _filteredNews = _news.where((news) {
-          final ticker = news.displayTicker.toLowerCase();
-          final headline = news.headline?.toLowerCase() ?? '';
-          final searchLower = query.toLowerCase();
-          return ticker.contains(searchLower) || headline.contains(searchLower);
-        }).toList();
-      }
+      _isPaginationLoading = true;
     });
+
+    try {
+      _currentPage++;
+      final news = await _apiService.getAllNews(page: _currentPage, pageSize: _pageSize);
+      
+      setState(() {
+        if (news.isEmpty) {
+          _hasMore = false;
+        } else {
+          _news.addAll(news);
+          _applyFilters();
+          if (news.length < _pageSize) {
+            _hasMore = false;
+          }
+          
+          // Check for favorited tickers in newly loaded news
+          if (mounted) {
+            final favoritesService = Provider.of<FavoritesService>(context, listen: false);
+            final notificationService = Provider.of<NotificationService>(context, listen: false);
+            notificationService.checkNewsForFavorites(news, favoritesService.favorites);
+          }
+        }
+        _isPaginationLoading = false;
+      });
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isPaginationLoading = false;
+        });
+      }
+    }
+  }
+
+  void _applyFilters() {
+    var filtered = _news;
+    
+    // Filter by date
+    // SKIP local date filtering if we fetched from server for a specific date
+    // because server already filtered it and local parsing might fail formats
+    if (_selectedDate != null && _news.isNotEmpty && _news.length < 100) {
+      // If we have a huge list (e.g. from getAllNews), we might still want to filter
+      // but if we just fetched by date, news.length will be exactly for that date.
+      // Actually, it's safer to trust the API list if it was triggered by date selection.
+    } else if (_selectedDate != null) {
+      filtered = filtered.where((item) {
+        if (item.publishedAt?.date == null) return false;
+        try {
+          final dateStr = item.publishedAt!.date!;
+          // Support both DD.MM.YYYY and YYYY-MM-DD
+          if (dateStr.contains('.')) {
+            final parts = dateStr.split('.');
+            if (parts.length == 3) {
+              final day = int.parse(parts[0]);
+              final month = int.parse(parts[1]);
+              final year = int.parse(parts[2]);
+              return day == _selectedDate!.day && 
+                     month == _selectedDate!.month && 
+                     year == _selectedDate!.year;
+            }
+          } else if (dateStr.contains('-')) {
+            final parts = dateStr.split('-');
+            if (parts.length == 3) {
+              final year = int.parse(parts[0]);
+              final month = int.parse(parts[1]);
+              final day = int.parse(parts[2]);
+              return day == _selectedDate!.day && 
+                     month == _selectedDate!.month && 
+                     year == _selectedDate!.year;
+            }
+          }
+        } catch (_) {}
+        return false;
+      }).toList();
+    }
+    
+    // Filter by search query
+    final query = _searchController.text.toLowerCase();
+    if (query.isNotEmpty) {
+      filtered = filtered.where((item) {
+        final ticker = item.displayTicker.toLowerCase();
+        final headline = item.headline?.toLowerCase() ?? '';
+        return ticker.contains(query) || headline.contains(query);
+      }).toList();
+    }
+    
+    // Sort logic for Featured News: Identify the most important news (max newsworthiness)
+    // and put one of them (randomly picked if tie) at the very top.
+    if (filtered.isNotEmpty) {
+      double maxWorth = -1.0;
+      for (var n in filtered) {
+        if (n.newsworthiness > maxWorth) maxWorth = n.newsworthiness;
+      }
+      
+      if (maxWorth > 0) {
+        final topItems = filtered.where((n) => n.newsworthiness == maxWorth).toList();
+        final featured = topItems[Random().nextInt(topItems.length)];
+        
+        // Move it to the top
+        filtered.remove(featured); // remove first occurrence
+        filtered.insert(0, featured);
+      }
+    }
+    
+    setState(() {
+      _filteredNews = filtered;
+    });
+
+    // We no longer need to auto-page when date is selected because we fetch from server
+    // But if not searching and no date filter, paginate as usual
+    if (_filteredNews.isEmpty && _hasMore && !_isPaginationLoading && _selectedDate == null) {
+      _loadMoreNews();
+    }
+  }
+
+  void _filterNews(String query) {
+    _applyFilters();
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime.now(),
+      locale: const Locale('tr', 'TR'),
+      builder: (context, child) {
+        final bool isDark = Theme.of(context).brightness == Brightness.dark;
+        return Theme(
+          data: isDark 
+            ? ThemeData.dark().copyWith(
+                colorScheme: const ColorScheme.dark(
+                  primary: Colors.white,
+                  onPrimary: Colors.black,
+                  surface: Color(0xFF1E1E1E),
+                  onSurface: Colors.white,
+                  secondary: Colors.white,
+                  onSecondary: Colors.black,
+                ),
+                dialogBackgroundColor: const Color(0xFF1E1E1E),
+                textButtonTheme: TextButtonThemeData(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+              )
+            : ThemeData.light().copyWith(
+                colorScheme: const ColorScheme.light(
+                  primary: primaryDark,
+                  onPrimary: Colors.white,
+                  surface: Colors.white,
+                  onSurface: primaryDark,
+                  secondary: primaryDark,
+                ),
+                textButtonTheme: TextButtonThemeData(
+                  style: TextButton.styleFrom(
+                    foregroundColor: primaryDark,
+                  ),
+                ),
+              ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        _selectedDate = picked;
+      });
+      _loadNews(); // Reload news from server for the selected date
+    }
   }
 
   String _getBannerUrl(NewsItem news, int index) {
+    if (news.imageUrl != null && news.imageUrl!.isNotEmpty) {
+      if (news.imageUrl!.startsWith('http')) {
+        return news.imageUrl!;
+      }
+      return '$baseImageUrl${news.imageUrl!.startsWith('/') ? '' : '/'}${news.imageUrl}';
+    }
+
     final category = news.category ?? 'Diğer';
     final imageIndex = (index % 6) + 1;
     
@@ -132,13 +354,11 @@ class _NewsScreenState extends State<NewsScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     
     return Scaffold(
-      backgroundColor: isDark ? const Color(0xFF0F172A) : const Color(0xFFF2F4F7),
+      backgroundColor: isDark ? const Color(0xFF121212) : const Color(0xFFF2F4F7),
       body: SafeArea(
         child: Column(
           children: [
             _buildHeader(isDark),
-            _buildFilterChips(isDark),
-            _buildNewsTicker(isDark),
             Expanded(
               child: _buildNewsContent(isDark),
             ),
@@ -152,10 +372,10 @@ class _NewsScreenState extends State<NewsScreen> {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF0F172A) : Colors.white,
+        color: isDark ? const Color(0xFF121212) : Colors.white,
         border: Border(
           bottom: BorderSide(
-            color: isDark ? const Color(0xFF1E293B) : const Color(0xFFE2E8F0),
+            color: isDark ? const Color(0xFF1E1E1E) : const Color(0xFFE2E8F0),
           ),
         ),
       ),
@@ -165,40 +385,21 @@ class _NewsScreenState extends State<NewsScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'CANLI VERİ',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w800,
-                      color: kapRed,
-                      letterSpacing: 2,
+              // Logo (Cropped to show wide part only)
+              SizedBox(
+                height: 35,
+                width: 150,
+                child: ClipRect(
+                  child: OverflowBox(
+                    minHeight: 100,
+                    maxHeight: 250,
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      isDark ? 'assets/headerlogo_beyaz.png' : 'assets/headerlogo.png',
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  Row(
-                    children: [
-                      Text(
-                        'KAP ',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w900,
-                          color: isDark ? Colors.white : primaryDark,
-                        ),
-                      ),
-                      Text(
-                        'Akışı',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w300,
-                          color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
               Row(
                 children: [
@@ -210,36 +411,53 @@ class _NewsScreenState extends State<NewsScreen> {
                         _isSearching = !_isSearching;
                         if (!_isSearching) {
                           _searchController.clear();
-                          _filterNews('');
+                          _applyFilters();
                         }
                       });
                     },
                   ),
                   const SizedBox(width: 8),
-                  Stack(
-                    children: [
-                      _buildIconButton(
-                        icon: Icons.notifications_outlined,
-                        isDark: isDark,
-                        onTap: () {},
-                      ),
-                      Positioned(
-                        top: 8,
-                        right: 8,
-                        child: Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                            color: kapRed,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: isDark ? const Color(0xFF0F172A) : Colors.white,
-                              width: 1.5,
-                            ),
+                  _buildIconButton(
+                    icon: Icons.calendar_today_outlined,
+                    isDark: isDark,
+                    onTap: () => _selectDate(context),
+                    color: _selectedDate != null ? kapRed : null,
+                  ),
+                  const SizedBox(width: 8),
+                  Consumer<NotificationService>(
+                    builder: (context, service, child) {
+                      return Stack(
+                        children: [
+                          _buildIconButton(
+                            icon: Icons.notifications_outlined,
+                            isDark: isDark,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const NotificationsScreen()),
+                              );
+                            },
                           ),
-                        ),
-                      ),
-                    ],
+                          if (service.unreadCount > 0)
+                            Positioned(
+                              top: 8,
+                              right: 8,
+                              child: Container(
+                                width: 8,
+                                height: 8,
+                                decoration: BoxDecoration(
+                                  color: kapRed,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: isDark ? const Color(0xFF121212) : Colors.white,
+                                    width: 1.5,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
@@ -250,18 +468,61 @@ class _NewsScreenState extends State<NewsScreen> {
             TextField(
               controller: _searchController,
               autofocus: true,
-              onChanged: _filterNews,
+              onChanged: (val) => _applyFilters(),
               style: TextStyle(color: isDark ? Colors.white : Colors.black),
               decoration: InputDecoration(
                 hintText: 'Haber veya hisse ara...',
                 hintStyle: TextStyle(color: Colors.grey.shade500),
                 prefixIcon: Icon(Icons.search, color: Colors.grey.shade500),
                 filled: true,
-                fillColor: isDark ? const Color(0xFF1E293B) : Colors.grey.shade100,
+                fillColor: isDark ? const Color(0xFF1E1E1E) : Colors.grey.shade100,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+          ],
+          if (_selectedDate != null) ...[
+            const SizedBox(height: 12),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _selectedDate = null;
+                  _applyFilters();
+                });
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: isDark ? Colors.white.withValues(alpha: 0.1) : primaryDark.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.calendar_today,
+                      size: 14,
+                      color: isDark ? Colors.white : primaryDark,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      '${_selectedDate!.day}.${_selectedDate!.month}.${_selectedDate!.year}',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : primaryDark,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Icon(
+                      Icons.close,
+                      size: 14,
+                      color: isDark ? Colors.white : primaryDark,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -275,6 +536,7 @@ class _NewsScreenState extends State<NewsScreen> {
     required IconData icon,
     required bool isDark,
     required VoidCallback onTap,
+    Color? color,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -282,13 +544,13 @@ class _NewsScreenState extends State<NewsScreen> {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: isDark ? const Color(0xFF1E293B) : Colors.grey.shade100,
+          color: color != null ? color.withValues(alpha: 0.1) : (isDark ? const Color(0xFF1E1E1E) : Colors.grey.shade100),
           shape: BoxShape.circle,
         ),
         child: Icon(
           icon,
           size: 20,
-          color: isDark ? Colors.white : primaryDark,
+          color: color ?? (isDark ? Colors.white : primaryDark),
         ),
       ),
     );
@@ -299,7 +561,7 @@ class _NewsScreenState extends State<NewsScreen> {
     
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      color: isDark ? const Color(0xFF0F172A) : Colors.white,
+      color: isDark ? const Color(0xFF121212) : Colors.white,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -312,7 +574,7 @@ class _NewsScreenState extends State<NewsScreen> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                   decoration: BoxDecoration(
-                    color: isSelected ? primaryDark : (isDark ? const Color(0xFF1E293B) : Colors.grey.shade100),
+                    color: isSelected ? primaryDark : (isDark ? const Color(0xFF1E1E1E) : Colors.grey.shade100),
                     borderRadius: BorderRadius.circular(20),
                     border: isSelected ? null : Border.all(
                       color: isDark ? const Color(0xFF334155) : Colors.grey.shade300,
@@ -395,7 +657,7 @@ class _NewsScreenState extends State<NewsScreen> {
     if (_isLoading) {
       return Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(primaryDark),
+          valueColor: AlwaysStoppedAnimation<Color>(isDark ? Colors.white : primaryDark),
         ),
       );
     }
@@ -421,17 +683,34 @@ class _NewsScreenState extends State<NewsScreen> {
 
     if (_filteredNews.isEmpty) {
       return Center(
-        child: Text('Haber bulunamadı', style: TextStyle(color: Colors.grey.shade500)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.search_off, size: 48, color: Colors.grey.shade400),
+            const SizedBox(height: 16),
+            Text('Haber bulunamadı', style: TextStyle(color: Colors.grey.shade500)),
+          ],
+        ),
       );
     }
 
     return RefreshIndicator(
       onRefresh: _loadNews,
-      color: primaryDark,
+      color: isDark ? Colors.white : primaryDark,
+      backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
       child: ListView.builder(
+        controller: _mainScrollController,
         padding: const EdgeInsets.all(12),
-        itemCount: _filteredNews.length,
+        itemCount: _filteredNews.length + (_isPaginationLoading ? 1 : 0),
         itemBuilder: (context, index) {
+          if (index == _filteredNews.length) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 32),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
           final isHero = index == 0;
           return isHero 
               ? _buildHeroCard(_filteredNews[index], isDark, index)
@@ -448,7 +727,7 @@ class _NewsScreenState extends State<NewsScreen> {
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: isDark ? const Color(0xFF1E293B) : Colors.white,
+          color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 10, offset: const Offset(0, 4)),
@@ -486,24 +765,38 @@ class _NewsScreenState extends State<NewsScreen> {
                       ),
                       child: Row(
                         children: [
-                          Container(
-                            width: 24,
-                            height: 24,
-                            decoration: BoxDecoration(
-                              color: primaryDark,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: Center(
-                              child: Text(
-                                news.displayTicker.substring(0, 1),
-                                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 12),
-                              ),
-                            ),
+                          TickerLogo(
+                            ticker: news.displayTicker,
+                            size: 24,
+                            borderRadius: 6,
                           ),
                           const SizedBox(width: 8),
                           Text(
                             news.displayTicker,
                             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: primaryDark),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // "Featured" Badge overlay
+                  Positioned(
+                    right: 12,
+                    top: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: kapRed,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 8)],
+                      ),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.star, size: 14, color: Colors.white),
+                          SizedBox(width: 4),
+                          Text(
+                            'ÖNE ÇIKAN',
+                            style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Colors.white, letterSpacing: 0.5),
                           ),
                         ],
                       ),
@@ -547,7 +840,11 @@ class _NewsScreenState extends State<NewsScreen> {
                     children: [
                       Text(
                         'FİNANSAL RAPOR',
-                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: primaryDark.withValues(alpha: 0.6)),
+                        style: TextStyle(
+                          fontSize: 10, 
+                          fontWeight: FontWeight.w700, 
+                          color: isDark ? Colors.white70 : primaryDark.withValues(alpha: 0.6),
+                        ),
                       ),
                       const Spacer(),
                       Icon(Icons.share_outlined, size: 18, color: Colors.grey.shade400),
@@ -572,7 +869,7 @@ class _NewsScreenState extends State<NewsScreen> {
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isDark ? const Color(0xFF1E293B) : Colors.white,
+          color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: isDark ? const Color(0xFF334155) : Colors.grey.shade200),
         ),
@@ -587,19 +884,10 @@ class _NewsScreenState extends State<NewsScreen> {
                   // Ticker and time
                   Row(
                     children: [
-                      Container(
-                        width: 28,
-                        height: 28,
-                        decoration: BoxDecoration(
-                          color: primaryDark,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Center(
-                          child: Text(
-                            news.displayTicker.substring(0, 1),
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 11),
-                          ),
-                        ),
+                      TickerLogo(
+                        ticker: news.displayTicker,
+                        size: 28,
+                        borderRadius: 6,
                       ),
                       const SizedBox(width: 8),
                       Text(
@@ -633,12 +921,12 @@ class _NewsScreenState extends State<NewsScreen> {
                     children: [
                       Text(
                         (news.category ?? 'GENEL').toUpperCase(),
-                        style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700, color: primaryDark.withValues(alpha: 0.6)),
+                        style: TextStyle(
+                          fontSize: 9, 
+                          fontWeight: FontWeight.w700, 
+                          color: isDark ? Colors.white70 : primaryDark.withValues(alpha: 0.6),
+                        ),
                       ),
-                      const Spacer(),
-                      Icon(Icons.share_outlined, size: 16, color: Colors.grey.shade400),
-                      const SizedBox(width: 12),
-                      Icon(Icons.bookmark_outline, size: 16, color: Colors.grey.shade400),
                     ],
                   ),
                 ],
@@ -667,10 +955,4 @@ class _NewsScreenState extends State<NewsScreen> {
     );
   }
 
-  @override
-  void dispose() {
-    _searchController.dispose();
-    _tickerScrollController.dispose();
-    super.dispose();
-  }
 }
