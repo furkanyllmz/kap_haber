@@ -4,6 +4,8 @@ import '../providers/theme_provider.dart';
 import '../services/saved_news_service.dart';
 import '../widgets/ticker_logo.dart';
 import 'news_detail_screen.dart';
+import '../services/user_service.dart';
+import '../widgets/avatar_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -19,6 +21,102 @@ class _SettingsScreenState extends State<SettingsScreen> {
   static const Color kapRed = Color(0xFFE30613);
   static const Color primaryDark = Color(0xFF002B3A);
   static const Color accentColor = Color(0xFF002B3A); // Same as primaryDark
+
+  void _showAvatarPicker(BuildContext context, UserService userService) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Profil Fotoğrafı Seç',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
+              Flexible(
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                  ),
+                  itemCount: 16,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        userService.updateAvatar(index);
+                        Navigator.pop(context);
+                      },
+                      child: Stack(
+                        children: [
+                          AvatarWidget(index: index, size: 80, showBorder: false),
+                          if (userService.avatarIndex == index)
+                            Positioned.fill(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: primaryDark.withOpacity(0.3),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(Icons.check, color: Colors.white),
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showGenderPicker(BuildContext context, UserService userService, bool isDark) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        title: Text(
+          'Cinsiyet Seçin',
+          style: TextStyle(color: isDark ? Colors.white : primaryDark),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: Icon(Icons.male, color: isDark ? Colors.white : primaryDark),
+              title: Text('Erkek', style: TextStyle(color: isDark ? Colors.white : primaryDark)),
+              trailing: userService.gender == 'male' ? Icon(Icons.check, color: isDark ? Colors.white : primaryDark) : null,
+              onTap: () {
+                userService.updateGender('male');
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.female, color: isDark ? Colors.white : primaryDark),
+              title: Text('Kadın', style: TextStyle(color: isDark ? Colors.white : primaryDark)),
+              trailing: userService.gender == 'female' ? Icon(Icons.check, color: isDark ? Colors.white : primaryDark) : null,
+              onTap: () {
+                userService.updateGender('female');
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,56 +152,61 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               child: Row(
                 children: [
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 32,
-                        backgroundColor: (isDark ? Colors.white : primaryDark).withValues(alpha: 0.2),
-                        child: Icon(Icons.person, color: isDark ? Colors.white : primaryDark, size: 32),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          width: 24,
-                          height: 24,
-                          decoration: BoxDecoration(
-                            color: isDark ? Colors.white : primaryDark,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: isDark ? const Color(0xFF1E1E1E) : Colors.white, width: 2),
-                          ),
-                          child: Icon(Icons.edit, color: isDark ? Colors.black : Colors.white, size: 12),
+                  Consumer<UserService>(
+                    builder: (context, userService, child) {
+                      return GestureDetector(
+                        onTap: () => _showAvatarPicker(context, userService),
+                        child: Stack(
+                          children: [
+                            AvatarWidget(index: userService.avatarIndex, size: 64),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: isDark ? Colors.white : primaryDark,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: isDark ? const Color(0xFF1E1E1E) : Colors.white, width: 1.5),
+                                ),
+                                child: Icon(Icons.edit, color: isDark ? Colors.black : Colors.white, size: 10),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'KAP Kullanıcısı',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: isDark ? Colors.white : primaryDark,
-                          ),
+                        Consumer<UserService>(
+                          builder: (context, userService, child) {
+                            return Text(
+                              userService.userName.isNotEmpty ? userService.userName : 'KAP Kullanıcısı',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: isDark ? Colors.white : primaryDark,
+                              ),
+                            );
+                          },
                         ),
                         const SizedBox(height: 4),
-                        Row(
-                          children: [
-                            Icon(Icons.verified, color: isDark ? Colors.white : primaryDark, size: 16),
-                            const SizedBox(width: 4),
-                            Text(
-                              'Ücretsiz Üye',
+                        Consumer<UserService>(
+                          builder: (context, userService, child) {
+                            return Text(
+                              userService.gender == 'male' ? 'Erkek' : 'Kadın',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: isDark ? Colors.white : primaryDark,
+                                color: (isDark ? Colors.white : primaryDark).withOpacity(0.6),
                                 fontWeight: FontWeight.w500,
                               ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
                       ],
                     ),
@@ -130,19 +233,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     trailing: Switch.adaptive(
                       value: _notificationsEnabled,
                       activeColor: isDark ? Colors.white : primaryDark,
-                      activeTrackColor: isDark ? Colors.white.withValues(alpha: 0.3) : primaryDark.withValues(alpha: 0.3),
+                      activeTrackColor: isDark ? Colors.white.withOpacity(0.3) : primaryDark.withOpacity(0.3),
                       thumbColor: WidgetStateProperty.resolveWith((states) {
                         if (states.contains(WidgetState.selected)) {
-                          return isDark ? Colors.black : Colors.white;
+                          return isDark ? primaryDark : Colors.white;
                         }
-                        return isDark ? Colors.grey.shade400 : Colors.grey.shade600;
+                        return null;
                       }),
-                      onChanged: (value) {
-                        setState(() {
-                          _notificationsEnabled = value;
-                        });
-                      },
+                      onChanged: (value) => setState(() => _notificationsEnabled = value),
                     ),
+                  ),
+                  _buildDivider(isDark),
+                  Consumer<UserService>(
+                    builder: (context, userService, child) {
+                      return _buildSettingsTile(
+                        icon: Icons.person_outline,
+                        title: 'Cinsiyet',
+                        isDark: isDark,
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              userService.gender == 'male' ? 'Erkek' : 'Kadın',
+                              style: TextStyle(
+                                color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 14,
+                              color: isDark ? Colors.grey.shade600 : Colors.grey.shade400,
+                            ),
+                          ],
+                        ),
+                        onTap: () => _showGenderPicker(context, userService, isDark),
+                      );
+                    },
                   ),
                   _buildDivider(isDark),
                   Consumer<ThemeProvider>(

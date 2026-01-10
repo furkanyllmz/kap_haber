@@ -37,7 +37,7 @@
     },
     {
         "name": "personalization_id",
-        "value": "v1_dFuD8filuFNIUop4IKgIEw==",
+        "value": "\"v1_dFuD8filuFNIUop4IKgIEw==\"",
         "domain": ".x.com",
         "path": "/"
     },
@@ -60,14 +60,50 @@
         "path": "/"
     },
     {
-        "name": "_twitter_sess",
-        "value": "BAh7CCIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7ADofbGFzdF9wYXNzd29yZF9jb25maXJtYXRpb24iETE3Njc0NDgzNjgxMTkwMDA6HnBhc3N3b3JkX2NvbmZpcm1hdGlvbl91aWQiGDIwMDc0NDkyOTE0NzI5ODIwMTY=--724f6b391efd5d1f4bf298b13a607ea65acca3bd",
+        "name": "des_opt_in",
+        "value": "Y",
         "domain": ".x.com",
         "path": "/"
     },
     {
-        "name": "des_opt_in",
-        "value": "Y",
+        "name": "g_state",
+        "value": "{\"i_l\":0,\"i_ll\":1767447976745,\"i_b\":\"p6xBmVbR7pyM9SU6YHZyHh46BgG83AGKwEwdcMurR8o\",\"i_e\":{\"enable_itp_optimization\":0}}",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "__cuid",
+        "value": "d4d3a5df08ce4944b410693a8dc992b3",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "external_referer",
+        "value": "vC8TI7P7q9UHtLBqrmGBr6eHxiJP9Eyk|0|8e8t2xd8A2w%3D",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "__cf_bm",
+        "value": "XuloGU4ufsmtun7rqB3gGFVf_bO5nhw5487bKMfQ4rA-1767987805.4746964-1.0.1.1-TMPBLJzw7.r60iacaofqbq1KTMlBD9Td8CylWyusm2rF4sUZpL130sp9R4ByKMQ0Wcohfl14vMNoDaxwIHT23f1V5kqmdPCe7SwtF_tm.waltxmSWk95BSAiGu8mofvJ",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "_ga",
+        "value": "GA1.1.1952806509.1767448329",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "_ga_BLY4P7T5KW",
+        "value": "GS2.1.s1767943788$o4$g0$t1767943788$j60$l0$h0",
+        "domain": ".x.com",
+        "path": "/"
+    },
+    {
+        "name": "_ga_RJGMY4G45L",
+        "value": "GS2.1.s1767943788$o5$g0$t1767943788$j60$l0$h0",
         "domain": ".x.com",
         "path": "/"
     }

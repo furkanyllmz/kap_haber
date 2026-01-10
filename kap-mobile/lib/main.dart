@@ -9,6 +9,8 @@ import 'package:kap_mobil/screens/stocks_screen.dart';
 import 'package:kap_mobil/screens/saved_news_screen.dart';
 import 'package:kap_mobil/screens/settings_screen.dart';
 import 'package:kap_mobil/services/notification_service.dart';
+import 'package:kap_mobil/services/user_service.dart';
+import 'package:kap_mobil/screens/welcome_screen.dart';
 
 void main() {
   runApp(
@@ -18,6 +20,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => FavoritesService()),
         ChangeNotifierProvider(create: (_) => SavedNewsService()),
         ChangeNotifierProvider(create: (_) => NotificationService()),
+        ChangeNotifierProvider(create: (_) => UserService()),
       ],
       child: const KapMobilApp(),
     ),
@@ -46,7 +49,14 @@ class KapMobilApp extends StatelessWidget {
         Locale('tr', 'TR'),
         Locale('en', 'US'),
       ],
-      home: const MainScreen(),
+      home: Consumer<UserService>(
+        builder: (context, userService, child) {
+          if (!userService.isInitialized) {
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
+          }
+          return userService.hasName ? const MainScreen() : const WelcomeScreen();
+        },
+      ),
     );
   }
 }

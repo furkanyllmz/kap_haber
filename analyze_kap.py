@@ -522,7 +522,7 @@ def main():
 
     print("[INFO] Loading embedding model (BGE-M3)... This may take a moment.")
     start_t = time.time()
-    EMBEDDER = load_embedder("BAAI/bge-m3")
+    EMBEDDER = load_embedder("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
     print(f"[INFO] Model loaded in {time.time() - start_t:.2f}s")
 
     print("[INFO] Connecting to Vector Memory...")

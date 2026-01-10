@@ -82,6 +82,8 @@ flutter:
     - assets/headerlogo.png
     - assets/headerlogo_beyaz.png
     - assets/app_icon.jpg
+    - assets/onboarding_bg.png
+    - assets/avatars/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
