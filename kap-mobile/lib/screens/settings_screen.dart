@@ -5,6 +5,8 @@ import '../services/saved_news_service.dart';
 import '../widgets/ticker_logo.dart';
 import 'news_detail_screen.dart';
 import '../services/user_service.dart';
+import 'about_us_screen.dart';
+import 'privacy_policy_screen.dart';
 import '../widgets/avatar_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -329,7 +331,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     icon: Icons.info_outline,
                     title: 'Hakkımızda',
                     isDark: isDark,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AboutUsScreen()),
+                      );
+                    },
                     trailing: Icon(Icons.chevron_right, color: Colors.grey.shade500),
                   ),
                   _buildDivider(isDark),
@@ -345,7 +352,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     icon: Icons.privacy_tip_outlined,
                     title: 'Gizlilik Politikası',
                     isDark: isDark,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PrivacyPolicyScreen()),
+                      );
+                    },
                     trailing: Icon(Icons.chevron_right, color: Colors.grey.shade500),
                   ),
                 ],
@@ -356,7 +368,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             
             Center(
               child: Text(
-                'KAP Finans Haberleri v2.4.0',
+                'KAP Finans Haberleri v1.1.0',
                 style: TextStyle(
                   color: Colors.grey.shade400,
                   fontSize: 13,

@@ -198,7 +198,7 @@ class _TickerNewsScreenState extends State<TickerNewsScreen> {
                     Row(
                       children: [
                         Text(
-                          'CARİ FİYAT',
+                          'Son İşlem Fiyatı',
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,

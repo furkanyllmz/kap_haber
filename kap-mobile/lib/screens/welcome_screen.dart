@@ -54,7 +54,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black, // Fixes white area at bottom
-      resizeToAvoidBottomInset: false, // Prevents background from being squeezed when keyboard opens
+      resizeToAvoidBottomInset: true, // Allows the view to scroll when keyboard opens
       body: Stack(
         children: [
           // Background Image
@@ -82,8 +82,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     
                     // Logo
                     Container(
-                      width: 300,
-                      height: 300, // Reduced height for horizontal logo
+                      width: 250,
+                      height: 180, // Reduced height to move content up
                       decoration: const BoxDecoration(
                         color: Colors.transparent,
                       ),
@@ -92,7 +92,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    const SizedBox(height: 1),
+                    const SizedBox(height: 0),
                     
                     // Headlines
                     const Text(
@@ -100,12 +100,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 36,
+                        fontSize: 32, // Slightly smaller to save space
                         fontWeight: FontWeight.bold,
                         height: 1.2,
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 16), // Reduced spacing
                     Text(
                       'Kamuoyu Aydınlatma Platformunda yayınlanan haberleri anında yakalayın.',
                       textAlign: TextAlign.center,
@@ -116,7 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                     
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 24), // Reduced spacing
                     
                     // Name Field
                     TextField(
