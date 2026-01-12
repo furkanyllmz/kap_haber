@@ -228,6 +228,11 @@ server {
         proxy_set_header X-Forwarded-Proto \$scheme;
     }
 
+    # Dinamik Sitemap (.NET Backend)
+    location /sitemap.xml {
+        proxy_pass http://localhost:5296/sitemap.xml;
+    }
+
     # Static files (banners, logos, news-images)
     location /banners {
         proxy_pass http://localhost:5296/banners;

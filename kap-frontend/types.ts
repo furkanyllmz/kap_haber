@@ -11,6 +11,7 @@ export interface Notification {
   companyName: string;
   title: string;
   summary: string;
+  articleContent?: string; // seo.articleMd - full article content (markdown)
   imageUrl: string;
   date: string; // ISO date string YYYY-MM-DD
   timestamp: string; // HH:mm

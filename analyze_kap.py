@@ -26,8 +26,14 @@ DATA_DIR = "./daily_data_kap/gemini"  # Directory containing the JSON files
 OUTPUT_FILE = "kap_alarms.json"
 PROCESSED_TRACKER_FILE = "processed_files.json"
 FIN_DIR = "./daily_data_kap/financials"  # burada SYMBOL_financials.json duruyor
+
+# Memory/Embedding settings
+# Set to False to disable ChromaDB/embedding (prevents SEGV crashes on some servers)
+USE_MEMORY = False  # ⚠️ Disabled due to SEGV on server - set True when fixed
+
 EMBEDDER = None # Will be initialized in main
 MEMORY = None   # Will be initialized in main
+
 
 
 # The System Prompt defined by the user

@@ -123,7 +123,7 @@ class _NewsScreenState extends State<NewsScreen> {
       if (mounted) {
         final favoritesService = Provider.of<FavoritesService>(context, listen: false);
         final notificationService = Provider.of<NotificationService>(context, listen: false);
-        notificationService.checkNewsForFavorites(news, favoritesService.favorites);
+        notificationService.checkNewsForFavorites(news, favoritesService.favorites, favoritesService);
       }
     } catch (e) {
       if (mounted) {
@@ -160,7 +160,7 @@ class _NewsScreenState extends State<NewsScreen> {
           if (mounted) {
             final favoritesService = Provider.of<FavoritesService>(context, listen: false);
             final notificationService = Provider.of<NotificationService>(context, listen: false);
-            notificationService.checkNewsForFavorites(news, favoritesService.favorites);
+            notificationService.checkNewsForFavorites(news, favoritesService.favorites, favoritesService);
           }
         }
         _isPaginationLoading = false;

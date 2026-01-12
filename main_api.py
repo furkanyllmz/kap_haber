@@ -4,13 +4,17 @@ import signal
 import subprocess
 from enum import Enum
 from typing import Dict, Optional, Any
+from datetime import datetime
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from pydantic import BaseModel
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 import midas  # Import the new module
 import json
 from pymongo import MongoClient
+import daily_summary_generator  # Import the summary generator
 
 # MongoDB Setup
 MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
@@ -24,6 +28,20 @@ def get_mongo_db():
 
 app = FastAPI(title="KAP Bot Manager API")
 
+# Initialize Scheduler with Istanbul Timezone
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+# Using string 'Europe/Istanbul' usually works if tzdata is present, 
+# but explicitness with ZoneInfo is better in 3.9+
+try:
+    from zoneinfo import ZoneInfo
+    istanbul_tz = ZoneInfo("Europe/Istanbul")
+except ImportError:
+    import pytz
+    istanbul_tz = pytz.timezone("Europe/Istanbul")
+
+scheduler = AsyncIOScheduler(timezone=istanbul_tz)
+
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
@@ -34,10 +52,96 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+def scheduled_summary_task():
+    """Wrapper function to run the daily summary generator."""
+    print(f"[SCHEDULER] Starting daily summary generation at {datetime.now()}")
+    try:
+        daily_summary_generator.main()
+        print("[SCHEDULER] Daily summary generation completed.")
+    except Exception as e:
+        print(f"[SCHEDULER] Error generating summary: {e}")
+
+class JobSchedule(BaseModel):
+    hour: int
+    minute: int
+    active: bool = True
+
 @app.on_event("startup")
 async def startup_event():
-    # Start the Midas background task
+    # Start the Midas background tasks
     asyncio.create_task(midas.fetch_loop())
+    asyncio.create_task(midas.fetch_indices_loop())
+    
+    # 1. Load schedule from DB or use default
+    db = get_mongo_db()
+    config_col = db["system_config"]
+    job_id = "daily_summary_job"
+    
+    job_config = config_col.find_one({"_id": job_id})
+    
+    if not job_config:
+        # Set default
+        job_config = {"_id": job_id, "hour": 20, "minute": 0, "active": True}
+        config_col.insert_one(job_config)
+    
+    # 2. Schedule the job
+    if job_config.get("active", True):
+        scheduler.add_job(
+            scheduled_summary_task,
+            CronTrigger(hour=job_config["hour"], minute=job_config["minute"], day_of_week='mon-fri'),
+            id=job_id,
+            replace_existing=True
+        )
+        print(f"[SCHEDULER] Scheduled {job_id} at {job_config['hour']:02d}:{job_config['minute']:02d}")
+    else:
+        print(f"[SCHEDULER] {job_id} is inactive in config.")
+
+    scheduler.start()
+
+
+@app.get("/scheduler/jobs/{job_id}", response_model=JobSchedule)
+def get_job_schedule(job_id: str):
+    """Get current schedule for a job."""
+    db = get_mongo_db()
+    config = db["system_config"].find_one({"_id": job_id})
+    if not config:
+        raise HTTPException(status_code=404, detail="Job config not found")
+    return JobSchedule(hour=config["hour"], minute=config["minute"], active=config.get("active", True))
+
+
+@app.post("/scheduler/jobs/{job_id}")
+def update_job_schedule(job_id: str, schedule: JobSchedule):
+    """Update schedule for a job (e.g., daily_summary_job)."""
+    if job_id != "daily_summary_job":
+         raise HTTPException(status_code=400, detail="Only daily_summary_job is currently supported")
+         
+    db = get_mongo_db()
+    config_col = db["system_config"]
+    
+    # 1. Update DB
+    config_col.update_one(
+        {"_id": job_id},
+        {"$set": schedule.dict()},
+        upsert=True
+    )
+    
+    # 2. Update Scheduler
+    if schedule.active:
+        scheduler.reschedule_job(
+            job_id,
+            trigger=CronTrigger(hour=schedule.hour, minute=schedule.minute, day_of_week='mon-fri')
+        )
+        print(f"[SCHEDULER] Rescheduled {job_id} to {schedule.hour:02d}:{schedule.minute:02d}")
+    else:
+        # If pausing is requested (future feature), we can remove or pause
+        job = scheduler.get_job(job_id)
+        if job:
+            job.pause()
+            
+    return {"status": "updated", "schedule": schedule}
+
+
+
 
 import sys
 
@@ -219,6 +323,13 @@ def get_service_logs(name: str, lines: int = 50):
     log_file = SCRIPTS[name]["log_file"]
     content = tail_file(log_file, n=lines)
     return {"name": name, "lines": lines, "content": content}
+
+@app.post("/summary/generate")
+async def generate_summary_manual(background_tasks: BackgroundTasks):
+    """Manually trigger daily summary generation."""
+    background_tasks.add_task(scheduled_summary_task)
+    return {"status": "triggered", "message": "Daily summary generation started in background."}
+
 
 if __name__ == "__main__":
     import uvicorn

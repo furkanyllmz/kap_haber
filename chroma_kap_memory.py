@@ -177,15 +177,54 @@ class KapMemory:
         k: int = 3
     ) -> Dict[str, Any]:
         # ✅ ticker filtresi burada
+        import signal
+        import sys
+        
+        # Timeout handler for Linux/Mac
+        def timeout_handler(signum, frame):
+            raise TimeoutError("ChromaDB query timed out")
+        
+        # Skip query if collection is empty or very small
         try:
-            return self.col.query(
+            count = self.col.count()
+            if count == 0:
+                print(f"[DEBUG] Collection empty, skipping query for: {ticker}")
+                return {}
+        except Exception as e:
+            print(f"[WARN] Collection count failed: {e}")
+            return {}
+        
+        try:
+            # Set 10 second timeout (only works on Unix)
+            if sys.platform != 'win32':
+                old_handler = signal.signal(signal.SIGALRM, timeout_handler)
+                signal.alarm(10)
+            
+            print(f"[DEBUG] Querying ChromaDB for: {ticker}")
+            result = self.col.query(
                 query_embeddings=[query_embedding],
-                n_results=k,
+                n_results=min(k, count),  # Don't request more than available
                 where={"ticker": ticker}
             )
+            
+            if sys.platform != 'win32':
+                signal.alarm(0)  # Cancel the alarm
+                signal.signal(signal.SIGALRM, old_handler)
+            
+            return result
+            
+        except TimeoutError:
+            print(f"[WARN] ChromaDB query timeout for {ticker}")
+            return {}
         except Exception as e:
             print(f"[WARN] Memory query_topk error (return empty): {e}")
+            if sys.platform != 'win32':
+                try:
+                    signal.alarm(0)
+                except:
+                    pass
             return {}
+
 
 
 # -----------------------------

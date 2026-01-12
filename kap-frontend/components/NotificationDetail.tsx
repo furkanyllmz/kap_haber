@@ -69,6 +69,7 @@ const NotificationDetail: React.FC<Props> = ({ recentNotifications }) => {
                companyName: item.primaryTicker || 'Unknown Company',
                title: item.headline || 'Başlıksız Bildirim',
                summary: item.seo?.metaDescription || item.summary || item.tweet?.text || '',
+               articleContent: item.seo?.articleMd || item.seo?.article_md || '',
                imageUrl: item.imageUrl || '/banners/diğer.jpg',
                date: item.publishedAt?.date || new Date().toISOString().split('T')[0],
                timestamp: item.publishedAt?.time || '',
@@ -108,23 +109,53 @@ const NotificationDetail: React.FC<Props> = ({ recentNotifications }) => {
       )
    }
 
-   // Simulate full content by repeating summary or adding dummy text
-   const fullText = `
-    <p class="mb-4 font-serif text-lg leading-relaxed text-market-text">${notification.summary}</p>
-    <p class="mb-4 font-serif text-lg leading-relaxed text-market-muted">
-      Borsa İstanbul'da işlem gören şirketimiz tarafından Kamuyu Aydınlatma Platformu'na (KAP) yapılan açıklamada detaylar paylaşılmıştır. 
-      Söz konusu gelişmenin şirket faaliyetlerine ve finansal tablolara olumlu yansıması beklenmektedir.
-    </p>
-    <h4 class="text-xl font-bold mt-8 mb-4 text-market-text font-sans">Süreç Nasıl İşleyecek?</h4>
-    <p class="mb-4 font-serif text-lg leading-relaxed text-market-muted">
-      Yönetim kurulumuzun aldığı karar doğrultusunda, ilgili departmanlar gerekli çalışmalara ivedilikle başlayacaktır. 
-      Yatırımcılarımızın doğru bilgilendirilmesi adına süreç şeffaflıkla yürütülecektir. 
-      Özellikle ${notification.companyName} pay sahipleri için bu dönemde yapılan açıklamaların takibi önem arz etmektedir.
-    </p>
-    <p class="mb-4 font-serif text-lg leading-relaxed text-market-muted">
-      Ekonomik konjonktür ve sektörel gelişmeler dikkate alındığında, bu adımın orta ve uzun vadeli stratejik hedeflerimizle örtüştüğü görülmektedir.
-    </p>
-  `;
+   // Use actual article content from API, fallback to summary if not available
+   const articleContent = notification.articleContent || notification.summary;
+
+   // Convert markdown-style content to HTML paragraphs
+   const formatContent = (content: string): string => {
+      if (!content) return '';
+
+      // Pre-process: Ensure list items have double newlines before them so they split correctly
+      // Also ensure spaces after bullets
+      let processed = content
+         .replace(/(\n|^)[\*\-](?!\s)/g, '$1* ') // Add space if missing
+         .replace(/(\n|^)([\*\-]\s)/g, '\n\n$2'); // Add double newline before bullets
+
+      // Helper to convert **bold** to <strong> and soften the color
+      const parseBold = (text: string): string => {
+         // Using font-semibold and inheriting color instead of forcing black
+         return text.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-slate-800 dark:text-slate-200">$1</strong>');
+      };
+
+      // Split by double newlines for paragraphs
+      const paragraphs = processed.split(/\n\n+/).filter(p => p.trim());
+
+      return paragraphs.map(p => {
+         p = p.trim();
+         // Check if it's a header (starts with #)
+         if (p.startsWith('### ')) {
+            return `<h4 class="text-lg font-bold mt-6 mb-3 text-market-text font-sans">${parseBold(p.replace('### ', ''))}</h4>`;
+         }
+         if (p.startsWith('## ')) {
+            return `<h3 class="text-xl font-bold mt-8 mb-4 text-market-text font-sans">${parseBold(p.replace('## ', ''))}</h3>`;
+         }
+         if (p.startsWith('# ')) {
+            return `<h2 class="text-2xl font-bold mt-8 mb-4 text-market-text font-sans">${parseBold(p.replace('# ', ''))}</h2>`;
+         }
+         // Check for bullet points (now robust due to pre-processing)
+         if (p.startsWith('- ') || p.startsWith('* ')) {
+            const items = p.split(/\n/).map(item => item.replace(/^[\-\*]\s*/, '').trim()).filter(i => i);
+            return `<ul class="list-disc pl-6 mb-4 space-y-2 marker:text-market-accent">${items.map(i => `<li class="text-market-muted leading-relaxed">${parseBold(i)}</li>`).join('')}</ul>`;
+         }
+         // Regular paragraph
+         return `<p class="mb-4 font-serif text-lg leading-relaxed text-market-muted">${parseBold(p)}</p>`;
+      }).join('');
+   };
+
+
+
+   const fullText = formatContent(articleContent);
 
    return (
       <div className="min-h-screen bg-market-bg animate-fade-in pb-12">

@@ -16666,5 +16666,271 @@
     "_output_file_abs": "/root/daily_data_kap_2/news/news_items.json",
     "url": "https://www.kap.org.tr/tr/Bildirim/1535329",
     "ticker": "EKGYO"
+  },
+  {
+    "primary_ticker": "OZSUB",
+    "publisher_ticker": "OZSUB",
+    "related_tickers": [
+      "OZSUB"
+    ],
+    "published_at": {
+      "date": "2026-01-08",
+      "time": "15:03",
+      "timezone": "Europe/Istanbul"
+    },
+    "topic": "OZSUB_IMTIYAZLI_GENEL_KURUL_2026",
+    "subtype": "GENEL",
+    "category": "SPK",
+    "newsworthiness": 0.45,
+    "key_numbers": {
+      "amount_raw": null,
+      "ratio_to_market_cap": null,
+      "ratio_to_revenue": null
+    },
+    "headline": "Özsu Balık'tan İmtiyazlı Pay Sahiplerine Özel Kurul Çağrısı",
+    "facts": [
+      {
+        "k": "Toplantı Türü",
+        "v": "A Grubu İmtiyazlı Pay Sahipleri Özel Kurulu"
+      },
+      {
+        "k": "Toplantı Tarihi",
+        "v": "27.02.2026"
+      },
+      {
+        "k": "Ana Gündem Maddesi",
+        "v": "Esas Sözleşme'nin 'Sermaye ve Payların Nevi' başlıklı 6. maddesinin tadili"
+      },
+      {
+        "k": "Toplantı Yeri",
+        "v": "Urla, İzmir"
+      }
+    ],
+    "tweet": {
+      "text": "Özsu Balık (#OZSUB), A Grubu imtiyazlı pay sahiplerini 27 Şubat 2026'da özel kurul toplantısına çağırdı. Gündemde esas sözleşmenin sermaye maddesindeki tadil yer alıyor.",
+      "hashtags": [
+        "#BIST",
+        "#KAP",
+        "#OZSUB"
+      ],
+      "disclaimer": "YTD"
+    },
+    "seo": {
+      "title": "Özsu Balık (OZSUB) İmtiyazlı Pay Sahipleri Genel Kurul Çağrısı",
+      "meta_description": "Özsu Balık, imtiyazlı pay sahipleri için 27 Şubat 2026 tarihinde genel kurul toplantısı düzenleyecek. Gündemde sermaye maddesi tadili bulunuyor.",
+      "article_md": "Özsu Balık Üretim A.Ş. (OZSUB), yönetim kurulunun aldığı karar doğrultusunda **A Grubu İmtiyazlı Pay Sahipleri**'ni özel bir genel kurul toplantısına davet etti.\n\n### Toplantı Detayları\n- **Tarih:** 27 Şubat 2026\n- **Saat:** 11:00\n- **Yer:** Demircili Mahallesi Demircili Caddesi No:42 Urla/İzmir\n\n### Gündem Maddeleri\nToplantının ana gündem maddesini, şirketin esas sözleşmesinin **\"Sermaye ve Payların Nevi\"** başlıklı 6. maddesinin, Sermaye Piyasası Kurulu ve T.C. Ticaret Bakanlığı'ndan alınan izinler doğrultusunda tadil edilmesi oluşturuyor.\n\nPay sahiplerinin toplantıya katılım sağlayabilmesi için 26 Şubat 2026 tarihine kadar pay sahibi olmaları gerekmektedir."
+    },
+    "visual_prompt": "A professional meeting room setting with a focus on corporate documents and a logo representing aquaculture or fish production, clean and modern style.",
+    "publish_target": "WEB_ONLY",
+    "notes": {
+      "is_routine_spam": false,
+      "editor_comment": "İmtiyazlı pay sahiplerine yönelik özel bir kurul çağrısıdır. Esas sözleşme tadili içerdiği için takip edilmelidir."
+    },
+    "_generated_at": "2026-01-11T21:36:45+03:00",
+    "_cwd": "/Users/furkanyilmaz/Desktop/kap_haber",
+    "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
+    "_id": "6963edbdb13c6fc91f023c9d",
+    "url": "https://kaphaber.com/news/6963edbdb13c6fc91f023c9d",
+    "ticker": "OZSUB"
+  },
+  {
+    "primary_ticker": "OZSUB",
+    "publisher_ticker": "OZSUB",
+    "related_tickers": [
+      "OZSUB"
+    ],
+    "published_at": {
+      "date": "2026-01-08",
+      "time": "15:02",
+      "timezone": "Europe/Istanbul"
+    },
+    "topic": "GENEL_KURUL_OZSUB_2026_02_27",
+    "subtype": "GENEL",
+    "category": "Diğer",
+    "newsworthiness": 0.45,
+    "key_numbers": {
+      "amount_raw": null,
+      "ratio_to_market_cap": null,
+      "ratio_to_revenue": null
+    },
+    "headline": "Özsu Balık Olağanüstü Genel Kurul'a Gidiyor: Gündemde Esas Sözleşme Tadili Var",
+    "facts": [
+      {
+        "k": "Toplantı Tarihi",
+        "v": "27.02.2026"
+      },
+      {
+        "k": "Toplantı Saati",
+        "v": "10:00"
+      },
+      {
+        "k": "Toplantı Yeri",
+        "v": "Urla, İzmir"
+      },
+      {
+        "k": "Önemli Gündem Maddesi",
+        "v": "Esas Sözleşme'nin 'Sermaye ve Payların Nevi' başlıklı 6. maddesinin tadili"
+      },
+      {
+        "k": "Diğer Gündem",
+        "v": "Yeni Yönetim Kurulu üyesi atamasının onaylanması"
+      }
+    ],
+    "tweet": {
+      "text": "Özsu Balık (#OZSUB), 27 Şubat 2026 tarihinde Olağanüstü Genel Kurul toplantısı yapacağını duyurdu. Gündemde esas sözleşmenin sermaye maddesinin tadili ve yönetim kurulu üye değişimi yer alıyor.",
+      "hashtags": [
+        "#BIST",
+        "#KAP",
+        "#OZSUB"
+      ],
+      "disclaimer": "YTD"
+    },
+    "seo": {
+      "title": "Özsu Balık (OZSUB) Olağanüstü Genel Kurul Çağrısı Yaptı",
+      "meta_description": "Özsu Balık, 27 Şubat 2026'da gerçekleşecek olağanüstü genel kurulda sermaye maddesi tadili ve yönetim kurulu atamasını oylayacak.",
+      "article_md": "Özsu Balık Üretim A.Ş. (OZSUB), Yönetim Kurulu kararıyla **27 Şubat 2026** tarihinde Olağanüstü Genel Kurul toplantısı düzenleyeceğini açıkladı.\n\n### Toplantı Detayları\n- **Tarih:** 27.02.2026\n- **Saat:** 10:00\n- **Adres:** Demircili Mahallesi Demircili Caddesi No:42 Urla/İzmir\n\n### Gündem Maddeleri\nToplantının ana gündem maddeleri arasında, Türk Ticaret Kanunu uyarınca boşalan Yönetim Kurulu üyeliğine yapılan atamanın onaylanması ve şirketin **Esas Sözleşmesi'nin 6. maddesi olan 'Sermaye ve Payların Nevi'** kısmının tadil edilmesi yer alıyor. Bu tadil işlemi, genellikle kayıtlı sermaye tavanı artırımı veya süresinin uzatılması gibi sermaye piyasası araçlarını ilgilendiren süreçleri kapsamaktadır."
+    },
+    "visual_prompt": "A professional corporate meeting room background with a focus on a document titled 'Esas Sözleşme Tadili' and the Özsu Balık logo, 4k, realistic style.",
+    "publish_target": "WEB_ONLY",
+    "notes": {
+      "is_routine_spam": false,
+      "editor_comment": "Şirket olağanüstü genel kurul ile sermaye maddesinde değişikliğe gidiyor. Sermaye tavanı artırımı veya benzeri bir finansal yapılandırma habercisi olabilir."
+    },
+    "_generated_at": "2026-01-11T21:38:30+03:00",
+    "_cwd": "/Users/furkanyilmaz/Desktop/kap_haber",
+    "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
+    "_id": "6963ee260de3f909ebfa6b23",
+    "url": "https://kaphaber.com/news/6963ee260de3f909ebfa6b23",
+    "ticker": "OZSUB"
+  },
+  {
+    "primary_ticker": "ATAGY",
+    "publisher_ticker": "ATAGY",
+    "related_tickers": [
+      "ATAGY"
+    ],
+    "published_at": {
+      "date": "2026-01-08",
+      "time": "15:18",
+      "timezone": "Europe/Istanbul"
+    },
+    "topic": "ATAGY_2025_KIRA_GELIRI",
+    "subtype": "GENEL",
+    "category": "Diğer",
+    "newsworthiness": 0.45,
+    "key_numbers": {
+      "amount_raw": "35.634.573 TL",
+      "ratio_to_market_cap": "0.0522",
+      "ratio_to_revenue": "1.1137"
+    },
+    "headline": "Ata GYO (ATAGY) 2025 Yılı Kira Gelirini 35,6 Milyon TL Olarak Açıkladı",
+    "facts": [
+      {
+        "k": "2025 Toplam Kira Geliri",
+        "v": "35.634.573 TL (KDV Hariç)"
+      },
+      {
+        "k": "İşlem Sınırı Bilgisi",
+        "v": "Aktif toplamın %2'sini aşan alım, satım veya kiralama işlemi bulunmamaktadır."
+      },
+      {
+        "k": "Yasal Dayanak",
+        "v": "GYO Tebliği Madde 40/3/ç kapsamında yıllık toplu açıklama."
+      }
+    ],
+    "tweet": {
+      "text": "Ata GYO (#ATAGY), 2025 yılı içerisinde portföyündeki gayrimenkullerden toplam 35.634.573 TL (KDV hariç) kira geliri elde ettiğini duyurdu.",
+      "hashtags": [
+        "#BIST",
+        "#KAP",
+        "#ATAGY",
+        "#GYO"
+      ],
+      "disclaimer": "YTD"
+    },
+    "seo": {
+      "title": "Ata GYO (ATAGY) 2025 Yılı Kira Geliri ve Portföy İşlemleri Açıklaması",
+      "meta_description": "ATAGY, 2025 yılında 35,6 milyon TL kira geliri elde ettiğini ve aktif toplamın %2'sini aşan münferit bir işlem gerçekleşmediğini bildirdi.",
+      "article_md": "### Ata GYO'dan Yıllık Portföy ve Kira Geliri Açıklaması\n\n**Ata Gayrimenkul Yatırım Ortaklığı A.Ş. (ATAGY)**, Sermaye Piyasası Kurulu'nun Gayrimenkul Yatırım Ortaklıklarına İlişkin Esaslar Tebliği (III-48.1) uyarınca yapılması zorunlu olan yıllık bildirimini paylaştı.\n\n#### Öne Çıkan Detaylar:\n- **Kira Geliri:** Şirket, 2025 yılı boyunca portföyünde bulunan gayrimenkullerden toplam **35.634.573 TL** (KDV hariç) kira geliri sağladı.\n- **İşlem Hacmi:** Kamuoyuna açıklanan son finansal tablolardaki aktif toplamın **%2'sini aşan** herhangi bir alım, satım veya kiralama işlemi gerçekleşmediği teyit edildi.\n\nBu açıklama, GYO tebliğinin 40. maddesi kapsamında yatırımcıları bilgilendirme amacıyla rutin olarak yapılmıştır."
+    },
+    "visual_prompt": "A modern real estate portfolio representation with a professional financial chart showing upward rental income trends, blue and white corporate colors.",
+    "publish_target": "WEB_ONLY",
+    "notes": {
+      "is_routine_spam": false,
+      "editor_comment": "GYO'ların her yıl başında bir önceki yıla ait toplu kira gelirlerini ve %2 sınırını aşmayan işlemlerini bildirmesi rutin bir zorunluluktur. Şirketin piyasa değerine oranla kira geliri makul seviyededir."
+    },
+    "_generated_at": "2026-01-11T21:38:42+03:00",
+    "_cwd": "/Users/furkanyilmaz/Desktop/kap_haber",
+    "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
+    "_id": "6963ee320de3f909ebfa6b25",
+    "url": "https://kaphaber.com/news/6963ee320de3f909ebfa6b25",
+    "ticker": "ATAGY"
+  },
+  {
+    "primary_ticker": "KOCFN",
+    "publisher_ticker": "KOCFN",
+    "related_tickers": [
+      "KOCFN"
+    ],
+    "published_at": {
+      "date": "2026-01-08",
+      "time": "15:18",
+      "timezone": "Europe/Istanbul"
+    },
+    "topic": "BORCLANMA_TAVANI_KOCFN_20260108",
+    "subtype": "GENEL",
+    "category": "Sermaye",
+    "newsworthiness": 0.45,
+    "key_numbers": {
+      "amount_raw": "775.000.000 TRY",
+      "ratio_to_market_cap": null,
+      "ratio_to_revenue": null
+    },
+    "headline": "Koç Finansman'dan 775 Milyon TL'lik Borçlanma Aracı İhracı Kararı",
+    "facts": [
+      {
+        "k": "İhraç Tavanı Tutarı",
+        "v": "775.000.000 TRY"
+      },
+      {
+        "k": "Kıymet Türü",
+        "v": "Borçlanma Aracı (Tahvil / Finansman Bonosu)"
+      },
+      {
+        "k": "Satış Yöntemi",
+        "v": "Tahsisli ve Nitelikli Yatırımcıya Satış"
+      },
+      {
+        "k": "Karar Tarihi",
+        "v": "08.01.2026"
+      }
+    ],
+    "tweet": {
+      "text": "Koç Finansman (#KOCFN), 775.000.000 TL tutarında borçlanma aracı ihracı için yönetim kurulu kararı aldı. İhraçlar yurt içinde nitelikli yatırımcılara yönelik gerçekleştirilecek.",
+      "hashtags": [
+        "#BIST",
+        "#KAP",
+        "#KOCFN",
+        "#Tahvil"
+      ],
+      "disclaimer": "YTD"
+    },
+    "seo": {
+      "title": "Koç Finansman 775 Milyon TL Borçlanma Tavanı Aldı",
+      "meta_description": "Koç Finansman (KOCFN), 775 milyon TL nominal tutara kadar tahvil ve finansman bonosu ihracı için yönetim kurulu kararı aldığını duyurdu.",
+      "article_md": "### Koç Finansman Borçlanma İhracı İçin Düğmeye Bastı\n\n**Koç Finansman A.Ş. (KOCFN)**, 8 Ocak 2026 tarihinde gerçekleştirdiği yönetim kurulu toplantısında, yurt içinde satılmak üzere yeni bir borçlanma aracı ihraç tavanı belirledi.\n\n#### İhraç Detayları\nŞirket tarafından yapılan açıklamaya göre, bir yıllık dönem içerisinde **775.000.000 TL** nominal değere kadar **Tahvil ve Finansman Bonosu** ihraç edilmesi planlanıyor. \n\n*   **Satış Türü:** Halka arz edilmeksizin, nitelikli yatırımcılara satış veya tahsisli satış.\n*   **Pazar:** Yurt İçi.\n*   **Yetkili Organ Kararı:** 08.01.2026 tarihli yönetim kurulu kararı ile onaylandı.\n\nBu hamle, şirketin likidite yönetimini güçlendirme ve finansman kaynaklarını çeşitlendirme stratejisinin bir parçası olarak değerlendiriliyor."
+    },
+    "visual_prompt": "A professional financial background with a focus on corporate bonds, featuring the Koç Finansman logo and the text 775 Million TRY in a clean, modern font.",
+    "publish_target": "WEB_ONLY",
+    "notes": {
+      "is_routine_spam": false,
+      "editor_comment": "Koç Finansman'ın rutin borçlanma tavanı başvurularından biri. Tutar orta ölçekli, nitelikli yatırımcıya yönelik olduğu için sadece web kanalında yayınlanması uygundur."
+    },
+    "_generated_at": "2026-01-11T21:38:55+03:00",
+    "_cwd": "/Users/furkanyilmaz/Desktop/kap_haber",
+    "_output_file_abs": "/Users/furkanyilmaz/Desktop/kap_haber/news/news_items.json",
+    "_id": "6963ee3f0de3f909ebfa6b27",
+    "url": "https://kaphaber.com/news/6963ee3f0de3f909ebfa6b27",
+    "ticker": "KOCFN"
   }
 ]

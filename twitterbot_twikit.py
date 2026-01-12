@@ -31,8 +31,8 @@ IMAGES_DIR = "./dotnet-backend/KapProjeBackend/wwwroot/news/images"
 
 # Ayarlar
 POLL_INTERVAL = 60
-TWEET_INTERVAL = 120  # Tweetler arası bekleme (saniye)
-ERROR_COOLDOWN = 600  # Hata sonrası bekleme (saniye)
+TWEET_INTERVAL = 902  # Tweetler arası bekleme (15 dakika)
+ERROR_COOLDOWN = 902  # Hata sonrası bekleme (saniye)
 
 # ======================
 # IMPORTS
@@ -165,19 +165,17 @@ def format_tweet(item):
     
     MAX_LEN = 280
     
-    # 1. Sabit kısımları oluştur: URL + Editör Notu
+    # 1. Sabit kısımları oluştur: URL
     fixed_footer = ""
     if kap_url:
         fixed_footer += f"\n\n🔗 {kap_url}"
     
-    # Editör yorumu (varsa ve spam değilse)
-    editor_comment = notes.get("editor_comment")
-    if editor_comment and not notes.get("is_routine_spam"):
-        fixed_footer += f"\n\nℹ️ {editor_comment}"
-
+    # Editör yorumu KALDIRILDI (Kullanıcı isteği)
+    
     # 2. Metin için kalan alan (Hashtag'siz)
     # 3 karakter buffer (...) için
-    available_for_text = MAX_LEN - len(fixed_footer) - 3
+    available_for_text = MAX_LEN - len(fixed_footer) - 5
+
     
     # Metni kes (buffer payı bırakarak)
     if len(base_text) > available_for_text:
@@ -240,6 +238,7 @@ async def setup_twikit_client():
             print("🔄 Alternatif yöntem deneniyor...")
             client._client.cookies.set('auth_token', '29eba4ea487789f75c52a6ea2a41c25f91502094', domain='.x.com')
             client._client.cookies.set('ct0', 'a99c51fe150dd8372bb51b739c0f9c5ca58dc908871f04b428eea4c615cf7aa07be5effe754e1b2707eeef517e62d33f70ade106abdc81d1cc906c8cd6e06bb185657d6036ed07338013374cd17155f4', domain='.x.com')
+
             print("✅ Alternatif yöntem başarılı!")
             return client
         except Exception as e2:

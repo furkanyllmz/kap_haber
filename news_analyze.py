@@ -11,6 +11,7 @@ import re
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
+from bson import ObjectId
 
 import google.generativeai as genai
 from google.generativeai import types
@@ -36,7 +37,7 @@ PROCESSED_TRACKER_FILE = os.path.join(OUT_DIR, "processed_news_files.json")
 MODEL_NAME = "gemini-3-flash-preview"
 
 # Memory settings
-USE_MEMORY = False  # Disabled temporarily to prevent SegFault on server
+USE_MEMORY = True # Disabled temporarily to prevent SegFault on server
 MEMORY_DIR = "./chroma_kap_memory"
 MEMORY_COLLECTION = "kap_memory"
 MEMORY_TOPK = 4
@@ -87,6 +88,43 @@ Puanına ve Alt Türüne göre karar ver:
 - **ALL_CHANNELS**: Puan > 0.7 VE (Ana Haber, İzahname, Dev İş, Bedelsiz Onayı).
 - **WEB_ONLY**: Puan 0.4-0.7 VEYA (Ekler, Analist Raporları, Rutin Finansallar).
 - **NONE**: Puan < 0.4 VEYA (Günlük Rutin Raporlar, Tekrarlar, Fon Bültenleri).
+--- SEO & ARTICLE_MD ÜRETİM KURALLARI (ÇOK ÖNEMLİ) ---
+
+seo.article_md bir "haber sitesi içeriği" gibi yazılmalıdır.
+Bu alan ASLA kısa özet, madde listesi veya taslak olamaz.
+
+ZORUNLU YAPI:
+1. GİRİŞ PARAGRAFI (Spot Haber)
+   - İlk paragraf tek başına okunduğunda haber anlaşılmalı
+   - Şirket adı + olay + tarih bilgisi geçmeli
+
+2. OLAYIN DETAYI
+   - KAP bildiriminde geçen ana gelişme sade şekilde açıklanmalı
+   - Sayılar varsa mutlaka metin içinde anlamlandırılmalı
+
+3. FİNANSAL / STRATEJİK ETKİ
+   - Bu gelişme şirket için neden önemli?
+   - Yatırımcı açısından olumlu / nötr / belirsiz yönler
+
+4. BAĞLAM (History Context varsa)
+   - Önceki benzer KAP'lar veya geçmiş kararlarla ilişkilendir
+   - “Daha önce…” gibi doğal bağlayıcı kullan
+
+5. KISA DEĞERLENDİRME
+   - Tahmin değil, yorum
+   - Kesin dil yok, olasılık dili kullan
+
+YAZIM KURALLARI:
+- Finans haber dili kullan
+- Akademik veya pazarlama dili kullanma
+- Emoji, ünlem, clickbait YASAK
+- 300–600 kelime arası hedefle
+- Markdown formatı kullan (## başlıklar, **kalın** vurgular)
+
+EĞER HABER RUTİN VE ÖNEMSİZSE:
+- article_md yine dolu yazılır
+- ama publish_target NONE olabilir
+
 
 ÇIKTI FORMATI (JSON):
 {
@@ -434,6 +472,13 @@ def persist_to_mongo(item: dict):
         mongo_item = {k: v for k, v in item.items() if k not in DEBUG_FIELDS}
         mongo_item["_inserted_at"] = datetime.now().isoformat()
         
+        # _id string ise ObjectId'ye çevir
+        if "_id" in mongo_item and isinstance(mongo_item["_id"], str):
+             try:
+                 mongo_item["_id"] = ObjectId(mongo_item["_id"])
+             except:
+                 pass
+        
         # related_tickers alanını garantile
         if "related_tickers" not in mongo_item or not mongo_item["related_tickers"]:
             primary = mongo_item.get("primary_ticker") or mongo_item.get("ticker")
@@ -567,14 +612,20 @@ def process_one_file(client, file_path: str, embedder=None, memory=None):
     if not isinstance(item, dict):
         return None
 
-    item["_source_file"] = file_path
     item["_generated_at"] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+03:00")
     item["_cwd"] = os.getcwd()
     item["_output_file_abs"] = abspath(OUTPUT_FILE)
     
-    # URL'i gemini çıktısına ekle (Gemini üretmezse source'dan al)
-    if not item.get("url") and kap_json.get("url"):
-        item["url"] = kap_json["url"]
+    # Pre-generate ObjectId
+    new_oid = ObjectId()
+    item["_id"] = str(new_oid)
+    
+    # URL'i kaphaber.com yap (User request)
+    item["url"] = f"https://kaphaber.com/news/{new_oid}"
+
+    # Eski logic: URL'i gemini çıktısına ekle (Gemini üretmezse source'dan al)
+    # if not item.get("url") and kap_json.get("url"):
+    #    item["url"] = kap_json["url"]
 
     return item
 

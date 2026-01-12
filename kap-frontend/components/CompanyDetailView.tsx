@@ -66,7 +66,69 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
     const [loadingNews, setLoadingNews] = useState(false);
     const [currentPrice, setCurrentPrice] = useState<number | null>(null);
     const [percentChange, setPercentChange] = useState<number | null>(null);
+    const [chartPercentChange, setChartPercentChange] = useState<number | null>(null);
     const [companyDetails, setCompanyDetails] = useState<{ name: string, financials: any } | null>(null);
+
+    // Price data from Prices API (like mobile app)
+    const [priceData, setPriceData] = useState<{
+        last: number | null;
+        dailyChange: number | null;
+        dailyChangePercent: number | null;
+        totalTurnover: number | null;
+        marketValue: number | null;
+    }>({
+        last: null,
+        dailyChange: null,
+        dailyChangePercent: null,
+        totalTurnover: null,
+        marketValue: null
+    });
+    const [loadingPrice, setLoadingPrice] = useState(true);
+
+    // Format large numbers (like mobile app)
+    const formatNumber = (value: number | null): string => {
+        if (value === null || value === undefined) return '-';
+        if (value >= 1e12) return `${(value / 1e12).toFixed(2)} Trilyon ₺`;
+        if (value >= 1e9) return `${(value / 1e9).toFixed(2)} Milyar ₺`;
+        if (value >= 1e6) return `${(value / 1e6).toFixed(2)} Milyon ₺`;
+        if (value >= 1e3) return `${(value / 1e3).toFixed(2)} Bin ₺`;
+        return `${value.toFixed(2)} ₺`;
+    };
+
+    // Fetch Price Data from Prices API (like mobile app)
+    useEffect(() => {
+        if (!companyCode) return;
+        const fetchPriceData = async () => {
+            setLoadingPrice(true);
+            try {
+                const response = await fetch(`${API_BASE_URL}/Prices/ticker/${companyCode}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    const extra = data.extraElements || {};
+                    setPriceData({
+                        last: extra.Last ?? null,
+                        dailyChange: extra.DailyChange ?? null,
+                        dailyChangePercent: extra.DailyChangePercent ?? null,
+                        totalTurnover: extra.TotalTurnover ?? null,
+                        marketValue: extra.MarketValue ?? null
+                    });
+                    // Set current price from API
+                    if (extra.Last) {
+                        setCurrentPrice(extra.Last);
+                    }
+                    if (extra.DailyChangePercent !== undefined) {
+                        setPercentChange(extra.DailyChangePercent);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch price data:", error);
+            } finally {
+                setLoadingPrice(false);
+            }
+        };
+        fetchPriceData();
+    }, [companyCode]);
+
 
     // Fetch Company Details (Name + Financials)
     useEffect(() => {
@@ -109,8 +171,21 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
                 if (mappedData.length > 0) {
                     const lastPrice = mappedData[mappedData.length - 1].price;
                     const firstPrice = mappedData[0].price;
-                    setCurrentPrice(lastPrice);
-                    setPercentChange(((lastPrice - firstPrice) / firstPrice) * 100);
+                    const chartChange = ((lastPrice - firstPrice) / firstPrice) * 100;
+                    setChartPercentChange(chartChange);
+
+                    // For 1G timeframe, use DailyChangePercent from Prices API (like mobile)
+                    // For other timeframes, use chart calculation
+                    if (timeframe === '1G' && priceData.dailyChangePercent !== null) {
+                        setPercentChange(priceData.dailyChangePercent);
+                    } else {
+                        setPercentChange(chartChange);
+                    }
+
+                    // Only update currentPrice from chart if API didn't provide it
+                    if (!priceData.last) {
+                        setCurrentPrice(lastPrice);
+                    }
                 }
 
             } catch (error) {
@@ -121,7 +196,7 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
         };
 
         fetchStockData();
-    }, [companyCode, timeframe]);
+    }, [companyCode, timeframe, priceData.dailyChangePercent, priceData.last]);
 
     // Fetch News for Company
     useEffect(() => {
@@ -199,10 +274,10 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
                     {/* Price Display */}
                     {currentPrice && (
                         <div className="text-right">
-                            <div className="text-lg font-bold text-market-text">
+                            <div className="text-2xl font-bold text-market-text">
                                 ₺{currentPrice.toFixed(2)}
                             </div>
-                            <div className={`text-xs font-medium flex items-center justify-end ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                            <div className={`text-sm font-medium flex items-center justify-end ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
                                 {isPositive ? <ArrowUpRight size={14} className="mr-0.5" /> : <ArrowDownRight size={14} className="mr-0.5" />}
                                 {Math.abs(percentChange || 0).toFixed(2)}%
                                 <span className="text-market-muted ml-1 hidden sm:inline">({timeframe})</span>
@@ -215,29 +290,28 @@ const CompanyDetailView: React.FC<Props> = ({ companies }) => {
 
             <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
 
-                {/* Financials Section */}
-                {companyDetails?.financials && Object.keys(companyDetails.financials).length > 0 && (
-                    <div className="bg-market-card rounded-2xl p-5 border border-market-border shadow-sm mb-6">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            {Object.entries(companyDetails.financials).map(([key, value]) => {
-                                if (!value || IGNORED_KEYS.includes(key)) return null;
-                                const label = STAT_LABELS[key] || key;
-                                const displayValue = formatValue(key, value);
-
-                                return (
-                                    <div key={key} className="flex flex-col">
-                                        <span className="text-xs text-market-muted uppercase tracking-wider font-semibold mb-1 opacity-70">
-                                            {label}
-                                        </span>
-                                        <span className="text-lg md:text-xl font-bold text-market-text tracking-tight">
-                                            {String(displayValue)}
-                                        </span>
-                                    </div>
-                                );
-                            })}
+                {/* Volume & Market Value Section (like mobile app) */}
+                {(priceData.totalTurnover || priceData.marketValue) && (
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-market-card rounded-xl p-4 border border-market-border">
+                            <span className="text-xs text-market-muted uppercase tracking-wider font-semibold block mb-1">
+                                HACİM
+                            </span>
+                            <span className="text-lg font-bold text-market-text">
+                                {formatNumber(priceData.totalTurnover)}
+                            </span>
+                        </div>
+                        <div className="bg-market-card rounded-xl p-4 border border-market-border">
+                            <span className="text-xs text-market-muted uppercase tracking-wider font-semibold block mb-1">
+                                PİYASA DEĞERİ
+                            </span>
+                            <span className="text-lg font-bold text-market-text">
+                                {formatNumber(priceData.marketValue)}
+                            </span>
                         </div>
                     </div>
                 )}
+
 
                 {/* Chart Section */}
                 <div className="bg-market-card rounded-2xl p-4 border border-market-border shadow-sm">
